@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Methanol Workflow: From MACE Sampling to MLIP Production</title>
+	<link rel="stylesheet" href="../utils/dist/reset.css" />
+	<link rel="stylesheet" href="../utils/dist/reveal.css" />
+	<link rel="stylesheet" href="../utils/dist/theme/black.css" />
+	<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+	<div class="reveal">
+		<div class="slides">
+            <section class="section-divider" data-state="is-section-divider">
+                <header>Jakob Wallner & Stefan Haag</header>
+				<h1>Methanol Workflow</h1>
+				<p>From foundation-model sampling to DFT relabeling, MLIP training, and production MD</p>
+			</section>
+
+            <section>
+                <h2>Project Goal</h2>
+                <hr />
+                <div class="content">
+                    <div class="concept-card">
+                        <h3>One workflow, multiple engines</h3>
+                        <p>
+                            Sample methanol configurations with a foundation MACE model, refine a small subset with DFT,
+                            correct the data with D3, train and compare MLIPs, and then use the best model for production MD.
+                        </p>
+                    </div>
+                    <ul>
+                        <li>Build a reproducible pipeline instead of ad hoc scripts.</li>
+                        <li>Track dependencies between sampling, labeling, training, and evaluation.</li>
+                        <li>Compare the final models on structure and dynamics, especially RDFs and diffusion.</li>
+                    </ul>
+                </div>
+            </section>
+
+			<section>
+				<h2>Why Use a Workflow Manager?</h2>
+                <hr />
+				<div class="content">
+					<div class="concept-card">
+						<h3>More than automation</h3>
+						<p>
+							A workflow manager is useful because the project combines MD, DFT, and MLIP training in one chain.
+							It keeps the logic organized, handles dependencies between stages, and makes reruns predictable.
+						</p>
+					</div>
+					<ul>
+						<li>Reproducibility: every step is defined and rerunnable.</li>
+						<li>Scalability: the same pipeline can be expanded to more data or more temperatures.</li>
+						<li>Traceability: outputs from each stage stay linked to the node that produced them.</li>
+					</ul>
+				</div>
+			</section>
+
+			<section>
+				<h2>Workflow Overview</h2>
+                <hr />
+				<div class="content">
+					<div style="display:flex; align-items:center; justify-content:space-between; gap:18px; flex-wrap:wrap; margin-top:10px;">
+						<div class="flow-node primary">MACE sampling</div>
+						<div class="flow-arrow">→</div>
+						<div class="flow-node secondary">MGRID optimization</div>
+						<div class="flow-arrow">→</div>
+						<div class="flow-node primary">DFT + D3 relabeling</div>
+						<div class="flow-arrow">→</div>
+						<div class="flow-node secondary">MLIP training</div>
+						<div class="flow-arrow">→</div>
+						<div class="flow-node primary">Production MD</div>
+						<div class="flow-arrow">→</div>
+						<div class="flow-node secondary">RDF and diffusion</div>
+					</div>
+					<p class="text-xl" style="margin-top:28px;">
+						The central idea is simple: use the fast foundation model to explore phase space, then spend the expensive DFT budget only where it matters.
+					</p>
+				</div>
+			</section>
+
+			<section>
+				<h2>Sampling With MACE</h2>
+                <hr />
+				<div class="content">
+                    <p>Generate methanol configurations and sample MD frames with the MACE foundation model</p>
+					<ul>
+						<li>Start from initial configurations generated with Packmol.</li>
+						<li>Use the pretrained MACE foundation model for fast MD sampling.</li>
+						<li>Inspect the resulting trajectory with <strong>zntrack.from_rev()</strong> and the <strong>frames</strong> list.</li>
+					</ul>
+					<div class="concept-card" style="margin-top:16px;">
+						<h3>Why this matters</h3>
+						<p>
+							The foundation model provides cheap, broad sampling of methanol configurations before any expensive DFT labeling is done.
+						</p>
+					</div>
+				</div>
+			</section>
+
+			<section>
+				<h2>Stage 2: DFT Relabeling</h2>
+				<hr />
+				<div class="content">
+					<ul>
+						<li>Run a convergence test on a small number of sampled frames.</li>
+						<li>Vary the CP2K <strong>MGRID</strong> cutoff until force and energy changes are below the target threshold.</li>
+						<li>Relabel the trajectory with the optimal DFT settings.</li>
+						<li>Add D3 correction outside CP2K when possible, because it depends only on the atoms and is cheaper to evaluate separately.</li>
+					</ul>
+					<div class="concept-card" style="margin-top:16px;">
+						<h3>What the MGRID test gives you</h3>
+						<p>
+							A practical accuracy-cost tradeoff: enough grid resolution to converge forces and energies, but not so much that DFT becomes unnecessarily expensive.
+						</p>
+					</div>
+				</div>
+			</section>
+
+			<section>
+				<h2>Stage 3: Train MLIPs</h2>
+                <hr />
+				<div class="content">
+					<div class="concept-card">
+						<h3>Hyperparameter exploration</h3>
+						<p>
+							Train several models while varying the number of training configurations, radial cutoff <strong>r<sub>max</sub></strong>,
+							basis size, and network depth or width.
+						</p>
+					</div>
+					<ul>
+						<li>More data usually improves accuracy, but increases training cost.</li>
+						<li>Larger cutoffs help with longer-range interactions, but are more expensive.</li>
+						<li>More basis functions and larger networks can fit more complex behavior, but raise overfitting risk.</li>
+						<li>Train ensembles to compare uncertainty through prediction spread.</li>
+					</ul>
+				</div>
+			</section>
+
+			<section>
+				<h2>Raw DFT vs D3-Corrected Data</h2>
+				<hr />
+				<div class="content">
+					<div style="display:grid; grid-template-columns: 1fr 1fr; gap:18px; margin-top:8px;">
+						<div class="concept-card">
+							<h3>Raw DFT</h3>
+							<p>
+								Use the labeled CP2K data directly to train one model and keep the full electronic-structure reference as-is.
+							</p>
+						</div>
+						<div class="concept-card">
+							<h3>D3-corrected</h3>
+							<p>
+								Train a second model on DFT plus the separately evaluated dispersion contribution to better capture intermolecular attraction.
+							</p>
+						</div>
+					</div>
+					<p class="text-lg" style="margin-top:18px;">
+						Comparing both models helps isolate how much of the final performance comes from the base DFT functional versus the dispersion correction.
+					</p>
+				</div>
+			</section>
+
+			<section>
+				<h2>Stage 4: Production MD and Evaluation</h2>
+                <hr />
+				<div class="content">
+					<ul>
+						<li>Select the best-performing MLIP from the hyperparameter study.</li>
+						<li>Run longer production MD simulations with the chosen model.</li>
+						<li>Evaluate structural observables such as RDFs and dynamic quantities such as diffusion.</li>
+						<li>Compare uncertainty and stability across single models and ensembles.</li>
+					</ul>
+					<div class="concept-card" style="margin-top:16px;">
+						<h3>Final question</h3>
+						<p>
+							Does the trained model preserve methanol structure and transport well enough to be trusted for production-scale sampling?
+						</p>
+					</div>
+				</div>
+			</section>
+
+			<section class="section-divider" data-state="is-section-divider">
+				<h1>Takeaways</h1>
+				<p>Fast sampling, selective DFT labeling, dispersion correction, and MLIP screening form a single iterative loop</p>
+			</section>
+
+			<section>
+				<h2>Summary</h2>
+                <hr />
+				<div class="content">
+					<ul>
+						<li>MACE provides cheap trajectory sampling for methanol.</li>
+						<li>MGRID convergence identifies a practical DFT setting for labeling.</li>
+						<li>D3 correction improves the physical reference data used for training.</li>
+						<li>Hyperparameter search and ensembles improve robustness and uncertainty estimates.</li>
+						<li>The best MLIP is validated on production MD with RDF and diffusion analysis.</li>
+					</ul>
+				</div>
+			</section>
+		</div>
+	</div>
+
+	<script src="../utils/dist/reveal.js"></script>
+	<script>
+		Reveal.initialize({
+			hash: true,
+			controls: true,
+			progress: true,
+			center: false,
+			transition: 'slide',
+			backgroundTransition: 'fade'
+		});
+	</script>
+</body>
+</html>

@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Methanol Workflow: From MACE Sampling to MLIP Production</title>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css" />
+	<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+	<div class="reveal">
+		<div class="slides">
+            <!-- TITLE SLIDE -->
+            <section class="section-divider" data-state="is-section-divider">
+                <header>Jakob Wallner & Stefan Haag</header>
+				<h1>Methanol Workflow</h1>
+				<p>From foundation-model sampling to DFT relabeling, MLIP training, and production MD</p>
+			</section>
+
+            <!-- TASK 1: WORKFLOW MANAGEMENT -->
+			<section>
+				<h2>Why a Workflow Manager?</h2>
+                <hr />
+				<div class="content">
+					<div class="concept-card">
+						<h3>Beyond Bash Scripts</h3>
+						<p>
+							Using <strong>ZnTrack</strong> and <strong>IPSuite</strong> provides object-oriented management of complex simulation chains (MD → DFT → ML).
+						</p>
+					</div>
+					<ul style="margin-top: 20px;">
+						<li><strong>Reproducibility:</strong> Every node (DFT, training) is cached; nodes only re-run if inputs or parameters change.</li>
+						<li><strong>Scalability:</strong> Easily expand from one box of methanol to different temperatures or densities.</li>
+						<li><strong>Traceability:</strong> Data-Version Control (DVC) links every output (trajectory, ML model) to a specific code commit.</li>
+					</ul>
+				</div>
+			</section>
+
+			<!-- TASK 2 & 3: SAMPLING & FOUNDATION MODELS -->
+			<section>
+				<h2>Sampling with MACE</h2>
+                <hr />
+				<div class="content">
+                    <p>We generate initial 32-molecule boxes using <strong>Packmol</strong> and SMILES strings (<code>"CO"</code>).</p>
+					<div style="display:grid; grid-template-columns: 1fr 1fr; gap:18px;">
+                        <div class="concept-card">
+                            <h3>Foundation Models</h3>
+                            <p>MACE is pre-trained on diverse datasets. We use it to sample 1ns of MD cheaply to explore phase space before relabeling.</p>
+                        </div>
+                        <div class="concept-card">
+                            <h3>Why Train a Custom MLIP?</h3>
+                            <p>While MACE is general, a tailored model ensures better accuracy for methanol's specific dynamics, like <strong>self-diffusion</strong> and <strong>hydrogen bonding</strong>.</p>
+                        </div>
+                    </div>
+                    <p class="text-muted" style="margin-top: 15px;">Simulations are conducted at 300K, ensuring density matches experimental liquid methanol values.</p>
+				</div>
+			</section>
+
+			<!-- TASK 4: MGRID OPTIMIZATION -->
+			<section>
+				<h2>DFT Convergence: MGRID</h2>
+				<hr />
+				<div class="content">
+					<p>The <code>MGRID</code> parameter in CP2K controls the real-space grid cutoff for Hartree and XC potentials.</p>
+                    <div style="display:grid; grid-template-columns: 1fr 1.2fr; gap:20px;">
+                        <div>
+                            <ul>
+                                <li><strong>Goal:</strong> Find the balance between accuracy and computational cost.</li>
+                                <li><strong>Threshold:</strong> Variation in forces and energies must be &lt; 0.002 units.</li>
+                                <li><strong>Result:</strong> Optimal cutoff prevents "grid noise" from polluting the MLIP training data.</li>
+                            </ul>
+                        </div>
+                        <div class="concept-card" style="display:flex; align-items:center; justify-content:center; border-style:dashed; background:#f9f9f9;">
+                            <p class="text-muted">[Insert MGRID Convergence Plot Here]</p>
+                        </div>
+                    </div>
+				</div>
+			</section>
+
+			<!-- TASK 5: EXCHANGE-CORRELATION & D3 -->
+			<section>
+				<h2>Functional Selection & D3</h2>
+                <hr />
+				<div class="content">
+					<div style="display:grid; grid-template-columns: 1fr 1fr; gap:18px;">
+						<div class="concept-card">
+							<h3>GGA vs LDA</h3>
+							<p>We pick <strong>GGA</strong> (Generalized Gradient Approximation) because it accounts for electron density gradients, which is essential for molecules like methanol.</p>
+						</div>
+						<div class="concept-card">
+							<h3>Dispersion (D3)</h3>
+							<p>Standard DFT fails at long-range van der Waals forces. We add <strong>Grimme D3</strong> to correctly capture intermolecular attraction.</p>
+						</div>
+					</div>
+					<p style="margin-top: 20px;">Evaluating D3 <strong>outside CP2K</strong> (via TorchDFTD3) allows for faster evaluation and easier decomposition of dispersion contributions.</p>
+				</div>
+			</section>
+
+			<!-- TASK 6: HYPERPARAMETER TUNING -->
+			<section>
+				<h2>Training Hyperparameters</h2>
+                <hr />
+				<div class="content">
+					<p>We explore the impact of <strong>Gaussian Moment Neural Network</strong> settings on the <code>apax</code> model:</p>
+                    <div style="display:grid; grid-template-columns: 1.2fr 1fr; gap:20px;">
+                        <div class="concept-card" style="display:flex; align-items:center; justify-content:center; border-style:dashed; background:#f9f9f9;">
+                            <p class="text-muted">[Insert Hyperparameter Comparison Plot Here: <br/> Error vs. r_max / Basis Functions]</p>
+                        </div>
+                        <ul style="font-size: 14pt;">
+                            <li><strong>Radial Cutoff (r<sub>max</sub>):</strong> Higher values capture longer-range physics but increase cost.</li>
+                            <li><strong>Basis Functions:</strong> More functions allow complex fits but risk overfitting.</li>
+                            <li><strong>Ensembles:</strong> Training multiple models provides <strong>uncertainty estimates</strong> based on prediction spread.</li>
+                        </ul>
+                    </div>
+				</div>
+			</section>
+
+			<!-- STAGE 4: PRODUCTION MD -->
+			<section>
+				<h2>Production MD Setup</h2>
+                <hr />
+				<div class="content">
+					<ul>
+                        <li><strong>Relaxation:</strong> Before MD, we use <code>ASEGeoOpt</code> to minimize forces below 0.05 eV/Å to prevent unphysical behavior.</li>
+						<li><strong>Timestep:</strong> Carefully chosen to resolve high-frequency O-H vibrations while maintaining stability.</li>
+						<li><strong>Scaling:</strong> Box size increased to 64 molecules for better statistics.</li>
+					</ul>
+                    <div class="concept-card" style="margin-top: 15px;">
+                        <h3>Observation</h3>
+                        <p>Model ensembles are used here to detect if the simulation enters "unseen" configurations where uncertainty spikes.</p>
+                    </div>
+				</div>
+			</section>
+
+            <!-- FINAL EVALUATION: RDF & DIFFUSION -->
+			<section>
+				<h2>Results: Structure & Dynamics</h2>
+                <hr />
+				<div class="content">
+					<div style="display:grid; grid-template-columns: 1fr 1fr; gap:20px;">
+                        <div class="concept-card">
+                            <h3>Radial Distribution Function</h3>
+                            <div style="height: 200px; display:flex; align-items:center; justify-content:center; border: 1px dashed #ccc; margin-top:10px;">
+                                <p class="text-muted">[Insert RDF Plot: O-O, O-H, C-O]</p>
+                            </div>
+                            <p style="font-size: 12pt; margin-top:5px;">Validates the liquid structure against reference MACE/DFT data.</p>
+                        </div>
+                        <div class="concept-card">
+                            <h3>Self-Diffusion</h3>
+                            <div style="height: 200px; display:flex; align-items:center; justify-content:center; border: 1px dashed #ccc; margin-top:10px;">
+                                <p class="text-muted">[Insert MSD / Diffusion Plot]</p>
+                            </div>
+                            <p style="font-size: 12pt; margin-top:5px;">Calculated from center-of-mass motion to assess transport properties.</p>
+                        </div>
+                    </div>
+				</div>
+			</section>
+
+			<!-- SUMMARY SLIDE -->
+			<section>
+				<h2>Summary</h2>
+                <hr />
+				<div class="content">
+					<ul>
+						<li><strong>Workflow:</strong> Unified management ensures every simulation step is linked and reproducible.</li>
+						<li><strong>Labeling:</strong> MGRID convergence and GGA+D3 provide a high-quality physical baseline.</li>
+						<li><strong>Training:</strong> Hyperparameter tuning and ensembles minimize error and provide uncertainty.</li>
+						<li><strong>Production:</strong> The final MLIP successfully reproduces methanol's structural (RDF) and dynamic (Diffusion) properties at <i>ab initio</i> levels.</li>
+					</ul>
+				</div>
+			</section>
+		</div>
+	</div>
+
+	<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.min.js"></script>
+	<script>
+		Reveal.initialize({
+			hash: true,
+			controls: true,
+			progress: true,
+			center: false,
+			transition: 'slide',
+			backgroundTransition: 'fade'
+		});
+	</script>
+</body>
+</html>
