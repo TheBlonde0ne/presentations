@@ -24,8 +24,8 @@
   --line-color: #3d0008;
 
   --slide-padding: 60px;
-  --slide-padding-top: 40px;
-  --content-gap: 25px;
+  --slide-padding-top: 10px;
+  --content-gap: 10px;
   --box-radius: 10px;
 }
 
@@ -79,7 +79,7 @@
 .reveal hr {
   border: none;
   border-top: 2px solid var(--line-color);
-  margin: 30px 0;
+  margin: 10px 0;
 }
 .reveal p,
 .reveal li,

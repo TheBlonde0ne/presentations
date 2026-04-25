@@ -66,23 +66,22 @@
                 <hr />
 				<div class="content">
                     <p>We generate initial 32-molecule boxes using <strong>Packmol</strong> and SMILES strings (<code>"CO"</code>).</p>
+					</div>
+					<div class="demo-command" style="font-size: 11pt; line-height: 1.7; margin-top: 15px;">
+						<span style="color: #569cd6;">&gt;</span> &quot;C&quot; → CH<sub>4</sub>, &quot;Clc(c(Cl)c(Cl)c1C(=O)O)c(Cl)c1Cl&quot; → C<sub>7</sub>HCl<sub>5</sub>O<sub>2</sub><br/>
+						<span class="comment">SMILES (or Simplified Molecular Input Line Entry System) is a notation for representing chemical structures in a string format;</span><br/>
+					</div>
 					<div style="display:grid; grid-template-columns: 1fr 1fr; gap:18px;">
-                        <div class="concept-card">
-                            <h3>Foundation Models</h3>
+						<div class="concept-card">
+							<h3>Foundation Models</h3>
                             <p>MACE is pre-trained on diverse datasets. We use it to sample 1ns of MD cheaply to explore phase space before relabeling.</p>
                         </div>
                         <div class="concept-card">
-                            <h3>Why Train a Custom MLIP?</h3>
+							<h3>Why Train a Custom MLIP?</h3>
                             <p>While MACE is general, a tailored model ensures better accuracy for methanol's specific dynamics, like <strong>self-diffusion</strong> and <strong>hydrogen bonding</strong>.</p>
                         </div>
-                    </div>
-                    <p class="text-muted" style="margin-top: 15px;">Simulations are conducted at 300K, ensuring density matches experimental liquid methanol values.</p>
-                    <div class="demo-command" style="font-size: 11pt; line-height: 1.7; margin-top: 15px;">
-    				<span style="color: #569cd6;">&gt;</span> &quot;C&quot; → CH<sub>4</sub>, &quot;Clc(c(Cl)c(Cl)c1C(=O)O)c(Cl)c1Cl&quot; → C<sub>7</sub>HCl<sub>5</sub>O<sub>2</sub><br/>
-
-    				<span class="comment">SMILES (or Simplified Molecular Input Line Entry System) is a notation for representing chemical structures in a string format.&hellip;</span><br/>
-    				</div>
-				</div>
+					</div>
+					<p class="text-muted" style="margin-top: 15px;">Simulations are conducted at 300K, ensuring density matches experimental liquid methanol values.</p>
 			</section>
 			
 			<!-- TASK 4: EXCHANGE-CORRELATION & D3 -->
@@ -144,15 +143,77 @@
 				<div class="content">
 					<p>We explore the impact of <strong>Gaussian Moment Neural Network</strong> settings on the <code>apax</code> model:</p>
                     <div style="display:grid; grid-template-columns: 1.2fr 1fr; gap:20px;">
-                        <div class="concept-card" style="display:flex; align-items:center; justify-content:center; border-style:dashed; background:#f9f9f9;">
-                            <p class="text-muted">[Insert Hyperparameter Comparison Plot Here: <br/> Error vs. r_max / Basis Functions]</p>
-                        </div>
+						<div class="concept-card" style="display:flex; flex-direction:column; align-items:center; justify-content:center; border-style:dashed; background:#f9f9f9; gap:10px; text-align:center;">
+							<img
+								src="forces.png"
+								alt="forces for all frames of a random model"
+								style="max-width: 100%; max-height: 100%; object-fit: contain;"
+							/>
+							<p class="text-muted" style="margin:0;">Force predictions from a random model compared to ab-initio forces (PBE)</p>
+						</div>
                         <ul style="font-size: 14pt;">
                             <li><strong>Radial Cutoff (r<sub>max</sub>):</strong> Higher values capture longer-range physics but increase cost.</li>
-                            <li><strong>Basis Functions:</strong> More functions allow complex fits but risk overfitting.</li>
-                            <li><strong>Ensembles:</strong> Training multiple models provides <strong>uncertainty estimates</strong> based on prediction spread.</li>
+                            <li><strong>Architecture:</strong> Different nodes per layer affect the model's capacity and complexity.</li>
+                            <li><strong>Number of Epochs:</strong> More epochs can improve accuracy but also increase training time.</li>
+							<li><strong>Number of Basis Functions:</strong> More basis functions can improve accuracy but also increase computational cost.</li>
                         </ul>
                     </div>
+				</div>
+			</section>
+
+			<!-- Show results of different hyperparameters -->
+
+			<section>
+				<h2>Hyperparameter Results: Train Progress over Epochs</h2>
+				<hr />
+				<div class="content">
+					<!-- Insert Train Progress Plot Here -->
+					<img
+							src="hyperparam_loss_curves.png"
+							alt="Loss curves for different hyperparameter settings"
+							style="max-width: 60%; max-height: 100%; object-fit: contain;"
+						/>
+				</div>
+			</section>
+			
+			<section>
+				<h2>Hyperparameter Results: Final Convergence</h2>
+				<hr />
+				<div class="content">
+					<!-- Insert Train Progress Plot Here -->
+					<img
+							src="hyperparam_final_val_loss.png"
+							alt="Loss curves for different hyperparameter settings"
+							style="max-width: 60%; max-height: 100%; object-fit: contain;"
+						/>
+				</div>
+			</section>
+
+			<section>
+				<h2>Hyperparameter Results: Basis Functions</h2>
+				<hr />
+				<div class="content">
+					<!-- Insert Train Progress Plot Here -->
+					<img
+							src="basis_function_evaluation.png"
+							alt="Loss curves for different hyperparameter settings"
+							style="max-width: 100%; max-height: 100%; object-fit: contain;"
+						/>
+				</div>
+			</section>
+
+			<section>
+				<h2>Hyperparameter Results: MAE Force vs Energy</h2>
+				<hr />
+				<div class="content">
+					<!-- Insert Train Progress Plot Here -->
+					<div style="display:grid; grid-template-columns: 1.2fr 1fr; gap:20px;">
+						<img
+								src="energy_vs_force_mae_all_runs.png"
+								alt="Loss curves for different hyperparameter settings"
+								style="max-width: 100%; max-height: 100%; object-fit: contain;"
+							/>
+					</div>
 				</div>
 			</section>
 
@@ -168,7 +229,9 @@
 					</ul>
                     <div class="concept-card" style="margin-top: 15px;">
                         <h3>Observation</h3>
-                        <p>Model ensembles are used here to detect if the simulation enters "unseen" configurations where uncertainty spikes.</p>
+                        <p>Model ensembles are used here to detect if the simulation enters "unseen" configurations where uncertainty spikes.
+						Also, we can determine an <strong>uncertainty quantification</strong> by looking at the spread of predictions across the ensemble, which share a common backbone but differ in their <strong>initialization of the final layer</strong>.
+						</p>
                     </div>
 				</div>
 			</section>
