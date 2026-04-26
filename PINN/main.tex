@@ -1,0 +1,35 @@
+\documentclass{article}
+\input{packages}
+
+\title{}
+\author{}
+\date{May 2025}
+\begin{document}
+\input{titlepage}
+
+\newpage
+\tableofcontents
+\newpage
+
+
+\input{sections/theory.tex}
+
+\section{Day 1}
+\input{sections/day1.tex}
+
+\section{Day 2}
+\input{sections/day2.tex}
+
+\section{Conclusion}
+\input{sections/summary.tex}
+
+\section{References}
+\begingroup
+\renewcommand{\section}[2]{}
+\bibliographystyle{unsrt}
+\bibliography{bibliography.bib}
+\endgroup
+
+
+
+\end{document}
