@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="de">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>Probing Magnetism with Light - Interactive</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/dist/reset.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/dist/reveal.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/dist/theme/dracula.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/plugin/highlight/monokai.css">
+
+    <style>
+        :root {
+            --r-main-font: 'Inter', sans-serif;
+            --accent-color: #00d4ff;
+        }
+        .reveal h1, .reveal h2, .reveal h3 { color: var(--accent-color); text-transform: none; }
+        .footer {
+            position: absolute; bottom: 20px; left: 20px; font-size: 0.4em;
+            color: rgba(255,255,255,0.5); width: 100%; display: flex;
+            justify-content: space-between; padding-right: 40px; z-index: 1000;
+        }
+        #moke-canvas-container {
+            width: 100%; height: 400px; background: #1a1a1a;
+            border-radius: 8px; position: relative; cursor: move;
+        }
+        .controls {
+            position: absolute; top: 10px; right: 10px;
+            background: rgba(0,0,0,0.7); padding: 10px; border-radius: 5px;
+            font-size: 0.5em; pointer-events: auto;
+        }
+        .highlight-box {
+            background: rgba(0, 212, 255, 0.1); padding: 15px;
+            border-left: 5px solid var(--accent-color); border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="reveal">
+        <div class="footer">
+            <span>Topic 8: Probing Altermagnetism with Light</span>
+            <span>Simulation: MOKE Interaction</span>
+            <span class="slide-number"></span>
+        </div>
+
+        <div class="slides">
+            
+            <!-- Slide 1: Title -->
+            <section style="text-align: center;">
+                <h1>Probing Magnetism with Light</h1>
+                <p>Optical and Magneto-Optical Methods in Altermagnets</p>
+                <div style="margin-top: 40px; font-size: 0.6em;">
+                    <p>Seminar: Altermagnetism • Speaker #8</p>
+                    <p><strong>Dein Name</strong> • Uni-Seminar 2024</p>
+                </div>
+            </section>
+
+            <!-- Slide 2: The Core Challenge -->
+            <section>
+                <h2>Die Herausforderung bei Altermagneten</h2>
+                <div class="highlight-box">
+                    <p>Altermagnete haben <strong>Netto-Magnetisierung Null</strong> ($M=0$), aber ein <strong>lokales Spin-Splitting</strong> im k-Raum.</p>
+                </div>
+                <ul style="font-size: 0.8em; margin-top: 20px;">
+                    <li class="fragment">ARPES misst das Splitting direkt (Topic 4).</li>
+                    <li class="fragment">Optik nutzt Interband-Übergänge: Wie "sieht" ein Photon den Spin?</li>
+                    <li class="fragment">Antwort: Über den <strong>off-diagonalen dielektrischen Tensor</strong> $\epsilon_{xy}(\omega)$.</li>
+                </ul>
+            </section>
+
+            <!-- Slide 3: Interactive Simulation (THE SHOWSTOPPER) -->
+            <section>
+                <h3>Live Demo: Kerr-Rotation (MOKE)</h3>
+                <p style="font-size: 0.5em;">Interaktive 3D-Simulation der Licht-Magnet-Wechselwirkung</p>
+                
+                <div id="moke-canvas-container">
+                    <div class="controls">
+                        Magnetisierung (M): <input type="range" id="magRange" min="-1" max="1" step="0.1" value="0.5"><br>
+                        Anisotropie: <input type="range" id="aniRange" min="0" max="1" step="0.1" value="0.2">
+                    </div>
+                </div>
+                
+                <p style="font-size: 0.4em; margin-top: 10px;">
+                    Blau: Einfallendes Licht (Linear) | Rot: Reflektiertes Licht (Elliptisch/Rotiert)
+                </p>
+            </section>
+
+            <!-- Slide 4: Altermagnetic Spin Splitting -->
+            <section>
+                <h2>Detektion des Altermagnetismus</h2>
+                <p>Wie detektieren wir das $d$-wave oder $g$-wave Splitting?</p>
+                <div style="display: flex; gap: 20px; font-size: 0.7em;">
+                    <div style="flex: 1;" class="fragment">
+                        <h4 style="color: #ff79c6;">Optische Leitfähigkeit</h4>
+                        <p>Anisotropie in $\sigma_{xx}(\omega) \neq \sigma_{yy}(\omega)$ durch das Spin-Splitting der Bänder.</p>
+                    </div>
+                    <div style="flex: 1;" class="fragment">
+                        <h4 style="color: #50fa7b;">Magneto-Optik</h4>
+                        <p>Selbst bei $M=0$ können chirale Terme in der Suszeptibilität auftreten, wenn die Symmetrie es erlaubt.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Slide 5: Experimental Protocols -->
+            <section>
+                <h2>Experimentelle Protokolle</h2>
+                <ol style="font-size: 0.8em;">
+                    <li class="fragment"><strong>Probenpräparation:</strong> Einkristalle mit definierter Orientierung (Altermagnetismus ist hochgradig anisotrop!).</li>
+                    <li class="fragment"><strong>Ellipsometrie:</strong> Messung von $\Psi$ und $\Delta$ über weiten Frequenzbereich.</li>
+                    <li class="fragment"><strong>Symmetrie-Analyse:</strong> Ausschluss von SOC-Effekten durch Vergleich mit nicht-magnetischen Referenzmaterialien.</li>
+                </ol>
+                <div class="highlight-box fragment" style="margin-top: 20px; font-size: 0.6em;">
+                    <strong>Vorsicht:</strong> Extrinsische Effekte wie mechanischer Stress (Strain) können Signale vortäuschen, die wie Altermagnetismus aussehen.
+                </div>
+            </section>
+
+            <!-- Slide 6: Conclusion -->
+            <section style="text-align: center;">
+                <h2>Fazit</h2>
+                <p>Optik ist die Brücke zwischen Theorie (DFT) und Experiment.</p>
+                <div class="highlight-box" style="display: inline-block; text-align: left;">
+                    <ul>
+                        <li>MOKE/MCD sind sensitive Sonden für Spin-Ordnung.</li>
+                        <li>Altermagnete zeigen eindeutige optische Fingerabdrücke.</li>
+                        <li>Präzise Ellipsometrie ist der "Goldstandard".</li>
+                    </ul>
+                </div>
+            </section>
+
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js/dist/reveal.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js/plugin/math/math.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+    <script>
+        // Reveal.js Init
+        Reveal.initialize({
+            hash: true,
+            slideNumber: 'c/t',
+            plugins: [ RevealMath.KaTeX ]
+        });
+
+        // Three.js Simulation Logic
+        window.onload = function() {
+            const container = document.getElementById('moke-canvas-container');
+            const scene = new THREE.Scene();
+            const camera = new THREE.PerspectiveCamera(75, container.clientWidth / container.clientHeight, 0.1, 1000);
+            const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+            renderer.setSize(container.clientWidth, container.clientHeight);
+            container.appendChild(renderer.domElement);
+
+            // Lighting
+            const light = new THREE.PointLight(0xffffff, 1, 100);
+            light.position.set(10, 10, 10);
+            scene.add(light);
+            scene.add(new THREE.AmbientLight(0x404040));
+
+            // Surface (The Crystal)
+            const geometry = new THREE.BoxGeometry(4, 0.2, 4);
+            const material = new THREE.MeshPhongMaterial({ color: 0x444444, specular: 0xffffff, shininess: 100 });
+            const crystal = new THREE.Mesh(geometry, material);
+            scene.add(crystal);
+
+            // Light Beams (Using Tubes)
+            function createBeam(color) {
+                const curve = new THREE.LineCurve3(new THREE.Vector3(0, 0, 0), new THREE.Vector3(0, 0, 0));
+                const geom = new THREE.TubeGeometry(curve, 20, 0.05, 8, false);
+                const mat = new THREE.MeshBasicMaterial({ color: color });
+                return new THREE.Mesh(geom, mat);
+            }
+
+            // Polarization Visualization
+            const incomingPoints = [];
+            const reflectedPoints = [];
+            const incLineGeom = new THREE.BufferGeometry();
+            const refLineGeom = new THREE.BufferGeometry();
+            const incLine = new THREE.Line(incLineGeom, new THREE.LineBasicMaterial({ color: 0x00d4ff }));
+            const refLine = new THREE.Line(refLineGeom, new THREE.LineBasicMaterial({ color: 0xff4444 }));
+            scene.add(incLine);
+            scene.add(refLine);
+
+            camera.position.set(5, 5, 5);
+            camera.lookAt(0, 0, 0);
+
+            let time = 0;
+            function animate() {
+                requestAnimationFrame(animate);
+                time += 0.05;
+
+                const mag = parseFloat(document.getElementById('magRange').value);
+                const ani = parseFloat(document.getElementById('aniRange').value);
+
+                const incData = [];
+                const refData = [];
+                
+                for(let i=0; i<50; i++) {
+                    const z = i * 0.1;
+                    // Incoming: Linear polarized
+                    incData.push(Math.sin(z * 2 - time) * 0.5, z + 0.1, 0);
+                    
+                    // Reflected: Rotiert + Elliptisch basierend auf M
+                    const rot = mag * 0.5;
+                    const phase = z * 2 - time;
+                    const x = Math.sin(phase) * 0.5;
+                    const y = Math.cos(phase) * (mag * 0.2); // Elliptizität
+                    
+                    // Rotation matrix application
+                    const rx = x * Math.cos(rot) - y * Math.sin(rot);
+                    const ry = x * Math.sin(rot) + y * Math.cos(rot);
+                    
+                    refData.push(rx, -(z + 0.1), ry);
+                }
+
+                incLineGeom.setAttribute('position', new THREE.Float32BufferAttribute(incData, 3));
+                refLineGeom.setAttribute('position', new THREE.Float32BufferAttribute(refData, 3));
+
+                renderer.render(scene, camera);
+            }
+            animate();
+
+            window.addEventListener('resize', () => {
+                camera.aspect = container.clientWidth / container.clientHeight;
+                camera.updateProjectionMatrix();
+                renderer.setSize(container.clientWidth, container.clientHeight);
+            });
+        };
+    </script>
+</body>
+</html>

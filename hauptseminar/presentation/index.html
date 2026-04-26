@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Probing Magnetism with Light: Optical and Magneto-Optical Methods</title>
+    
+    <!-- Reveal.js CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/white.css">
+    
+    <!-- Shared presentation style -->
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- MathJax for LaTeX -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
+    <style>
+        :root {
+            --accent: var(--primary-color);
+            --accent-soft: color-mix(in srgb, var(--primary-color) 12%, white);
+            --accent-soft-strong: color-mix(in srgb, var(--primary-color) 24%, white);
+            --warn-soft: rgba(196, 101, 42, 0.12);
+        }
+
+        .title-slide .subtitle {
+            font-size: 18pt;
+            color: rgba(255, 255, 255, 0.9);
+            margin: 12px 0;
+        }
+
+        .title-slide .author-info {
+            margin-top: 28px;
+            font-size: 14pt;
+            color: rgba(255, 255, 255, 0.75);
+        }
+
+        .title-slide .date {
+            font-size: 13pt;
+            color: rgba(255, 255, 255, 0.8);
+            margin-top: 8px;
+        }
+
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 28px;
+            align-items: start;
+            margin-top: 16px;
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 16px;
+            margin-top: 14px;
+        }
+
+        .card {
+            background: #ffffff;
+            border: 1px solid #e5e2dc;
+            border-left: 4px solid var(--primary-color);
+            border-radius: var(--box-radius);
+            padding: 14px 16px;
+            text-align: left;
+        }
+
+        .card h4 {
+            margin: 0 0 6px 0;
+            color: var(--primary-color);
+            font-size: 15pt;
+            line-height: 1.25;
+        }
+
+        .card p {
+            margin: 0;
+            font-size: 12pt;
+            line-height: 1.45;
+        }
+
+        .accent-box,
+        .equation-box,
+        .key-point {
+            border-radius: var(--box-radius);
+            padding: 12px 16px;
+            margin-top: 14px;
+            text-align: left;
+            border-left: 4px solid var(--primary-color);
+            background: var(--accent-soft);
+        }
+
+        .equation-box {
+            font-size: 14pt;
+        }
+
+        .key-point {
+            background: var(--warn-soft);
+            border-left-color: var(--secondary-color);
+        }
+
+        .highlight {
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        .highlight-secondary {
+            color: var(--secondary-color);
+            font-weight: 600;
+        }
+
+        .highlight-danger {
+            color: #a83232;
+            font-weight: 600;
+        }
+
+        @media (max-width: 1100px) {
+            .two-column,
+            .card-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="reveal">
+        <div class="slides">
+            
+            <!-- ===================== TITLE SLIDE ===================== -->
+            <section class="title-slide section-divider" data-state="is-section-divider">
+                <h1>Probing Magnetism with Light</h1>
+                <p class="subtitle">Optical and Magneto-Optical Methods</p>
+                <p class="subtitle" style="font-size: 1.2em; margin-top: 2em;">Understanding Altermagnetic Spin Splitting</p>
+                <div class="author-info">
+                    <p>University Presentation</p>
+                </div>
+                <p class="date">April 2026</p>
+            </section>
+            
+            <!-- ===================== AGENDA ===================== -->
+            <section>
+                <h2>Agenda</h2>
+                <div style="margin-top: 2em; text-align: left;">
+                    <ul style="font-size: 1.1em; line-height: 2.2;">
+                        <li class="fragment"><span class="highlight">▸ Magnetism & Light Interaction</span> — Fundamental Concepts</li>
+                        <li class="fragment"><span class="highlight">▸ Magneto-Optical Effects</span> — Kerr & Dichroism Phenomena</li>
+                        <li class="fragment"><span class="highlight">▸ Band Structure & Transitions</span> — Spin-Dependent Electronics</li>
+                        <li class="fragment"><span class="highlight">▸ Bulk Optical Probes</span> — Experimental Techniques</li>
+                        <li class="fragment"><span class="highlight">▸ Altermagnetic Spin Splitting</span> — Detection Methods</li>
+                        <li class="fragment"><span class="highlight">▸ Experimental Challenges</span> — Protocols & Interpretation</li>
+                    </ul>
+                </div>
+            </section>
+            
+            <!-- ===================== SECTION 1: INTRODUCTION ===================== -->
+            <section>
+                <section>
+                    <h2>Magnetism & Light Interaction</h2>
+                    <div class="accent-box">
+                        <p><span class="highlight">Why optical probes?</span> Light couples to electronic spin through dipole and orbital angular momentum, providing unique access to magnetic properties without physical contact.</p>
+                    </div>
+                </section>
+                
+                <section>
+                    <h3>Light-Matter Coupling</h3>
+                    <div class="two-column">
+                        <div>
+                            <ul>
+                                <li class="fragment"><strong>Photon Energy:</strong> ℏω matches electronic transitions</li>
+                                <li class="fragment"><strong>Polarization:</strong> Linear, circular, elliptical</li>
+                                <li class="fragment"><strong>Selectivity:</strong> Spin-dependent absorption</li>
+                                <li class="fragment"><strong>Resolution:</strong> Energy & momentum dependent</li>
+                            </ul>
+                        </div>
+                        <div style="background: rgba(0, 217, 255, 0.05); padding: 1.5em; border-radius: 8px; border-left: 4px solid #00d9ff;">
+                            <p style="font-size: 0.9em; margin: 0;"><strong>Advantages:</strong></p>
+                            <ul style="margin: 0.5em 0; font-size: 0.95em;">
+                                <li>Non-destructive</li>
+                                <li>Fast time scales</li>
+                                <li>Bulk sensitive</li>
+                                <li>High selectivity</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+            </section>
+            
+            <!-- ===================== SECTION 2: MAGNETO-OPTICAL EFFECTS ===================== -->
+            <section>
+                <section>
+                    <h2>Magneto-Optical Effects</h2>
+                    <p style="margin-top: 2em; font-size: 1.3em;">Effects arising from spin-orbit coupling and magnetic ordering</p>
+                </section>
+                
+                <section>
+                    <h3>Polar Kerr Effect</h3>
+                    <div class="two-column">
+                        <div>
+                            <ul>
+                                <li class="fragment"><strong>Magnetization:</strong> Perpendicular to surface</li>
+                                <li class="fragment"><strong>Effect:</strong> Rotation of polarization</li>
+                                <li class="fragment"><strong>Magnitude:</strong> θ<sub>K</sub> ≈ 0.1–1° typical</li>
+                                <li class="fragment"><strong>Sensitivity:</strong> Domain structure imaging</li>
+                            </ul>
+                        </div>
+                        <div style="background: rgba(124, 58, 237, 0.1); padding: 2em; border-radius: 8px; text-align: center;">
+                            <p style="font-size: 0.9em; color: #7c3aed; margin-bottom: 1em;"><strong>Rotation Angle:</strong></p>
+                            <p style="font-size: 1.2em; margin: 0;">θ<sub>K</sub> ∝ M<sub>z</sub></p>
+                        </div>
+                    </div>
+                </section>
+                
+                <section>
+                    <h3>Longitudinal Kerr Effect</h3>
+                    <div class="two-column">
+                        <div>
+                            <ul>
+                                <li class="fragment"><strong>Magnetization:</strong> In-plane, along light propagation</li>
+                                <li class="fragment"><strong>Mechanism:</strong> Birefringence from magnetic ordering</li>
+                                <li class="fragment"><strong>Observable:</strong> Ellipticity & phase shift</li>
+                                <li class="fragment"><strong>Application:</strong> Anisotropic samples</li>
+                            </ul>
+                        </div>
+                        <div style="background: rgba(0, 217, 255, 0.1); padding: 2em; border-radius: 8px; text-align: center;">
+                            <p style="font-size: 0.9em; color: #00d9ff; margin-bottom: 1em;"><strong>Ellipticity:</strong></p>
+                            <p style="font-size: 1.2em; margin: 0;">ε ∝ M<sub>∥</sub></p>
+                        </div>
+                    </div>
+                </section>
+                
+                <section>
+                    <h3>Magnetic Circular Dichroism (MCD)</h3>
+                    <div class="two-column">
+                        <div>
+                            <ul>
+                                <li class="fragment"><strong>Definition:</strong> Difference in absorption for σ<sup>+</sup> vs σ<sup>−</sup></li>
+                                <li class="fragment"><strong>Signal:</strong> Δα = α<sub>+</sub> − α<sub>−</sub></li>
+                                <li class="fragment"><strong>Strength:</strong> Proportional to magnetization</li>
+                                <li class="fragment"><strong>Resonance:</strong> At absorption edges</li>
+                            </ul>
+                        </div>
+                        <div style="background: rgba(255, 0, 110, 0.1); padding: 2em; border-radius: 8px; text-align: center; border: 2px solid #ff006e;">
+                            <p style="font-size: 0.9em; color: #ff006e; margin-bottom: 1em;"><strong>Power Law:</strong></p>
+                            <p style="font-size: 1.2em; margin: 0;">Δα ∝ M · f(E)</p>
+                        </div>
+                    </div>
+                </section>
+            </section>
+            
+            <!-- ===================== SECTION 3: BAND STRUCTURE & TRANSITIONS ===================== -->
+            <section>
+                <section>
+                    <h2>Band Structure & Interband Transitions</h2>
+                    <p style="margin-top: 2em; font-size: 1.3em;">Encoding spin-dependent electronic structure in optical spectra</p>
+                </section>
+                
+                <section>
+                    <h3>Spin-Orbit Coupling Effects</h3>
+                    <div class="card-grid">
+                        <div class="card">
+                            <h4>Band Splitting</h4>
+                            <p>SOC lifts degeneracies in band structure, creating spin-orbit gaps.</p>
+                        </div>
+                        <div class="card">
+                            <h4>Selection Rules</h4>
+                            <p>Optical transitions governed by dipole selection rules modified by spin texture.</p>
+                        </div>
+                        <div class="card">
+                            <h4>Optical Anisotropy</h4>
+                            <p>Directionally dependent response from asymmetric band structure.</p>
+                        </div>
+                        <div class="card">
+                            <h4>Spin Texture</h4>
+                            <p>Berry phase effects and orbital magnetization from momentum-space structure.</p>
+                        </div>
+                    </div>
+                </section>
+                
+                <section>
+                    <h3>Reading Spin from Optical Response</h3>
+                    <div class="accent-box">
+                        <p><span class="highlight">Key insight:</span> Interband transitions encode information about:</p>
+                        <ul style="margin: 1em 0; font-size: 1.1em;">
+                            <li>Initial & final state spin character</li>
+                            <li>Momentum-space spin textures</li>
+                            <li>Berry curvature contributions</li>
+                            <li>Spin-dependent joint density of states</li>
+                        </ul>
+                    </div>
+                </section>
+            </section>
+            
+            <!-- ===================== SECTION 4: BULK OPTICAL PROBES ===================== -->
+            <section>
+                <section>
+                    <h2>Bulk Optical Probes</h2>
+                    <p style="margin-top: 2em; font-size: 1.3em;">Experimental techniques for probing electronic structure</p>
+                </section>
+                
+                <section>
+                    <h3>Reflectivity & Complex Refractive Index</h3>
+                    <ul style="font-size: 1.15em;">
+                        <li class="fragment"><strong>Measurement:</strong> Ratio R = I<sub>reflected</sub> / I<sub>incident</sub></li>
+                        <li class="fragment"><strong>Extraction:</strong> Real & imaginary parts of ñ(ω)</li>
+                        <li class="fragment"><strong>Advantage:</strong> Broadband, surface-sensitive</li>
+                        <li class="fragment"><strong>Challenge:</strong> Requires Kramers-Kronig analysis</li>
+                    </ul>
+                    <div class="equation-box">
+                        R(ω) = |[1 − ñ(ω)] / [1 + ñ(ω)]|²
+                    </div>
+                </section>
+                
+                <section>
+                    <h3>Ellipsometry</h3>
+                    <div class="two-column">
+                        <div>
+                            <ul>
+                                <li class="fragment"><strong>Measures:</strong> Δ and Ψ parameters</li>
+                                <li class="fragment"><strong>Δ (Delta):</strong> Phase difference</li>
+                                <li class="fragment"><strong>Ψ (Psi):</strong> Amplitude ratio</li>
+                                <li class="fragment"><strong>Strength:</strong> High precision, layer-sensitive</li>
+                            </ul>
+                        </div>
+                        <div style="background: rgba(124, 58, 237, 0.1); padding: 1.5em; border-radius: 8px;">
+                            <p style="font-size: 0.95em; margin-bottom: 1em;"><strong>Observable:</strong></p>
+                            <p style="font-size: 1.1em; margin: 0;">tan(Ψ) · e<sup>iΔ</sup> = (ñ − 1)/(ñ + 1)</p>
+                        </div>
+                    </div>
+                </section>
+                
+                <section>
+                    <h3>Infrared Conductivity</h3>
+                    <div class="two-column">
+                        <div>
+                            <ul>
+                                <li class="fragment"><strong>Probe:</strong> Frequency-dependent σ(ω)</li>
+                                <li class="fragment"><strong>Range:</strong> Far-IR to near-IR</li>
+                                <li class="fragment"><strong>Sensitive to:</strong> Drude weight, interband transitions</li>
+                                <li class="fragment"><strong>Access:</strong> Momentum-integrated response</li>
+                            </ul>
+                        </div>
+                        <div style="background: rgba(0, 217, 255, 0.1); padding: 1.5em; border-radius: 8px;">
+                            <p style="font-size: 0.95em; margin-bottom: 1em;"><strong>Drude Model:</strong></p>
+                            <p style="font-size: 1.1em; margin: 0;">σ(ω) = σ₀/(1 − iω/γ)</p>
+                        </div>
+                    </div>
+                </section>
+            </section>
+            
+            <!-- ===================== SECTION 5: ALTERMAGNETIC SPIN SPLITTING ===================== -->
+            <section>
+                <section>
+                    <h2>Altermagnetic Spin Splitting</h2>
+                    <p style="margin-top: 2em; font-size: 1.3em;">Detection via optical & magneto-optical signatures</p>
+                </section>
+                
+                <section>
+                    <h3>What is Altermagnetism?</h3>
+                    <div class="accent-box">
+                        <p><strong>Definition:</strong> Magnetic ordering combining <span class="highlight">zero net magnetization</span> with <span class="highlight">spin-dependent electronic structure</span></p>
+                    </div>
+                    <div class="card-grid" style="margin-top: 2em;">
+                        <div class="card">
+                            <h4>Sublattice Structure</h4>
+                            <p>Antiferromagnetic-like: opposite spins on sublattices</p>
+                        </div>
+                        <div class="card">
+                            <h4>Spin Splitting</h4>
+                            <p>Non-relativistic: arises from crystal symmetry + magnetism</p>
+                        </div>
+                        <div class="card">
+                            <h4>Distinction from SOC</h4>
+                            <p>Magnetic origin, persists without strong spin-orbit coupling</p>
+                        </div>
+                        <div class="card">
+                            <h4>Transport Phenomena</h4>
+                            <p>Altermagnetic magnetotransport & spin-Hall effects</p>
+                        </div>
+                    </div>
+                </section>
+                
+                <section>
+                    <h3>Optical Signatures</h3>
+                    <ul style="font-size: 1.15em;">
+                        <li class="fragment"><strong>Circular Dichroism:</strong> MCD signal proportional to staggered magnetization</li>
+                        <li class="fragment"><strong>Anisotropy:</strong> Directional dependence from altermagnetic crystal symmetry</li>
+                        <li class="fragment"><strong>Polarization dependence:</strong> Different responses for orthogonal linear polarizations</li>
+                        <li class="fragment"><strong>Strength:</strong> Often <span class="highlight">weaker than ferromagnets</span> but measurable</li>
+                    </ul>
+                </section>
+                
+                <section>
+                    <h3>Detection Challenges & Solutions</h3>
+                    <div class="card-grid">
+                        <div class="card">
+                            <h4>🔴 Weak Signal</h4>
+                            <p>Staggered magnetization reduces optical response. Solution: Lock-in detection, high sensitivity setups</p>
+                        </div>
+                        <div class="card">
+                            <h4>🔴 SOC Confusion</h4>
+                            <p>Similar spin splitting. Solution: Temperature, field, symmetry analysis</p>
+                        </div>
+                        <div class="card">
+                            <h4>🔴 Extrinsic Effects</h4>
+                            <p>Defects, inhomogeneities mimic signals. Solution: Multiple probes, modeling</p>
+                        </div>
+                        <div class="card">
+                            <h4>✓ Opportunities</h4>
+                            <p>Unique symmetries provide fingerprints. Solution: Comprehensive spectroscopy</p>
+                        </div>
+                    </div>
+                </section>
+            </section>
+            
+            <!-- ===================== SECTION 6: EXPERIMENTAL PROTOCOLS ===================== -->
+            <section>
+                <section>
+                    <h2>Experimental Protocols & Interpretation</h2>
+                    <p style="margin-top: 2em; font-size: 1.3em;">Designing measurements to extract reliable information</p>
+                </section>
+                
+                <section>
+                    <h3>Measurement Strategy</h3>
+                    <div style="text-align: left;">
+                        <ol style="font-size: 1.1em; line-height: 2.2;">
+                            <li class="fragment"><strong>Temperature dependence:</strong> MCD should scale with order parameter</li>
+                            <li class="fragment"><strong>Magnetic field sweeps:</strong> Reveal hysteresis & saturation</li>
+                            <li class="fragment"><strong>Polarization analysis:</strong> Linear σ & π components</li>
+                            <li class="fragment"><strong>Spectral mapping:</strong> Identify resonances from transitions</li>
+                            <li class="fragment"><strong>Symmetry measurements:</strong> Rotate sample for directional dependence</li>
+                        </ol>
+                    </div>
+                </section>
+                
+                <section>
+                    <h3>Distinguishing Altermagnetic from SOC</h3>
+                    <div class="two-column">
+                        <div>
+                            <p style="margin-bottom: 1em;"><strong style="color: #00d9ff;">For Altermagnets:</strong></p>
+                            <ul style="font-size: 0.95em;">
+                                <li>MCD ∝ staggered M</li>
+                                <li>Sensitive to sublattice order</li>
+                                <li>Crystal symmetry dependent</li>
+                                <li>Can exist without SOC</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <p style="margin-bottom: 1em;"><strong style="color: #7c3aed;">For SOC:</strong></p>
+                            <ul style="font-size: 0.95em;">
+                                <li>MCD ∝ net magnetization</li>
+                                <li>Spin-orbit origin</li>
+                                <li>Weaker crystal symmetry dependence</li>
+                                <li>Requires heavy elements</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="key-point">
+                        <strong>Key test:</strong> Measure in non-magnetic state & in field-induced magnetic state — altermagnets show MCD in zero-field!
+                    </div>
+                </section>
+                
+                <section>
+                    <h3>Expected Signal Strengths</h3>
+                    <div class="card-grid">
+                        <div class="card">
+                            <h4>Ferromagnetic MCD</h4>
+                            <p><strong>Δα ≈ 10⁻²–10⁻¹ cm⁻¹</strong><br>Strong, resonant at absorption edges</p>
+                        </div>
+                        <div class="card">
+                            <h4>Altermagnetic MCD</h4>
+                            <p><strong>Δα ≈ 10⁻⁴–10⁻² cm⁻¹</strong><br>Weaker, depends on staggered moment</p>
+                        </div>
+                        <div class="card">
+                            <h4>Polar Kerr</h4>
+                            <p><strong>θ_K ≈ 0.01–1°</strong><br>Strongest for ferromagnets</p>
+                        </div>
+                        <div class="card">
+                            <h4>Ellipsometry</h4>
+                            <p><strong>Δ changes ≈ 0.1–10°</strong><br>High sensitivity to layer structure</p>
+                        </div>
+                    </div>
+                </section>
+            </section>
+            
+            <!-- ===================== SECTION 7: CONCLUSION & Q&A ===================== -->
+            <section>
+                <section>
+                    <h2>Summary: Key Takeaways</h2>
+                    <div style="margin-top: 2em;">
+                        <ul style="font-size: 1.2em; line-height: 2.2;">
+                            <li class="fragment"><span class="highlight">●</span> Optical & magneto-optical methods provide <strong>powerful, non-destructive access</strong> to magnetic and electronic structure</li>
+                            <li class="fragment"><span class="highlight">●</span> Kerr effects and MCD directly reveal <strong>spin-dependent band structure</strong> and order parameters</li>
+                            <li class="fragment"><span class="highlight">●</span> Bulk optical probes (reflectivity, ellipsometry, IR conductivity) offer <strong>complementary information</strong> with distinct energy & spatial resolution</li>
+                            <li class="fragment"><span class="highlight">●</span> Altermagnetic spin splitting is <strong>optically accessible</strong> but requires careful experimental design to distinguish from SOC</li>
+                            <li class="fragment"><span class="highlight">●</span> <strong>Comprehensive, multi-technique approaches</strong> essential for unambiguous interpretation</li>
+                        </ul>
+                    </div>
+                </section>
+                
+                <section>
+                    <h2>Questions & Discussion</h2>
+                    <div style="margin-top: 4em; text-align: center;">
+                        <p style="font-size: 2.5em; color: #000000; margin: 1em 0;font-family: var(--heading-font);">
+                            <strong>Thank you</strong>
+                        </p>
+                        <p style="font-size: 1.2em; color: #a0a0a0;">
+                            Open floor for questions and discussion
+                        </p>
+                    </div>
+                </section>
+            </section>
+            
+        </div>
+    </div>
+    
+    <!-- Reveal.js Script -->
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+    <script>
+        Reveal.initialize({
+            controls: false,
+            progress: true,
+            slideNumber: true,
+            hash: true,
+            transition: 'fade',
+            center: false,
+            keyboard: true,
+            touch: true,
+            overview: true,
+            help: true
+        });
+    </script>
+</body>
+</html>

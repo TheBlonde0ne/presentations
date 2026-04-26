@@ -1,0 +1,55 @@
+Workflow: Google AI Studio für Physik & Coding Projekte
+
+Google AI Studio ist die "Entwicklungsumgebung" für Gemini. Für dein Seminar-Thema (Altermagnetismus) und deine Coding-Projekte ist es deutlich effizienter als der Standard-Chat.
+
+1. Warum ein "Project" erstellen?
+
+Ein Projekt in AI Studio erlaubt es dir, eine feste Wissensbasis zu definieren:
+
+Permanenter Kontext: Lade PDFs von Papern zu Altermagnetismus hoch. Gemini "liest" diese bei jeder Anfrage mit.
+
+System Instructions: Du legst einmal fest, dass Code immer in Reveal.js/HTML geschrieben werden soll und mathematische Formeln strikt in $LaTeX$ zu stehen haben.
+
+Token-Management: Du siehst genau, wie viel vom Kontext-Fenster (bis zu 2 Mio. Tokens) du verbrauchst.
+
+2. Schritt-für-Schritt Anleitung
+
+Schritt A: Projekt anlegen
+
+Geh auf aistudio.google.com.
+
+Klicke links auf "Create New" -> "Project" (oder starte einen "Chat Prompt" innerhalb eines Ordners).
+
+Benenne das Projekt (z.B. Seminar_Altermagnetismus_Topic8).
+
+Schritt B: System Instructions (Das "Gehirn")
+
+Rechts oder oben findest du das Feld System Instructions. Kopiere dort deine Regeln hinein, z.B.:
+
+"Du bist ein Experte für theoretische Festkörperphysik und Web-Entwicklung. Alle Code-Antworten müssen in einer einzigen HTML-Datei für Reveal.js geliefert werden. Nutze für Formeln ausschließlich KaTeX/LaTeX. Beziehe dich bei physikalischen Erklärungen immer auf die hochgeladenen Referenz-Dokumente."
+
+Schritt C: Context Files (Das "Wissen")
+
+Hier liegt der größte Hebel:
+
+Lade deine aktuelle index.html hoch.
+
+Lade wichtige Paper oder Skripte zum Thema Altermagnetismus hoch.
+
+Gemini wird nun keine "Halluzinationen" mehr über allgemeine Antiferromagnete haben, sondern exakt dein spezifisches Topic 8 bearbeiten.
+
+Schritt D: Model-Wahl & Tuning
+
+Wähle Gemini 1.5 Pro für komplexe physikalische Zusammenhänge.
+
+Wähle Gemini 1.5 Flash für schnelles Iterieren am CSS/UI-Design.
+
+Setze die Temperature auf ca. 0.7 für kreative Erklärungen oder 0.2 für präzisen Code.
+
+3. Dein spezifischer Vorteil (Z31-Präzision)
+
+Da du viel mit Simulationen (Three.js) arbeitest, kannst du im AI Studio "Prompts" speichern, die nur für die Generierung von Shadern oder MD-Logik zuständig sind. Du kannst verschiedene "Variations" testen und nebeneinander vergleichen, um zu sehen, welche Simulation flüssiger läuft.
+
+4. API-Key (Optional)
+
+Falls du deine eigenen Python-Skripte (für DFT-Daten-Processing) direkt mit Gemini verbinden willst, kannst du im AI Studio mit einem Klick einen API-Key generieren.

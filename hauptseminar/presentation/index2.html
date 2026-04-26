@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detailed Probing of Magnetism with Light</title>
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/white.css">
+    
+    <!-- KaTeX for LaTeX -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body);"></script>
+
+    <style>
+        :root {
+            --primary: #207058;
+            --secondary: #c4652a;
+            --bg-soft: #f8f9fa;
+            --text: #1d2028;
+            --accent-blue: #2e5984;
+        }
+        .reveal { font-family: 'Source Sans 3', sans-serif; background-color: var(--bg-soft); }
+        .reveal h1, .reveal h2 { color: var(--primary); font-family: 'Source Serif 4', serif; text-transform: none; border-bottom: 2px solid var(--primary); padding-bottom: 10px; }
+        .reveal h3 { color: var(--accent-blue); font-family: 'Source Serif 4', serif; text-transform: none; }
+        .reveal section { text-align: left; padding: 40px !important; }
+        
+        .accent-box {
+            border-left: 5px solid var(--primary);
+            background: rgba(32, 112, 88, 0.08);
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 10px 10px 0;
+            font-size: 0.9em;
+        }
+
+        .theory-card {
+            background: white;
+            border: 1px solid #ddd;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            margin-bottom: 20px;
+        }
+
+        .two-column { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+        .cite { font-size: 0.6em; color: #666; vertical-align: super; font-weight: bold; }
+        .highlight { color: var(--secondary); font-weight: bold; }
+        
+        .math-small { font-size: 0.85em; }
+        .fragment.blur { filter: blur(5px); }
+        .fragment.blur.visible { filter: none; }
+    </style>
+</head>
+<body>
+    <div class="reveal">
+        <div class="slides">
+
+            <!-- 1. TITLE & INTRODUCTION -->
+            <section style="text-align: center;">
+                <h1 style="border:none;">Probing Magnetism with Light</h1>
+                <h3>Optical and Magneto-Optical Methods in Altermagnetic Research</h3>
+                <div style="margin-top: 40px;">
+                    <p><strong>Seminar Topic 8</strong></p>
+                    <p style="font-size: 0.8em;">Theoretical Solid State Physics</p>
+                </div>
+                <div class="accent-box" style="display: inline-block; text-align: left;">
+                    <p>Key Questions for Today:</p>
+                    <ul style="font-size: 0.8em;">
+                        <li>How does magnetization modify the dielectric tensor?</li>
+                        <li>What distinguishes Polar vs. Longitudinal Kerr effects?</li>
+                        <li>Can we "see" altermagnetic splitting in the bulk?</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- 2. MACROSCOPIC THEORY -->
+            <section>
+                <h2>1. Macroscopic Origin of MO Effects</h2>
+                <h3>The Dielectric Permittivity Tensor</h3>
+                <p>The interaction of light with a magnetic medium is described by the relative permittivity tensor \(\hat{\epsilon}\). For a medium magnetized along \(z\):</p>
+                <div class="theory-card">
+                    \[ \hat{\epsilon} = \begin{pmatrix} \epsilon_{xx} & \epsilon_{xy} & 0 \\ -\epsilon_{xy} & \epsilon_{xx} & 0 \\ 0 & 0 & \epsilon_{zz} \end{pmatrix} \]
+                </div>
+                <ul>
+                    <li><strong>Diagonal (\(\epsilon_{xx}\)):</strong> Even function of \(\mathbf{M}\). Governs standard refraction/absorption.</li>
+                    <li><strong>Off-Diagonal (\(\epsilon_{xy}\)):</strong> <span class="highlight">Odd function of \(\mathbf{M}\)</span>. This term is responsible for Faraday and Kerr effects. <span class="cite">Sato (2022), Eq. 11</span></li>
+                </ul>
+                <p class="math-small">Note: \(\epsilon_{xy}\) is complex: \(\epsilon_{xy} = \epsilon'_{xy} + i\epsilon''_{xy}\). The real and imaginary parts correspond to different physical observables.</p>
+            </section>
+
+            <!-- 3. EIGENMODES -->
+            <section>
+                <h2>Circular Birefringence & Dichroism</h2>
+                <p>Solving Maxwell's equations in the medium leads to two circularly polarized eigenmodes:</p>
+                <div class="two-column">
+                    <div class="theory-card">
+                        <p><strong>Complex Refractive Indices:</strong></p>
+                        \[ \tilde{N}_{\pm}^2 = \epsilon_{xx} \pm i\epsilon_{xy} \]
+                        <p style="font-size: 0.7em;">where \((+)\) is RCP and \((-)\) is LCP.</p>
+                    </div>
+                    <div>
+                        <ul>
+                            <li><strong>Circular Birefringence:</strong> Difference in \(\text{Re}(\tilde{N})\) leads to <strong>Rotation</strong>.</li>
+                            <li><strong>Circular Dichroism:</strong> Difference in \(\text{Im}(\tilde{N})\) leads to <strong>Ellipticity</strong>.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="accent-box">
+                    <strong>Complex Rotation:</strong> \(\Phi = \theta + i\eta\). <br>
+                    Rotation \(\theta \propto \Delta n\), Ellipticity \(\eta \propto \Delta \kappa\).
+                </div>
+            </section>
+
+            <!-- 4. POLAR KERR EFFECT -->
+            <section>
+                <h2>2. The Magneto-Optical Kerr Effect (MOKE)</h2>
+                <h3>Geometry A: Polar Kerr Effect</h3>
+                <div class="two-column">
+                    <div>
+                        <p>Magnetization \(\mathbf{M}\) is <strong>normal</strong> to the reflection surface.</p>
+                        <ul>
+                            <li>Incident linearly polarized light becomes elliptically polarized upon reflection.</li>
+                            <li>Rotation \(\theta_K\) and Ellipticity \(\eta_K\) are directly proportional to \(M_z\).</li>
+                        </ul>
+                    </div>
+                    <div class="theory-card math-small">
+                        <p><strong>Complex Kerr Rotation:</strong></p>
+                        \[ \Phi_K = \frac{\tilde{r}_+ - \tilde{r}_-}{\tilde{r}_+ + \tilde{r}_-} \approx \frac{-\epsilon_{xy}}{(\epsilon_{xx}-1)\sqrt{\epsilon_{xx}}} \]
+                        <p style="font-size: 0.8em; color: var(--secondary);">Resonance enhancement occurs at the plasma frequency where \(\epsilon_{xx} \to 1\). <span class="cite">Sato (2022), Eq. 26</span></p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 5. LONGITUDINAL KERR EFFECT -->
+            <section>
+                <h2>MOKE Geometries (cont.)</h2>
+                <div class="two-column">
+                    <div>
+                        <h3>Longitudinal Kerr</h3>
+                        <p style="font-size: 0.8em;">\(\mathbf{M}\) is parallel to the surface and the plane of incidence.</p>
+                        <div class="theory-card math-small">
+                            \[ \Phi_{K,long} \propto \epsilon_{xy} \sin \phi_0 \]
+                            <p>\(\phi_0\): angle of incidence. Vanishes at normal incidence!</p>
+                        </div>
+                    </div>
+                    <div>
+                        <h3>Transverse Kerr</h3>
+                        <p style="font-size: 0.8em;">\(\mathbf{M}\) is perpendicular to the plane of incidence.</p>
+                        <div class="theory-card math-small">
+                            <p>No rotation of polarization. Instead, a change in the <strong>reflectivity amplitude</strong> for p-polarized light.</p>
+                            \[ \frac{\Delta R}{R} \propto \text{Im}(\epsilon_{xy}) \]
+                        </div>
+                    </div>
+                </div>
+                <div class="accent-box">
+                    <strong>Experimental Choice:</strong> Polar MOKE is preferred for thin films with out-of-plane anisotropy; Longitudinal for in-plane magnets.
+                </div>
+            </section>
+
+            <!-- 6. MCD -->
+            <section>
+                <h2>Magnetic Circular Dichroism (MCD)</h2>
+                <p>MCD measures the difference in absorption coefficients \(\alpha\) for RCP and LCP light.</p>
+                <div class="theory-card">
+                    \[ \Delta \alpha = \alpha_+ - \alpha_- = \frac{4\pi}{\lambda} \text{Im}(\tilde{N}_+ - \tilde{N}_-) \]
+                </div>
+                <ul>
+                    <li><strong>Microscopic View:</strong> MCD probes the difference in transition probabilities between spin-split sub-bands.</li>
+                    <li><strong>Sum Rules:</strong> Orbital and spin magnetic moments can be extracted by integrating MCD spectra over absorption edges (common in X-ray XMCD).</li>
+                    <li><strong>In Altermagnets:</strong> MCD can detect staggered magnetization even if the net \(\mathbf{M}=0\), provided the symmetry allows coupling to the light's angular momentum.</li>
+                </ul>
+            </section>
+
+            <!-- 7. MICROSCOPIC ORIGIN -->
+            <section>
+                <h2>3. Microscopic Origins</h2>
+                <h3>The Role of SOC and Exchange Splitting</h3>
+                <p>Why does \(\epsilon_{xy}\) exist? It requires two ingredients:</p>
+                <ol>
+                    <li><strong>Exchange Splitting (\(\Delta_{ex}\)):</strong> Creates a population difference between spin-up and spin-down states.</li>
+                    <li><strong>Spin-Orbit Coupling (SOC):</strong> Links the spin to the orbital motion, allowing light (which couples to orbits) to "feel" the spin.</li>
+                </ol>
+                <div class="accent-box">
+                    <p><strong>Quantum Mechanical Expression:</strong></p>
+                    \[ \epsilon_{xy}(\omega) \propto \sum_{n,m} \frac{f_{nm}^+ - f_{nm}^-}{\omega_{nm}^2 - \omega^2} \]
+                    <p style="font-size: 0.8em;">\(f_{nm}^\pm\): Oscillator strengths for RCP/LCP transitions. <span class="cite">Sato (2022), Eq. 50</span></p>
+                </div>
+            </section>
+
+            <!-- 8. BULK OPTICAL PROBES -->
+            <section>
+                <h2>4. Bulk Optical Probes</h2>
+                <h3>Reflectivity and Optical Conductivity</h3>
+                <p>Beyond MOKE, standard optical probes provide vital information about the <strong>band structure symmetry</strong>.</p>
+                <div class="two-column">
+                    <div>
+                        <ul>
+                            <li><strong>Drude Weight:</strong> Probes the density of itinerant carriers.</li>
+                            <li><strong>Interband Transitions:</strong> Peaks in \(\sigma_1(\omega)\) correspond to specific transitions in the Brillouin zone.</li>
+                            <li><strong>Pauli Edge:</strong> A sharp cutoff in conductivity indicating the Fermi level position relative to band crossings.</li>
+                        </ul>
+                    </div>
+                    <div class="theory-card">
+                        <p class="highlight">Case Study: RuO\(_2\)</p>
+                        <p style="font-size: 0.8em;">Broadband IR spectroscopy showed a Pauli edge at 0.1 eV, perfectly matching a <strong>non-magnetic</strong> Dirac nodal line model. <span class="cite">Wenzel et al. (2025)</span></p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 9. ALTERMAGNETIC SPLITTING -->
+            <section>
+                <h2>5. Detecting Altermagnetic Splitting</h2>
+                <h3>The Challenge of Anisotropy</h3>
+                <p>Altermagnets (like \(\kappa\)-Cl or MnTe) have lower symmetry. Standard MOKE formulas for isotropic crystals fail.</p>
+                <div class="accent-box">
+                    <p><strong>The \(2 \times 2\) Reflectance Matrix Approach:</strong></p>
+                    \[ \mathbf{E}_{refl} = \begin{pmatrix} \tilde{r}_{xx} & \tilde{r}_{xy} \\ \tilde{r}_{yx} & \tilde{r}_{yy} \end{pmatrix} \mathbf{E}_{inc} \]
+                    <p style="font-size: 0.8em;">In orthorhombic altermagnets, \(\tilde{r}_{xx} \neq \tilde{r}_{yy}\). This "linear dichroism" can be 1000x larger than the MO signal! <span class="cite">Iguchi et al. (2025)</span></p>
+                </div>
+                <ul>
+                    <li><strong>Protocol:</strong> Use PEM modulation and careful sample rotation to isolate the field-odd \(\tilde{r}_{xy}\) from the field-even anisotropy.</li>
+                </ul>
+            </section>
+
+            <!-- 10. DISTINGUISHING SOC -->
+            <section>
+                <h2>Altermagnetism vs. SOC</h2>
+                <p>How do we know the splitting is "Altermagnetic"?</p>
+                <div class="theory-card">
+                    <ul>
+                        <li><strong>Energy Scale:</strong> Altermagnetic splitting is driven by <strong>Exchange (\(J\))</strong>, often \(\sim 100\) meV. SOC splitting in light elements is \(\sim 1\) meV.</li>
+                        <li><strong>Temperature Dependence:</strong> MO signals in altermagnets disappear exactly at \(T_N\).</li>
+                        <li><strong>Field Dependence:</strong> Iguchi et al. (2025) showed that MOKE in \(\kappa\)-Cl is <strong>non-linear</strong> with field, proving it arises from the altermagnetic order parameter, not just canted moments.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- 11. SUMMARY -->
+            <section style="text-align: center;">
+                <h2>Summary & Conclusion</h2>
+                <div class="accent-box" style="text-align: left; display: inline-block; width: 80%;">
+                    <ul style="line-height: 1.6;">
+                        <li><strong>MOKE and MCD</strong> are powerful probes of the spin-polarized JDOS.</li>
+                        <li><strong>Macroscopic MO effects</strong> are encoded in the off-diagonal permittivity \(\epsilon_{xy}\).</li>
+                        <li><strong>Bulk probes (\(\sigma(\omega)\))</strong> can rule out altermagnetism by detecting topological features like Dirac nodal lines (e.g., RuO\(_2\)).</li>
+                        <li><strong>New Protocols:</strong> Anisotropic reflectance matrix analysis is required for non-cubic altermagnets.</li>
+                    </ul>
+                </div>
+                <p style="margin-top: 40px; font-weight: bold; color: var(--primary);">Discussion & Questions</p>
+                <div style="font-size: 0.5em; color: #888; margin-top: 20px;">
+                    References: Sato & Ishibashi (2022) | Wenzel et al. (2025) | Iguchi et al. (2025)
+                </div>
+            </section>
+
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+    <script>
+        Reveal.initialize({
+            hash: true,
+            center: false,
+            transition: 'convex',
+            slideNumber: 'c/t',
+            controls: true,
+            progress: true,
+            width: 1200,
+            height: 700,
+            margin: 0.1
+        });
+    </script>
+</body>
+</html>
