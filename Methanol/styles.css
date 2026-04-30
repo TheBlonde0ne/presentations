@@ -1,6 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;500;600;700&family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,400&display=swap');
 
 /* ===========================================
+Custom styles for Methanol presentation template
+Custom stuff
+  =========================================== */
+
+
+
+
+/* ===========================================
    CSS VARIABLES
    =========================================== */
 :root {
@@ -18,12 +26,12 @@
   
   --header-color: #ffffff;
   --primary-color: #003d24;
-  --secondary-color: #c4652a;
+  --secondary-color: #d19773;
   --text-color: #1d2028;
   --muted-color: #6b7280;
   --line-color: #003d24;
 
-  --slide-padding: 60px;
+  --slide-padding: 20px;
   --slide-padding-top: 10px;
   --content-gap: 10px;
   --box-radius: 10px;
@@ -373,7 +381,7 @@
 }
 
 .flow-arrow {
-  font-size: 24pt;
+  font-size: 26pt;
   color: var(--primary-color);
   margin: 0 10px;
 }

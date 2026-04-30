@@ -6,40 +6,161 @@
 	<title>Methanol Workflow: From MACE Sampling to MLIP Production</title>
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css" />
 	<link rel="stylesheet" href="styles.css" />
+	<!-- Load KaTeX CSS -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+	<!-- Load KaTeX JS -->
+	<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+	<!-- Load the Auto-render Extension -->
+	<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+	onload="renderMathInElement(document.body);"></script>
 </head>
 <body>
 	<div class="reveal">
 		<div class="slides">
             <!-- TITLE SLIDE -->
             <section class="section-divider" data-state="is-section-divider">
-                <header>Jakob Wallner & Stephan Haag</header>
-				<h1>Methanol Workflow</h1>
-				<p>From foundation-model sampling to DFT relabeling, MLIP training, and production MD</p>
+                <header>Jakob Wallner</header>
+				<h1>Simulating Methanol</h1>
+				<p>From foundation-model to taylored ML-Potential</p>
 			</section>
 
-			<!-- TASK 0: PROJECT GOAL -->
+			<!-- Theory -->
+			<section id="Theory-MD">
+
+			</section>
 			<section>
+    <h2>Molecular Dynamics (MD)</h2>
+    <hr />
+    <div class="content">
+        <div class="concept-card">
+            <h3>Classical & ML Potentials</h3>
+            <p>
+                Iterative calculation of atomic interactions to predict system behavior over time using the <strong>equation of motion</strong> derived from Newton's second law:
+                <br />
+                $$ m \frac{d^2 \mathbf{r}}{dt^2} = -\nabla V(\mathbf{r}) $$
+            </p>
+        </div>
+        <ul style="margin-top: 20px;">
+            <li><strong>NVT Ensemble:</strong> Constant Number of particles, Volume, and Temperature, controlled via a <strong>Langevin thermostat</strong> (later Nose-Hoover) which adds stochastic terms.</li>
+            <li><strong>Numerical Integration:</strong> Algorithms like the Verlet method iteratively update positions and velocities based on recalculated forces.</li>
+            <li><strong>Ergodic Hypothesis:</strong> Connects time averages from trajectories to ensemble averages, allowing for the calculation of thermodynamic properties.</li>
+        </ul>
+    </div>
+</section>
+
+<section>
+    <h2>Density Functional Theory (DFT)</h2>
+    <hr />
+    <div class="content">
+        <div class="concept-card">
+            <h3>Electronic Structure</h3>
+            <p>
+                Describes many-body systems via electron density $\rho(\mathbf{r})$ rather than wavefunctions, utilizing the <strong>Kohn-Sham equations</strong> to find a self-consistent field:
+                $$ V_{s}(\mathbf{r}) = V_{\text{ext}}(\mathbf{r}) + V_H(\mathbf{r}) + V_{\text{xc}}(\mathbf{r}) $$
+            </p>
+        </div>
+        <ul style="margin-top: 20px;">
+            <li><strong>Hohenberg-Kohn Theorems:</strong> Ground-state properties are uniquely determined by the electron density through a universal functional \(E[\rho]\).</li>
+            <li><strong>Approximations:</strong> Necessary due to complexity; includes LCAO, the Born-Oppenheimer approximation, and exchange-correlation functionals (LDA, GGA).</li>
+        </ul>
+    </div>
+</section>
+
+<section>
+    <h2>Dispersion Correction (D3)</h2>
+    <hr />
+    <div class="content">
+        <div class="concept-card">
+            <h3>Capturing Long-Range Effects</h3>
+            <p>
+                Standard DFT often fails to capture van der Waals interactions. The <strong>Grimme-D3 method</strong> adds an empirical energy term to the DFT total energy:
+				\[ E_{\text{disp}} = - \sum_{i&lt;j} \sum_\mathbf{L} \left( \frac{C_6^{ij}}{R_{ij, L}^6} f_{d,6}(R_{ij, L}) + \frac{C_8^{ij}}{R_{ij, L}^8} f_{d,8}(R_{ij, L}) \right) \]
+            </p>
+        </div>
+        <ul style="margin-top: 20px;">
+            <li><strong>Pairwise Additive:</strong> Based on atom-pair coefficients <math><msub><mi>C</mi><mi>n</mi></msub></math> and distances <math><mi>R</mi></math>.</li>
+            <li><strong>Damping Functions:</strong> Critical for preventing the correction from diverging at short interatomic distances where DFT is already effective.</li>
+        </ul>
+    </div>
+</section>
+
+<section>
+    <h2>Neural Network Foundations</h2>
+    <hr />
+    <div class="content">
+        <div class="concept-card">
+            <h3>Deep Learning for PES</h3>
+            <p>
+                Utilizes stacked layers of artificial neurons to approximate complex potential energy surfaces (PES). Each layer performs matrix operations followed by a non-linear activation (e.g., ReLU):
+                <br />
+                Stacked layers perform matrix operations with non-linear activation:
+                $$ \mathbf{a}^{(l)} = f(\mathbf{W}^{(l)} \cdot \mathbf{a}^{(l-1)} + \mathbf{b}^{(l)}) $$
+            </p>
+        </div>
+        <ul style="margin-top: 20px;">
+            <li><strong>Local Atomic Partitioning:</strong> The total energy is the sum of contributions from individual atoms based on their local environment: \(E_{\text{total}} = \sum_i E_i\).</li>
+            <li><strong>Descriptors (GMNN):</strong> Transforms geometry into numerical vectors invariant under translation, rotation, and permutation.</li>
+            <li><strong>Automatic Differentiation:</strong> Forces are obtained analytically from the energy prediction, ensuring thermodynamic stability.</li>
+        </ul>
+    </div>
+</section>
+
+<section>
+    <h2>Uncertainty Quantification (UQ)</h2>
+    <hr />
+    <div class="content">
+        <div class="concept-card">
+            <h3>Shallow Ensembles</h3>
+            <p>
+                Assessing model confidence using an ensemble with a shared backbone but randomly initialized last layers. Uncertainty is calculated as the variance across predictions:
+                <br />
+                \[ \sigma_x = \sqrt{\frac{1}{M-1} \sum_{m=1}^{M} (x_m - \bar{x})^2} \]
+            </p>
+        </div>
+        <ul style="margin-top: 20px;">
+            <li><strong>Active Learning:</strong> High variance \(\sigma_x\) identifies configurations where the model is unconfident, signaling a need for new DFT training data.</li>
+            <li><strong>Stability:</strong> Monitoring uncertainty during MD runs prevents simulations from entering non-physical regions of the configuration space.</li>
+        </ul>
+    </div>
+</section>
+
+			<!-- TASK 0: PROJECT GOAL -->
+			<section id="workflow-overview">
 				<h2>Workflow Overview</h2>
                 <hr />
 				<div class="content">
-					<div style="display:flex; align-items:center; justify-content:space-between; gap:18px; flex-wrap:wrap; margin-top:10px;">
-						<div class="flow-node primary">MACE sampling</div>
-						<div class="flow-arrow">→</div>
-						<div class="flow-node secondary">MGRID optimization</div>
-						<div class="flow-arrow">→</div>
-						<div class="flow-node primary">DFT + D3 relabeling</div>
-						<div class="flow-arrow">→</div>
-						<div class="flow-node secondary">MLIP training</div>
-						<div class="flow-arrow">→</div>
-						<div class="flow-node primary">Production MD</div>
-						<div class="flow-arrow">→</div>
-						<div class="flow-node secondary">RDF and diffusion</div>
+					<div style="display:flex; align-items:center; justify-content:space-between; gap:18px; flex-wrap:wrap; margin-top:10px;margin-bottom: 10px;">
+						<div class="flow-node primary" data-step="1" id="flow-1">MACE sampling</div>
+					<div class="flow-arrow">→</div>
+
+
+						<div class="flow-node secondary" data-step="2" id="flow-2">MGRID optimization</div>
+					<div class="flow-arrow">→</div>
+
+
+						<div class="flow-node primary" data-step="3" id="flow-3">DFT + D3 relabeling</div>
+					<div class="flow-arrow">→</div>
+
+
+						<div class="flow-node secondary" data-step="4" id="flow-4">MLIP training</div>
+					<div class="flow-arrow">→</div>
+
+						<div class="flow-node primary" data-step="5" id="flow-5">Production MD</div>
+					<div class="flow-arrow">→</div>
+
+						<div class="flow-node secondary" data-step="6" id="flow-6">RDF and diffusion</div>
+
+					<div style="display:grid; grid-template-columns: 1fr 1fr; gap:18px;">
+						<p style="margin-top:3px; font-size:18px;"><strong>MACE sampling:</strong> Running a 1ns MD simulation with a foundation model to explore phase space.</p>
+						<p style="margin-top:3px; font-size:18px;"><strong>MGRID optimization:</strong> Finding optimal real-space grid convergence to avoid noise in training data.</p>
+						<p style="margin-top:3px; font-size:18px;"><strong>DFT + D3 relabeling:</strong> High-accuracy ab initio labeling with PBE functional and Grimme D3 dispersion corrections.</p>
+						<p style="margin-top:3px; font-size:18px;"><strong>MLIP training:</strong> Training a custom Gaussian Moment Neural Network tailored for methanol dynamics.</p>
+						<p style="margin-top:3px; font-size:18px;"><strong>Production MD:</strong> Running large-scale simulations with the trained MLIP and ensemble-based uncertainty quantification.</p>
+						<p style="margin-top:3px; font-size:18px;"><strong>RDF and diffusion:</strong> Computing radial distribution functions and self-diffusion coefficients against experimental data.</p>
 					</div>
-					<p class="text-xl" style="margin-top:28px;">
-						The central idea: Use the allround applicable foundation model to explore phase space, then spend the expensive DFT budget only where it matters. A system optimized MLIP can then be trained to produce high-quality MD simulations.
-					</p>
-				</div>
-			</section>
+				</section>
+			
+				
 
             <!-- TASK 1: WORKFLOW MANAGEMENT -->
 			<section>
@@ -65,10 +186,9 @@
 				<h2>Sampling with MACE</h2>
                 <hr />
 				<div class="content">
-                    <p>We generate initial 32-molecule boxes using <strong>Packmol</strong> and SMILES strings (<code>"CO"</code>).</p>
-					</div>
+					<p>We generate initial 32-molecule boxes using <strong>Packmol</strong> and SMILES strings (<code>"CO"</code>).</p>
 					<div class="demo-command" style="font-size: 11pt; line-height: 1.7; margin-top: 15px;">
-						<span style="color: #569cd6;">&gt;</span> &quot;C&quot; → CH<sub>4</sub>, &quot;Clc(c(Cl)c(Cl)c1C(=O)O)c(Cl)c1Cl&quot; → C<sub>7</sub>HCl<sub>5</sub>O<sub>2</sub><br/>
+						<span style="color: #569cd6;">&gt;</span> <span style="color: var(--secondary-color)">&quot;C&quot;</span> → CH<sub>4</sub>, <span style="color: var(--secondary-color)">&quot;Clc(c(Cl)c(Cl)c1C(=O)O)c(Cl)c1Cl&quot;</span> → C<sub>7</sub>HCl<sub>5</sub>O<sub>2</sub><br/>
 						<span class="comment">SMILES (or Simplified Molecular Input Line Entry System) is a notation for representing chemical structures in a string format;</span><br/>
 					</div>
 					<div style="display:grid; grid-template-columns: 1fr 1fr; gap:18px;">
@@ -167,39 +287,39 @@
 					<h2>Train Progress over Epochs: Different Architectures</h2>
 					<hr />
 					<div class="content">
-						<!-- Insert Train Progress Plot Here -->
-						<!-- PDFs are not reliably rendered via <img>; use <object> with a fallback link -->
-						<img 
+						<div class="concept-card"style="display:flex; align-items:center; justify-content:center; max-width: 100%; max-height: 80%;">
+							<img 
 								src="./latex/images/loss_architecture.svg" 
 								alt="Architecture Loss Curves" 
-								style="max-width: 100%; max-height: 100%; object-fit: contain;" 
+								style="max-width: 90%; max-height: 100%; object-fit: contain;" 
 							/>
+						</div>
 					</div>
 				</section>
 				<section>
 					<h2>Train Progress over Epochs: Different Cutoffs</h2>
 					<hr />
 					<div class="content">
-						<!-- Insert Train Progress Plot Here -->
-						<!-- PDFs are not reliably rendered via <img>; use <object> with a fallback link -->
+						<div class="concept-card"style="display:flex; align-items:center; justify-content:center; max-width: 100%; max-height: 80%;margin-bottom: -20px;">
 						<img 
 								src="./latex/images/loss_cutoff.svg" 
 								alt="Cutoff Loss Curves" 
-								style="max-width: 100%; max-height: 100%; object-fit: contain;" 
+								style="max-width: 100%; max-height: 90%; object-fit: contain;" 
 							/>
+						</div>
 					</div>
 				</section>
 				<section>
 					<h2>Train Progress over Epochs: Different Number of Basis Functions</h2>
 					<hr />
 					<div class="content">
-						<!-- Insert Train Progress Plot Here -->
-						<!-- PDFs are not reliably rendered via <img>; use <object> with a fallback link -->
+						<div class="concept-card"style="display:flex; align-items:center; justify-content:center; max-width: 100%; max-height: 80%;margin-bottom: -20px;">
 						<img 
 								src="./latex/images/loss_basis.svg" 
 								alt="Basis Functions Loss Curves" 
-								style="max-width: 100%; max-height: 100%; object-fit: contain;" 
+								style="max-width: 100%; max-height: 90%; object-fit: contain;" 
 							/>
+						</div>
 					</div>
 				</section>
 			</section>
@@ -208,20 +328,24 @@
 			<section>
 				<h2>MAE: Force vs Energy</h2>
 				<hr />
+				<div class="concept-card"style="display:flex; align-items:center; justify-content:center; max-width: 100%; max-height: 80%;">
 					<img 
 							src="./latex/images/3D.svg" 
 							alt="3D plot of all parameters" 
 							style="max-width: 100%; max-height: 100%; object-fit: contain;" 
 						/>
+				</div>
 			</section>
 			<section>
 				<h2>MAE: Force vs Energy (Closeup)</h2>
 				<hr />
+				<div class="concept-card"style="display:flex; align-items:center; justify-content:center; max-width: 100%; max-height: 80%;">
 					<img 
 							src="./latex/images/energy_force_mae.svg" 
 							alt="Closeup of energy vs force MAE" 
 							style="max-width: 100%; max-height: 100%; object-fit: contain;" 
 						/>
+				</div>
 			</section>
 			</section>
 
@@ -232,13 +356,13 @@
 				<div class="content">
 					<ul>
                         <li><strong>Relaxation:</strong> Before MD, we use <code>ASEGeoOpt</code> to minimize forces below 0.05 eV/Å to prevent unphysical behavior.</li>
-						<li><strong>Timestep:</strong> Carefully chosen to resolve high-frequency O-H vibrations while maintaining stability.</li>
+						<li><strong>Timestep:</strong> The timestep has to resolve high-frequency O-H vibrations while maintaining stability, which is given for 0.5 femtoseconds.</li>
 						<li><strong>Scaling:</strong> Box size increased to 64 molecules for better statistics.</li>
 					</ul>
                     <div class="concept-card" style="margin-top: 15px;">
                         <h3>Observation</h3>
                         <p>Model ensembles are used here to detect if the simulation enters "unseen" configurations where uncertainty spikes.
-						Also, we can determine an <strong>uncertainty quantification</strong> by looking at the spread of predictions across the ensemble, which share a common backbone but differ in their <strong>initialization of the final layer</strong>.
+						Also, we can determine an <strong>uncertainty quantification</strong> by looking at the spread of predictions across the ensemble, which share a common backbone but differ in their <strong>initialization of the final layer</strong>. Also a force threshold of 2 eV/Å is set to detect unphysical configurations. We don't use an <strong>energy threshold</strong> because the energy of the system is systemsize dependent.
 						</p>
                     </div>
 				</div>
