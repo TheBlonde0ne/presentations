@@ -12,7 +12,7 @@
 		<div class="slides">
             <!-- TITLE SLIDE -->
             <section class="section-divider" data-state="is-section-divider">
-                <header>Jakob Wallner & Stefan Haag</header>
+                <header>Jakob Wallner & Stephan Haag</header>
 				<h1>Methanol Workflow</h1>
 				<p>From foundation-model sampling to DFT relabeling, MLIP training, and production MD</p>
 			</section>
@@ -36,7 +36,7 @@
 						<div class="flow-node secondary">RDF and diffusion</div>
 					</div>
 					<p class="text-xl" style="margin-top:28px;">
-						The central idea is simple: use the fast foundation model to explore phase space, then spend the expensive DFT budget only where it matters.
+						The central idea: Use the allround applicable foundation model to explore phase space, then spend the expensive DFT budget only where it matters. A system optimized MLIP can then be trained to produce high-quality MD simulations.
 					</p>
 				</div>
 			</section>
@@ -162,59 +162,67 @@
 			</section>
 
 			<!-- Show results of different hyperparameters -->
-
 			<section>
-				<h2>Hyperparameter Results: Train Progress over Epochs</h2>
-				<hr />
-				<div class="content">
-					<!-- Insert Train Progress Plot Here -->
-					<img
-							src="hyperparam_loss_curves.png"
-							alt="Loss curves for different hyperparameter settings"
-							style="max-width: 60%; max-height: 100%; object-fit: contain;"
-						/>
-				</div>
-			</section>
-			
-			<section>
-				<h2>Hyperparameter Results: Final Convergence</h2>
-				<hr />
-				<div class="content">
-					<!-- Insert Train Progress Plot Here -->
-					<img
-							src="hyperparam_final_val_loss.png"
-							alt="Loss curves for different hyperparameter settings"
-							style="max-width: 60%; max-height: 100%; object-fit: contain;"
-						/>
-				</div>
-			</section>
-
-			<section>
-				<h2>Hyperparameter Results: Basis Functions</h2>
-				<hr />
-				<div class="content">
-					<!-- Insert Train Progress Plot Here -->
-					<img
-							src="basis_function_evaluation.png"
-							alt="Loss curves for different hyperparameter settings"
-							style="max-width: 100%; max-height: 100%; object-fit: contain;"
-						/>
-				</div>
-			</section>
-
-			<section>
-				<h2>Hyperparameter Results: MAE Force vs Energy</h2>
-				<hr />
-				<div class="content">
-					<!-- Insert Train Progress Plot Here -->
-					<div style="display:grid; grid-template-columns: 1.2fr 1fr; gap:20px;">
-						<img
-								src="energy_vs_force_mae_all_runs.png"
-								alt="Loss curves for different hyperparameter settings"
-								style="max-width: 100%; max-height: 100%; object-fit: contain;"
+				<section>
+					<h2>Train Progress over Epochs: Different Architectures</h2>
+					<hr />
+					<div class="content">
+						<!-- Insert Train Progress Plot Here -->
+						<!-- PDFs are not reliably rendered via <img>; use <object> with a fallback link -->
+						<img 
+								src="./latex/images/loss_architecture.svg" 
+								alt="Architecture Loss Curves" 
+								style="max-width: 100%; max-height: 100%; object-fit: contain;" 
 							/>
 					</div>
-				</div>
+				</section>
+				<section>
+					<h2>Train Progress over Epochs: Different Cutoffs</h2>
+					<hr />
+					<div class="content">
+						<!-- Insert Train Progress Plot Here -->
+						<!-- PDFs are not reliably rendered via <img>; use <object> with a fallback link -->
+						<img 
+								src="./latex/images/loss_cutoff.svg" 
+								alt="Cutoff Loss Curves" 
+								style="max-width: 100%; max-height: 100%; object-fit: contain;" 
+							/>
+					</div>
+				</section>
+				<section>
+					<h2>Train Progress over Epochs: Different Number of Basis Functions</h2>
+					<hr />
+					<div class="content">
+						<!-- Insert Train Progress Plot Here -->
+						<!-- PDFs are not reliably rendered via <img>; use <object> with a fallback link -->
+						<img 
+								src="./latex/images/loss_basis.svg" 
+								alt="Basis Functions Loss Curves" 
+								style="max-width: 100%; max-height: 100%; object-fit: contain;" 
+							/>
+					</div>
+				</section>
+			</section>
+
+			<section>
+			<section>
+				<h2>MAE: Force vs Energy</h2>
+				<hr />
+					<img 
+							src="./latex/images/3D.svg" 
+							alt="3D plot of all parameters" 
+							style="max-width: 100%; max-height: 100%; object-fit: contain;" 
+						/>
+			</section>
+			<section>
+				<h2>MAE: Force vs Energy (Closeup)</h2>
+				<hr />
+					<img 
+							src="./latex/images/energy_force_mae.svg" 
+							alt="Closeup of energy vs force MAE" 
+							style="max-width: 100%; max-height: 100%; object-fit: contain;" 
+						/>
+			</section>
 			</section>
 
 			<!-- STAGE 4: PRODUCTION MD -->

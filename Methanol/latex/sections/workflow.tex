@@ -1,0 +1,28 @@
+\section{Workflow}
+
+\subsection{\textit{IPSuite} and \textit{ZnTrack}}
+
+The project is completely structured with the tools from \textit{IPSuite} and \textit{ZnTrack}. The former is used to manage the project structure, while the latter is used to track the data and results of the project. The main advantage of using these tools is the node based workflow and the easy data version control. This allows easy reproducibility and scalability of the project. Each step, from data generation by foundation model or classical force-field MD, data relabeling with DFT calculations and dispersion correction, the training of an individual model and the evaluation of the production simulations, is tracked with a node in \textit{ZnTrack} and written in a single workflow.
+
+\subsection{From string to box}
+In order to run a sample simulation, we need to create a box filled with Methanol molecules. The \textit{Smiles2Conformers} node can create the neccessary \textit{ASE} object from a SMILES string.
+A SMILES (Simplified Molecular-Input Line-Entry System) string is a easy way to represent a molecule in a text format.
+The \textit{MultiPackmol} node can then be used to pack the molecules into a box according to the desired density. After a geometry optimization, the box is ready to be used for the sample simulation.
+
+\subsection{Sample simulation}
+In order to create new, unseen data to later train the model on, we run a sample simulation. If no prior data is available, a classical force-field taylored for the system can be used to run a short MD simulation. If no fitting force-field is available, a foundation model can be used to generate the forces and energies for the simulation. In this project, we use the \textit{MACE-MP0} model, which is a pre-trained model on the OC20 dataset. The sample simulation is run for 1 nanosecond and 600 frames are saved for later use. The sample frames are chosen randomly.
+
+\subsection{Energy convergence via \textit{mgrid} parameter}
+To ensure a good convergence of the energies, we can vary different parameters of the DFT calculations. Typical parameters to change are the plane-wave cutoff, the grid spacing or even the exchange functional itself. In this project, we choose to vary the grid cutoff value. After running the DFT calculations with different grid cutoff values for the same frame, we can plot the total predicted energy as a function of the grid cutoff value. After that a tradeoff between accuracy and computational cost can be made to choose the optimal grid cutoff value for the rest of the calculations.
+
+\subsection{Data relabeling}
+After the best parameters for the DFT calculations are chosen, the data can be relabeled. To include dispersion interactions, the Grimme D3 correction is added to the DFT energies. The forces are not corrected, as the dispersion interactions are not included in the forces. The relabeled data can then be used to train the model.
+
+\subsection{Hyperparameter evaluation}
+Because the training and precdition of the model is heavily dependent on the choice of hyperparameters, a hyperparameter evaluation is performed. In this project we train several models with different parameters for the network architecture, the cutoff radius and the number of basis functions. The models are then evaluated on a test set and the best model is chosen for the production simulations.
+
+\subsection{Final model and production simulation}
+With the best model chosen, two final models will be trained. One with the original DFT energies and forces, and one with the DFT energies corrected with the Grimme D3 correction. The production simulations are then run for 10 nanoseconds and the results are analyzed to compare the two models and to evaluate the performance of the final model.
+
+\subsection{Evaluation}
+The properties of the self-diffusion coefficient and the Radial Distribution Function (RDF) are calculated from the production simulations and compared to experimental values.
