@@ -1,5 +1,52 @@
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;500;600;700&family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,400&display=swap');
 
+
+    .reveal .columns {
+      display: flex;
+      gap: 30px;
+      width: 100%;
+      height: 100%;
+    }
+
+    .reveal .column {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .reveal .column img {
+        max-width: 100%;
+        height: auto;
+        border: 1px solid #ddd;
+        border-radius: var(--box-radius);
+    }
+    
+    .reveal table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+    .reveal th, .reveal td {
+        border: 1px solid #dee2e6;
+        padding: 12px 15px;
+        text-align: left;
+        font-size: 14pt;
+    }
+    .reveal th {
+        background-color: var(--primary-color);
+        color: white;
+        font-family: var(--heading-font);
+        font-weight: 600;
+    }
+    .reveal tr:nth-child(even) {
+        background-color: #f8f9fa;
+    }
+    .reveal .success { color: #28a745; font-weight: bold; }
+    .reveal .failure { color: #dc3545; font-weight: bold; }
+    .reveal .indirect { color: #fd7e14; font-weight: bold; }
+    .reveal .method { color: #17a2b8; font-weight: bold; }
+
+
 /* ===========================================
    CSS VARIABLES
    =========================================== */
@@ -17,11 +64,10 @@
   --footnote-size: 11pt;
   --header-color: #ffffff;
   --primary-color: #003d24;
-  --secondary-color: #da702e;
+  --secondary-color: #c4652a;
   --text-color: #1d2028;
   --muted-color: #6b7280;
   --line-color: #003d24;
-  --highlight-color: #6d0909;
 
   --slide-padding: 30px;
   --slide-padding-top: 20px;
@@ -68,7 +114,7 @@
   line-height: 1.2;
 }
 
-.reveal h1 { font-size: var(--h1-size); }
+.reveal h1 { font-size: var(--h1-size); color: var(--header-color);}
 .reveal h2 { font-size: var(--h2-size); margin-bottom: 0; }
 .reveal h3 { font-size: var(--h3-size); }
 
@@ -80,13 +126,6 @@
   font-size: var(--text-size);
   color: var(--text-color);
   line-height: 1.5;
-}
-
-.reveal highlight {
-  color: var(--highlight-color);
-  font-weight: 600;
-  padding: 0 4px;
-  border-radius: 4px;
 }
 
 /* ===========================================
@@ -126,6 +165,7 @@
 .reveal blockquote p {
   font-size: inherit;
 }
+
 
 /* ===========================================
    SLIDE LAYOUT
@@ -215,9 +255,7 @@
   border-left: 4px solid var(--primary-color);
   padding-left: 20px;
   margin: 20px 0;
-  font-style: normal;
-  font-family: var(--heading-font);
-  font
+  font-style: italic;
   background: none;
   box-shadow: none;
   width: 100%;
@@ -298,7 +336,7 @@
   background: white;
   border: 1px solid #e5e2dc;
   border-radius: var(--box-radius);
-  padding: 15px;
+  padding: 20px;
   border-left: 4px solid var(--primary-color);
 }
 

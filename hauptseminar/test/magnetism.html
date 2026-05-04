@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Altermagnetism Symmetry Breaking</title>
+    <style>
+        body { margin: 0; background: #111; color: white; font-family: sans-serif; overflow: hidden; }
+        #controls { position: absolute; top: 20px; left: 20px; z-index: 10; background: rgba(0,0,0,0.7); padding: 15px; border-radius: 8px; border: 1px solid #444; }
+        button { cursor: pointer; padding: 8px 12px; background: #444; color: white; border: none; border-radius: 4px; transition: 0.3s; }
+        button:hover { background: #666; }
+        .label { font-weight: bold; color: #00d4ff; }
+    </style>
+</head>
+<body>
+
+<div id="controls">
+    <h3>Altermagnetism: $M = 0$</h3>
+    <p>Sublattices connected by 90° rotation.</p>
+    <button onclick="toggleTimeReversal()">Toggle Time Reversal (T)</button>
+    <p id="status">Status: <span class="label">Original State</span></p>
+</div>
+
+<script type="importmap">
+    {
+        "imports": {
+            "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+            "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+        }
+    }
+</script>
+
+<script type="module">
+    import * as THREE from 'three';
+    import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+
+    // Scene Setup
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    const renderer = new THREE.WebGLRenderer({ antialias: true });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    document.body.appendChild(renderer.domElement);
+
+    const controls = new OrbitControls(camera, renderer.domElement);
+    camera.position.set(5, 5, 8);
+
+    // Lights
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
+    scene.add(ambientLight);
+    const dirLight = new THREE.DirectionalLight(0xffffff, 1);
+    dirLight.position.set(5, 10, 5);
+    scene.add(dirLight);
+
+    // Materials
+    const matA = new THREE.MeshPhongMaterial({ color: 0xff3333, transparent: true, opacity: 0.8 }); // Red Sublattice
+    const matB = new THREE.MeshPhongMaterial({ color: 0x3388ff, transparent: true, opacity: 0.8 }); // Blue Sublattice
+    const arrowMat = new THREE.MeshPhongMaterial({ color: 0xffff00 });
+
+    const atoms = [];
+    const arrows = [];
+    let isReversed = false;
+
+    // Create Lattice
+    const size = 3;
+    const spacing = 2.5;
+
+    for (let x = 0; x < size; x++) {
+        for (let y = 0; y < size; y++) {
+            for (let z = 0; z < size; z++) {
+                const isSublatticeA = (x + y + z) % 2 === 0;
+                
+                // Atom Environment (Ellipsoid representing crystal field)
+                const geometry = new THREE.SphereGeometry(0.6, 32, 16);
+                const atom = new THREE.Mesh(geometry, isSublatticeA ? matA : matB);
+                
+                // The "Alter" part: Rotate the environment of sublattice B by 90 degrees
+                if (isSublatticeA) {
+                    atom.scale.set(1.5, 0.8, 0.8); // Elongated X
+                } else {
+                    atom.scale.set(0.8, 1.5, 0.8); // Elongated Y
+                }
+
+                atom.position.set(x * spacing - 2.5, y * spacing - 2.5, z * spacing - 2.5);
+                scene.add(atom);
+                atoms.push(atom);
+
+                // Spin Arrow
+                const arrowGroup = new THREE.Group();
+                const shaftGeom = new THREE.CylinderGeometry(0.05, 0.05, 1.2);
+                const headGeom = new THREE.ConeGeometry(0.15, 0.3);
+                
+                const shaft = new THREE.Mesh(shaftGeom, arrowMat);
+                const head = new THREE.Mesh(headGeom, arrowMat);
+                head.position.y = 0.6;
+                
+                arrowGroup.add(shaft);
+                arrowGroup.add(head);
+                
+                // Initial Spin Orientation
+                if (!isSublatticeA) {
+                    arrowGroup.rotation.z = Math.PI; // Point Down
+                }
+
+                arrowGroup.position.copy(atom.position);
+                scene.add(arrowGroup);
+                arrows.push({ group: arrowGroup, sublatticeA: isSublatticeA });
+            }
+        }
+    }
+
+    // Animation Logic
+    window.toggleTimeReversal = function() {
+        isReversed = !isReversed;
+        const statusText = document.getElementById('status');
+        statusText.innerHTML = isReversed ? "Status: <span class='label' style='color:#ff4444'>T-Reversed (Broken Symmetry!)</span>" : "Status: <span class='label'>Original State</span>";
+
+        arrows.forEach(item => {
+            const targetRotation = item.sublatticeA 
+                ? (isReversed ? Math.PI : 0) 
+                : (isReversed ? 0 : Math.PI);
+            
+            // Subtle animation for the flip
+            item.group.rotation.z = targetRotation;
+        });
+    };
+
+    function animate() {
+        requestAnimationFrame(animate);
+        controls.update();
+        renderer.render(scene, camera);
+    }
+
+    animate();
+
+    // Resize handler
+    window.addEventListener('resize', () => {
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+    });
+</script>
+</body>
+</html>

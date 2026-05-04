@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
   <title>Seminar 8: Optical Probes of Altermagnetism</title>
-  <link rel="stylesheet" href="styles.css">
+
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.6.1/reset.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.6.1/reveal.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.6.1/reveal.min.css">
@@ -18,7 +18,7 @@
 
     :root {
       --background-color: #f8f9fa;
-      --section-divider-bg: #005531;
+      --section-divider-bg: #003d24;
       --heading-font: "Source Serif 4", Georgia, serif;
       --body-font: "Source Sans 3", Helvetica, sans-serif;
       --base-font-size: 32px;
@@ -28,11 +28,11 @@
       --h3-size: 22pt;
       --footnote-size: 11pt;
       --header-color: #ffffff;
-      --primary-color: #005531;
-      --secondary-color: #bc5f26;
+      --primary-color: #003d24;
+      --secondary-color: #d19773;
       --text-color: #212529;
       --muted-color: #6c757d;
-      --line-color: #005531;
+      --line-color: #003d24;
       --slide-padding: 30px;
       --slide-padding-top: 20px;
       --content-gap: 20px;
@@ -47,11 +47,6 @@
 
     .reveal-viewport {
       background-color: var(--background-color);
-    }
-
-    .reveal strong,
-    .reveal b {
-      font-weight: bold;
     }
 
     .reveal .slides section {
@@ -109,34 +104,21 @@
     .reveal ul {
       list-style: none;
       padding-left: 0;
-      margin: 15px 0;
     }
 
     .reveal ul li {
       position: relative;
-      padding-left: 25px;
-      margin-bottom: 10px;
+      padding-left: 30px;
+      margin-bottom: 15px;
     }
 
     .reveal ul li::before {
-      content: '';
+      content: '■';
       position: absolute;
       left: 0;
-      top: 0.6em;
-      width: 8px;
-      height: 8px;
-      background-color: var(--text-color);
-      border-radius: 50%;
-    }
-
-    .reveal ul ul li::before {
-      background: var(--muted-color);
-      width: 6px;
-      height: 6px;
-    }
-
-    .reveal blockquote p {
-      font-size: inherit;
+      top: 0.05em;
+      color: var(--secondary-color);
+      font-size: 1.2em;
     }
 
     .reveal .footnote {
@@ -204,6 +186,7 @@
     .reveal .failure { color: #dc3545; font-weight: bold; }
     .reveal .indirect { color: #fd7e14; font-weight: bold; }
     .reveal .method { color: #17a2b8; font-weight: bold; }
+
   </style>
 </head>
 
@@ -215,12 +198,12 @@
       <section>
         <h1>Probing the Hidden Spin-Splitting</h1>
         <h3>Optical & Magneto-Optical Signatures of Altermagnetism</h3>
-        <p style="margin-top: 170px;">
+        <p style="margin-top: 50px;">
           <strong>Jakob Wallner</strong><br>
           <em>University of Stuttgart</em>
         </p>
-        <p style="margin-top: 50px;">Talk 8 of 12
-          <br>26.05.2026
+        <p class="text-muted" style="margin-top: 100px;">
+          Altermagnetism Seminar Series: Talk 8 of 12
         </p>
         <aside class="notes">
           Welcome everyone. For our eighth seminar, we're shifting our focus from the surface-sensitive techniques like ARPES, which have beautifully mapped out the altermagnetic band structures, to the bulk. Today, we will explore how we use light—photons—as a clean, powerful probe of the unique electronic properties deep inside these fascinating materials. We will cover the fundamental theory of how altermagnetism manifests in the optical response, discuss the state-of-the-art experimental techniques required to measure it, and then dive into a critical comparison of recent results on key material candidates.
@@ -231,20 +214,15 @@
       <section>
         <h2>Context: From Surface to Bulk Probes</h2>
         <div class="content">
-          <div class="concept-card" style="background: #cccccc39;">
           <ul>
             <li>
-              <strong>Previous Talks:</strong> Established the theoretical framework of altermagnetism, including Landau theory, spin-space groups, and the crucial role of non-symmorphic symmetries.
+              <strong>Previous Seminars (1-7):</strong> Established the theoretical framework of altermagnetism, including Landau theory, spin-space groups, and the crucial role of non-symmorphic symmetries.
             </li>
             <li>
-              <strong>ARPES (Topic 4):</strong> Provided the first direct visualization of the momentum-dependent spin-splitting ($E(\mathbf{k},\uparrow) \neq E(\mathbf{k},\downarrow)$) at the material's surface.
+              <strong>ARPES (e.g., Topic 4):</strong> Provided the first direct visualization of the momentum-dependent spin-splitting ($E(\mathbf{k},\uparrow) \neq E(\mathbf{k},\downarrow)$) at the material's surface.
             </li>
-          </ul>
-          </div>
-          <div class="concept-card";  style="background: #c1e6d228; margin-top: 10px;">
-          <ul>
             <li>
-              <strong>My Focus:</strong> We move from the surface to the bulk. Optical spectroscopy measures the integrated response of the entire electronic band structure, making it a complementary and essential probe.
+              <strong>Today's Focus (Topic 8):</strong> We move from the surface to the bulk. Optical spectroscopy measures the integrated response of the entire electronic band structure, making it a complementary and essential probe.
             </li>
             <li>
               <strong>Central Question:</strong> How does the unique spin-splitting of altermagnets, without a net magnetization, manifest in their interaction with light?
@@ -258,23 +236,12 @@
 
       <!-- SLIDE 3: The Dielectric Tensor -->
       <section>
-        <h2>Off-Diagonal Optical Conductivity</h2>
-          <ul style="margin-top: 5px;">
-            <li>
-              The interaction of light with a medium: $D = \varepsilon_0 \tilde{\varepsilon}_{ij} E$ <br>complex optical conductivity tensor, $\tilde{\sigma}_{ij}(\omega)$ or dielectric tensor, $\tilde{\varepsilon}_{ij}(\omega)$: .
-            </li>
-          </ul>
-          <div style="display:grid; grid-template-columns: 1fr 1fr; gap:18px;">
-            <div class="concept-card">
-              <h3 style="font-size: 22px;">Without Magnetization</h3>
-              <p>$$\tilde{\varepsilon} = \begin{pmatrix} {\varepsilon}_{xx} & 0 & 0 \\ 0 & {\varepsilon}_{xx} & 0 \\ 0 & 0 & {\varepsilon}_{xx} \end{pmatrix}$$</p>
-            </div>
-            <div class="concept-card">
-              <h3 style="font-size: 22px;">With Magnetization</h3>
-              <p>$$\tilde{\varepsilon} = \begin{pmatrix} \tilde{\varepsilon}_{xx} & \tilde{\varepsilon}_{xy} & 0 \\ -\tilde{\varepsilon}_{xy} & \tilde{\varepsilon}_{xx} & 0 \\ 0 & 0 & \tilde{\varepsilon}_{zz} \end{pmatrix}$$</p>
-            </div>
-          </div>
+        <h2>The "Smoking Gun": Off-Diagonal Optical Conductivity</h2>
+        <div class="content">
           <ul>
+            <li>
+              The interaction of light with a medium is described by the complex optical conductivity tensor, $\tilde{\sigma}_{ij}(\omega)$.
+            </li>
             <li>
               Time-reversal symmetry ($\mathcal{T}$) breaking is required for non-zero off-diagonal elements ($\tilde{\sigma}_{xy} \neq 0$).
             </li>
@@ -284,7 +251,17 @@
             <li>
               In altermagnets, $\mathbf{M}=0$. However, the combined symmetry of $\mathcal{T}$ and a crystal rotation/translation is broken by the spin order. This is sufficient to allow $\tilde{\sigma}_{xy} \neq 0$.
             </li>
+            <li>
+              The complex Kerr effect directly probes this tensor:
+              <br>
+              $\theta_K + i\eta_K \propto \tilde{\sigma}_{xy}(\omega)$
+              <ul>
+                <li>$\theta_K$ (Rotation) $\leftrightarrow$ Dispersive part, Im($\tilde{\sigma}_{xy}$)</li>
+                <li>$\eta_K$ (Ellipticity) $\leftrightarrow$ Dissipative part, Re($\tilde{\sigma}_{xy}$)</li>
+              </ul>
+            </li>
           </ul>
+        </div>
         <div class="footnote">
           Sato & Ishibashi, Front. Phys. (2022); Iguchi et al., Phys. Rev. Research (2025)
         </div>
@@ -293,64 +270,22 @@
         </aside>
       </section>
 
-      <!-- SLIDE 3a: Kerr Effect -->
-      <section>
-        <h2>The Magneto-Optical Kerr Effect</h2>
-        <div style="display:grid; grid-template-columns: 1.5fr 1fr; gap:18px;">
-          <div>
-            <p>The complex Kerr effect directly probes this tensor:
-            <br>
-            $$\theta_K + i\eta_K \propto \tilde{\sigma}_{xy}(\omega)$$</p>
-            <ul>
-              <li>$\theta_K$ (Rotation) $\leftrightarrow$ Dispersive part, Im($\tilde{\sigma}_{xy}$)</li>
-              <li>$\eta_K$ (Ellipticity) $\leftrightarrow$ Dissipative part, Re($\tilde{\sigma}_{xy}$)</li>
-            </ul>
-            <div class="concept-card" style="margin-top: 90px;">
-              <h3>Polarization Conventions:</h3>
-              <ul>
-                <li><strong>a:</strong> polar</li>
-                <li><strong>b:</strong> longitudinal</li>
-                <li><strong>c:</strong> transversal</li>
-              </ul>
-            </div>
-          </div>
-          <div class="concept-card">
-            <img src="kerr.svg" alt="Kerr effect graphic" style="max-width: auto; height: 500px; margin-left: 0px;">
-          </div>
-        </div>
-      </section>
-
       <!-- SLIDE 4: MOKKA -->
       <section>
-        <h2>Kramers-Kronig Relations</h2>
-        <div style="display:grid; grid-template-columns: 1fr 1.7fr; gap:18px;">
-          <p><strong>Concept:</strong> Relate the real and imaginary parts of a response function. <br>
-          <strong>Condition:</strong> Must be a response function (analytic in the upper half-plane). <br>
-          <strong>Application:</strong> In MOKKA, we treat $f(\omega)$ as a response function, allowing us to extract the dichroism ratio from the Kerr angle.
-          </p>
-          <div class="concept-card">
-            <img src="Kramersgifwiki.gif" alt="Kramers Kronig relations animation" style="max-width: 550px; height: auto; margin-top: 20px;">
-          </div>
-        </div>
-        <p>$$ \text{Re}[f(\omega)] = \frac{1}{\pi} \mathcal{P} \int_{-\infty}^{\infty} \frac{\text{Im}[f(x)]}{x - \omega} dx \hspace{2em} \text{Im}[f(\omega)] = -\frac{1}{\pi} \mathcal{P} \int_{-\infty}^{\infty} \frac{\text{Re}[f(x)]}{x - \omega} dx $$</p>
-        <div class="footnote">https://upload.wikimedia.org/wikipedia/commons/4/45/Kramersgifwiki.gif: 03.05.2026</div>
-      </section>
-
-
-      <section>
-        <h2><strong style="color:#000000">M</strong>agneto-<strong style="color:#000000">O</strong>ptical <strong style="color:#000000">K</strong>ramers-<strong style="color:#000000">K</strong>ronig <strong style="color:#000000">A</strong>nalysis</h2>
+        <h2>MOKKA: A Masterclass in Optical Extraction</h2>
         <div class="content">
+          <p>The **Magneto-Optical Kramers-Kronig Analysis (MOKKA)** is a powerful technique to extract the full handedness-resolved dielectric tensor using only linear polarizers.</p>
           <ol>
-            <li><strong>Measurement:</strong> Use linear polarizers to get total reflectivity $R(\omega)$ and Kerr rotation $\theta_K(\omega)$.</li>
+            <li><strong>Measure:</strong> Use linear polarizers to get total reflectivity $R(\omega)$ and Kerr rotation $\theta_K(\omega)$.</li>
             <li><strong>Define Auxiliary Function:</strong> $f(\omega) = \ln\left(\frac{\tilde{r}_-}{\tilde{r}_+}\right) = \ln c(\omega) + 2i\theta_K(\omega)$</li>
             <li><strong>Apply Kramers-Kronig:</strong> Since $f(\omega)$ is causal, we can calculate the real part (dichroism ratio $c(\omega)$) from the measured imaginary part ($\theta_K(\omega)$).
               $$
               \ln c(\omega) = \frac{2\omega}{\pi} \mathcal{P} \int_0^\infty \frac{2\theta_K(x)}{x^2 - \omega^2} dx
               $$
             </li>
-            <li><strong>Reconstruct & Solve:</strong> With $\left[R = (R_+ + R_-)/2\right]$ and $\left[c = R_-/R_+\right]$, we solve for $R_+$ and $R_-$ individually. A final KK transform on these yields the full complex $\tilde{r}_\pm(\omega)$.</li>
+            <li><strong>Reconstruct & Solve:</strong> With $R = (R_+ + R_-)/2$ and $c = R_-/R_+$, we solve for $R_+$ and $R_-$ individually. A final KK transform on these yields the full complex $\tilde{r}_\pm(\omega)$.</li>
           </ol>
-          <div class="concept-card" style="margin-top: 20px;"><p>This method avoids the spectral limitations of wave plates and is highly sensitive to small signals, making it ideal for altermagnets.</p></div>
+          <p>This method avoids the spectral limitations of wave plates and is highly sensitive to small signals, making it ideal for altermagnets.</p>
         </div>
         <div class="footnote">
           Levallois et al., Rev. Sci. Instrum. 86, 033906 (2015)
@@ -359,7 +294,6 @@
           Measuring the tiny MO signals in altermagnets requires extreme precision. Standard techniques like ellipsometry, which use quarter-wave plates, are often plagued by chromatic aberrations and are difficult to implement over a broad energy range. MOKKA is the superior solution. It's a brilliant experimental and analytical protocol. The core idea is to leverage the fundamental principle of causality, embodied by the Kramers-Kronig relations. We start by measuring two simple quantities with linear polarizers: the total reflectivity and the Kerr rotation angle. The mathematical trick is to recognize that the logarithm of the ratio of the left- and right-handed complex reflectivities is itself a causal response function. We have measured its imaginary part—the Kerr angle. Therefore, we can use the Kramers-Kronig integral to calculate its real part, which is the logarithm of the circular dichroism ratio. Once we have both the sum and the ratio of the reflectivities, we can algebraically separate them. A final KK transform gives us the phases, and we have the complete optical response without ever touching a wave plate.
         </aside>
       </section>
-
       
       <!-- SLIDE 5: MOKKA Fast Protocol -->
       <section>
@@ -391,10 +325,10 @@
 
       <!-- SLIDE 6: The Organic Success: κ-Cl -->
       <section>
-        <h2>Success in Organic Altermagnet $\kappa$-Cl</h2>
+        <h2>Case Study 1: Success in Organic Altermagnet $\kappa$-Cl</h2>
         <div class="content">
-          <div style="display:grid; grid-template-columns: 1.2fr 1fr; gap:18px;">
-            <div>
+          <div class="columns">
+            <div class="column">
               <ul>
                 <li>
                   <strong>Material:</strong> $\kappa$-(BEDT-TTF)₂Cu[N(CN)₂]Cl, a quasi-2D organic Mott insulator.
@@ -410,8 +344,8 @@
                 </li>
               </ul>
             </div>
-            <div>
-              <img src="kclmoke.png" alt="Diagram of non-linear MOKE response in kappa-Cl" style="width: 400px; height: auto">
+            <div class="column">
+              <img src="https://i.imgur.com/8aZ2gqf.png" alt="Diagram of non-linear MOKE response in kappa-Cl">
               <p style="text-align:center; font-size: 12pt;">Fig: Non-linear field dependence of Kerr rotation in $\kappa$-Cl. The signal emerges sharply around 6-7 T, inconsistent with a simple canted moment.</p>
             </div>
           </div>
@@ -459,33 +393,27 @@
       <section>
         <h2>Case Study 2: The RuO₂ Controversy</h2>
         <div class="content">
-          <p>RuO₂ was a canonical theoretical candidate for altermagnetism. However, optical spectroscopy on high-quality <highlight>bulk crystals</highlight> tells a different story.</p>
-          <h3 style="margin-top: 20px;">Finding 1: The Plasma Frequency</h3>
+          <p>RuO₂ was a canonical theoretical candidate for altermagnetism. However, optical spectroscopy on high-quality **bulk crystals** tells a different story.</p>
+          <div class="columns">
+            <div class="column">
+              <h3>Finding 1: The Plasma Frequency</h3>
               <ul>
                 <li>The low-energy (intraband) response was used to extract the plasma frequency, $\omega_p$.</li>
                 <li>$\omega_p$ depends on carrier density and effective mass ($m^*$).</li>
-                <li><strong>Result:</strong> The experimental $\omega_p$ perfectly matched DFT calculations for a <highlight></highlight>non-magnetic</highlight> metal.</li>
+                <li><strong>Result:</strong> The experimental $\omega_p$ perfectly matched DFT calculations for a **non-magnetic** metal.</li>
                 <li>The altermagnetic model, which requires correlations that increase $m^*$, predicted a much lower $\omega_p$, contradicting the data.</li>
               </ul>
-        </div>
-        <div class="footnote">
-          Wenzel et al., Phys. Rev. B 111, L041115 (2025)
-        </div>
-        <aside class="notes">
-          The case of Ruthenium Dioxide is a crucial lesson in scientific rigor. It was predicted by many theories to be a model altermagnet. However, when Wenzel and colleagues performed careful broadband infrared spectroscopy on high-quality bulk single crystals, their findings contradicted the magnetic theory. They found two "killer" pieces of evidence. First, they analyzed the Drude response of the free carriers to determine the plasma frequency. This value was in excellent agreement with calculations for a simple, non-magnetic metal. The altermagnetic theory, which requires electronic correlations, would have resulted in a significantly different value. Second, and perhaps more decisively, they observed a sharp "Pauli edge" in the interband absorption spectrum. This feature is a direct fingerprint of a specific topological feature—a Dirac nodal line—that exists only in the non-magnetic band structure of RuO2. The altermagnetic state would eliminate this feature. Seeing it so clearly in the experiment is strong evidence that the bulk ground state is, in fact, non-magnetic.
-        </aside>
-      </section>
-      <section>
-        <h2>Case Study 2: The RuO₂ Controversy</h2>
-        <div class="content">
-          <p>RuO₂ was a canonical theoretical candidate for altermagnetism. However, optical spectroscopy on high-quality <highlight>bulk crystals</highlight> tells a different story.</p>
-          <h3 style="margin-top: 20px;">Finding 2: The Pauli Edge</h3>
+            </div>
+            <div class="column">
+              <h3>Finding 2: The Pauli Edge</h3>
               <ul>
                 <li>The high-energy (interband) conductivity shows a sharp absorption onset at 90 meV.</li>
-                <li>This is a textbook <highlight></highlight>Pauli Edge</highlight>, a fingerprint of a Dirac nodal line in the band structure.</li>
-                <li><strong>Result:</strong> This nodal line is a key feature of the <highlight>non-magnetic</highlight> band structure of RuO₂.</li>
-                <li>The altermagnetic state would destroy this feature. Its clear observation is strong evidence <highlight>against</highlight> altermagnetism in the bulk.</li>
+                <li>This is a textbook **Pauli Edge**, a fingerprint of a Dirac nodal line in the band structure.</li>
+                <li><strong>Result:</strong> This nodal line is a key feature of the **non-magnetic** band structure of RuO₂.</li>
+                <li>The altermagnetic state would destroy this feature. Its clear observation is strong evidence *against* altermagnetism in the bulk.</li>
               </ul>
+            </div>
+          </div>
         </div>
         <div class="footnote">
           Wenzel et al., Phys. Rev. B 111, L041115 (2025)
@@ -499,14 +427,14 @@
       <section>
         <h2>The Final Nail: Fermi-Liquid Behavior in RuO₂</h2>
         <div class="content">
-            <p>The intraband carrier dynamics provided the final piece of the puzzle. The data was analyzed using an <highlight>Extended Drude Model</highlight> to account for electron-electron scattering.</p>
+            <p>The intraband carrier dynamics provided the final piece of the puzzle. The data was analyzed using an **Extended Drude Model** to account for electron-electron scattering.</p>
             <ul>
                 <li>The model assumes a scattering rate that depends on temperature and frequency:
                 $$
                 1/\tau(\omega, T) = 1/\tau_0 + A \cdot [(\hbar\omega)^2 + (p\pi k_B T)^2]
                 $$
                 </li>
-                <li>This quadratic dependence is the textbook signature of a <highlight>Fermi Liquid</highlight>, a well-behaved paramagnetic metal.</li>
+                <li>This quadratic dependence is the textbook signature of a **Fermi Liquid**—a well-behaved paramagnetic metal.</li>
                 <li>The experimental data for RuO₂ fit this model perfectly, confirming its non-magnetic, metallic ground state.</li>
             </ul>
             <blockquote>
@@ -528,10 +456,10 @@
           <p>Even if the electronic MO signal is weak, magnetism can be detected indirectly through its coupling to the lattice, as shown in the Weyl ferromagnet Co₃Sn₂S₂.</p>
           <ul>
             <li>
-              <strong>Observation:</strong> Infrared-active phonons show <highlight>Circular Dichroism (CD)</highlight>, meaning they absorb left- and right-circularly polarized light differently.
+              <strong>Observation:</strong> Infrared-active phonons show **Circular Dichroism (CD)**, meaning they absorb left- and right-circularly polarized light differently.
             </li>
             <li>
-              <strong>Mechanism:</strong> This is not an intrinsic phonon property. It arises from <highlight>Fano Resonance</highlight>, an interference between the discrete phonon and the continuous electronic excitations of the chiral Weyl fermions.
+              <strong>Mechanism:</strong> This is not an intrinsic phonon property. It arises from **Fano Resonance**—an interference between the discrete phonon and the continuous electronic excitations of the chiral Weyl fermions.
             </li>
             <li>
               The lineshape asymmetry, quantified by the Fano parameter $q$, measures the electron-phonon coupling strength:
@@ -583,20 +511,17 @@
               </tr>
             </tbody>
           </table>
-        </div>
-        <aside class="notes">
-          To bring everything together, we've seen that optical spectroscopy is a crucial tool in the altermagnetism toolkit. It provides a bulk-sensitive probe that is complementary to surface techniques like ARPES. We've established that the off-diagonal optical conductivity is the key fingerprint we're looking for, and that advanced techniques like MOKKA are required to measure it accurately. The tale of kappa-Cl and RuO2 serves as a perfect illustration of both the power of this approach and the need for scientific rigor. The non-linear field dependence and, most importantly, the massive energy scale mismatch in kappa-Cl provide compelling evidence for altermagnetism. In contrast, the clear signatures of a non-magnetic Fermi liquid in bulk RuO2 show that we must always test against alternative hypotheses. The future lies in applying these rigorous optical methods to the growing family of altermagnet candidates. Thank you for your attention, and I'd be happy to take any questions.
-        </aside>
-      </section>
-      <section>
-        <h2 style="margin-top: 0px; text-align: center;">Questions?</h2>
-        
-        <h3 style="margin-top: 100px;">Key Takeaways:</h3>
+          <h3>Key Takeaways:</h3>
           <ul>
             <li>The off-diagonal conductivity $\tilde{\sigma}_{xy}(\omega)$ is the primary fingerprint.</li>
             <li>MOKKA is the state-of-the-art technique for its extraction.</li>
             <li>A critical comparison of energy scales ($E_{splitting}$ vs. $\lambda_{SOC}$) is essential to rule out conventional effects.</li>
           </ul>
+          <h2 style="margin-top: 50px; text-align: center;">Questions?</h2>
+        </div>
+        <aside class="notes">
+          To bring everything together, we've seen that optical spectroscopy is a crucial tool in the altermagnetism toolkit. It provides a bulk-sensitive probe that is complementary to surface techniques like ARPES. We've established that the off-diagonal optical conductivity is the key fingerprint we're looking for, and that advanced techniques like MOKKA are required to measure it accurately. The tale of kappa-Cl and RuO2 serves as a perfect illustration of both the power of this approach and the need for scientific rigor. The non-linear field dependence and, most importantly, the massive energy scale mismatch in kappa-Cl provide compelling evidence for altermagnetism. In contrast, the clear signatures of a non-magnetic Fermi liquid in bulk RuO2 show that we must always test against alternative hypotheses. The future lies in applying these rigorous optical methods to the growing family of altermagnet candidates. Thank you for your attention, and I'd be happy to take any questions.
+        </aside>
       </section>
 
     </div>

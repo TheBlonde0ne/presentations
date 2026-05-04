@@ -19,110 +19,108 @@
 		<div class="slides">
             <!-- TITLE SLIDE -->
             <section class="section-divider" data-state="is-section-divider">
-                <header>Jakob Wallner</header>
 				<h1>Simulating Methanol</h1>
 				<p>From foundation-model to taylored ML-Potential</p>
+                <h2 style="color: var(--header-color)">Jakob Wallner</h2 >
 			</section>
 
 			<!-- Theory -->
+
 			<section id="Theory-MD">
-
+    			<h2>Molecular Dynamics (MD)</h2>
+    			<hr />
+    			<div class="content">
+    			    <div class="concept-card">
+    			        <h3>Classical & ML Potentials</h3>
+    			        <p>
+    			            Iterative calculation of atomic interactions to predict system behavior over time using the <strong>equation of motion</strong> derived from Newton's second law:
+    			            <br />
+    			            $$ m \frac{d^2 \mathbf{r}}{dt^2} = -\nabla V(\mathbf{r}) $$
+    			        </p>
+    			    </div>
+    			    <ul style="margin-top: 20px;">
+    			        <li><strong>NVT Ensemble:</strong> Constant Number of particles, Volume, and Temperature, controlled via a <strong>Langevin thermostat</strong> (later Nose-Hoover) which adds stochastic terms.</li>
+    			        <li><strong>Numerical Integration:</strong> Algorithms like the Verlet method iteratively update positions and velocities based on recalculated forces.</li>
+    			        <li><strong>Ergodic Hypothesis:</strong> Connects time averages from trajectories to ensemble averages, allowing for the calculation of thermodynamic properties.</li>
+    			    </ul>
+    			</div>
 			</section>
+
+			<section id="Theory-DFT">
+			    <h2>Density Functional Theory (DFT)</h2>
+			    <hr />
+			    <div class="content">
+			        <div class="concept-card">
+			            <h3>Electronic Structure</h3>
+			            <p>
+			                Describes many-body systems via electron density \(\rho(\mathbf{r})\) rather than wavefunctions, utilizing the <strong>Kohn-Sham equations</strong> to find a self-consistent field:
+			                $$ V_{s}(\mathbf{r}) = V_{\text{ext}}(\mathbf{r}) + V_H(\mathbf{r}) + V_{\text{xc}}(\mathbf{r}) $$
+			            </p>
+			        </div>
+			        <ul style="margin-top: 20px;">
+			            <li><strong>Hohenberg-Kohn Theorems:</strong> Ground-state properties are uniquely determined by the electron density through a universal functional \(E[\rho]\).</li>
+			            <li><strong>Approximations:</strong> Necessary due to complexity; includes LCAO, the Born-Oppenheimer approximation, and exchange-correlation functionals (LDA, GGA).</li>
+			        </ul>
+			    </div>
+			</section>
+
+			<section id="Theory-D3">
+			    <h2>Dispersion Correction (D3)</h2>
+			    <hr />
+			    <div class="content">
+			        <div class="concept-card">
+			            <h3>Capturing Long-Range Effects</h3>
+			            <p>
+			                Standard DFT often fails to capture van der Waals interactions. The <strong>Grimme-D3 method</strong> adds an empirical energy term to the DFT total energy:
+							\[ E_{\text{disp}} = - \sum_{i&lt;j} \sum_\mathbf{L} \left( \frac{C_6^{ij}}{R_{ij}^6} f_{d,6}(R_{ij}) + \frac{C_8^{ij}}{R_{ij}^8} f_{d,8}(R_{ij}) \right) \]
+			            </p>
+			        </div>
+			        <ul style="margin-top: 20px;">
+			            <li><strong>Pairwise Additive:</strong> Based on atom-pair coefficients \((C_n^{ij})\) and distances \((R_{ij})\).</li>
+			            <li><strong>Damping Functions:</strong> Critical for preventing the correction from diverging at short interatomic distances where DFT is already effective.</li>
+			        </ul>
+			    </div>
+			</section>
+
 			<section>
-    <h2>Molecular Dynamics (MD)</h2>
-    <hr />
-    <div class="content">
-        <div class="concept-card">
-            <h3>Classical & ML Potentials</h3>
-            <p>
-                Iterative calculation of atomic interactions to predict system behavior over time using the <strong>equation of motion</strong> derived from Newton's second law:
-                <br />
-                $$ m \frac{d^2 \mathbf{r}}{dt^2} = -\nabla V(\mathbf{r}) $$
-            </p>
-        </div>
-        <ul style="margin-top: 20px;">
-            <li><strong>NVT Ensemble:</strong> Constant Number of particles, Volume, and Temperature, controlled via a <strong>Langevin thermostat</strong> (later Nose-Hoover) which adds stochastic terms.</li>
-            <li><strong>Numerical Integration:</strong> Algorithms like the Verlet method iteratively update positions and velocities based on recalculated forces.</li>
-            <li><strong>Ergodic Hypothesis:</strong> Connects time averages from trajectories to ensemble averages, allowing for the calculation of thermodynamic properties.</li>
-        </ul>
-    </div>
-</section>
+			    <h2>Neural Network Foundations</h2>
+			    <hr />
+			    <div class="content">
+			        <div class="concept-card">
+			            <h3>Deep Learning for PES</h3>
+			            <p>
+			                Utilizes stacked layers of artificial neurons to approximate complex potential energy surfaces (PES). Each layer performs matrix operations followed by a non-linear activation (e.g., ReLU):
+			                <br />
+			                Stacked layers perform matrix operations with non-linear activation:
+			                $$ \mathbf{a}^{(l)} = f(\mathbf{W}^{(l)} \cdot \mathbf{a}^{(l-1)} + \mathbf{b}^{(l)}) $$
+			            </p>
+			        </div>
+			        <ul style="margin-top: 20px;">
+			            <li><strong>Local Atomic Partitioning:</strong> The total energy is the sum of contributions from individual atoms based on their local environment: \(E_{\text{total}} = \sum_i E_i\).</li>
+			            <li><strong>Descriptors (GMNN):</strong> Transforms geometry into numerical vectors invariant under translation, rotation, and permutation.</li>
+			            <li><strong>Automatic Differentiation:</strong> Forces are obtained analytically from the energy prediction, ensuring thermodynamic stability.</li>
+			        </ul>
+			    </div>
+			</section>
 
-<section>
-    <h2>Density Functional Theory (DFT)</h2>
-    <hr />
-    <div class="content">
-        <div class="concept-card">
-            <h3>Electronic Structure</h3>
-            <p>
-                Describes many-body systems via electron density $\rho(\mathbf{r})$ rather than wavefunctions, utilizing the <strong>Kohn-Sham equations</strong> to find a self-consistent field:
-                $$ V_{s}(\mathbf{r}) = V_{\text{ext}}(\mathbf{r}) + V_H(\mathbf{r}) + V_{\text{xc}}(\mathbf{r}) $$
-            </p>
-        </div>
-        <ul style="margin-top: 20px;">
-            <li><strong>Hohenberg-Kohn Theorems:</strong> Ground-state properties are uniquely determined by the electron density through a universal functional \(E[\rho]\).</li>
-            <li><strong>Approximations:</strong> Necessary due to complexity; includes LCAO, the Born-Oppenheimer approximation, and exchange-correlation functionals (LDA, GGA).</li>
-        </ul>
-    </div>
-</section>
-
-<section>
-    <h2>Dispersion Correction (D3)</h2>
-    <hr />
-    <div class="content">
-        <div class="concept-card">
-            <h3>Capturing Long-Range Effects</h3>
-            <p>
-                Standard DFT often fails to capture van der Waals interactions. The <strong>Grimme-D3 method</strong> adds an empirical energy term to the DFT total energy:
-				\[ E_{\text{disp}} = - \sum_{i&lt;j} \sum_\mathbf{L} \left( \frac{C_6^{ij}}{R_{ij, L}^6} f_{d,6}(R_{ij, L}) + \frac{C_8^{ij}}{R_{ij, L}^8} f_{d,8}(R_{ij, L}) \right) \]
-            </p>
-        </div>
-        <ul style="margin-top: 20px;">
-            <li><strong>Pairwise Additive:</strong> Based on atom-pair coefficients <math><msub><mi>C</mi><mi>n</mi></msub></math> and distances <math><mi>R</mi></math>.</li>
-            <li><strong>Damping Functions:</strong> Critical for preventing the correction from diverging at short interatomic distances where DFT is already effective.</li>
-        </ul>
-    </div>
-</section>
-
-<section>
-    <h2>Neural Network Foundations</h2>
-    <hr />
-    <div class="content">
-        <div class="concept-card">
-            <h3>Deep Learning for PES</h3>
-            <p>
-                Utilizes stacked layers of artificial neurons to approximate complex potential energy surfaces (PES). Each layer performs matrix operations followed by a non-linear activation (e.g., ReLU):
-                <br />
-                Stacked layers perform matrix operations with non-linear activation:
-                $$ \mathbf{a}^{(l)} = f(\mathbf{W}^{(l)} \cdot \mathbf{a}^{(l-1)} + \mathbf{b}^{(l)}) $$
-            </p>
-        </div>
-        <ul style="margin-top: 20px;">
-            <li><strong>Local Atomic Partitioning:</strong> The total energy is the sum of contributions from individual atoms based on their local environment: \(E_{\text{total}} = \sum_i E_i\).</li>
-            <li><strong>Descriptors (GMNN):</strong> Transforms geometry into numerical vectors invariant under translation, rotation, and permutation.</li>
-            <li><strong>Automatic Differentiation:</strong> Forces are obtained analytically from the energy prediction, ensuring thermodynamic stability.</li>
-        </ul>
-    </div>
-</section>
-
-<section>
-    <h2>Uncertainty Quantification (UQ)</h2>
-    <hr />
-    <div class="content">
-        <div class="concept-card">
-            <h3>Shallow Ensembles</h3>
-            <p>
-                Assessing model confidence using an ensemble with a shared backbone but randomly initialized last layers. Uncertainty is calculated as the variance across predictions:
-                <br />
-                \[ \sigma_x = \sqrt{\frac{1}{M-1} \sum_{m=1}^{M} (x_m - \bar{x})^2} \]
-            </p>
-        </div>
-        <ul style="margin-top: 20px;">
-            <li><strong>Active Learning:</strong> High variance \(\sigma_x\) identifies configurations where the model is unconfident, signaling a need for new DFT training data.</li>
-            <li><strong>Stability:</strong> Monitoring uncertainty during MD runs prevents simulations from entering non-physical regions of the configuration space.</li>
-        </ul>
-    </div>
-</section>
+			<section>
+			    <h2>Uncertainty Quantification (UQ)</h2>
+			    <hr />
+			    <div class="content">
+			        <div class="concept-card">
+			            <h3>Shallow Ensembles</h3>
+			            <p>
+			                Assessing model confidence using an ensemble with a shared backbone but randomly initialized last layers. Uncertainty is calculated as the variance across predictions:
+			                <br />
+			                \[ \sigma_x = \sqrt{\frac{1}{M-1} \sum_{m=1}^{M} (x_m - \bar{x})^2} \]
+			            </p>
+			        </div>
+			        <ul style="margin-top: 20px;">
+			            <li><strong>Active Learning:</strong> High variance \(\sigma_x\) identifies configurations where the model is unconfident, signaling a need for new DFT training data.</li>
+			            <li><strong>Stability:</strong> Monitoring uncertainty during MD runs prevents simulations from entering non-physical regions of the configuration space.</li>
+			        </ul>
+			    </div>
+			</section>
 
 			<!-- TASK 0: PROJECT GOAL -->
 			<section id="workflow-overview">
@@ -370,27 +368,150 @@
 
             <!-- FINAL EVALUATION: RDF & DIFFUSION -->
 			<section>
-				<h2>Results: Structure & Dynamics</h2>
+			<section>
+				<h2>Structure & Dynamics: D3 Model</h2>
                 <hr />
 				<div class="content">
 					<div style="display:grid; grid-template-columns: 1fr 1fr; gap:20px;">
                         <div class="concept-card">
-                            <h3>Radial Distribution Function</h3>
-                            <div style="height: 200px; display:flex; align-items:center; justify-content:center; border: 1px dashed #ccc; margin-top:10px;">
-                                <p class="text-muted">[Insert RDF Plot: O-O, O-H, C-O]</p>
-                            </div>
-                            <p style="font-size: 12pt; margin-top:5px;">Validates the liquid structure against reference MACE/DFT data.</p>
+                            <h3>Histogram</h3>
+                            <img src="./latex/images/d3_hist.png" alt="D3 histogram" style="max-width: 100%; max-height: 300px; object-fit: contain; margin-top:10px;" />
+                            <p style="font-size: 12pt; margin-top:5px;">Diffusion coefficient of \(D \approx 2.4 \times 10^{-10} \, \text{m}^2/\text{s}\)</p>
                         </div>
                         <div class="concept-card">
-                            <h3>Self-Diffusion</h3>
-                            <div style="height: 200px; display:flex; align-items:center; justify-content:center; border: 1px dashed #ccc; margin-top:10px;">
-                                <p class="text-muted">[Insert MSD / Diffusion Plot]</p>
-                            </div>
+                            <h3>Bayesian Fit</h3>
+                            <img src="./latex/images/d3_msd.png" alt="MSD plot with Bayesian fit" style="max-width: 100%; max-height: 300px; object-fit: contain; margin-top:10px;" />
                             <p style="font-size: 12pt; margin-top:5px;">Calculated from center-of-mass motion to assess transport properties.</p>
                         </div>
                     </div>
 				</div>
 			</section>
+			<section>
+				<h2>Structure & Dynamics: DFT Model</h2>
+                <hr />
+				<div class="content">
+					<div style="display:grid; grid-template-columns: 1fr 1fr; gap:20px;">
+                        <div class="concept-card">
+                            <h3>Histogram</h3>
+                            <img src="./latex/images/dft_hist.png" alt="D3 histogram" style="max-width: 100%; max-height: 300px; object-fit: contain; margin-top:10px;" />
+                            <p style="font-size: 12pt; margin-top:5px;">Diffusion coefficient of \(D \approx 4.9 \times 10^{-10} \, \text{m}^2/\text{s}\)</p>
+                        </div>
+                        <div class="concept-card">
+                            <h3>Bayesian Fit</h3>
+                            <img src="./latex/images/dft_msd.png" alt="MSD plot with Bayesian fit" style="max-width: 100%; max-height: 300px; object-fit: contain; margin-top:10px;" />
+                            <p style="font-size: 12pt; margin-top:5px;">Calculated from center-of-mass motion to assess transport properties.</p>
+                        </div>
+                    </div>
+				</div>
+			</section>
+			<section>
+				<h2>Structure & Dynamics: MACE Model</h2>
+                <hr />
+				<div class="content">
+					<div style="display:grid; grid-template-columns: 1fr 1fr; gap:20px;">
+                        <div class="concept-card">
+                            <h3>Histogram</h3>
+                            <img src="./latex/images/mace_hist.png" alt="D3 histogram" style="max-width: 100%; max-height: 300px; object-fit: contain; margin-top:10px;" />
+                            <p style="font-size: 12pt; margin-top:5px;">Diffusion coefficient of \(D \approx 3.8 \times 10^{-9} \, \text{m}^2/\text{s}\)</p>
+                        </div>
+                        <div class="concept-card">
+                            <h3>Bayesian Fit</h3>
+                            <img src="./latex/images/mace_msd.png" alt="MSD plot with Bayesian fit" style="max-width: 100%; max-height: 300px; object-fit: contain; margin-top:10px;" />
+                            <p style="font-size: 12pt; margin-top:5px;">Calculated from center-of-mass motion to assess transport properties.</p>
+                        </div>
+                    </div>
+				</div>
+			</section>		
+			</section>
+
+			<section>
+				<section>
+					<h2>RDF: Summary</h2>
+					<hr />
+					<div class="content">
+						<div style="display:grid; grid-template-columns: 1.5fr 1fr; gap:20px;">
+							<div class="concept-card">
+								<img src="./latex/images/rdf_o_h.svg" alt="RDF histogram" style="max-width: 100%; max-height: 500px; object-fit: contain; margin-top:10px;" />
+							</div>
+								<ul>
+									<li style="font-size: 18pt;"><strong>O-H hydrogen bond:</strong><br>\(r_{1} \approx 1.02 \, &Aring;\)</li>
+									<li style="font-size: 18pt;"><strong>O-H nearest neighbor:</strong><br>\(r_{2} \approx 2.12 \, &Aring;\)</li>
+									<li style="font-size: 18pt;"><strong>Experimental values:</strong><br>\(r_{1} \approx 0.96 \, &Aring;\) <br> \(r_{2} \approx 2.08 \, &Aring;\) </li>
+								</ul>
+						</div>
+						<p style="font-size: 24pt; margin-top:5px;">Every model overestimates covalent bond lengths and nearest neighbor distances.</p>
+					</div>
+				</section>
+				<section>
+					<h2>RDF: Summary</h2>
+					<hr />
+					<div class="content">
+						<div style="display:grid; grid-template-columns: 1.5fr 1fr; gap:20px;">
+							<div class="concept-card">
+								<img src="./latex/images/rdf_o_o.svg" alt="RDF plot with Bayesian fit" style="max-width: 100%; max-height: 500px; object-fit: contain; margin-top:10px;" />
+							</div>
+							<ul>
+								<li style="font-size: 18pt;"><strong>O-O nearest neighbor:</strong><br>\(r_{1} \approx 2.6 \, &Aring;\)</li>
+								<li style="font-size: 18pt;"><strong>DFT:</strong><br> \(C_N \approx 2.26 \) at \(r = 3.33 \, &Aring;\)</li>
+								<li style="font-size: 18pt;"><strong>D3:</strong><br> \(C_N \approx 2.31 \) at \(r = 3.33 \, &Aring;\)</li>
+								<li style="font-size: 18pt;"><strong>MACE:</strong><br> \(C_N \approx 2.04 \) at \(r = 3.48 \, &Aring;\)</li>
+								<li style="font-size: 18pt;"><strong>Experimental values:</strong><br> between 1.8 and 2.2</li>
+							</ul>
+						</div>
+						<p style="font-size: 24pt; margin-top:5px;">DFT model, especially with D3 corrections, overstructures the system.</p>
+					</div>
+				</section>
+			<section>
+				<h2>RDF: D3 Model</h2>
+                <hr />
+				<div class="content">
+					<div style="display:grid; grid-template-columns: 1fr 1fr; gap:20px;">
+                        <div class="concept-card">
+                            <h3>O-O</h3>
+                            <img src="./latex/images/d3_o_o.png" alt="D3 histogram" style="max-width: 100%; max-height: 300px; object-fit: contain; margin-top:10px;" />
+                        </div>
+                        <div class="concept-card">
+                            <h3>O-H</h3>
+                            <img src="./latex/images/d3_o_h.png" alt="MSD plot with Bayesian fit" style="max-width: 100%; max-height: 300px; object-fit: contain; margin-top:10px;" />
+                        </div>
+                    </div>
+				</div>
+			</section>
+			<section>
+				<h2>RDF: DFT Model</h2>
+                <hr />
+				<div class="content">
+					<div style="display:grid; grid-template-columns: 1fr 1fr; gap:20px;">
+                        <div class="concept-card">
+                            <h3>O-O</h3>
+                            <img src="./latex/images/dft_o_o.png" alt="DFT histogram" style="max-width: 100%; max-height: 300px; object-fit: contain; margin-top:10px;" />
+                        </div>
+                        <div class="concept-card">
+                            <h3>O-H</h3>
+                            <img src="./latex/images/dft_o_h.png" alt="MSD plot with Bayesian fit" style="max-width: 100%; max-height: 300px; object-fit: contain; margin-top:10px;" />
+                        </div>
+                    </div>
+				</div>
+			</section>
+			<section>
+				<h2>RDF: MACE Model</h2>
+                <hr />
+				<div class="content">
+					<div style="display:grid; grid-template-columns: 1fr 1fr; gap:20px;">
+                        <div class="concept-card">
+                            <h3>O-O</h3>
+                            <img src="./latex/images/mace_o_o.png" alt="MACE histogram" style="max-width: 100%; max-height: 300px; object-fit: contain; margin-top:10px;" />
+                        </div>
+                        <div class="concept-card">
+                            <h3>O-H</h3>
+                            <img src="./latex/images/mace_o_h.png" alt="MSD plot with Bayesian fit" style="max-width: 100%; max-height: 300px; object-fit: contain; margin-top:10px;" />
+                        </div>
+                    </div>
+				</div>
+			</section>		
+
+			</section>
+
 
 			<!-- SUMMARY SLIDE -->
 			<section>
@@ -401,7 +522,7 @@
 						<li><strong>Workflow:</strong> Unified management ensures every simulation step is linked and reproducible.</li>
 						<li><strong>Labeling:</strong> MGRID convergence and GGA+D3 provide a high-quality physical baseline.</li>
 						<li><strong>Training:</strong> Hyperparameter tuning and ensembles minimize error and provide uncertainty.</li>
-						<li><strong>Production:</strong> The final MLIP successfully reproduces methanol's structural (RDF) and dynamic (Diffusion) properties at <i>ab initio</i> levels.</li>
+						<li><strong>Production:</strong> The final MLIP successfully runs stable simulations but fails to reproduce methanol's structural (RDF) and dynamic (Diffusion) properties at <i>ab initio</i> levels.</li>
 					</ul>
 				</div>
 			</section>
