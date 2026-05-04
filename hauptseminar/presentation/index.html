@@ -17,8 +17,6 @@
     @import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;500;600;700&family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,400&display=swap');
 
     :root {
-      --background-color: #f8f9fa;
-      --section-divider-bg: #005531;
       --heading-font: "Source Serif 4", Georgia, serif;
       --body-font: "Source Sans 3", Helvetica, sans-serif;
       --base-font-size: 32px;
@@ -379,7 +377,7 @@
                 $$
                 </li>
             </ul>
-            <p>This allows for reference-free, in-situ measurement of the Kerr rotation, a critical capability for studying field-induced phenomena in altermagnets.</p>
+            
         </div>
         <div class="footnote">
           Levallois et al., Rev. Sci. Instrum. 86, 033906 (2015)
@@ -387,6 +385,13 @@
         <aside class="notes">
           One of the most powerful applications of the MOKKA framework is the fast measurement protocol. In many experiments, especially those at cryogenic temperatures and inside high-field magnets, we simply cannot have moving parts. Rotating a polarizer is not an option. The fast protocol solves this. By fixing the polarizer and analyzer at 45 degrees to each other, we place the system at the point of maximum sensitivity to any small rotation of the polarization plane. The intensity measured by the detector becomes a simple linear function of the Kerr angle. By flipping the magnetic field and taking a ratio of the intensities, all common mode factors like the sample reflectivity and instrument throughput cancel out, leaving us with a signal directly proportional to the Kerr rotation. This is a game-changer, allowing us to perform these sensitive measurements in the most challenging experimental environments.
         </aside>
+      </section>
+      <section>
+        <h2>MOKKA: The 45-Degree Fast Protocol</h2>
+        <div class="content">
+          <p>This allows for reference-free, in-situ measurement of the Kerr rotation, a critical capability for studying field-induced phenomena in altermagnets.</p>
+          <img src="45_deg.svg" alt="Placeholder diagram of 45-degree MOKKA setup" style="max-width: 550px; height: auto; margin-top: 20px;">
+        </div>
       </section>
 
       <!-- SLIDE 6: The Organic Success: κ-Cl -->
@@ -403,7 +408,7 @@
                   <strong>Key Signature:</strong> A highly non-linear dependence of the MOKE signal on the applied magnetic field.
                 </li>
                 <li>
-                  The signal does not track the small canted moment (linear in H), but instead scales with the **Néel vector**, the primary antiferromagnetic order parameter.
+                  The signal does not track the small canted moment (linear in H), but instead scales with the <highlight>Néel vector</highlight>, the primary antiferromagnetic order parameter.
                 </li>
                 <li>
                   The off-diagonal conductivity $\tilde{\sigma}_{ca}(\omega)$ shows distinct peaks at the edges of the $\pi$-electron interband transition.
@@ -428,7 +433,7 @@
       <section>
         <h2>The Decisive Argument for $\kappa$-Cl: Energy Scales</h2>
         <div class="content">
-            <blockquote>
+            <blockquote style="background-color: #bc5f2630;">
                 How do we prove the signal is from Altermagnetism and not just Spin-Orbit Coupling (SOC)?
             </blockquote>
             <ul>
@@ -440,6 +445,22 @@
                     <strong>Observed Splitting ($E_{splitting}$):</strong> The energy separation of the peaks in $\tilde{\sigma}_{ca}(\omega)$ provides a direct measure of the spin-splitting of the electronic bands. This was found to be:
                     $$ E_{splitting} \approx 100 \text{ meV} $$
                 </li>
+            </ul>
+        </div>
+        <div class="footnote">
+          Iguchi et al., Phys. Rev. Research 7, 033026 (2025)
+        </div>
+        <aside class="notes">
+          The most powerful piece of evidence for altermagnetism in kappa-Cl comes from a simple comparison of energy scales. Spin-orbit coupling is a relativistic effect, and its strength is determined by the atomic number of the elements involved. For the light carbon, hydrogen, and nitrogen atoms in this organic material, the SOC energy scale is tiny, on the order of a single millielectronvolt. However, the energy splitting observed in the magneto-optical spectrum—which directly reflects the splitting of the electronic bands—is around 100 meV. This is a hundred-fold discrepancy. There is no way that a 1 meV interaction can produce a 100 meV splitting. This definitively rules out SOC as the primary origin. The splitting must come from a non-relativistic mechanism, which in this context is the momentum-dependent crystal field effect that defines altermagnetism.
+        </aside>
+      </section>
+      <section>
+        <h2>The Decisive Argument for $\kappa$-Cl: Energy Scales</h2>
+        <div class="content">
+            <blockquote style="background-color: #bc5f2630;">
+                How do we prove the signal is from Altermagnetism and not just Spin-Orbit Coupling (SOC)?
+            </blockquote>
+            <ul>
                 <li>
                     <strong>Conclusion:</strong> The observed splitting is two orders of magnitude larger than what can be explained by SOC.
                     $$ E_{splitting} \gg \lambda_{SOC} $$
@@ -497,7 +518,7 @@
       
       <!-- SLIDE 9: RuO2 Fermi Liquid -->
       <section>
-        <h2>The Final Nail: Fermi-Liquid Behavior in RuO₂</h2>
+        <h2>Fermi-Liquid Behavior in RuO₂</h2>
         <div class="content">
             <p>The intraband carrier dynamics provided the final piece of the puzzle. The data was analyzed using an <highlight>Extended Drude Model</highlight> to account for electron-electron scattering.</p>
             <ul>
@@ -533,6 +554,25 @@
             <li>
               <strong>Mechanism:</strong> This is not an intrinsic phonon property. It arises from <highlight>Fano Resonance</highlight>, an interference between the discrete phonon and the continuous electronic excitations of the chiral Weyl fermions.
             </li>
+          </ul>
+          <div style="display:flex; flex-direction:column; align-items:center; gap:12px; margin-top:10px;">
+            <canvas id="cdCanvas" width="400" height="400" style="max-width:100%; height:auto;"></canvas>
+            <p style="font-size: 12pt; margin: 0; text-align: center;">Yellow = Resultant Elliptical Path (CD Effect)</p>
+          </div>
+        </div>
+        <div class="footnote">
+          Yang et al., Phys. Rev. Lett. 134, 196905 (2025)
+        </div>
+        <aside class="notes">
+          So what if the direct electronic MO signal is ambiguous? We can look for indirect fingerprints. A beautiful example comes from the study of the Weyl ferromagnet Co3Sn2S2. Here, the authors found that the phonons—the lattice vibrations—exhibited circular dichroism. This is a remarkable finding, as phonons are typically not chiral. The origin is a Fano resonance. This occurs when a discrete excitation, like a phonon, can interfere with a continuum of excitations, in this case, the chiral electronic states near the Weyl points. This interference leads to a characteristic asymmetric lineshape. The degree of asymmetry, given by the Fano parameter q, is a direct measure of the electron-phonon coupling strength. Crucially, this effect only appeared below the magnetic ordering temperature. This proves that the phonons are coupling to the magnetic and chiral electronic system, effectively "borrowing" its circular dichroism. This provides a powerful, indirect method to confirm the presence of a chiral magnetic state, a technique directly applicable to altermagnets.
+        </aside>
+      </section>
+
+      <section>
+        <h2>Indirect Probes: Phonon Circular Dichroism</h2>
+        <div class="content">
+          <p>Even if the electronic MO signal is weak, magnetism can be detected indirectly through its coupling to the lattice, as shown in the Weyl ferromagnet Co₃Sn₂S₂.</p>
+          <ul>
             <li>
               The lineshape asymmetry, quantified by the Fano parameter $q$, measures the electron-phonon coupling strength:
               $$
@@ -551,6 +591,7 @@
           So what if the direct electronic MO signal is ambiguous? We can look for indirect fingerprints. A beautiful example comes from the study of the Weyl ferromagnet Co3Sn2S2. Here, the authors found that the phonons—the lattice vibrations—exhibited circular dichroism. This is a remarkable finding, as phonons are typically not chiral. The origin is a Fano resonance. This occurs when a discrete excitation, like a phonon, can interfere with a continuum of excitations, in this case, the chiral electronic states near the Weyl points. This interference leads to a characteristic asymmetric lineshape. The degree of asymmetry, given by the Fano parameter q, is a direct measure of the electron-phonon coupling strength. Crucially, this effect only appeared below the magnetic ordering temperature. This proves that the phonons are coupling to the magnetic and chiral electronic system, effectively "borrowing" its circular dichroism. This provides a powerful, indirect method to confirm the presence of a chiral magnetic state, a technique directly applicable to altermagnets.
         </aside>
       </section>
+    
 
       <!-- SLIDE 11: Summary -->
       <section>
@@ -606,6 +647,61 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.6.1/plugin/notes/notes.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.6.1/plugin/math/math.min.js"></script>
   <script>
+    const canvas = document.getElementById('cdCanvas');
+    const ctx = canvas.getContext('2d');
+    let t = 0;
+
+    function drawVector(x1, y1, x2, y2, color, width = 1) {
+      ctx.strokeStyle = color;
+      ctx.lineWidth = width;
+      ctx.beginPath();
+      ctx.moveTo(x1, y1);
+      ctx.lineTo(x2, y2);
+      ctx.stroke();
+    }
+
+    function draw() {
+      ctx.clearRect(0, 0, 400, 400);
+      const centerX = 200;
+      const centerY = 200;
+
+      const EL = 80;
+      const ER = 40;
+
+      ctx.strokeStyle = '#444';
+      ctx.beginPath();
+      ctx.moveTo(50, 200);
+      ctx.lineTo(350, 200);
+      ctx.stroke();
+      ctx.beginPath();
+      ctx.moveTo(200, 50);
+      ctx.lineTo(200, 350);
+      ctx.stroke();
+
+      const lx = EL * Math.cos(t);
+      const ly = EL * Math.sin(t);
+      const rx = ER * Math.cos(-t);
+      const ry = ER * Math.sin(-t);
+      const resX = lx + rx;
+      const resY = ly + ry;
+
+      ctx.setLineDash([5, 5]);
+      ctx.strokeStyle = 'rgba(255, 255, 0, 0.3)';
+      ctx.beginPath();
+      ctx.ellipse(centerX, centerY, EL + ER, Math.abs(EL - ER), 0, 0, Math.PI * 2);
+      ctx.stroke();
+      ctx.setLineDash([]);
+
+      drawVector(centerX, centerY, centerX + lx, centerY + ly, '#00d4ff');
+      drawVector(centerX, centerY, centerX + rx, centerY + ry, '#ff4444');
+      drawVector(centerX, centerY, centerX + resX, centerY + resY, '#ffff00', 3);
+
+      t += 0.05;
+      requestAnimationFrame(draw);
+    }
+
+    draw();
+
     Reveal.initialize({
       hash: true,
       plugins: [RevealMath.MathJax2, RevealNotes],

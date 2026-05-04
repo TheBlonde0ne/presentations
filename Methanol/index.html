@@ -4,204 +4,532 @@
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<title>Methanol Workflow: From MACE Sampling to MLIP Production</title>
-	<link rel="stylesheet" href="../utils/dist/reset.css" />
-	<link rel="stylesheet" href="../utils/dist/reveal.css" />
-	<link rel="stylesheet" href="../utils/dist/theme/black.css" />
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css" />
 	<link rel="stylesheet" href="styles.css" />
+	<!-- Load KaTeX CSS -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+	<!-- Load KaTeX JS -->
+	<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+	<!-- Load the Auto-render Extension -->
+	<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+	onload="renderMathInElement(document.body);"></script>
 </head>
 <body>
 	<div class="reveal">
 		<div class="slides">
+            <!-- TITLE SLIDE -->
             <section class="section-divider" data-state="is-section-divider">
-                <header>Jakob Wallner & Stefan Haag</header>
-				<h1>Methanol Workflow</h1>
-				<p>From foundation-model sampling to DFT relabeling, MLIP training, and production MD</p>
+				<h1>Simulating Methanol</h1>
+				<p>From foundation-model to taylored ML-Potential</p>
+                <h2 style="color: var(--header-color)">Jakob Wallner</h2 >
 			</section>
 
-            <section>
-                <h2>Project Goal</h2>
-                <hr />
-                <div class="content">
-                    <div class="concept-card">
-                        <h3>One workflow, multiple engines</h3>
-                        <p>
-                            Sample methanol configurations with a foundation MACE model, refine a small subset with DFT,
-                            correct the data with D3, train and compare MLIPs, and then use the best model for production MD.
-                        </p>
-                    </div>
-                    <ul>
-                        <li>Build a reproducible pipeline instead of ad hoc scripts.</li>
-                        <li>Track dependencies between sampling, labeling, training, and evaluation.</li>
-                        <li>Compare the final models on structure and dynamics, especially RDFs and diffusion.</li>
-                    </ul>
-                </div>
-            </section>
+			<!-- Theory -->
 
-			<section>
-				<h2>Why Use a Workflow Manager?</h2>
-                <hr />
-				<div class="content">
-					<div class="concept-card">
-						<h3>More than automation</h3>
-						<p>
-							A workflow manager is useful because the project combines MD, DFT, and MLIP training in one chain.
-							It keeps the logic organized, handles dependencies between stages, and makes reruns predictable.
-						</p>
-					</div>
-					<ul>
-						<li>Reproducibility: every step is defined and rerunnable.</li>
-						<li>Scalability: the same pipeline can be expanded to more data or more temperatures.</li>
-						<li>Traceability: outputs from each stage stay linked to the node that produced them.</li>
-					</ul>
-				</div>
+			<section id="Theory-MD">
+    			<h2>Molecular Dynamics (MD)</h2>
+    			<hr />
+    			<div class="content">
+    			    <div class="concept-card">
+    			        <h3>Classical & ML Potentials</h3>
+    			        <p>
+    			            Iterative calculation of atomic interactions to predict system behavior over time using the <strong>equation of motion</strong> derived from Newton's second law:
+    			            <br />
+    			            $$ m \frac{d^2 \mathbf{r}}{dt^2} = -\nabla V(\mathbf{r}) $$
+    			        </p>
+    			    </div>
+    			    <ul style="margin-top: 20px;">
+    			        <li><strong>NVT Ensemble:</strong> Constant Number of particles, Volume, and Temperature, controlled via a <strong>Langevin thermostat</strong> (later Nose-Hoover) which adds stochastic terms.</li>
+    			        <li><strong>Numerical Integration:</strong> Algorithms like the Verlet method iteratively update positions and velocities based on recalculated forces.</li>
+    			        <li><strong>Ergodic Hypothesis:</strong> Connects time averages from trajectories to ensemble averages, allowing for the calculation of thermodynamic properties.</li>
+    			    </ul>
+    			</div>
+			</section>
+
+			<section id="Theory-DFT">
+			    <h2>Density Functional Theory (DFT)</h2>
+			    <hr />
+			    <div class="content">
+			        <div class="concept-card">
+			            <h3>Electronic Structure</h3>
+			            <p>
+			                Describes many-body systems via electron density \(\rho(\mathbf{r})\) rather than wavefunctions, utilizing the <strong>Kohn-Sham equations</strong> to find a self-consistent field:
+			                $$ V_{s}(\mathbf{r}) = V_{\text{ext}}(\mathbf{r}) + V_H(\mathbf{r}) + V_{\text{xc}}(\mathbf{r}) $$
+			            </p>
+			        </div>
+			        <ul style="margin-top: 20px;">
+			            <li><strong>Hohenberg-Kohn Theorems:</strong> Ground-state properties are uniquely determined by the electron density through a universal functional \(E[\rho]\).</li>
+			            <li><strong>Approximations:</strong> Necessary due to complexity; includes LCAO, the Born-Oppenheimer approximation, and exchange-correlation functionals (LDA, GGA).</li>
+			        </ul>
+			    </div>
+			</section>
+
+			<section id="Theory-D3">
+			    <h2>Dispersion Correction (D3)</h2>
+			    <hr />
+			    <div class="content">
+			        <div class="concept-card">
+			            <h3>Capturing Long-Range Effects</h3>
+			            <p>
+			                Standard DFT often fails to capture van der Waals interactions. The <strong>Grimme-D3 method</strong> adds an empirical energy term to the DFT total energy:
+							\[ E_{\text{disp}} = - \sum_{i&lt;j} \sum_\mathbf{L} \left( \frac{C_6^{ij}}{R_{ij}^6} f_{d,6}(R_{ij}) + \frac{C_8^{ij}}{R_{ij}^8} f_{d,8}(R_{ij}) \right) \]
+			            </p>
+			        </div>
+			        <ul style="margin-top: 20px;">
+			            <li><strong>Pairwise Additive:</strong> Based on atom-pair coefficients \((C_n^{ij})\) and distances \((R_{ij})\).</li>
+			            <li><strong>Damping Functions:</strong> Critical for preventing the correction from diverging at short interatomic distances where DFT is already effective.</li>
+			        </ul>
+			    </div>
 			</section>
 
 			<section>
+			    <h2>Neural Network Foundations</h2>
+			    <hr />
+			    <div class="content">
+			        <div class="concept-card">
+			            <h3>Deep Learning for PES</h3>
+			            <p>
+			                Utilizes stacked layers of artificial neurons to approximate complex potential energy surfaces (PES). Each layer performs matrix operations followed by a non-linear activation (e.g., ReLU):
+			                <br />
+			                Stacked layers perform matrix operations with non-linear activation:
+			                $$ \mathbf{a}^{(l)} = f(\mathbf{W}^{(l)} \cdot \mathbf{a}^{(l-1)} + \mathbf{b}^{(l)}) $$
+			            </p>
+			        </div>
+			        <ul style="margin-top: 20px;">
+			            <li><strong>Local Atomic Partitioning:</strong> The total energy is the sum of contributions from individual atoms based on their local environment: \(E_{\text{total}} = \sum_i E_i\).</li>
+			            <li><strong>Descriptors (GMNN):</strong> Transforms geometry into numerical vectors invariant under translation, rotation, and permutation.</li>
+			            <li><strong>Automatic Differentiation:</strong> Forces are obtained analytically from the energy prediction, ensuring thermodynamic stability.</li>
+			        </ul>
+			    </div>
+			</section>
+
+			<section>
+			    <h2>Uncertainty Quantification (UQ)</h2>
+			    <hr />
+			    <div class="content">
+			        <div class="concept-card">
+			            <h3>Shallow Ensembles</h3>
+			            <p>
+			                Assessing model confidence using an ensemble with a shared backbone but randomly initialized last layers. Uncertainty is calculated as the variance across predictions:
+			                <br />
+			                \[ \sigma_x = \sqrt{\frac{1}{M-1} \sum_{m=1}^{M} (x_m - \bar{x})^2} \]
+			            </p>
+			        </div>
+			        <ul style="margin-top: 20px;">
+			            <li><strong>Active Learning:</strong> High variance \(\sigma_x\) identifies configurations where the model is unconfident, signaling a need for new DFT training data.</li>
+			            <li><strong>Stability:</strong> Monitoring uncertainty during MD runs prevents simulations from entering non-physical regions of the configuration space.</li>
+			        </ul>
+			    </div>
+			</section>
+
+			<!-- TASK 0: PROJECT GOAL -->
+			<section id="workflow-overview">
 				<h2>Workflow Overview</h2>
                 <hr />
 				<div class="content">
-					<div style="display:flex; align-items:center; justify-content:space-between; gap:18px; flex-wrap:wrap; margin-top:10px;">
-						<div class="flow-node primary">MACE sampling</div>
-						<div class="flow-arrow">→</div>
-						<div class="flow-node secondary">MGRID optimization</div>
-						<div class="flow-arrow">→</div>
-						<div class="flow-node primary">DFT + D3 relabeling</div>
-						<div class="flow-arrow">→</div>
-						<div class="flow-node secondary">MLIP training</div>
-						<div class="flow-arrow">→</div>
-						<div class="flow-node primary">Production MD</div>
-						<div class="flow-arrow">→</div>
-						<div class="flow-node secondary">RDF and diffusion</div>
-					</div>
-					<p class="text-xl" style="margin-top:28px;">
-						The central idea is simple: use the fast foundation model to explore phase space, then spend the expensive DFT budget only where it matters.
-					</p>
-				</div>
-			</section>
+					<div style="display:flex; align-items:center; justify-content:space-between; gap:18px; flex-wrap:wrap; margin-top:10px;margin-bottom: 10px;">
+						<div class="flow-node primary" data-step="1" id="flow-1">MACE sampling</div>
+					<div class="flow-arrow">→</div>
 
-			<section>
-				<h2>Sampling With MACE</h2>
-                <hr />
-				<div class="content">
-                    <p>Generate methanol configurations and sample MD frames with the MACE foundation model</p>
-					<ul>
-						<li>Start from initial configurations generated with Packmol.</li>
-						<li>Use the pretrained MACE foundation model for fast MD sampling.</li>
-						<li>Inspect the resulting trajectory with <strong>zntrack.from_rev()</strong> and the <strong>frames</strong> list.</li>
-					</ul>
-					<div class="concept-card" style="margin-top:16px;">
-						<h3>Why this matters</h3>
-						<p>
-							The foundation model provides cheap, broad sampling of methanol configurations before any expensive DFT labeling is done.
-						</p>
-					</div>
-				</div>
-			</section>
 
-			<section>
-				<h2>Stage 2: DFT Relabeling</h2>
-				<hr />
-				<div class="content">
-					<ul>
-						<li>Run a convergence test on a small number of sampled frames.</li>
-						<li>Vary the CP2K <strong>MGRID</strong> cutoff until force and energy changes are below the target threshold.</li>
-						<li>Relabel the trajectory with the optimal DFT settings.</li>
-						<li>Add D3 correction outside CP2K when possible, because it depends only on the atoms and is cheaper to evaluate separately.</li>
-					</ul>
-					<div class="concept-card" style="margin-top:16px;">
-						<h3>What the MGRID test gives you</h3>
-						<p>
-							A practical accuracy-cost tradeoff: enough grid resolution to converge forces and energies, but not so much that DFT becomes unnecessarily expensive.
-						</p>
-					</div>
-				</div>
-			</section>
+						<div class="flow-node secondary" data-step="2" id="flow-2">MGRID optimization</div>
+					<div class="flow-arrow">→</div>
 
+
+						<div class="flow-node primary" data-step="3" id="flow-3">DFT + D3 relabeling</div>
+					<div class="flow-arrow">→</div>
+
+
+						<div class="flow-node secondary" data-step="4" id="flow-4">MLIP training</div>
+					<div class="flow-arrow">→</div>
+
+						<div class="flow-node primary" data-step="5" id="flow-5">Production MD</div>
+					<div class="flow-arrow">→</div>
+
+						<div class="flow-node secondary" data-step="6" id="flow-6">RDF and diffusion</div>
+
+					<div style="display:grid; grid-template-columns: 1fr 1fr; gap:18px;">
+						<p style="margin-top:3px; font-size:18px;"><strong>MACE sampling:</strong> Running a 1ns MD simulation with a foundation model to explore phase space.</p>
+						<p style="margin-top:3px; font-size:18px;"><strong>MGRID optimization:</strong> Finding optimal real-space grid convergence to avoid noise in training data.</p>
+						<p style="margin-top:3px; font-size:18px;"><strong>DFT + D3 relabeling:</strong> High-accuracy ab initio labeling with PBE functional and Grimme D3 dispersion corrections.</p>
+						<p style="margin-top:3px; font-size:18px;"><strong>MLIP training:</strong> Training a custom Gaussian Moment Neural Network tailored for methanol dynamics.</p>
+						<p style="margin-top:3px; font-size:18px;"><strong>Production MD:</strong> Running large-scale simulations with the trained MLIP and ensemble-based uncertainty quantification.</p>
+						<p style="margin-top:3px; font-size:18px;"><strong>RDF and diffusion:</strong> Computing radial distribution functions and self-diffusion coefficients against experimental data.</p>
+					</div>
+				</section>
+			
+				
+
+            <!-- TASK 1: WORKFLOW MANAGEMENT -->
 			<section>
-				<h2>Stage 3: Train MLIPs</h2>
+				<h2>Why a Workflow Manager?</h2>
                 <hr />
 				<div class="content">
 					<div class="concept-card">
-						<h3>Hyperparameter exploration</h3>
+						<h3>Beyond Bash Scripts</h3>
 						<p>
-							Train several models while varying the number of training configurations, radial cutoff <strong>r<sub>max</sub></strong>,
-							basis size, and network depth or width.
+							Using <strong>ZnTrack</strong> and <strong>IPSuite</strong> provides object-oriented management of complex simulation chains (MD → DFT → ML).
 						</p>
 					</div>
-					<ul>
-						<li>More data usually improves accuracy, but increases training cost.</li>
-						<li>Larger cutoffs help with longer-range interactions, but are more expensive.</li>
-						<li>More basis functions and larger networks can fit more complex behavior, but raise overfitting risk.</li>
-						<li>Train ensembles to compare uncertainty through prediction spread.</li>
+					<ul style="margin-top: 20px;">
+						<li><strong>Reproducibility:</strong> Every node (DFT, training) is cached; nodes only re-run if inputs or parameters change.</li>
+						<li><strong>Scalability:</strong> Easily expand from one box of methanol to different temperatures or densities.</li>
+						<li><strong>Traceability:</strong> Data-Version Control (DVC) links every output (trajectory, ML model) to a specific code commit.</li>
 					</ul>
 				</div>
 			</section>
 
+			<!-- TASK 2 & 3: SAMPLING & FOUNDATION MODELS -->
 			<section>
-				<h2>Raw DFT vs D3-Corrected Data</h2>
+				<h2>Sampling with MACE</h2>
+                <hr />
+				<div class="content">
+					<p>We generate initial 32-molecule boxes using <strong>Packmol</strong> and SMILES strings (<code>"CO"</code>).</p>
+					<div class="demo-command" style="font-size: 11pt; line-height: 1.7; margin-top: 15px;">
+						<span style="color: #569cd6;">&gt;</span> <span style="color: var(--secondary-color)">&quot;C&quot;</span> → CH<sub>4</sub>, <span style="color: var(--secondary-color)">&quot;Clc(c(Cl)c(Cl)c1C(=O)O)c(Cl)c1Cl&quot;</span> → C<sub>7</sub>HCl<sub>5</sub>O<sub>2</sub><br/>
+						<span class="comment">SMILES (or Simplified Molecular Input Line Entry System) is a notation for representing chemical structures in a string format;</span><br/>
+					</div>
+					<div style="display:grid; grid-template-columns: 1fr 1fr; gap:18px;">
+						<div class="concept-card">
+							<h3>Foundation Models</h3>
+                            <p>MACE is pre-trained on diverse datasets. We use it to sample 1ns of MD cheaply to explore phase space before relabeling.</p>
+                        </div>
+                        <div class="concept-card">
+							<h3>Why Train a Custom MLIP?</h3>
+                            <p>While MACE is general, a tailored model ensures better accuracy for methanol's specific dynamics, like <strong>self-diffusion</strong> and <strong>hydrogen bonding</strong>.</p>
+                        </div>
+					</div>
+					<p class="text-muted" style="margin-top: 15px;">Simulations are conducted at 300K, ensuring density matches experimental liquid methanol values.</p>
+			</section>
+			
+			<!-- TASK 4: EXCHANGE-CORRELATION & D3 -->
+			<section>
+				<h2>Functional Selection & D3</h2>
 				<hr />
 				<div class="content">
-					<div style="display:grid; grid-template-columns: 1fr 1fr; gap:18px; margin-top:8px;">
+					<div style="display:grid; grid-template-columns: 1fr 1fr; gap:18px;">
 						<div class="concept-card">
-							<h3>Raw DFT</h3>
-							<p>
-								Use the labeled CP2K data directly to train one model and keep the full electronic-structure reference as-is.
-							</p>
+							<h3>Exchange-Correlation Functional</h3>
+							<p>We use <strong>PBE</strong>, a common GGA functional. It is a robust balance between accuracy and computational efficiency.</p>
 						</div>
 						<div class="concept-card">
-							<h3>D3-corrected</h3>
-							<p>
-								Train a second model on DFT plus the separately evaluated dispersion contribution to better capture intermolecular attraction.
-							</p>
+							<h3>Dispersion (D3)</h3>
+							<p>Standard DFT fails at long-range van der Waals forces. We add <strong>Grimme D3</strong> to correctly capture intermolecular attraction.</p>
 						</div>
 					</div>
-					<p class="text-lg" style="margin-top:18px;">
-						Comparing both models helps isolate how much of the final performance comes from the base DFT functional versus the dispersion correction.
-					</p>
+					<div>
+						<ul>
+							<li><strong>GGA:</strong> Works well for molecules because it accounts for electron density gradients</li>
+							<li><strong>LDA:</strong> Only accounts for electron density, which is less accurate for molecules but fine for metals</li>
+							<li>Evaluating D3 <strong>outside CP2K</strong> (via TorchDFTD3) allows for faster evaluation and easier decomposition of dispersion contributions.</li>
+						</ul>
+					</div>
 				</div>
 			</section>
 
+			<!-- TASK 5: MGRID OPTIMIZATION -->
 			<section>
-				<h2>Stage 4: Production MD and Evaluation</h2>
+				<h2>DFT Convergence: MGRID</h2>
+				<hr />
+				<div class="content">
+					<p>The <code>MGRID</code> parameter in CP2K controls the real-space grid cutoff for Hartree and XC potentials.</p>
+                    <div style="display:grid; grid-template-columns: 1fr 1.2fr; gap:20px;">
+                        <div>
+                            <ul>
+                                <li><strong>Goal:</strong> Find the balance between accuracy and computational cost.</li>
+                                <li><strong>Threshold:</strong> Variation in forces and energies must be &lt; 0.002 units.</li>
+                                <li><strong>Result:</strong> Optimal cutoff prevents "grid noise" from polluting the MLIP training data.</li>
+                                <li><strong>Conclusion:</strong> A cutoff of 280 Ry provides a good balance.</li>
+                            </ul>
+                        </div>
+                        <div class="concept-card" style="display:flex; align-items:center; justify-content:center; border-style:dashed; background:#f9f9f9;">
+							<img
+								src="mse_vs_mgrid.png"
+								alt="MGRID convergence plot (MSE vs MGRID)"
+								style="max-width: 80%; max-height: 100%; object-fit: contain;"
+							/>
+                        </div>
+                    </div>
+				</div>
+			</section>
+
+
+			<!-- TASK 6: HYPERPARAMETER TUNING -->
+			<section>
+				<h2>Training Hyperparameters</h2>
+                <hr />
+				<div class="content">
+					<p>We explore the impact of <strong>Gaussian Moment Neural Network</strong> settings on the <code>apax</code> model:</p>
+                    <div style="display:grid; grid-template-columns: 1.2fr 1fr; gap:20px;">
+						<div class="concept-card" style="display:flex; flex-direction:column; align-items:center; justify-content:center; border-style:dashed; background:#f9f9f9; gap:10px; text-align:center;">
+							<img
+								src="forces.png"
+								alt="forces for all frames of a random model"
+								style="max-width: 100%; max-height: 100%; object-fit: contain;"
+							/>
+							<p class="text-muted" style="margin:0;">Force predictions from a random model compared to ab-initio forces (PBE)</p>
+						</div>
+                        <ul style="font-size: 14pt;">
+                            <li><strong>Radial Cutoff (r<sub>max</sub>):</strong> Higher values capture longer-range physics but increase cost.</li>
+                            <li><strong>Architecture:</strong> Different nodes per layer affect the model's capacity and complexity.</li>
+                            <li><strong>Number of Epochs:</strong> More epochs can improve accuracy but also increase training time.</li>
+							<li><strong>Number of Basis Functions:</strong> More basis functions can improve accuracy but also increase computational cost.</li>
+                        </ul>
+                    </div>
+				</div>
+			</section>
+
+			<!-- Show results of different hyperparameters -->
+			<section>
+				<section>
+					<h2>Train Progress over Epochs: Different Architectures</h2>
+					<hr />
+					<div class="content">
+						<div class="concept-card"style="display:flex; align-items:center; justify-content:center; max-width: 100%; max-height: 80%;">
+							<img 
+								src="./latex/images/loss_architecture.svg" 
+								alt="Architecture Loss Curves" 
+								style="max-width: 90%; max-height: 100%; object-fit: contain;" 
+							/>
+						</div>
+					</div>
+				</section>
+				<section>
+					<h2>Train Progress over Epochs: Different Cutoffs</h2>
+					<hr />
+					<div class="content">
+						<div class="concept-card"style="display:flex; align-items:center; justify-content:center; max-width: 100%; max-height: 80%;margin-bottom: -20px;">
+						<img 
+								src="./latex/images/loss_cutoff.svg" 
+								alt="Cutoff Loss Curves" 
+								style="max-width: 100%; max-height: 90%; object-fit: contain;" 
+							/>
+						</div>
+					</div>
+				</section>
+				<section>
+					<h2>Train Progress over Epochs: Different Number of Basis Functions</h2>
+					<hr />
+					<div class="content">
+						<div class="concept-card"style="display:flex; align-items:center; justify-content:center; max-width: 100%; max-height: 80%;margin-bottom: -20px;">
+						<img 
+								src="./latex/images/loss_basis.svg" 
+								alt="Basis Functions Loss Curves" 
+								style="max-width: 100%; max-height: 90%; object-fit: contain;" 
+							/>
+						</div>
+					</div>
+				</section>
+			</section>
+
+			<section>
+			<section>
+				<h2>MAE: Force vs Energy</h2>
+				<hr />
+				<div class="concept-card"style="display:flex; align-items:center; justify-content:center; max-width: 100%; max-height: 80%;">
+					<img 
+							src="./latex/images/3D.svg" 
+							alt="3D plot of all parameters" 
+							style="max-width: 100%; max-height: 100%; object-fit: contain;" 
+						/>
+				</div>
+			</section>
+			<section>
+				<h2>MAE: Force vs Energy (Closeup)</h2>
+				<hr />
+				<div class="concept-card"style="display:flex; align-items:center; justify-content:center; max-width: 100%; max-height: 80%;">
+					<img 
+							src="./latex/images/energy_force_mae.svg" 
+							alt="Closeup of energy vs force MAE" 
+							style="max-width: 100%; max-height: 100%; object-fit: contain;" 
+						/>
+				</div>
+			</section>
+			</section>
+
+			<!-- STAGE 4: PRODUCTION MD -->
+			<section>
+				<h2>Production MD Setup</h2>
                 <hr />
 				<div class="content">
 					<ul>
-						<li>Select the best-performing MLIP from the hyperparameter study.</li>
-						<li>Run longer production MD simulations with the chosen model.</li>
-						<li>Evaluate structural observables such as RDFs and dynamic quantities such as diffusion.</li>
-						<li>Compare uncertainty and stability across single models and ensembles.</li>
+                        <li><strong>Relaxation:</strong> Before MD, we use <code>ASEGeoOpt</code> to minimize forces below 0.05 eV/Å to prevent unphysical behavior.</li>
+						<li><strong>Timestep:</strong> The timestep has to resolve high-frequency O-H vibrations while maintaining stability, which is given for 0.5 femtoseconds.</li>
+						<li><strong>Scaling:</strong> Box size increased to 64 molecules for better statistics.</li>
 					</ul>
-					<div class="concept-card" style="margin-top:16px;">
-						<h3>Final question</h3>
-						<p>
-							Does the trained model preserve methanol structure and transport well enough to be trusted for production-scale sampling?
+                    <div class="concept-card" style="margin-top: 15px;">
+                        <h3>Observation</h3>
+                        <p>Model ensembles are used here to detect if the simulation enters "unseen" configurations where uncertainty spikes.
+						Also, we can determine an <strong>uncertainty quantification</strong> by looking at the spread of predictions across the ensemble, which share a common backbone but differ in their <strong>initialization of the final layer</strong>. Also a force threshold of 2 eV/Å is set to detect unphysical configurations. We don't use an <strong>energy threshold</strong> because the energy of the system is systemsize dependent.
 						</p>
-					</div>
+                    </div>
 				</div>
 			</section>
 
-			<section class="section-divider" data-state="is-section-divider">
-				<h1>Takeaways</h1>
-				<p>Fast sampling, selective DFT labeling, dispersion correction, and MLIP screening form a single iterative loop</p>
+            <!-- FINAL EVALUATION: RDF & DIFFUSION -->
+			<section>
+			<section>
+				<h2>Structure & Dynamics: D3 Model</h2>
+                <hr />
+				<div class="content">
+					<div style="display:grid; grid-template-columns: 1fr 1fr; gap:20px;">
+                        <div class="concept-card">
+                            <h3>Histogram</h3>
+                            <img src="./latex/images/d3_hist.png" alt="D3 histogram" style="max-width: 100%; max-height: 300px; object-fit: contain; margin-top:10px;" />
+                            <p style="font-size: 12pt; margin-top:5px;">Diffusion coefficient of \(D \approx 2.4 \times 10^{-10} \, \text{m}^2/\text{s}\)</p>
+                        </div>
+                        <div class="concept-card">
+                            <h3>Bayesian Fit</h3>
+                            <img src="./latex/images/d3_msd.png" alt="MSD plot with Bayesian fit" style="max-width: 100%; max-height: 300px; object-fit: contain; margin-top:10px;" />
+                            <p style="font-size: 12pt; margin-top:5px;">Calculated from center-of-mass motion to assess transport properties.</p>
+                        </div>
+                    </div>
+				</div>
+			</section>
+			<section>
+				<h2>Structure & Dynamics: DFT Model</h2>
+                <hr />
+				<div class="content">
+					<div style="display:grid; grid-template-columns: 1fr 1fr; gap:20px;">
+                        <div class="concept-card">
+                            <h3>Histogram</h3>
+                            <img src="./latex/images/dft_hist.png" alt="D3 histogram" style="max-width: 100%; max-height: 300px; object-fit: contain; margin-top:10px;" />
+                            <p style="font-size: 12pt; margin-top:5px;">Diffusion coefficient of \(D \approx 4.9 \times 10^{-10} \, \text{m}^2/\text{s}\)</p>
+                        </div>
+                        <div class="concept-card">
+                            <h3>Bayesian Fit</h3>
+                            <img src="./latex/images/dft_msd.png" alt="MSD plot with Bayesian fit" style="max-width: 100%; max-height: 300px; object-fit: contain; margin-top:10px;" />
+                            <p style="font-size: 12pt; margin-top:5px;">Calculated from center-of-mass motion to assess transport properties.</p>
+                        </div>
+                    </div>
+				</div>
+			</section>
+			<section>
+				<h2>Structure & Dynamics: MACE Model</h2>
+                <hr />
+				<div class="content">
+					<div style="display:grid; grid-template-columns: 1fr 1fr; gap:20px;">
+                        <div class="concept-card">
+                            <h3>Histogram</h3>
+                            <img src="./latex/images/mace_hist.png" alt="D3 histogram" style="max-width: 100%; max-height: 300px; object-fit: contain; margin-top:10px;" />
+                            <p style="font-size: 12pt; margin-top:5px;">Diffusion coefficient of \(D \approx 3.8 \times 10^{-9} \, \text{m}^2/\text{s}\)</p>
+                        </div>
+                        <div class="concept-card">
+                            <h3>Bayesian Fit</h3>
+                            <img src="./latex/images/mace_msd.png" alt="MSD plot with Bayesian fit" style="max-width: 100%; max-height: 300px; object-fit: contain; margin-top:10px;" />
+                            <p style="font-size: 12pt; margin-top:5px;">Calculated from center-of-mass motion to assess transport properties.</p>
+                        </div>
+                    </div>
+				</div>
+			</section>		
 			</section>
 
+			<section>
+				<section>
+					<h2>RDF: Summary</h2>
+					<hr />
+					<div class="content">
+						<div style="display:grid; grid-template-columns: 1.5fr 1fr; gap:20px;">
+							<div class="concept-card">
+								<img src="./latex/images/rdf_o_h.svg" alt="RDF histogram" style="max-width: 100%; max-height: 500px; object-fit: contain; margin-top:10px;" />
+							</div>
+								<ul>
+									<li style="font-size: 18pt;"><strong>O-H hydrogen bond:</strong><br>\(r_{1} \approx 1.02 \, &Aring;\)</li>
+									<li style="font-size: 18pt;"><strong>O-H nearest neighbor:</strong><br>\(r_{2} \approx 2.12 \, &Aring;\)</li>
+									<li style="font-size: 18pt;"><strong>Experimental values:</strong><br>\(r_{1} \approx 0.96 \, &Aring;\) <br> \(r_{2} \approx 2.08 \, &Aring;\) </li>
+								</ul>
+						</div>
+						<p style="font-size: 24pt; margin-top:5px;">Every model overestimates covalent bond lengths and nearest neighbor distances.</p>
+					</div>
+				</section>
+				<section>
+					<h2>RDF: Summary</h2>
+					<hr />
+					<div class="content">
+						<div style="display:grid; grid-template-columns: 1.5fr 1fr; gap:20px;">
+							<div class="concept-card">
+								<img src="./latex/images/rdf_o_o.svg" alt="RDF plot with Bayesian fit" style="max-width: 100%; max-height: 500px; object-fit: contain; margin-top:10px;" />
+							</div>
+							<ul>
+								<li style="font-size: 18pt;"><strong>O-O nearest neighbor:</strong><br>\(r_{1} \approx 2.6 \, &Aring;\)</li>
+								<li style="font-size: 18pt;"><strong>DFT:</strong><br> \(C_N \approx 2.26 \) at \(r = 3.33 \, &Aring;\)</li>
+								<li style="font-size: 18pt;"><strong>D3:</strong><br> \(C_N \approx 2.31 \) at \(r = 3.33 \, &Aring;\)</li>
+								<li style="font-size: 18pt;"><strong>MACE:</strong><br> \(C_N \approx 2.04 \) at \(r = 3.48 \, &Aring;\)</li>
+								<li style="font-size: 18pt;"><strong>Experimental values:</strong><br> between 1.8 and 2.2</li>
+							</ul>
+						</div>
+						<p style="font-size: 24pt; margin-top:5px;">DFT model, especially with D3 corrections, overstructures the system.</p>
+					</div>
+				</section>
+			<section>
+				<h2>RDF: D3 Model</h2>
+                <hr />
+				<div class="content">
+					<div style="display:grid; grid-template-columns: 1fr 1fr; gap:20px;">
+                        <div class="concept-card">
+                            <h3>O-O</h3>
+                            <img src="./latex/images/d3_o_o.png" alt="D3 histogram" style="max-width: 100%; max-height: 300px; object-fit: contain; margin-top:10px;" />
+                        </div>
+                        <div class="concept-card">
+                            <h3>O-H</h3>
+                            <img src="./latex/images/d3_o_h.png" alt="MSD plot with Bayesian fit" style="max-width: 100%; max-height: 300px; object-fit: contain; margin-top:10px;" />
+                        </div>
+                    </div>
+				</div>
+			</section>
+			<section>
+				<h2>RDF: DFT Model</h2>
+                <hr />
+				<div class="content">
+					<div style="display:grid; grid-template-columns: 1fr 1fr; gap:20px;">
+                        <div class="concept-card">
+                            <h3>O-O</h3>
+                            <img src="./latex/images/dft_o_o.png" alt="DFT histogram" style="max-width: 100%; max-height: 300px; object-fit: contain; margin-top:10px;" />
+                        </div>
+                        <div class="concept-card">
+                            <h3>O-H</h3>
+                            <img src="./latex/images/dft_o_h.png" alt="MSD plot with Bayesian fit" style="max-width: 100%; max-height: 300px; object-fit: contain; margin-top:10px;" />
+                        </div>
+                    </div>
+				</div>
+			</section>
+			<section>
+				<h2>RDF: MACE Model</h2>
+                <hr />
+				<div class="content">
+					<div style="display:grid; grid-template-columns: 1fr 1fr; gap:20px;">
+                        <div class="concept-card">
+                            <h3>O-O</h3>
+                            <img src="./latex/images/mace_o_o.png" alt="MACE histogram" style="max-width: 100%; max-height: 300px; object-fit: contain; margin-top:10px;" />
+                        </div>
+                        <div class="concept-card">
+                            <h3>O-H</h3>
+                            <img src="./latex/images/mace_o_h.png" alt="MSD plot with Bayesian fit" style="max-width: 100%; max-height: 300px; object-fit: contain; margin-top:10px;" />
+                        </div>
+                    </div>
+				</div>
+			</section>		
+
+			</section>
+
+
+			<!-- SUMMARY SLIDE -->
 			<section>
 				<h2>Summary</h2>
                 <hr />
 				<div class="content">
 					<ul>
-						<li>MACE provides cheap trajectory sampling for methanol.</li>
-						<li>MGRID convergence identifies a practical DFT setting for labeling.</li>
-						<li>D3 correction improves the physical reference data used for training.</li>
-						<li>Hyperparameter search and ensembles improve robustness and uncertainty estimates.</li>
-						<li>The best MLIP is validated on production MD with RDF and diffusion analysis.</li>
+						<li><strong>Workflow:</strong> Unified management ensures every simulation step is linked and reproducible.</li>
+						<li><strong>Labeling:</strong> MGRID convergence and GGA+D3 provide a high-quality physical baseline.</li>
+						<li><strong>Training:</strong> Hyperparameter tuning and ensembles minimize error and provide uncertainty.</li>
+						<li><strong>Production:</strong> The final MLIP successfully runs stable simulations but fails to reproduce methanol's structural (RDF) and dynamic (Diffusion) properties at <i>ab initio</i> levels.</li>
 					</ul>
 				</div>
 			</section>
 		</div>
 	</div>
 
-	<script src="../utils/dist/reveal.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.min.js"></script>
 	<script>
 		Reveal.initialize({
 			hash: true,
