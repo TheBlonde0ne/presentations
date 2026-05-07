@@ -40,3 +40,7 @@ provide experimental evidence that, without external fields, phonons can also be
 by coupling with the electronic topology. Since the magnetic exchange splitting gradually shifts the
 topological bands in Co3Sn2S2, the CD of phonons exhibits significant temperature dependence, hinting at
 a promising approach for manipulation"
+
+# From Narrow-gap Semiconductor to Metallic Altermagnet: Optical Fingerprints of Co-Doped FeSb2
+
+The realization of bulk metallic altermagnetism has remained elusive despite the growing number of candidate materials. Here, we present evidence that moderate cobalt substitution (∼ 15%) drives the correlated narrow-gap semiconductor FeSb2 into a metallic altermagnetic state persisting up to room temperature. The infrared optical conductivity reveals low-energy interband transitions near 0.1 eV that emerge upon doping and grow with Co concentration. Density functional theory calculations show that these transitions originate exclusively from altermagnetic spin ordering, with spin split bands (∼0.2 meV) of non-relativistic origin, together with spin-orbit coupling induced band splitting of the order of ∼5 meV near the Fermi level. Co substitution further leads to Fano lineshapes and mode mixing in the infrared-active phonons, reflecting enhanced electron–phonon coupling and local inversion symmetry breaking, while leaving the altermagnetic spin symmetry intact. Our results establish carrier-tuned FeSb2 as a platform for exploring metallic d-wave altermagnetism and its coupling to lattice degrees of freedom.

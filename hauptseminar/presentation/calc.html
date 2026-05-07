@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+    <style>
+        .mo-dashboard {
+            display: flex;
+            background: #05080b;
+            color: #b6fff0;
+            font-family: Arial, sans-serif;
+            padding: 24px;
+            border-radius: 12px;
+            gap: 30px;
+            border: 1px solid #25313a;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .panel {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            flex: 1;
+        }
+        canvas {
+            background: #000;
+            border: 1px solid #25313a;
+            border-radius: 8px;
+        }
+        .controls {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            width: 100%;
+            margin-top: 10px;
+        }
+        button {
+            background: #7fffe8;
+            color: #000;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        button:hover { background: #b6fff0; }
+        input[type=range] { flex-grow: 1; cursor: pointer; }
+        .data-readout {
+            font-family: monospace;
+            background: rgba(127, 255, 232, 0.1);
+            padding: 10px;
+            border-radius: 6px;
+            width: 100%;
+            box-sizing: border-box;
+            border: 1px solid rgba(127, 255, 232, 0.2);
+        }
+    </style>
+</head>
+<body>
+
+<div class="mo-dashboard">
+    <!-- Left Panel: Spectrum -->
+    <div class="panel">
+        <span id="sigmaTitle" style="color: white; font-size: 18px;">Extracted Off-Diagonal Conductivity</span>
+        <canvas id="plotCanvas" width="400" height="250"></canvas>
+        <div class="controls">
+            <button id="sweepBtn">Play Sweep</button>
+            <input type="range" id="energySlider" min="0" max="0.4" step="0.001" value="0">
+        </div>
+    </div>
+
+    <!-- Right Panel: Polarization State -->
+    <div class="panel">
+        <span id="kerrTitle" style="color: white; font-size: 18px;">Kerr Rotation Signal</span>
+        <canvas id="polarizationCanvas" width="250" height="250"></canvas>
+        <div class="data-readout" id="readout">
+            Energy: 0.000 eV<br>
+            Re(σ<sub>xy</sub>): 0.000 Ω<sup>-1</sup>cm<sup>-1</sup><br>
+            Im(σ<sub>xy</sub>): 0.000 Ω<sup>-1</sup>cm<sup>-1</sup><br>
+            Kerr Angle: 0.00°<br>
+            Ellipticity: 0.00°
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script>
+    const plotCanvas = document.getElementById('plotCanvas');
+    const plotCtx = plotCanvas.getContext('2d');
+    const polCanvas = document.getElementById('polarizationCanvas');
+    const polCtx = polCanvas.getContext('2d');
+    const sigmaTitle = document.getElementById('sigmaTitle');
+    const kerrTitle = document.getElementById('kerrTitle');
+    const slider = document.getElementById('energySlider');
+    const sweepBtn = document.getElementById('sweepBtn');
+    const readout = document.getElementById('readout');
+
+    function renderMath(tex) {
+        return katex.renderToString(tex, { throwOnError: false, displayMode: false });
+    }
+
+    sigmaTitle.innerHTML = `Extracted Off-Diagonal Conductivity (${renderMath('\\tilde{\\sigma}_{xy}')})`;
+    kerrTitle.innerHTML = `Kerr Rotation Signal (${renderMath('\\theta_K')} and ${renderMath('\\eta_K')})`;
+
+    // Simple resonance model for the extracted off-diagonal conductivity.
+    // This is still schematic, but closer to a frequency-dependent MOKE spectrum:
+    // Re(sigma_xy) is dispersive and changes sign across resonance,
+    // Im(sigma_xy) is absorptive and peaks at resonance.
+    const E_res = 0.12;
+    const gamma = 0.04;
+    const amplitudeRe = 80;
+    const amplitudeIm = 65;
+
+    let currentEnergy = 0;
+    let isSweeping = false;
+    // Exponential smoothing state for readable display
+    let smoothedRe = 0;
+    let smoothedIm = 0;
+    let smoothedAngle = 0;
+    let smoothedEllipticity = 0;
+    const smoothAlpha = 0.12;
+
+    // Estimate maximum displayable sigma for scaling (approximate)
+    const reMaxEstimate = amplitudeRe / (2 * gamma);
+    const imMaxEstimate = amplitudeIm / (gamma);
+
+    function getSigmaXY(e) {
+        const delta = e - E_res;
+        const denom = delta * delta + gamma * gamma;
+        return {
+            re: amplitudeRe * (delta / denom),
+            im: amplitudeIm * (gamma / denom)
+        };
+    }
+
+    function drawPlot() {
+        plotCtx.clearRect(0, 0, plotCanvas.width, plotCanvas.height);
+        
+        // Draw Grid
+        plotCtx.strokeStyle = '#1a2329';
+        plotCtx.lineWidth = 1;
+        for(let i=0; i<400; i+=50) {
+            plotCtx.beginPath(); plotCtx.moveTo(i, 0); plotCtx.lineTo(i, 250); plotCtx.stroke();
+            plotCtx.beginPath(); plotCtx.moveTo(0, i); plotCtx.lineTo(400, i); plotCtx.stroke();
+        }
+
+        // Draw Spectrum
+        plotCtx.beginPath();
+        plotCtx.strokeStyle = '#7fffe8';
+        plotCtx.lineWidth = 2.5;
+        const centerY = plotCanvas.height / 2;
+        const verticalMargin = 18;
+
+        // Draw y=0 zero reference line
+        plotCtx.strokeStyle = '#ff0000';
+        plotCtx.lineWidth = 1.5;
+        plotCtx.beginPath();
+        plotCtx.setLineDash([4, 4]);
+        plotCtx.moveTo(0, centerY);
+        plotCtx.lineTo(plotCanvas.width, centerY);
+        plotCtx.stroke();
+        plotCtx.setLineDash([]);
+        
+        plotCtx.strokeStyle = '#ffffff';
+        
+        for (let x = 0; x <= 400; x++) {
+            let e = (x / 400) * 0.4; // Map x to 0-0.4 eV
+            let sigmaRe = getSigmaXY(e).re;
+            // scale relative to estimated maximum to keep curve on-screen
+            let y = centerY - (sigmaRe / reMaxEstimate) * (centerY - verticalMargin);
+            x === 0 ? plotCtx.moveTo(x, y) : plotCtx.lineTo(x, y);
+        }
+        plotCtx.stroke();
+        
+        plotCtx.strokeStyle = '#ff8fab';
+        plotCtx.lineWidth = 2;
+        plotCtx.beginPath();
+        for (let x = 0; x <= 400; x++) {
+            let e = (x / 400) * 0.4;
+            let sigmaIm = getSigmaXY(e).im;
+            let y = centerY - (sigmaIm / imMaxEstimate) * (centerY - verticalMargin);
+            x === 0 ? plotCtx.moveTo(x, y) : plotCtx.lineTo(x, y);
+        }
+        plotCtx.stroke();
+
+        plotCtx.fillStyle = '#7fffe8';
+        plotCtx.fillText('Re(σ_xy)', 300, 18);
+        plotCtx.fillStyle = '#ff8fab';
+        plotCtx.fillText('Im(σ_xy)', 300, 34);
+
+        // Draw Playhead
+        const playheadX = (currentEnergy / 0.4) * plotCanvas.width;
+        const currentSigma = getSigmaXY(currentEnergy);
+        const playheadY = centerY - (currentSigma.re / reMaxEstimate) * (centerY - verticalMargin);
+
+        plotCtx.beginPath();
+        plotCtx.strokeStyle = '#ffd166';
+        plotCtx.moveTo(playheadX, 0);
+        plotCtx.lineTo(playheadX, 250);
+        plotCtx.stroke();
+
+        plotCtx.beginPath();
+        plotCtx.fillStyle = '#ffd166';
+        plotCtx.arc(playheadX, playheadY, 5, 0, Math.PI * 2);
+        plotCtx.fill();
+        
+        // Axes Labels
+        plotCtx.fillStyle = '#b6fff0';
+        plotCtx.font = '12px Arial';
+        plotCtx.fillText("0.0 eV", 5, 245);
+        plotCtx.fillText("0.4 eV", 360, 245);
+    }
+
+    function drawPolarization() {
+        polCtx.clearRect(0, 0, polCanvas.width, polCanvas.height);
+        const cx = polCanvas.width / 2, cy = polCanvas.height / 2;
+        const sigma = getSigmaXY(currentEnergy);
+
+        // Couple rotation to the dispersive component and ellipticity to the absorptive component.
+        const kerrRotation = (sigma.re / amplitudeRe) * (Math.PI / 8);
+        const kerrEllipticity = (sigma.im / amplitudeIm) * (Math.PI / 12);
+
+        // Smooth displayed values for readability
+        smoothedRe = smoothedRe * (1 - smoothAlpha) + sigma.re * smoothAlpha;
+        smoothedIm = smoothedIm * (1 - smoothAlpha) + sigma.im * smoothAlpha;
+        smoothedAngle = smoothedAngle * (1 - smoothAlpha) + (kerrRotation * 180 / Math.PI) * smoothAlpha;
+        smoothedEllipticity = smoothedEllipticity * (1 - smoothAlpha) + (kerrEllipticity * 180 / Math.PI) * smoothAlpha;
+
+        // Draw Crosshairs
+        polCtx.strokeStyle = '#25313a';
+        polCtx.lineWidth = 1;
+        polCtx.beginPath(); polCtx.moveTo(cx, 0); polCtx.lineTo(cx, 250); polCtx.stroke();
+        polCtx.beginPath(); polCtx.moveTo(0, cy); polCtx.lineTo(250, cy); polCtx.stroke();
+
+        // Draw Ellipse
+        polCtx.save();
+        polCtx.translate(cx, cy);
+        polCtx.rotate(-kerrRotation);
+
+        polCtx.beginPath();
+        polCtx.strokeStyle = '#ff8fab';
+        polCtx.lineWidth = 3;
+        const ellipseRatio = Math.max(0.12, Math.min(0.6, 0.25 + (sigma.im / amplitudeIm) * 0.25));
+        
+        for (let i = 0; i <= Math.PI * 2 + 0.1; i += 0.1) {
+            const x = 70 * Math.cos(i);
+            const y = 70 * ellipseRatio * Math.sin(i);
+            i === 0 ? polCtx.moveTo(x, y) : polCtx.lineTo(x, y);
+        }
+        polCtx.stroke();
+
+        // Draw major axis
+        polCtx.strokeStyle = '#7fffe8';
+        polCtx.lineWidth = 1;
+        polCtx.setLineDash([4, 4]);
+        polCtx.beginPath(); polCtx.moveTo(-100, 0); polCtx.lineTo(100, 0); polCtx.stroke();
+        polCtx.restore();
+
+        // Update Readout
+        readout.innerHTML = `Energy: ${currentEnergy.toFixed(3)} eV<br>
+            Re(${renderMath('\\tilde{\\sigma}_{xy}') }): ${smoothedRe.toFixed(1)} Ω<sup>-1</sup>cm<sup>-1</sup><br>
+            Im(${renderMath('\\tilde{\\sigma}_{xy}') }): ${smoothedIm.toFixed(1)} Ω<sup>-1</sup>cm<sup>-1</sup><br>
+            Kerr Angle: ${smoothedAngle.toFixed(2)}°<br>
+            Ellipticity: ${smoothedEllipticity.toFixed(2)}°`;
+    }
+
+    function update() {
+        currentEnergy = parseFloat(slider.value);
+        drawPlot();
+        drawPolarization();
+    }
+
+    function sweep() {
+        if (!isSweeping) return;
+        currentEnergy += 0.001;
+        if (currentEnergy > 0.4) {
+            currentEnergy = 0;
+            isSweeping = false;
+            sweepBtn.innerText = "Play Sweep";
+        }
+        slider.value = currentEnergy;
+        update();
+        if (isSweeping) requestAnimationFrame(sweep);
+    }
+
+    slider.addEventListener('input', () => {
+        isSweeping = false;
+        sweepBtn.innerText = "Play Sweep";
+        update();
+    });
+
+    sweepBtn.addEventListener('click', () => {
+        isSweeping = !isSweeping;
+        sweepBtn.innerText = isSweeping ? "Stop" : "Play Sweep";
+        if (isSweeping) {
+            if (currentEnergy >= 0.4) currentEnergy = 0;
+            sweep();
+        }
+    });
+
+    update(); // Initial draw
+</script>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/plugin/math/math.min.js"></script>
+</body>
+</html>

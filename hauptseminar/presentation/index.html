@@ -98,7 +98,12 @@
       color: var(--secondary-color);
     }
 
-    .reveal p,
+    .reveal p {
+      font-size: var(--text-size);
+      color: var(--text-color);
+      line-height: 1.6;
+    }
+
     .reveal li {
       font-size: var(--text-size);
       line-height: 1.6;
@@ -555,10 +560,6 @@
               <strong>Mechanism:</strong> This is not an intrinsic phonon property. It arises from <highlight>Fano Resonance</highlight>, an interference between the discrete phonon and the continuous electronic excitations of the chiral Weyl fermions.
             </li>
           </ul>
-          <div style="display:flex; flex-direction:column; align-items:center; gap:12px; margin-top:10px;">
-            <canvas id="cdCanvas" width="400" height="400" style="max-width:100%; height:auto;"></canvas>
-            <p style="font-size: 12pt; margin: 0; text-align: center;">Yellow = Resultant Elliptical Path (CD Effect)</p>
-          </div>
         </div>
         <div class="footnote">
           Yang et al., Phys. Rev. Lett. 134, 196905 (2025)
@@ -647,61 +648,6 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.6.1/plugin/notes/notes.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.6.1/plugin/math/math.min.js"></script>
   <script>
-    const canvas = document.getElementById('cdCanvas');
-    const ctx = canvas.getContext('2d');
-    let t = 0;
-
-    function drawVector(x1, y1, x2, y2, color, width = 1) {
-      ctx.strokeStyle = color;
-      ctx.lineWidth = width;
-      ctx.beginPath();
-      ctx.moveTo(x1, y1);
-      ctx.lineTo(x2, y2);
-      ctx.stroke();
-    }
-
-    function draw() {
-      ctx.clearRect(0, 0, 400, 400);
-      const centerX = 200;
-      const centerY = 200;
-
-      const EL = 80;
-      const ER = 40;
-
-      ctx.strokeStyle = '#444';
-      ctx.beginPath();
-      ctx.moveTo(50, 200);
-      ctx.lineTo(350, 200);
-      ctx.stroke();
-      ctx.beginPath();
-      ctx.moveTo(200, 50);
-      ctx.lineTo(200, 350);
-      ctx.stroke();
-
-      const lx = EL * Math.cos(t);
-      const ly = EL * Math.sin(t);
-      const rx = ER * Math.cos(-t);
-      const ry = ER * Math.sin(-t);
-      const resX = lx + rx;
-      const resY = ly + ry;
-
-      ctx.setLineDash([5, 5]);
-      ctx.strokeStyle = 'rgba(255, 255, 0, 0.3)';
-      ctx.beginPath();
-      ctx.ellipse(centerX, centerY, EL + ER, Math.abs(EL - ER), 0, 0, Math.PI * 2);
-      ctx.stroke();
-      ctx.setLineDash([]);
-
-      drawVector(centerX, centerY, centerX + lx, centerY + ly, '#00d4ff');
-      drawVector(centerX, centerY, centerX + rx, centerY + ry, '#ff4444');
-      drawVector(centerX, centerY, centerX + resX, centerY + resY, '#ffff00', 3);
-
-      t += 0.05;
-      requestAnimationFrame(draw);
-    }
-
-    draw();
-
     Reveal.initialize({
       hash: true,
       plugins: [RevealMath.MathJax2, RevealNotes],

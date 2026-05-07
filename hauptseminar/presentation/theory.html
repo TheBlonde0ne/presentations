@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+  <title>Seminar 8: Optical Probes of Altermagnetism</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/reset.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/reveal.min.css">
+  <link rel="stylesheet" href="styles.css">
+
+  <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js"></script>
+</head>
+
+<body>
+    <div class="reveal">
+      <div class="slides">
+
+
+        <section id="Titlepage">
+            <h1 style="border-bottom: 5px solid var(--primary-color); margin-top: 80px;">Probing the Hidden Spin-Splitting</h1>
+            <h3 style="margin-top: 20px;">Optical & Magneto-Optical Signatures of Altermagnetism</h3>
+            <p style="margin-top: 180px;">
+              <strong>Jakob Wallner</strong><br>
+              <em>University of Stuttgart</em>
+            </p>
+            <p style="margin-top: 30px;">Hauptseminar: Talk 8 of 12
+              <br>27.05.2026
+            </p>
+            <aside class="notes">
+              Welcome everyone. For our eighth seminar, we're shifting our focus from the surface-sensitive techniques like ARPES, which have beautifully mapped out the altermagnetic band structures, to the bulk. Today, we will explore how we use light—photons—as a clean, powerful probe of the unique electronic properties deep inside these fascinating materials. We will cover the fundamental theory of how altermagnetism manifests in the optical response, discuss the state-of-the-art experimental techniques required to measure it, and then dive into a critical comparison of recent results on key material candidates.
+            </aside>
+        </section>
+
+        <section>
+            <h2>How do we identify Altermagnets?</h2>
+            <div style="display:grid; grid-template-columns: 1fr 1fr; gap:20px; margin-top:10px;">
+                <div class="concept-card" style="border-left-color: red;">
+                    <img src="RuO2pro.png" alt="" style="width:100%; height:auto;">
+                    <img src="RuO2against.png" alt="" style="width:100%; height:auto;">
+                </div>
+                <div class="concept-card" style="border-left-color: green;">
+                    <img src="RuO2pro2.png" alt="" style="width:100%; height:auto;">
+                    <img src="RuO2pro3.png" alt="" style="width:100%; height:auto; margin-top: 30px;">
+                </div>
+            </div>
+            <div style="display:grid; grid-template-columns: 1fr 1fr 1fr; gap:20px; margin-top:10px;">
+            <img src="argue1.jpg" alt="" style="width:90%; height:auto;">
+            <p style="font-size: 40px; text-align: center;">We need a <br> <highlight>clear fingerprint</highlight> <br> for altermagnets</p>
+            <img src="argue2.jpg" alt="" style="width:90%; height:auto;">
+            </div>
+            <aside class="notes">
+                Altermagnetism is a new and exciting frontier but we still face a challenge: how do we unambiguously identify altermagnetism in materials? Among the many predictions, many have been later contested. For example, the early ARPES studies on RuO2 claimed to see the characteristic spin-splitting, but later work showed that the observed features could be explained by surface effects or other non-altermagnetic mechanisms.
+                Today i will talk about how we can use optical and magneto-optical techniques to probe the bulk properties of altermagnets, providing a more definitive fingerprint.
+            </aside>
+        </section>
+
+        <section class="section-divider" data-state="is-section-divider">
+            <div style="display:grid; grid-template-columns: 1.6fr 1fr 1fr; gap:18px;">
+
+                <div class="concept-card">
+                    <h3>Part 1: <br>Theory</h3>
+                    <p style="color: var(--text-color);">From band structure to optical response</p>
+                    <ul>
+                        <li>Optical Conductivity Tensor</li>
+                        <li>Magneto-Optical Kerr Effect</li>
+                        <li>Measurement Setups</li>
+                    </ul>
+
+                </div>
+                <div class="concept-card">
+                    <h3>Part 2: Experiment</h3>
+                    <p style="color: var(--text-color);">Measuring altermagnetism with light</p>
+                    <model-viewer 
+                    src="crystal_toolkit_scene.glb" 
+                    alt="3D Crystal Structure from Materials Project" 
+                    auto-rotate 
+                    style="width: 100%; height: 200px;">
+                </model-viewer>
+                </div>
+                <div class="concept-card">
+                    <h3>Part 3: Applications</h3>
+                    <p style="color: var(--text-color);">Exploring the potential uses of altermagnetic materials</p>
+                </div>
+            </div>
+            <div class="footnote" style="color: black;">
+                https://next-gen.materialsproject.org/materials/mp-20714
+            </div>
+
+        </section>
+
+        <section>
+            <h2>Breaking the Symmetry</h2>
+            <div style="display:grid; grid-template-columns: 1fr 1fr 1fr; gap:18px;">
+                <div class="concept-card" style="margin-top: 10px;">
+                    <h3>a: Ferro</h3>
+                    <ul>
+                        <li style="font-size: 15px;">\(\mathbf{M} \neq 0\)</li>
+                        <li style="font-size: 15px;"><highlight>Breaks</highlight> time-reversal symmetry \(\mathcal{T}\)</li>
+                        <li style="font-size: 15px;">No spin degeneracy</li>
+                    </ul>
+                    <img src="ferro.png" alt="ferromagnet" style="width:85%; height:auto; margin-top: 20px;">
+                </div>
+                <div class="concept-card" style="margin-top: 10px;">
+                    <h3>b: Anti-Ferro</h3>
+                    <ul>
+                        <li style="font-size: 15px;">\(\mathbf{M} = 0\)</li>
+                        <li style="font-size: 15px;"><highlight>Preserves</highlight> symmetry \(\mathcal{T}\)</li>
+                        <li style="font-size: 15px;">Spin-degenerate electronic bands</li>
+                    </ul>
+                    <img src="antiferro.png" alt="antiferromagnet" style="width:85%; height:auto; margin-top: 20px;">
+                </div>
+                <div class="concept-card" style="margin-top: 10px;">
+                    <h3>c: Altermagnet</h3>
+                    <ul>
+                        <li style="font-size: 15px;">\(\mathbf{M} \neq 0\)</li>
+                        <li style="font-size: 15px;"><highlight>Breaks</highlight> \(\mathcal{T}\) but <highlight>preserves</highlight> \(\mathcal{T}\mathcal{D}\)</li>
+                    </ul>
+                    <img src="altermagnet.png" alt="altermagnet" style="width:85%; height:auto; margin-top: 20px;">
+                </div>
+            </div>
+            <div class="footnote">https://www.nature.com/articles/s41578-025-00779-1</div>
+
+        </section>
+
+        <section>
+            <h2>Optical Behavior</h2>
+            <h3>Linear Response Theorem and the Optical Conductivity Tensor</h3>
+            <p style="margin-top: 30px;">Normal materials follow <highlight>Linear Response Theorem:</highlight> $D = \varepsilon_0 \tilde{\varepsilon}_{ij} E$ </p>
+            <ul>
+                <li>$\tilde{\varepsilon}_{ij}(\omega)$: dielectric tensor</li>
+                <li>$\tilde{\sigma}_{ij}(\omega)$: complex optical conductivity tensor (equivalent)</li>
+            </ul>
+            <div style="display:grid; grid-template-columns: 1fr 1fr; gap:18px;">
+            <div class="concept-card">
+              <h3 style="font-size: 22px;">Without Magnetization</h3>
+              <p>$$\tilde{\varepsilon} = \begin{pmatrix} {\varepsilon}_{xx} & 0 & 0 \\ 0 & {\varepsilon}_{xx} & 0 \\ 0 & 0 & {\varepsilon}_{xx} \end{pmatrix}$$</p>
+            </div>
+            <div class="concept-card">
+              <h3 style="font-size: 22px;">With Magnetization</h3>
+              <p>$$\tilde{\varepsilon} = \begin{pmatrix} \tilde{\varepsilon}_{xx} & \tilde{\varepsilon}_{xy} & 0 \\ -\tilde{\varepsilon}_{xy} & \tilde{\varepsilon}_{xx} & 0 \\ 0 & 0 & \tilde{\varepsilon}_{zz} \end{pmatrix}$$</p>
+            </div>
+          </div>
+          <p style="text-align: center; font-size: 30px; margin-top: 30px;">Off-Diagonal elements and \(\mathbf{M} = 0\)? <br> Altermagnet!</p>
+
+        </section>
+
+        <section>
+            <h2>The Kubo Formula</h2>
+            <h3>Microscopic Origin of Conductivity</h3>
+            <p style="margin-top: 30px;">The Kubo formula provides a microscopic derivation of the optical conductivity tensor:</p>
+            <p style="font-size: 21px; text-align: center
+            ;">\[\tilde{\sigma}_{xy}(\omega) \propto \frac{1}{\omega} \sum_{n, m} \int_{\text{BZ}} d\text{{k}} \frac{f(E_{n, \text{{k}}}) - f(E_{m, \text{{k}}})}{E_{m, \text{{k}}} - E_{n, \text{{k}}} - \hbar \omega - i\Gamma} \times \langle \psi_{n, \text{{k}}} | \hat{v}_{x} | \psi_{m, \text{{k}}}\rangle \langle{ \psi_{m, \text{{k}}} | \hat{v}_{y} | \psi_{n, \text{{k}}} }\rangle \]</p>
+            <ul>
+                <li>Occupied bands: \(n\)</li>
+                <li>Unoccupied bands: \(m\)</li>
+                <li>Fermi-Dirac distribution: \(f(E)\)</li>
+                <li>Energy and wavefunctions: \(E_{n, \text{{k}}}\), \(\psi_{n, \text{{k}}}\)</li>
+                <li>velocity matrix elements: \(\langle \dots | \hat{v}_{x, y} | \dots \rangle\)</li>
+            </ul>
+        </section>
+
+        <section>
+        <h2>The Magneto-Optical Kerr Effect (MOKE)</h2>
+        <h3>Measuring the Optical Conductivity Tensor</h3>
+        <div style="display:grid; grid-template-columns: 1.5fr 1fr; gap:18px; margin-top: 20px;">
+          <div>
+            <p>We measure how polarization state changes upon reflection.
+            <br>
+            $$\tilde{\sigma}_{xy}(\omega) \propto \theta_K + i\eta_K $$</p>
+            <ul>
+              <li>$\theta_K$ (Rotation) $\leftrightarrow$ Dispersive part, Im($\tilde{\sigma}_{xy}$)</li>
+              <li>$\eta_K$ (Ellipticity) $\leftrightarrow$ Dissipative part, Re($\tilde{\sigma}_{xy}$)</li>
+            </ul>
+            <div class="concept-card" style="margin-top: 90px;">
+              <h3>Polarization Conventions:</h3>
+              <ul>
+                <li><strong>a:</strong> polar</li>
+                <li><strong>b:</strong> longitudinal</li>
+                <li><strong>c:</strong> transversal</li>
+              </ul>
+            </div>
+          </div>
+          <div class="concept-card">
+            <img src="kerr.svg" alt="Kerr effect graphic" style="max-width: auto; height: 500px; margin-left: 0px;">
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>The Magneto-Optical Kerr Effect (MOKE)</h2>
+        <h3>Measuring the Optical Conductivity Tensor</h3>
+        <br>
+        <div style="display:grid; grid-template-columns: 1fr 1fr; gap:18px; margin-top: 20px;">
+        <div class="concept-card">
+            <img src="Polarisation_ellipse2.svg" alt="Polarisation ellipse graphic" style="max-width: auto; height: 400px; margin-left: 0px;">
+        </div>
+        <div class="concept-card">
+            <img src="Rising_circular.gif" alt="decomposition of a circular wave into two linear waves" style="max-width: auto; height: 400px; margin-left: 0px;">
+        </div>
+        </div>
+
+        <div class="footnote">
+            https://en.wikipedia.org/wiki/Polarization_(waves)
+        </div>
+      </section>
+
+      <section>
+        <h2>The Magneto-Optical Kerr Effect (MOKE)</h2>
+        <h3>Measuring the Optical Conductivity Tensor</h3>
+        <br>
+        <div class="concept-card" style="max-width: 980px; margin: 0 auto;">
+        <iframe src="kerr.html" width="960" height="420" style="border:none;" title="Kerr animation"></iframe>
+        </div>
+      </section>
+
+      <section>
+        <h2>The Magneto-Optical Kerr Effect (MOKE)</h2>
+        <h3>Calculating the Optical Conductivity Tensor</h3>
+        <br>
+        <div class="concept-card" style="max-width: 980px; margin: 0 auto;">
+        <iframe src="calc.html" width="960" height="480" style="border:none;" title="Kerr animation"></iframe>
+        </div>
+      </section>
+
+
+
+
+
+
+      </div>
+    </div>
+
+
+
+
+
+
+<!-- presentation ends here -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/reveal.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/plugin/notes/notes.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/plugin/math/math.min.js"></script>
+  <script>
+    Reveal.initialize({
+      hash: true,
+      controls: true,
+      progress: true,
+      transition: 'slide',
+      backgroundTransition: 'fade',
+      plugins: [RevealMath.MathJax2, RevealNotes],
+      mathjax2: {
+        mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js',
+        config: 'TeX-AMS_HTML-full',
+        // pass other options into `MathJax.Hub.Config()`
+        TeX: {
+          Macros: {
+            R: '\\mathbb{R}',
+            C: '\\mathbb{C}'
+          }
+        }
+      }
+    });
+  </script>
+</body>
+</html>

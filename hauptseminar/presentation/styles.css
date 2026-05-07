@@ -4,8 +4,8 @@
    CSS VARIABLES
    =========================================== */
 :root {
-  --background-color: #cab17e2d;
-  --section-divider-bg: #003d24;
+  --background-color: #cab17e52;
+  --section-divider-bg: #00553250;
 
   --heading-font: "Source Serif 4", Georgia, serif;
   --body-font: "Source Sans 3", Helvetica, sans-serif;
@@ -16,11 +16,11 @@
   --h3-size: 22pt;
   --footnote-size: 11pt;
   --header-color: #ffffff;
-  --primary-color: #003d24;
-  --secondary-color: #da702e;
-  --text-color: #1d2028;
+  --primary-color: #005531;
+  --secondary-color: #bc5f26;
+  --text-color: #212529;
   --muted-color: #6b7280;
-  --line-color: #003d24;
+  --line-color: #005531;
   --highlight-color: #6d0909;
 
   --slide-padding: 30px;
@@ -55,9 +55,29 @@
   background-color: var(--section-divider-bg) !important;
 }
 
-.reveal h1,
-.reveal h2,
-.reveal h3,
+.reveal h1 {
+  font-family: var(--heading-font);
+  text-transform: none;
+  color: var(--primary-color);
+  font-weight: 700;
+  line-height: 1.1;
+  border-bottom: 5px solid var(--primary-color)
+}
+.reveal h2 {
+  font-family: var(--heading-font);
+  text-transform: none;
+  color: var(--primary-color);
+  font-weight: 600;
+  line-height: 1.2;
+}
+.reveal h3 {
+  font-family: var(--heading-font);
+  text-transform: none;
+  color: var(--secondary-color);
+  font-weight: 600;
+  line-height: 1.3;
+  font-size: var(--h3-size);
+}
 .reveal h4,
 .reveal h5,
 .reveal h6 {
@@ -69,7 +89,7 @@
 }
 
 .reveal h1 { font-size: var(--h1-size); }
-.reveal h2 { font-size: var(--h2-size); margin-bottom: 0; }
+.reveal h2 { font-size: var(--h2-size); margin-bottom: 0; border-bottom: 2px solid var(--line-color);}
 .reveal h3 { font-size: var(--h3-size); }
 
 .reveal p,
@@ -163,6 +183,8 @@
   right: var(--slide-padding);
   font-size: var(--footnote-size);
   color: var(--muted-color);
+  font-family: 'Times New Roman', Times, serif;
+  font-style: italic;
 }
 
 /* ===========================================
@@ -184,7 +206,7 @@
 
 .reveal .slides section.section-divider p {
   font-size: 20pt;
-  color: var(--muted-color);
+  color: var(--text-color);
 }
 
 /* ===========================================
@@ -215,9 +237,9 @@
   border-left: 4px solid var(--primary-color);
   padding-left: 20px;
   margin: 20px 0;
-  font-style: normal;
+  font-style: italic;
   font-family: var(--heading-font);
-  font
+  font-size: var(--text-size);
   background: none;
   box-shadow: none;
   width: 100%;
@@ -227,7 +249,7 @@
 .reveal blockquote cite {
   display: block;
   margin-top: 10px;
-  font-style: normal;
+  font-style: italic;
   color: var(--muted-color);
 }
 
@@ -305,13 +327,15 @@
 .concept-card h3 {
   margin: 0 0 8px 0;
   font-size: 18pt;
-  color: var(--primary-color);
+  color: var(--secondary-color);
+  border-bottom: var(--text-color) 2px solid;
 }
 
 .concept-card p {
   margin: 0;
   font-size: 14pt;
   color: var(--text-color);
+  line-height: 1.4;
 }
 
 /* ===========================================

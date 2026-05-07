@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        :root {
+            color-scheme: dark;
+        }
+
+        body {
+            margin: 0;
+            background: white;
+        }
+
+        .mo-container {
+            display: flex;
+            background:white;
+            color: #7fffe8;
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            border-radius: 12px;
+            gap: 20px;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: nowrap;
+        }
+
+        canvas {
+            background: linear-gradient(180deg, #05080b 0%, #000 100%);
+            border: 1px solid #25313a;
+            border-radius: 8px;
+        }
+
+        .canvas-wrapper {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .canvas-wrapper span {
+            font-size: 13px;
+            letter-spacing: 0.04em;
+            color: #b6fff0;
+        }
+    </style>
+</head>
+<body>
+
+<div class="mo-container">
+    <div class="canvas-wrapper">
+        <span style="color: black; font-size: 20px;">2D: Polarization Ellipse</span>
+        <canvas id="canvas2d" width="300" height="300"></canvas>
+    </div>
+    <div class="canvas-wrapper">
+        <span style="color: black; font-size: 20px;">3D: Wave Propagation</span>
+        <canvas id="canvas3d" width="500" height="300"></canvas>
+    </div>
+</div>
+
+<script>
+const c2d = document.getElementById('canvas2d');
+const ctx2d = c2d.getContext('2d');
+const c3d = document.getElementById('canvas3d');
+const ctx3d = c3d.getContext('2d');
+
+let time = 0;
+
+function drawArrow(ctx, fromX, fromY, toX, toY, color, label, labelOffsetX = 0, labelOffsetY = 0) {
+    const angle = Math.atan2(toY - fromY, toX - fromX);
+    const headLength = 10;
+
+    ctx.strokeStyle = color;
+    ctx.fillStyle = color;
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    ctx.moveTo(fromX, fromY);
+    ctx.lineTo(toX, toY);
+    ctx.stroke();
+
+    ctx.beginPath();
+    ctx.moveTo(toX, toY);
+    ctx.lineTo(toX - headLength * Math.cos(angle - Math.PI / 7), toY - headLength * Math.sin(angle - Math.PI / 7));
+    ctx.lineTo(toX - headLength * Math.cos(angle + Math.PI / 7), toY - headLength * Math.sin(angle + Math.PI / 7));
+    ctx.closePath();
+    ctx.fill();
+
+    if (label) {
+        ctx.font = '12px Arial, sans-serif';
+        ctx.fillStyle = '#d8fff7';
+        ctx.fillText(label, toX + labelOffsetX, toY + labelOffsetY);
+    }
+}
+
+function project3d(x, y, z, originX, originY) {
+    // Mirror the y dimension so positive y projects towards the viewer.
+    return {
+        x: originX + (x + y) * 0.78,
+        y: originY + (x - y) * 0.34 - z * 0.88,
+    };
+}
+
+function drawAxisLabel(ctx, x, y, text, align = 'center') {
+    ctx.fillStyle = '#c9fff4';
+    ctx.font = '12px Arial, sans-serif';
+    ctx.textAlign = align;
+    ctx.fillText(text, x, y);
+    ctx.textAlign = 'center';
+}
+
+function drawInfoPanel(ctx, x, y, lines) {
+    const lineHeight = 16;
+    const width = 85;
+    const height = 16 + lines.length * lineHeight;
+
+    ctx.save();
+    ctx.fillStyle = 'rgba(4, 10, 12, 0.72)';
+    ctx.strokeStyle = 'rgba(127, 255, 232, 0.25)';
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    ctx.roundRect(x, y, width, height, 8);
+    ctx.fill();
+    ctx.stroke();
+
+    ctx.fillStyle = '#d8fff7';
+    ctx.font = '12px Arial, sans-serif';
+    ctx.textAlign = 'left';
+    lines.forEach((line, index) => {
+        ctx.fillText(line, x + 12, y + 22 + index * lineHeight);
+    });
+    ctx.restore();
+}
+
+function draw() {
+    time += 0.05;
+
+    const theta = 0.8 * Math.sin(time * 0.1);
+    const ellipticity = 0.7 + 0.25 * Math.sin(time * 0.3 + 1.1);
+    const amplitude = 82;
+
+    ctx2d.clearRect(0, 0, 300, 300);
+    ctx3d.clearRect(0, 0, 500, 300);
+
+    const leftOriginX = 150;
+    const leftOriginY = 150;
+
+    ctx2d.save();
+    ctx2d.translate(leftOriginX, leftOriginY);
+    ctx2d.setLineDash([6, 6]);
+    ctx2d.lineWidth = 1.5;
+    drawArrow(ctx2d, -120, 0, 122, 0, '#5e6a73', 'x', 6, -8);
+    drawArrow(ctx2d, 0, 120, 0, -122, '#5e6a73', 'z', 8, -4);
+
+    ctx2d.beginPath();
+    ctx2d.strokeStyle = '#7fffe8';
+    ctx2d.lineWidth = 2.5;
+    const minorToMajor = 0.7 + 0.25 * Math.sin(time * 0.3 + 1.1);
+    const epsilon = 1 / minorToMajor;
+    const psi = 0.8 * Math.sin(time * 0.1);
+    for (let i = 0; i <= Math.PI * 2 + 0.08; i += 0.08) {
+        const baseX = amplitude * Math.cos(i);
+        const baseZ = amplitude * minorToMajor * Math.sin(i);
+        const x = baseX * Math.cos(psi) - baseZ * Math.sin(psi);
+        const z = baseX * Math.sin(psi) + baseZ * Math.cos(psi);
+        i === 0 ? ctx2d.moveTo(x, z) : ctx2d.lineTo(x, z);
+    }
+    ctx2d.stroke();
+
+    const phase = time * 1.15;
+    const baseX = amplitude * Math.cos(phase);
+    const baseZ = amplitude * minorToMajor * Math.sin(phase);
+    const fieldX = baseX * Math.cos(psi) - baseZ * Math.sin(psi);
+    const fieldZ = baseX * Math.sin(psi) + baseZ * Math.cos(psi);
+    drawArrow(ctx2d, 0, 0, fieldX, fieldZ, '#ffd166', 'E', 8, -6);
+
+    const axisAngleLength = 72;
+    drawArrow(
+        ctx2d,
+        0,
+        0,
+        axisAngleLength * Math.cos(psi),
+        axisAngleLength * Math.sin(psi),
+        '#ff8fab',
+        'major axis',
+        8,
+        -8
+    );
+    ctx2d.setLineDash([]);
+
+    drawInfoPanel(ctx2d, -136, -132, [
+        `ψ = ${(psi * 180 / Math.PI).toFixed(1)}°`,
+        `ε = ${epsilon.toFixed(2)}`,
+    ]);
+
+    ctx2d.setLineDash([]);
+    ctx2d.restore();
+
+    const originX = 170;
+    const originY = 185;
+    const steps = 100;
+    const length = 260;
+
+    const axisXEnd = project3d(120, 0, 0, originX, originY);
+    const axisYEnd = project3d(0, -120, 0, originX, originY);
+    const axisZEnd = project3d(0, 0, 120, originX, originY);
+
+    drawArrow(ctx3d, originX, originY, axisXEnd.x, axisXEnd.y, '#64727c', '', 6, 4);
+    drawArrow(ctx3d, originX, originY,-originX, 336, '#ff0000', '', 6, 4);
+    drawArrow(ctx3d, originX, originY, axisYEnd.x, axisYEnd.y, '#64727c', '', 6, 4);
+    drawArrow(ctx3d, originX, originY, axisZEnd.x, axisZEnd.y, '#64727c', '', 6, -4);
+
+    ctx3d.lineWidth = 1.5;
+    ctx3d.beginPath();
+    ctx3d.strokeStyle = '#7fffe8';
+
+    for (let i = 0; i < steps; i++) {
+        // map i -> y so larger i is closer to viewer
+        const y = (i / steps) * length;
+        // phase = k*y - omega*t so peaks move to larger y as time increases
+        const phase3d = (i * 0.22) - time * 1.15;
+        const ex0 = amplitude * Math.cos(phase3d);
+        const ez0 = amplitude * ellipticity * Math.sin(phase3d);
+        const ex = ex0 * Math.cos(theta) - ez0 * Math.sin(theta);
+        const ez = ex0 * Math.sin(theta) + ez0 * Math.cos(theta);
+        const point = project3d(ex * 0.95, y, ez, originX, originY);
+
+        i === 0 ? ctx3d.moveTo(point.x, point.y) : ctx3d.lineTo(point.x, point.y);
+    }
+    ctx3d.stroke();
+
+    // Align the center arrow phase with the wave at y=0.
+    // In the drawing loop phase3d = time*1.15 + (i*0.22) where i maps to y position.
+    // For y=0, i == steps, so add steps*0.22 to match the slice at the origin.
+    // center at y=0 corresponds to i==0, so phase there is -omega*t
+    const centerPhase = -time * 1.15;
+    const centerBaseX = amplitude * Math.cos(centerPhase);
+    const centerBaseZ = amplitude * ellipticity * Math.sin(centerPhase);
+    const centerX = centerBaseX * Math.cos(theta) - centerBaseZ * Math.sin(theta);
+    const centerZ = centerBaseX * Math.sin(theta) + centerBaseZ * Math.cos(theta);
+    const centerTip = project3d(centerX * 0.95, 0, centerZ, originX, originY);
+
+    drawArrow(ctx3d, originX, originY, centerTip.x, centerTip.y, '#ffd166', 'E', 8, -6);
+
+    drawAxisLabel(ctx3d, axisXEnd.x + 10, axisXEnd.y + 4, 'x', 'left');
+    drawAxisLabel(ctx3d, axisYEnd.x + 10, axisYEnd.y + 4, 'y', 'left');
+    drawAxisLabel(ctx3d, axisZEnd.x + 10, axisZEnd.y - 2, 'z', 'left');
+
+    requestAnimationFrame(draw);
+}
+
+draw();
+</script>
+</body>
+</html>

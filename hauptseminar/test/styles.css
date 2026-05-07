@@ -203,6 +203,8 @@
   right: var(--slide-padding);
   font-size: var(--footnote-size);
   color: var(--muted-color);
+  font-family: 'Times New Roman', Times, serif;
+  font-style: italic;
 }
 
 /* ===========================================
