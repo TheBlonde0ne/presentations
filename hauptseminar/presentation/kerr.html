@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="utf-8">
     <style>
         :root {
             color-scheme: dark;
@@ -108,9 +109,43 @@ function drawAxisLabel(ctx, x, y, text, align = 'center') {
     ctx.textAlign = 'center';
 }
 
+function drawDepthGuides(ctx, originX, originY, farY) {
+    const xRails = [-85, -45, 0, 45, 85];
+    const zRails = [-55, 0, 55];
+
+    ctx.save();
+    ctx.lineWidth = 1;
+    ctx.setLineDash([6, 7]);
+
+    xRails.forEach((x, index) => {
+        const start = project3d(x, -30, 0, originX, originY);
+        const end = project3d(x, farY, 0, originX, originY);
+        const alpha = index === 2 ? 0.3 : 0.16;
+        ctx.strokeStyle = `rgba(127, 255, 232, ${alpha})`;
+        ctx.beginPath();
+        ctx.moveTo(start.x, start.y);
+        ctx.lineTo(end.x, end.y);
+        ctx.stroke();
+    });
+
+    zRails.forEach((z, index) => {
+        const start = project3d(0, -30, z, originX, originY);
+        const end = project3d(0, farY, z, originX, originY);
+        const alpha = index === 1 ? 0.24 : 0.12;
+        ctx.strokeStyle = `rgba(255, 209, 102, ${alpha})`;
+        ctx.beginPath();
+        ctx.moveTo(start.x, start.y);
+        ctx.lineTo(end.x, end.y);
+        ctx.stroke();
+    });
+
+    ctx.setLineDash([]);
+    ctx.restore();
+}
+
 function drawInfoPanel(ctx, x, y, lines) {
     const lineHeight = 16;
-    const width = 85;
+    const width = 110;
     const height = 16 + lines.length * lineHeight;
 
     ctx.save();
@@ -188,8 +223,8 @@ function draw() {
     ctx2d.setLineDash([]);
 
     drawInfoPanel(ctx2d, -136, -132, [
-        `ψ = ${(psi * 180 / Math.PI).toFixed(1)}°`,
-        `ε = ${epsilon.toFixed(2)}`,
+        `θ = ${(psi * 180 / Math.PI).toFixed(1)}°`,
+        `η = ${epsilon.toFixed(2)}`,
     ]);
 
     ctx2d.setLineDash([]);
@@ -199,13 +234,16 @@ function draw() {
     const originY = 185;
     const steps = 100;
     const length = 260;
+    const guideLength = length + 160;
 
     const axisXEnd = project3d(120, 0, 0, originX, originY);
     const axisYEnd = project3d(0, -120, 0, originX, originY);
     const axisZEnd = project3d(0, 0, 120, originX, originY);
 
+    drawDepthGuides(ctx3d, originX, originY, guideLength);
+
     drawArrow(ctx3d, originX, originY, axisXEnd.x, axisXEnd.y, '#64727c', '', 6, 4);
-    drawArrow(ctx3d, originX, originY,-originX, 336, '#ff0000', '', 6, 4);
+    // Add red long line along y-axis for clarity
     drawArrow(ctx3d, originX, originY, axisYEnd.x, axisYEnd.y, '#64727c', '', 6, 4);
     drawArrow(ctx3d, originX, originY, axisZEnd.x, axisZEnd.y, '#64727c', '', 6, -4);
 

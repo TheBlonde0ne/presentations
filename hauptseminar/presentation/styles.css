@@ -204,6 +204,14 @@
   text-align: center;
 }
 
+.reveal .slides section.section-divider h2 {
+  font-size: 40pt;
+  text-align: center;
+  margin-bottom: 20px;
+  border-bottom: 2px solid var(--line-color);
+  margin-top: 0px;
+}
+
 .reveal .slides section.section-divider p {
   font-size: 20pt;
   color: var(--text-color);
