@@ -99,18 +99,21 @@
           <h2>Overview</h2>
             <div style="display:grid; grid-template-columns: 1fr 1fr 1fr; gap:18px;">
                 <div class="concept-card">
-                    <h3>Part 1: Theory</h3>
+                    <h3>Part 1</h3>
                     <p style="color: var(--text-color);">From band structure to optical response</p>
                     <ul>
                         <li>Optical Conductivity Tensor</li>
                         <li>Magneto-Optical Kerr Effect</li>
-                        <li>Measurement Setups</li>
+                        <li>Measurements</li>
                     </ul>
 
                 </div>
                 <div class="concept-card">
-                    <h3>Part 2: Experiment</h3>
-                    <p style="color: var(--text-color);">Measuring altermagnetism with light</p>
+                    <h3>Part 2</h3>
+                    <ul>
+                      <li>Cobalt-doped FeSb<sub>2</sub></li>
+                      <li>Diagonal Elements \(\sigma_{ij}\)</li>
+                    </ul>
                     <model-viewer 
                     src="crystal_toolkit_scene.glb" 
                     alt="3D Crystal Structure from Materials Project" 
@@ -119,8 +122,12 @@
                 </model-viewer>
                 </div>
                 <div class="concept-card">
-                    <h3>Part 3: Applications</h3>
-                    <p style="color: var(--text-color);">Exploring the potential uses of altermagnetic materials</p>
+                    <h3>Part 3</h3>
+                    <ul>
+                      <li>Other Altermagnet Candidates</li>
+                      <li>Debunked cases</li>
+                      <li>Offdiagonal Elements \(\sigma_{ij}\)</li>
+                    </ul>
                 </div>
             </div>
         </section>
@@ -305,7 +312,7 @@
 
       <section>
         <h2>The Magneto-Optical Kerr Effect (MOKE)</h2>
-        <h3>Measuring the Optical Conductivity Tensor</h3>
+        <h3>Rotation angle and Ellipticity, Decomposition of CPL</h3>
         <br>
         <div style="display:grid; grid-template-columns: 1fr 1fr; gap:18px; margin-top: 20px;">
         <div class="concept-card">
@@ -323,12 +330,12 @@
 
       <section>
         <h2>The Magneto-Optical Kerr Effect (MOKE)</h2>
-        <h3>Measuring the Optical Conductivity Tensor</h3>
+        <h3>Measuring the Kerr Rotation and Ellipticity</h3>
         <br>
         <div class="concept-card" style="max-width: 980px; margin: 0 auto; padding: 3px;">
         <iframe src="kerr.html" width="900" height="380" style="border:none;" title="Kerr animation"></iframe>
         </div>
-        <p style="text-align: center; margin: auto;">Extract the <highlight>Rotation</highlight> and <highlight>Kerr Ellipticity</highlight></p>
+        <p style="text-align: center; margin: auto;">Extract the <highlight>Kerr Rotation</highlight> and <highlight>Kerr Ellipticity</highlight></p>
       </section>
 
       <section>
@@ -344,29 +351,183 @@
         </aside>
       </section>
 
+
       <section>
         <h2>Kramers-Kronig Relations</h2>
-        <div style="display:grid; grid-template-columns: 1fr 1.7fr; gap:18px;">
-          <p><strong>Concept:</strong> Relate the real and imaginary parts of a response function. <br>
-          <strong>Condition:</strong> Must be a response function (analytic in the upper half-plane). <br>
-          <strong>Application:</strong> In MOKKA, we treat $f(\omega)$ as a response function, allowing us to extract the dichroism ratio from the Kerr angle.
+        <h3>Connecting Real and Imaginary Parts</h3>
+        <div style="display:grid; grid-template-columns: 1.2fr 1fr; gap:18px; margin-top: 60px;">
+          <p data-id="formulas"><strong>Condition:</strong> <highlight>Response function</highlight> (analytic in the upper half-plane). <br>
+          $$ \text{Re}[f(\omega)] = \frac{1}{\pi} \mathcal{P} \int_{-\infty}^{\infty} \frac{\text{Im}[f(x)]}{x - \omega} dx$$ <br> $$ \text{Im}[f(\omega)] = -\frac{1}{\pi} \mathcal{P} \int_{-\infty}^{\infty} \frac{\text{Re}[f(x)]}{x - \omega} dx $$
           </p>
-          <div class="concept-card">
-            <img src="Kramersgifwiki.gif" alt="Kramers Kronig relations animation" style="max-width: 550px; height: auto; margin-top: 20px;">
+          <div class="concept-card" data-id="kramersgif">
+            <img src="Kramersgifwiki.gif" alt="Kramers Kronig relations animation" style="max-width: 400px; height: auto; margin-top: 20px;">
           </div>
         </div>
-        <p>$$ \text{Re}[f(\omega)] = \frac{1}{\pi} \mathcal{P} \int_{-\infty}^{\infty} \frac{\text{Im}[f(x)]}{x - \omega} dx \hspace{2em} \text{Im}[f(\omega)] = -\frac{1}{\pi} \mathcal{P} \int_{-\infty}^{\infty} \frac{\text{Re}[f(x)]}{x - \omega} dx $$</p>
         <div class="footnote">https://upload.wikimedia.org/wikipedia/commons/4/45/Kramersgifwiki.gif: 03.05.2026</div>
       </section>
 
+      <section class="section-divider" data-state="is-section-divider">
+              <h2 style="font-size: 50px;">Part 2: Cobalt-doped FeSb<sub>2</sub></h2>
+              <p style="margin-top: 18px; text-align: center; font-size: 30px; opacity: 0.92;">A Case Study in Altermagnetism</p>
+      </section>
 
 
+      <section>
+        <h2>Cobalt-doped FeSb<sub>2</sub></h2>
+        <h3>A Case Study in Altermagnetism</h3>
+        <div class="concept-card">
+          <img src="fesb2paper.png" alt="Paper of FeSb2" style="width: 100%; height: auto; margin-top: 0px;">
+        </div>
+        <div class="footnote">https://arxiv.org/abs/2604.28105</div>
+      </section>
+      
+      <!-- Concept: Introduce the material $Fe_{0.85}Co_{0.15}Sb_2$ and immediately pivot to why we aren't using the MOKE protocol you just explained.
 
+       The Hook: Explain that while $\sigma_{xy}$ is the "classic" probe, it is plagued by macroscopic domain cancellation and surface sensitivity.
+       
+       Talking Point: Introduce the "Diagonal Advantage": $\sigma_1(\omega)$ (real part of diagonal conductivity) as a bulk-sensitive, symmetry-robust alternative. -->
+      <section>
+      <section>
+        <h2>The Parent Compound (FeSb<sub>2</sub>)</h2>
+        <h3>Correlated narrow-gap semiconductor</h3>
+        <div style="display:grid; grid-template-columns: 1fr 1fr; gap:18px; margin-top: 20px;">
+          <div class="concept-card" style="padding: 5px;">
+            <h3>Band Structure</h3>
+            <img src="fesb2bandstructure.png" alt="Band structure of FeSb2" style="width: 100%; height: auto; margin-top: 0px;">
+          </div>
+          <div class="concept-card" style="padding: 5px;">
+            <h3>Resistivity</h3>
+            <img src="resistivity.png" alt="Resistivity of FeSb2" style="width: 100%; height: auto; margin-top: 0px;">
+          </div>
+        </div>
+        <div style="display:grid; grid-template-columns: 1fr 1fr; gap:18px; margin-top: 0px;">
+          <ul>
+            <li>Transport gap of approximately 30 meV</li>
+            <li>Optical gap of roughly 120 meV</li>
+          </ul>
+        <ul>
+          <li>No long range magnetic order</li>
+          <li>strong itinerant spin fluctuations</li>
+        </ul>
+        </div>
+      </section>
 
+      <section>
+        <h2>The Parent Compound (FeSb<sub>2</sub>)</h2>
+        <h3>Correlated narrow-gap semiconductor</h3>
+        <div style="display:grid; grid-template-columns: 1fr 1fr 1fr; gap:18px; margin-top: 20px;">
+          <ul>
+            <li style="font-size: 18px;">Transport gap of approximately 30 meV</li>
+            <li style="font-size: 18px;">Optical gap of roughly 120 meV</li>
+          </ul>
+          <ul>
+            <li style="font-size: 18px;">No long range magnetic order</li>
+            <li style="font-size: 18px;">strong itinerant spin fluctuations</li>
+          </ul>
+          <div class="concept-card" style="padding: 5px;"><img src="latticelegend.png" alt="lattice legend" style="width: 100%;"></div>
+        </div>
+        <div style="display:grid; grid-template-columns: 1fr 1fr; gap:68px; margin-top: 10px;">
+          <div class="flow-node secondary" style="line-height: normal;">
+            Antiferromagnetic (AFMe) order
+          </div>
+          <div class="flow-node secondary" style="line-height: normal;">
+            Altermagnetic (AFMo) order
+          </div>
+        </div>
+        <div style="display:grid; grid-template-columns: 1fr 1fr; gap:18px; margin-top: 20px;">
+          <div class="concept-card" style="padding: 3px;">
+            <img src="afme.png" alt="Band structure of FeSb2" style="width: 95%; height: auto; margin-top: 0px;">
+          </div>
+          <div class="concept-card" style="padding: 3px;">
+            <img src="afmo.png" alt="Resistivity of FeSb2" style="width: 95%; height: auto; margin-top: 0px;">
+          </div>
+        </div>
+      </section>
+      </section>
 
+      <section>
+      <section>
+        <h2>Cobalt-doped FeSb<sub>2</sub></h2>
+        <h3>Closing the gap and stabilizing the altermagnetic state</h3>
+        <div style="display:grid; grid-template-columns: 1.5fr 1fr; gap: 14px; margin-top: 20px;">
+          <div>
+          <ul>
+          <li><strong>Structure:</strong> Crystal structure is preserved</li>
+          <li><strong>Metallization:</strong> Semiconducting gap is closed</li>
+          <li><strong>Suppression of Fluctuations:</strong> Spin fluctuations reduced</li>
+          <li><strong>Result:</strong> AFMo configuration is stabilized</li>
+          <li>Persisting up to room temperature</li>
+          </ul>
+          </div>
+          <div>
+        <div class="concept-card">
+          <img src="dopedstructure.png" alt="Paper of FeSb2" style="width: 60%; height: auto; margin-top: 0px;">
+        </div>
+        <div class="concept-card" style="text-align: center; margin-top: 20px;">
+        <ul>
+          <li>Cobalt: <span style="font-family: 'Times New Roman', Times, serif;">[Ar] 3d<sup style="color: #860505;">7</sup> 4s<sub>2</sub></span> </li>
+          <li>Iron: <span style="font-family: 'Times New Roman', Times, serif;">[Ar] 3d<sup style="color: #860505;">6</sup> 4s<sub>2</sub></span></li>
+          <li>\(\rightarrow\) Adds <span style="font-family: 'Times New Roman', Times, serif;">3d</span> electrons</li>
+          <li>"Carrier tuning"</li>
+        </ul>
+      </div>
       </div>
     </div>
+      <aside class="notes">
+      evidenced by a sharp drop in electrical resistivity below 100 K and the emergence of a coherent Drude response in the optical conductivity.
 
+      The strong itinerant spin fluctuations that plague the parent compound are substantially quenched. This is quantitatively supported by a dramatic reduction in the Drude scattering rate (from \(\approx 905 \text{ cm}^{-1}\) in the parent to \(\approx 559 \text{ cm}^{-1}\) in the doped system at 300 K), despite the introduction of impurity scattering from the Co dopants.
+      </aside>
+      </section>
+      
+      <section>
+        <h2>Cobalt-doped FeSb<sub>2</sub></h2>
+        <h3>Closing the gap and stabilizing the altermagnetic state</h3>
+        <div style="display:grid; grid-template-columns: 1fr 1fr; gap:18px; margin-top: 20px;">
+          <div class="concept-card" style="padding: 5px;">
+            <h3>X-ray diffraction patterns</h3>
+            <img src="dopedcrystal.png" alt="Band structure of FeSb2" style="width: 100%; height: auto; margin-top: 0px;">
+          </div>
+          <div class="concept-card" style="padding: 5px;">
+            <h3>Crystal structure</h3>
+            <img src="magnetization.png" alt="Resistivity of FeSb2" style="width: 80%; height: auto; margin-top: 0px;">
+          </div>
+        </div>
+        
+      </section>
+      </section>
+
+
+      <section>
+      <section><h2>Engineering the Altermagnet</h2><h3>Carrier Tuning (15% Co Substitution)</h3></section>
+      <section><h2>Engineering the Altermagnet</h2><h3>Identifying the Feature (The 0.1 eV Peak)</h3></section>
+      </section>
+
+      <section>
+      <section><h2>Identifying the Altermagnetic State</h2><h3>The DFT Comparison (NM vs. AFMe vs. AFMo)</h3>
+        <div class="concept-card" style="margin-top: 20px; padding: 5px;">
+          <img src="dftcomp.png" alt="dft sim and measurement comparison" style="width: 100%; height: auto; margin-top: 0px;">
+        </div>
+        <p style="text-align: center; margin-top: 20px;">Only the <highlight>AFMo</highlight> (red line) state shows a good agreement with the experimental data.</p>
+      </section>
+      <section><h2>Identifying the Altermagnetic State</h2><h3>Non-Relativistic Spin Splitting</h3>
+        <div style="display:grid; grid-template-columns: 1fr 1.5fr; gap:18px; margin-top: 20px;">
+        <div class="concept-card" style="margin-top: 20px; padding: 5px;">
+          <img src="fermisurface.png" alt="dft sim and measurement comparison" style="width: 300px; height: auto; margin-top: 0px;">
+        </div>
+          <ul>
+            <li>Clear spin-splitting of the Fermi surface</li>
+            <li>Alternating spin-polarization across the Brillouin zone</li>
+            <li>Results in non-zero off-diagonal optical conductivity</li>
+          </ul>
+        </div>
+      </section>
+      </section>
+
+      <section>
+      <section><h2>Secondary Proofs & Conclusion</h2><h3>Phonon Fingerprints (Fano & Mode Mixing)</h3></section>
+      <section><h2>Secondary Proofs & Conclusion</h2><h3>Synthesis & Final Takeaway</h3></section>
+      </section>
 
 
 
@@ -376,6 +537,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/plugin/math/math.min.js"></script>
   <script>
     Reveal.initialize({
+      preloadIframes: true,
       slideNumber: 'c/t',
       hash: true,
       controls: true,
