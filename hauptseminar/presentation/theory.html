@@ -20,8 +20,8 @@
         <section id="Titlepage" style="position: relative;">
             <h1 style="border-bottom: 5px solid var(--primary-color); margin-top: 80px;">Probing the Hidden Spin-Splitting</h1>
             <h3 style="margin-top: 20px;">Optical & Magneto-Optical Signatures of Altermagnetism</h3>
-            <img id="u-logo" src="unistuttgart_logo_englisch_cmyk-01.png" alt="University of Stuttgart logo, featuring a white dot pattern forming a circle" style="width: 200px; height: auto; position: absolute; right: 40px; top: 460px;">
-            <p style="margin-top: 130px;">
+            <img id="u-logo" src="unistuttgart_logo_englisch_cmyk-01.png" alt="University of Stuttgart logo, featuring a white dot pattern forming a circle" style="width: 200px; height: auto; position: absolute; right: 40px; top: 500px;">
+            <p style="margin-top: 170px;">
               <strong>Jakob Wallner</strong><br>
               <em>University of Stuttgart</em>
             </p>
@@ -65,6 +65,7 @@
         <section>
         <h2>Context: From Surface to Bulk Probes</h2>
         <div class="content">
+          <div class="fragment" data-fragment-index="2">
           <div class="concept-card";  style="background: #c1e6d228; margin-top: 10px;">
           <ul>
             <li>
@@ -75,7 +76,10 @@
             </li>
           </ul>
           </div>
-        <div style="display:grid; grid-template-columns: 1.8fr 1fr; gap:15px; margin-top:10px;">
+          </div>
+        
+        <div class="fragment" data-fragment-index="1" style="margin-top: 10px;">
+        <div style="display:grid; grid-template-columns: 1.8fr 1fr; gap:15px;">
           <div class="concept-card" style="background: #cccccc39;">
           <ul>
             <li>
@@ -90,6 +94,45 @@
           <iframe src="arpes.html" width="400" height="250" style="border:none; margin-top: 20px;" title="ARPES"></iframe>
           </div>
         </div>
+        </div>
+        <aside class="notes">
+          The previous talks have done a fantastic job setting the stage. We understand the theory, and we've seen the compelling ARPES data that directly visualizes the k-dependent spin-splitting at the surface. But a crucial question remains: is this phenomenon robust in the bulk of the material? Optical and magneto-optical spectroscopy are our primary tools to answer this. Unlike ARPES, which is inherently surface-sensitive, optics probes the collective electronic excitations deep within the crystal. Our goal today is to understand the specific optical fingerprints that altermagnetism should produce and how to measure them.
+        </aside>
+      </section>
+
+      <section>
+        <h2>Context: From Surface to Bulk Probe</h2>
+        <div class="content">
+          <div class="fragment" data-fragment-index="2">
+          <div class="padded";  style="background: #c1e6d228; margin-top: 10px;">
+          <ul>
+            <li>
+              <strong>My Focus:</strong> <highlight>Bulk Probing</highlight> Optical spectroscopy measurements. Entire electronic band structure is probed, making it a complementary and essential probe.
+            </li>
+            <li>
+              <strong>\(\rightarrow\)Detect spin-splitting via Optical Probing</strong>
+            </li>
+          </ul>
+          </div>
+          </div>
+        
+        <div class="fragment" data-fragment-index="1" style="margin-top: 10px;">
+        <div style="display:grid; grid-template-columns: 1.8fr 1fr; gap:15px;">
+          <div class="padded" style="background: #cccccc39;">
+          <ul>
+            <li>
+              <strong>Previous Talks:</strong> Landau theory, spin-space groups, non-symmorphic symmetries.
+            </li>
+            <li>
+              <strong>ARPES (Topic 4):</strong> Momentum-dependent spin-splitting ($E(\mathbf{k},\uparrow) \neq E(\mathbf{k},\downarrow)$) at the material's <highlight>surface</highlight>.
+            </li>
+          </ul>
+          </div>
+          <div class="padded" style="background: #ffffff;">
+          <iframe src="arpes.html" width="400" height="250" style="border:none; margin-top: px;" title="ARPES"></iframe>
+          </div>
+        </div>
+        </div>
         <aside class="notes">
           The previous talks have done a fantastic job setting the stage. We understand the theory, and we've seen the compelling ARPES data that directly visualizes the k-dependent spin-splitting at the surface. But a crucial question remains: is this phenomenon robust in the bulk of the material? Optical and magneto-optical spectroscopy are our primary tools to answer this. Unlike ARPES, which is inherently surface-sensitive, optics probes the collective electronic excitations deep within the crystal. Our goal today is to understand the specific optical fingerprints that altermagnetism should produce and how to measure them.
         </aside>
@@ -98,7 +141,7 @@
         <section class="section-divider" data-state="is-section-divider">
           <h2>Overview</h2>
             <div style="display:grid; grid-template-columns: 1fr 1fr 1fr; gap:18px;">
-                <div class="concept-card">
+                <div class="padded" style="background: rgb(240, 229, 196)">
                     <h3>Part 1</h3>
                     <p style="color: var(--text-color);">From band structure to optical response</p>
                     <ul>
@@ -108,7 +151,7 @@
                     </ul>
 
                 </div>
-                <div class="concept-card">
+                <div class="padded" style="background: #c1e6d228;">
                     <h3>Part 2</h3>
                     <ul>
                       <li>Cobalt-doped FeSb<sub>2</sub></li>
@@ -121,7 +164,7 @@
                     style="width: 100%; height: 200px">
                 </model-viewer>
                 </div>
-                <div class="concept-card">
+                <div class="padded" style="background: #c1e6d228;">
                     <h3>Part 3</h3>
                     <ul>
                       <li>Other Altermagnet Candidates</li>
@@ -133,6 +176,7 @@
         </section>
 
         <section>
+        <p style="position: absolute; top: -10px; left: -150px; font-size: 20px; font-family: 'Times New Roman', Times, serif; opacity: 0.5;">Part 1</p>
             <h2>Breaking the Symmetry</h2>
             <div style="display:grid; grid-template-columns: 1fr 1fr 1fr; gap:18px;">
                 <div class="concept-card" style="margin-top: 10px;">
@@ -162,30 +206,34 @@
                     <img src="altermagnet.png" alt="Altermagnetic spin structure combining magnetization with alternating spin-space structure" style="width:85%; height:auto; margin-top: 20px;">
                 </div>
             </div>
-            <div class="footnote"><a href="https://www.nature.com/articles/s41578-025-00779-1">https://www.nature.com/articles/s41578-025-00779-1</a></div>
+            <div class="footnote"><a href="https://www.nature.com/articles/s41578-025-00779-1" style="color: #000000;">https://www.nature.com/articles/s41578-025-00779-1</a></div>
 
         </section>
 
         <section>
             <h2>Optical Behavior</h2>
             <h3>Linear Response Theorem and the Optical Conductivity Tensor</h3>
-            <p style="margin-top: 30px;">Normal materials follow <highlight>Linear Response Theorem:</highlight> $D = \varepsilon_0 \tilde{\varepsilon}_{ij} E$ </p>
+            
+            <p style="margin-top: 30px; margin-bottom: 20px; text-align: center">Normal materials follow <highlight>Linear Response Theorem:</highlight> $D = \varepsilon_0 \tilde{\varepsilon}_{ij} E$ </p>
+            <div style="display:grid; grid-template-columns: 1.5fr 1fr; gap:18px;">
+            <div>
             <ul>
                 <li>$\tilde{\varepsilon}_{ij}(\omega)$: dielectric tensor</li>
                 <li>$\tilde{\sigma}_{ij}(\omega)$: complex optical conductivity tensor (equivalent)</li>
             </ul>
-            <div style="display:grid; grid-template-columns: 1fr 1fr; gap:18px;">
+            <p style="text-align: center; font-size: 30px; margin-top: 30px;">Spontaneous off-diagonal elements without net magnetization are a macroscopic hallmark of altermagnetism.</p>
+            </div>
+            <div class="padded">
             <div class="concept-card">
               <h3 style="font-size: 22px;">Without Magnetization</h3>
               <p>$$\tilde{\varepsilon} = \begin{pmatrix} {\varepsilon}_{xx} & 0 & 0 \\ 0 & {\varepsilon}_{xx} & 0 \\ 0 & 0 & {\varepsilon}_{xx} \end{pmatrix}$$</p>
             </div>
-            <div class="concept-card">
+            <div class="concept-card" style="margin-top: 20px;">
               <h3 style="font-size: 22px;">With Magnetization</h3>
               <p>$$\tilde{\varepsilon} = \begin{pmatrix} \tilde{\varepsilon}_{xx} & \tilde{\varepsilon}_{xy} & 0 \\ -\tilde{\varepsilon}_{xy} & \tilde{\varepsilon}_{xx} & 0 \\ 0 & 0 & \tilde{\varepsilon}_{zz} \end{pmatrix}$$</p>
             </div>
+            </div>
           </div>
-          <p style="text-align: center; font-size: 30px; margin-top: 30px;">Spontaneous off-diagonal elements without net magnetization are a macroscopic hallmark of altermagnetism.</p>
-
         </section>
 
         <section>
@@ -201,21 +249,25 @@
             </p>
           </div>
         
-          <!-- Fragments allow you to reveal these points as you speak -->
+          <!-- fragments allow you to reveal these points as you speak -->
           <div style="display: flex; gap: 20px; margin-top: 20px;">
             <div class="fragment" style="flex: 1;">
+            <div class="padded" style="padding: 10px">
               <h4 style="color: #428377; font-size: 24px;">1. The Resonance (Denominator)</h4>
               <ul>
                 <li style="font-size: 20px;">\((E_m - E_n - \hbar\omega)\) dictates <b>when</b> a peak occurs</li>
                 <li style="font-size: 20px;">Vertical interband transitions at specific \(\text{k}\)-points</li>
               </ul>
             </div>
+            </div>
             <div class="fragment" style="flex: 1;">
+            <div class="padded" style="padding: 10px">
               <h4 style="color: #8f5060; font-size: 24px;">2. The Topology (Matrix Elements)</h4>
               <ul>
                 <li style="font-size: 20px;">\(\langle \hat{v}_x \rangle \langle \hat{v}_y \rangle\) relates to <b>Berry Curvature</b></li>
                 <li style="font-size: 20px;">In altermagnets, this product survives the BZ sum</li>
               </ul>
+            </div>
             </div>
           </div>
           <div class="fragment">
@@ -288,14 +340,15 @@
         <h3>Measuring the Optical Conductivity Tensor</h3>
         <div style="display:grid; grid-template-columns: 1.5fr 1fr; gap:18px; margin-top: 20px;">
           <div>
-            <p>We measure how polarization state changes upon reflection.
-            <br>
-            $$\tilde{\sigma}_{xy}(\omega) \propto \theta_K + i\eta_K $$</p>
+            <p>We measure how polarization state changes upon reflection.</p>
+           <div class="padded" style="margin-top: 20px;">
+             <p>$$\tilde{\sigma}_{xy}(\omega) \propto \theta_K + i\eta_K $$</p>
             <ul>
               <li>$\theta_K$ (Rotation) $\leftrightarrow$ Dispersive part, Im($\tilde{\sigma}_{xy}$)</li>
               <li>$\eta_K$ (Ellipticity) $\leftrightarrow$ Dissipative part, Re($\tilde{\sigma}_{xy}$)</li>
             </ul>
-            <div class="concept-card" style="margin-top: 90px;">
+           </div>
+            <div class="concept-card" style="margin-top: 50px;">
               <h3>Polarization Conventions:</h3>
               <ul>
                 <li><strong>a:</strong> polar</li>

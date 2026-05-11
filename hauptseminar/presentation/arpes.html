@@ -180,7 +180,8 @@
     function drawStatic() {
         ctx.clearRect(0, 0, width, height);
 
-        ctx.fillStyle = '#f9fbfc';
+        // Use pure white to match the page background
+        ctx.fillStyle = '#ffffff';
         ctx.fillRect(0, 0, width, height);
 
         const sourceX = 145;

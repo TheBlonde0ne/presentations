@@ -4,16 +4,16 @@
    CSS VARIABLES
    =========================================== */
 :root {
-  --background-color: #cab17e52;
-  --section-divider-bg: #00553250;
+  --background-color: #cab17e3d;
+  --section-divider-bg: #0055324b;
 
   --heading-font: "Source Serif 4", Georgia, serif;
   --body-font: "Source Sans 3", Helvetica, sans-serif;
   --base-font-size: 32px;
-  --text-size: 18pt;
+  --text-size: 16pt;
   --h1-size: 40pt;
-  --h2-size: 32pt;
-  --h3-size: 22pt;
+  --h2-size: 28pt;
+  --h3-size: 20pt;
   --footnote-size: 11pt;
   --header-color: #ffffff;
   --primary-color: #005531;
@@ -69,6 +69,8 @@
   color: var(--primary-color);
   font-weight: 600;
   line-height: 1.2;
+  margin-bottom: 0;
+  border-bottom: 2px solid var(--line-color);
 }
 .reveal h3 {
   font-family: var(--heading-font);
@@ -89,7 +91,7 @@
 }
 
 .reveal h1 { font-size: var(--h1-size); }
-.reveal h2 { font-size: var(--h2-size); margin-bottom: 0; border-bottom: 2px solid var(--line-color);}
+.reveal h2 { font-size: var(--h2-size); }
 .reveal h3 { font-size: var(--h3-size); }
 
 .reveal p,
@@ -324,8 +326,15 @@
    CONCEPT CARDS
    =========================================== */
 
+.padded {
+  background: #00000000;
+  border-radius: var(--box-radius);
+  padding: 15px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
 .concept-card {
-  background: white;
+  background: #ffffffff;
   border: 1px solid #e5e2dc;
   border-radius: var(--box-radius);
   padding: 15px;

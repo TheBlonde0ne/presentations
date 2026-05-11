@@ -72,7 +72,7 @@
 			            <h3>Capturing Long-Range Effects</h3>
 			            <p>
 			                Standard DFT often fails to capture van der Waals interactions. The <strong>Grimme-D3 method</strong> adds an empirical energy term to the DFT total energy:
-							\[ E_{\text{disp}} = - \sum_{i&lt;j} \sum_\mathbf{L} \left( \frac{C_6^{ij}}{R_{ij}^6} f_{d,6}(R_{ij}) + \frac{C_8^{ij}}{R_{ij}^8} f_{d,8}(R_{ij}) \right) \]
+							\[ E_{\text{disp}} = - \sum_{i&lt;j}  \left( \frac{C_6^{ij}}{R_{ij}^6} f_{d,6}(R_{ij}) + \frac{C_8^{ij}}{R_{ij}^8} f_{d,8}(R_{ij}) \right) \]
 			            </p>
 			        </div>
 			        <ul style="margin-top: 20px;">
@@ -80,6 +80,7 @@
 			            <li><strong>Damping Functions:</strong> Critical for preventing the correction from diverging at short interatomic distances where DFT is already effective.</li>
 			        </ul>
 			    </div>
+				<div class="footnote">https://pubs.aip.org/aip/jcp/article/132/15/154104/926936/A-consistent-and-accurate-ab-initio</div>
 			</section>
 
 			<section>
@@ -120,6 +121,7 @@
 			            <li><strong>Stability:</strong> Monitoring uncertainty during MD runs prevents simulations from entering non-physical regions of the configuration space.</li>
 			        </ul>
 			    </div>
+				<div class="footnote">https://pubs.acs.org/doi/10.1021/acs.jctc.0c00347</div>
 			</section>
 
 			<!-- TASK 0: PROJECT GOAL -->
@@ -239,14 +241,14 @@
                                 <li><strong>Goal:</strong> Find the balance between accuracy and computational cost.</li>
                                 <li><strong>Threshold:</strong> Variation in forces and energies must be &lt; 0.002 units.</li>
                                 <li><strong>Result:</strong> Optimal cutoff prevents "grid noise" from polluting the MLIP training data.</li>
-                                <li><strong>Conclusion:</strong> A cutoff of 280 Ry provides a good balance.</li>
+                                <li><strong>Conclusion:</strong> A cutoff of \(500 \text{ Ry}\) provides a good balance.</li>
                             </ul>
                         </div>
                         <div class="concept-card" style="display:flex; align-items:center; justify-content:center; border-style:dashed; background:#f9f9f9;">
 							<img
 								src="mse_vs_mgrid.png"
 								alt="MGRID convergence plot (MSE vs MGRID)"
-								style="max-width: 80%; max-height: 100%; object-fit: contain;"
+								style="max-width: 100%; max-height: 100%; object-fit: contain;"
 							/>
                         </div>
                     </div>
@@ -264,10 +266,10 @@
 						<div class="concept-card" style="display:flex; flex-direction:column; align-items:center; justify-content:center; border-style:dashed; background:#f9f9f9; gap:10px; text-align:center;">
 							<img
 								src="forces.png"
-								alt="forces for all frames of a random model"
+								alt="forces for all frames of the final D3 corrected model"
 								style="max-width: 100%; max-height: 100%; object-fit: contain;"
 							/>
-							<p class="text-muted" style="margin:0;">Force predictions from a random model compared to ab-initio forces (PBE)</p>
+							<p class="text-muted" style="margin:0;">Force predictions from the final D3 corrected model compared to ab-initio forces (PBE)</p>
 						</div>
                         <ul style="font-size: 14pt;">
                             <li><strong>Radial Cutoff (r<sub>max</sub>):</strong> Higher values capture longer-range physics but increase cost.</li>
@@ -279,43 +281,55 @@
 				</div>
 			</section>
 
+			<section>
+				<h2>MAE: Force vs Energy</h2>
+				<hr />
+				<p style="font-size: 30px; margin-top: 20px; text-align: center;">Baseline Model Parameters:</p>
+					<ul style="font-size: 18pt; margin-top: 20px; text-align: left; font-size: 28px; align-items: center; justify-content: center; display: flex; flex-direction: column; gap: 10px;">
+						<li>Architecture: 2 layers with 32 nodes each</li>
+						<li>Radial Cutoff (r<sub>max</sub>): 5.5 Å</li>
+						<li>Number of Epochs: 5000</li>
+						<li>Number of Basis Functions: 24</li>
+					</ul>
+			</section>
+
 			<!-- Show results of different hyperparameters -->
 			<section>
 				<section>
-					<h2>Train Progress over Epochs: Different Architectures</h2>
+					<h2>Training: Different Architectures</h2>
 					<hr />
 					<div class="content">
 						<div class="concept-card"style="display:flex; align-items:center; justify-content:center; max-width: 100%; max-height: 80%;">
 							<img 
 								src="./latex/images/loss_architecture.svg" 
 								alt="Architecture Loss Curves" 
-								style="max-width: 90%; max-height: 100%; object-fit: contain;" 
+								style="max-width: 100%; max-height: 100%; object-fit: contain;" 
 							/>
 						</div>
 					</div>
 				</section>
 				<section>
-					<h2>Train Progress over Epochs: Different Cutoffs</h2>
+					<h2>Training: Different Cutoffs</h2>
 					<hr />
 					<div class="content">
-						<div class="concept-card"style="display:flex; align-items:center; justify-content:center; max-width: 100%; max-height: 80%;margin-bottom: -20px;">
+						<div class="concept-card"style="display:flex; align-items:center; justify-content:center; max-width: 100%; max-height: 80%;">
 						<img 
 								src="./latex/images/loss_cutoff.svg" 
 								alt="Cutoff Loss Curves" 
-								style="max-width: 100%; max-height: 90%; object-fit: contain;" 
+								style="max-width: 100%; max-height: 100%; object-fit: contain;" 
 							/>
 						</div>
 					</div>
 				</section>
 				<section>
-					<h2>Train Progress over Epochs: Different Number of Basis Functions</h2>
+					<h2>Training: Number of Basis Functions</h2>
 					<hr />
 					<div class="content">
-						<div class="concept-card"style="display:flex; align-items:center; justify-content:center; max-width: 100%; max-height: 80%;margin-bottom: -20px;">
+						<div class="concept-card"style="display:flex; align-items:center; justify-content:center; max-width: 100%; max-height: 80%;">
 						<img 
 								src="./latex/images/loss_basis.svg" 
 								alt="Basis Functions Loss Curves" 
-								style="max-width: 100%; max-height: 90%; object-fit: contain;" 
+								style="max-width: 100%; max-height: 100%; object-fit: contain;" 
 							/>
 						</div>
 					</div>
@@ -353,7 +367,7 @@
                 <hr />
 				<div class="content">
 					<ul>
-                        <li><strong>Relaxation:</strong> Before MD, we use <code>ASEGeoOpt</code> to minimize forces below 0.05 eV/Å to prevent unphysical behavior.</li>
+                        <li><strong>Relaxation:</strong> Before MD, we use <code>ASEGeoOpt</code> to minimize forces to prevent unphysical behavior.</li>
 						<li><strong>Timestep:</strong> The timestep has to resolve high-frequency O-H vibrations while maintaining stability, which is given for 0.5 femtoseconds.</li>
 						<li><strong>Scaling:</strong> Box size increased to 64 molecules for better statistics.</li>
 					</ul>
@@ -376,15 +390,16 @@
                         <div class="concept-card">
                             <h3>Histogram</h3>
                             <img src="./latex/images/d3_hist.png" alt="D3 histogram" style="max-width: 100%; max-height: 300px; object-fit: contain; margin-top:10px;" />
-                            <p style="font-size: 12pt; margin-top:5px;">Diffusion coefficient of \(D \approx 2.4 \times 10^{-10} \, \text{m}^2/\text{s}\)</p>
+                            <p style="font-size: 12pt; margin-top:5px;">Diffusion coefficient of \(D \approx 2.5 \times 10^{-10} \, \text{m}^2/\text{s}\)</p>
                         </div>
                         <div class="concept-card">
                             <h3>Bayesian Fit</h3>
                             <img src="./latex/images/d3_msd.png" alt="MSD plot with Bayesian fit" style="max-width: 100%; max-height: 300px; object-fit: contain; margin-top:10px;" />
-                            <p style="font-size: 12pt; margin-top:5px;">Calculated from center-of-mass motion to assess transport properties.</p>
+                            <p style="font-size: 12pt; margin-top:5px;">Calculated from center-of-mass motion, first 100 nanoseconds cut off</p>
                         </div>
                     </div>
 				</div>
+				<div class="footnote">Experimental diffusion coefficient of liquid methanol at 300K is approximately \(D \approx 2.3 \times 10^{-10} \, \text{m}^2/\text{s}\): DOI:10.3390/ijms23095011</div>
 			</section>
 			<section>
 				<h2>Structure & Dynamics: DFT Model</h2>
@@ -394,15 +409,16 @@
                         <div class="concept-card">
                             <h3>Histogram</h3>
                             <img src="./latex/images/dft_hist.png" alt="D3 histogram" style="max-width: 100%; max-height: 300px; object-fit: contain; margin-top:10px;" />
-                            <p style="font-size: 12pt; margin-top:5px;">Diffusion coefficient of \(D \approx 4.9 \times 10^{-10} \, \text{m}^2/\text{s}\)</p>
+                            <p style="font-size: 12pt; margin-top:5px;">Diffusion coefficient of \(D \approx 5.2 \times 10^{-10} \, \text{m}^2/\text{s}\)</p>
                         </div>
                         <div class="concept-card">
                             <h3>Bayesian Fit</h3>
                             <img src="./latex/images/dft_msd.png" alt="MSD plot with Bayesian fit" style="max-width: 100%; max-height: 300px; object-fit: contain; margin-top:10px;" />
-                            <p style="font-size: 12pt; margin-top:5px;">Calculated from center-of-mass motion to assess transport properties.</p>
+                            <p style="font-size: 12pt; margin-top:5px;">Calculated from center-of-mass motion, first 100 nanoseconds cut off</p>
                         </div>
                     </div>
 				</div>
+				<div class="footnote">Experimental diffusion coefficient of liquid methanol at 300K is approximately \(D \approx 2.3 \times 10^{-10} \, \text{m}^2/\text{s}\): DOI:10.3390/ijms23095011</div>
 			</section>
 			<section>
 				<h2>Structure & Dynamics: MACE Model</h2>
@@ -412,15 +428,16 @@
                         <div class="concept-card">
                             <h3>Histogram</h3>
                             <img src="./latex/images/mace_hist.png" alt="D3 histogram" style="max-width: 100%; max-height: 300px; object-fit: contain; margin-top:10px;" />
-                            <p style="font-size: 12pt; margin-top:5px;">Diffusion coefficient of \(D \approx 3.8 \times 10^{-9} \, \text{m}^2/\text{s}\)</p>
+                            <p style="font-size: 12pt; margin-top:5px;">Diffusion coefficient of \(D \approx 3.9 \times 10^{-9} \, \text{m}^2/\text{s}\)</p>
                         </div>
                         <div class="concept-card">
                             <h3>Bayesian Fit</h3>
                             <img src="./latex/images/mace_msd.png" alt="MSD plot with Bayesian fit" style="max-width: 100%; max-height: 300px; object-fit: contain; margin-top:10px;" />
-                            <p style="font-size: 12pt; margin-top:5px;">Calculated from center-of-mass motion to assess transport properties.</p>
+                            <p style="font-size: 12pt; margin-top:5px;">Calculated from center-of-mass motion, first 100 nanoseconds cut off</p>
                         </div>
                     </div>
 				</div>
+				<div class="footnote">Experimental diffusion coefficient of liquid methanol at 300K is approximately \(D \approx 2.3 \times 10^{-10} \, \text{m}^2/\text{s}\): DOI:10.3390/ijms23095011</div>
 			</section>		
 			</section>
 
@@ -451,15 +468,17 @@
 								<img src="./latex/images/rdf_o_o.svg" alt="RDF plot with Bayesian fit" style="max-width: 100%; max-height: 500px; object-fit: contain; margin-top:10px;" />
 							</div>
 							<ul>
-								<li style="font-size: 18pt;"><strong>O-O nearest neighbor:</strong><br>\(r_{1} \approx 2.6 \, &Aring;\)</li>
-								<li style="font-size: 18pt;"><strong>DFT:</strong><br> \(C_N \approx 2.26 \) at \(r = 3.33 \, &Aring;\)</li>
-								<li style="font-size: 18pt;"><strong>D3:</strong><br> \(C_N \approx 2.31 \) at \(r = 3.33 \, &Aring;\)</li>
-								<li style="font-size: 18pt;"><strong>MACE:</strong><br> \(C_N \approx 2.04 \) at \(r = 3.48 \, &Aring;\)</li>
-								<li style="font-size: 18pt;"><strong>Experimental values:</strong><br> between 1.8 and 2.2</li>
+								<li style="font-size: 14pt;"><strong>O-O nearest neighbor:</strong><br>\(r_{1} \approx 2.6 \, &Aring;\)</li>
+								<li style="font-size: 14pt;"><strong>DFT:</strong><br> \(C_N \approx 2.26 \) at \(r = 3.33 \, &Aring;\)</li>
+								<li style="font-size: 14pt;"><strong>D3:</strong><br> \(C_N \approx 2.31 \) at \(r = 3.33 \, &Aring;\)</li>
+								<li style="font-size: 14pt;"><strong>MACE:</strong><br> \(C_N \approx 2.04 \) at \(r = 3.48 \, &Aring;\)</li>
+								<li style="font-size: 14pt;"><strong>Experimental values:</strong><br> \(C_N\) between \(1.8\) and \(2.2 \, &Aring;\)</li>
+								<li style="font-size: 14pt;"><strong>Experimental values:</strong><br> \(r_{1} \approx 2.7 \, &Aring;\), \(r_{2} \approx 4.5 \, &Aring;\)</li>
 							</ul>
 						</div>
-						<p style="font-size: 24pt; margin-top:5px;">DFT model, especially with D3 corrections, overstructures the system.</p>
+						<p style="font-size: 20pt; margin-top:5px; text-align: center;">DFT model, especially with D3 corrections, overstructures the system.</p>
 					</div>
+					<div class="footnote">https://doi.org/10.1080/00268979909483060</div>
 				</section>
 			<section>
 				<h2>RDF: D3 Model</h2>
@@ -530,6 +549,8 @@
 	</div>
 
 	<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.min.js"></script>
+ 	 <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/plugin/math/math.min.js"></script>
+
 	<script>
 		Reveal.initialize({
 			hash: true,

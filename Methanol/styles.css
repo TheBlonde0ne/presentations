@@ -81,7 +81,7 @@ Custom stuff
 }
 
 .reveal h1 { font-size: var(--h1-size); }
-.reveal h2 { font-size: var(--h2-size); margin-bottom: 0; }
+.reveal h2 { font-size: var(--h2-size); margin-bottom: 0;}
 .reveal h3 { font-size: var(--h3-size); }
 
 .reveal hr {
