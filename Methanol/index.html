@@ -33,12 +33,11 @@
     			    <div class="concept-card">
     			        <h3>Classical & ML Potentials</h3>
     			        <p>
-    			            Iterative calculation of atomic interactions to predict system behavior over time using the <strong>equation of motion</strong> derived from Newton's second law:
-    			            <br />
-    			            $$ m \frac{d^2 \mathbf{r}}{dt^2} = -\nabla V(\mathbf{r}) $$
-    			        </p>
+							Iterative calculation of atomic interactions to predict system behavior over time using the <strong>equation of motion</strong> derived from Newton's second law:
+						</p>
+							<p>$$ m \frac{d^2 \mathbf{r}}{dt^2} = -\nabla V(\mathbf{r}) $$</p>
     			    </div>
-    			    <ul style="margin-top: 20px;">
+    			    <ul style="margin-top: 20px; box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2); padding: 15px; border-radius: var(--box-radius); background: #f9f9f9;">
     			        <li><strong>NVT Ensemble:</strong> Constant Number of particles, Volume, and Temperature, controlled via a <strong>Langevin thermostat</strong> (later Nose-Hoover) which adds stochastic terms.</li>
     			        <li><strong>Numerical Integration:</strong> Algorithms like the Verlet method iteratively update positions and velocities based on recalculated forces.</li>
     			        <li><strong>Ergodic Hypothesis:</strong> Connects time averages from trajectories to ensemble averages, allowing for the calculation of thermodynamic properties.</li>
@@ -57,7 +56,7 @@
 			                $$ V_{s}(\mathbf{r}) = V_{\text{ext}}(\mathbf{r}) + V_H(\mathbf{r}) + V_{\text{xc}}(\mathbf{r}) $$
 			            </p>
 			        </div>
-			        <ul style="margin-top: 20px;">
+			        <ul style="margin-top: 20px; box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2); padding: 15px; border-radius: var(--box-radius); background: #f9f9f9;">
 			            <li><strong>Hohenberg-Kohn Theorems:</strong> Ground-state properties are uniquely determined by the electron density through a universal functional \(E[\rho]\).</li>
 			            <li><strong>Approximations:</strong> Necessary due to complexity; includes LCAO, the Born-Oppenheimer approximation, and exchange-correlation functionals (LDA, GGA).</li>
 			        </ul>
@@ -75,7 +74,7 @@
 							\[ E_{\text{disp}} = - \sum_{i&lt;j}  \left( \frac{C_6^{ij}}{R_{ij}^6} f_{d,6}(R_{ij}) + \frac{C_8^{ij}}{R_{ij}^8} f_{d,8}(R_{ij}) \right) \]
 			            </p>
 			        </div>
-			        <ul style="margin-top: 20px;">
+			        <ul style="margin-top: 20px; box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2); padding: 15px; border-radius: var(--box-radius); background: #f9f9f9;">
 			            <li><strong>Pairwise Additive:</strong> Based on atom-pair coefficients \((C_n^{ij})\) and distances \((R_{ij})\).</li>
 			            <li><strong>Damping Functions:</strong> Critical for preventing the correction from diverging at short interatomic distances where DFT is already effective.</li>
 			        </ul>
@@ -96,7 +95,7 @@
 			                $$ \mathbf{a}^{(l)} = f(\mathbf{W}^{(l)} \cdot \mathbf{a}^{(l-1)} + \mathbf{b}^{(l)}) $$
 			            </p>
 			        </div>
-			        <ul style="margin-top: 20px;">
+			        <ul style="margin-top: 20px; box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2); padding: 10px; border-radius: var(--box-radius); background: #f9f9f9;">
 			            <li><strong>Local Atomic Partitioning:</strong> The total energy is the sum of contributions from individual atoms based on their local environment: \(E_{\text{total}} = \sum_i E_i\).</li>
 			            <li><strong>Descriptors (GMNN):</strong> Transforms geometry into numerical vectors invariant under translation, rotation, and permutation.</li>
 			            <li><strong>Automatic Differentiation:</strong> Forces are obtained analytically from the energy prediction, ensuring thermodynamic stability.</li>
@@ -116,7 +115,7 @@
 			                \[ \sigma_x = \sqrt{\frac{1}{M-1} \sum_{m=1}^{M} (x_m - \bar{x})^2} \]
 			            </p>
 			        </div>
-			        <ul style="margin-top: 20px;">
+			        <ul style="margin-top: 20px; box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2); padding: 15px; border-radius: var(--box-radius); background: #f9f9f9;">
 			            <li><strong>Active Learning:</strong> High variance \(\sigma_x\) identifies configurations where the model is unconfident, signaling a need for new DFT training data.</li>
 			            <li><strong>Stability:</strong> Monitoring uncertainty during MD runs prevents simulations from entering non-physical regions of the configuration space.</li>
 			        </ul>
@@ -150,7 +149,7 @@
 
 						<div class="flow-node secondary" data-step="6" id="flow-6">RDF and diffusion</div>
 
-					<div style="display:grid; grid-template-columns: 1fr 1fr; gap:18px;">
+					<div class="padded" style="display:grid; grid-template-columns: 1fr 1fr; gap:18px;">
 						<p style="margin-top:3px; font-size:18px;"><strong>MACE sampling:</strong> Running a 1ns MD simulation with a foundation model to explore phase space.</p>
 						<p style="margin-top:3px; font-size:18px;"><strong>MGRID optimization:</strong> Finding optimal real-space grid convergence to avoid noise in training data.</p>
 						<p style="margin-top:3px; font-size:18px;"><strong>DFT + D3 relabeling:</strong> High-accuracy ab initio labeling with PBE functional and Grimme D3 dispersion corrections.</p>
@@ -173,7 +172,7 @@
 							Using <strong>ZnTrack</strong> and <strong>IPSuite</strong> provides object-oriented management of complex simulation chains (MD → DFT → ML).
 						</p>
 					</div>
-					<ul style="margin-top: 20px;">
+					<ul style="margin-top: 20px; box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2); padding: 15px; border-radius: var(--box-radius); background: #f9f9f9;">
 						<li><strong>Reproducibility:</strong> Every node (DFT, training) is cached; nodes only re-run if inputs or parameters change.</li>
 						<li><strong>Scalability:</strong> Easily expand from one box of methanol to different temperatures or densities.</li>
 						<li><strong>Traceability:</strong> Data-Version Control (DVC) links every output (trajectory, ML model) to a specific code commit.</li>
@@ -220,7 +219,7 @@
 						</div>
 					</div>
 					<div>
-						<ul>
+						<ul style="margin-top: 20px; box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2); padding: 15px; border-radius: var(--box-radius); background: #f9f9f9;">
 							<li><strong>GGA:</strong> Works well for molecules because it accounts for electron density gradients</li>
 							<li><strong>LDA:</strong> Only accounts for electron density, which is less accurate for molecules but fine for metals</li>
 							<li>Evaluating D3 <strong>outside CP2K</strong> (via TorchDFTD3) allows for faster evaluation and easier decomposition of dispersion contributions.</li>
@@ -237,14 +236,14 @@
 					<p>The <code>MGRID</code> parameter in CP2K controls the real-space grid cutoff for Hartree and XC potentials.</p>
                     <div style="display:grid; grid-template-columns: 1fr 1.2fr; gap:20px;">
                         <div>
-                            <ul>
+                            <ul style="margin-top: 20px; box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2); padding: 15px; border-radius: var(--box-radius); background: #f9f9f9;">
                                 <li><strong>Goal:</strong> Find the balance between accuracy and computational cost.</li>
                                 <li><strong>Threshold:</strong> Variation in forces and energies must be &lt; 0.002 units.</li>
                                 <li><strong>Result:</strong> Optimal cutoff prevents "grid noise" from polluting the MLIP training data.</li>
                                 <li><strong>Conclusion:</strong> A cutoff of \(500 \text{ Ry}\) provides a good balance.</li>
                             </ul>
                         </div>
-                        <div class="concept-card" style="display:flex; align-items:center; justify-content:center; border-style:dashed; background:#f9f9f9;">
+                        <div class="concept-card" style="display:flex; align-items:center; justify-content:center; border-style:dashed; background: white;">
 							<img
 								src="mse_vs_mgrid.png"
 								alt="MGRID convergence plot (MSE vs MGRID)"
@@ -263,15 +262,15 @@
 				<div class="content">
 					<p>We explore the impact of <strong>Gaussian Moment Neural Network</strong> settings on the <code>apax</code> model:</p>
                     <div style="display:grid; grid-template-columns: 1.2fr 1fr; gap:20px;">
-						<div class="concept-card" style="display:flex; flex-direction:column; align-items:center; justify-content:center; border-style:dashed; background:#f9f9f9; gap:10px; text-align:center;">
+						<div class="concept-card" style="display:flex; flex-direction:column; align-items:center; justify-content:center; border-style:dashed; background:#ffffff; gap:10px; text-align:center;">
 							<img
 								src="forces.png"
 								alt="forces for all frames of the final D3 corrected model"
-								style="max-width: 100%; max-height: 100%; object-fit: contain;"
+								style="max-width: 100%; max-height: auto; object-fit: contain;"
 							/>
 							<p class="text-muted" style="margin:0;">Force predictions from the final D3 corrected model compared to ab-initio forces (PBE)</p>
 						</div>
-                        <ul style="font-size: 14pt;">
+                        <ul style="font-size: 14pt; margin-top: 20px; box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2); padding: 15px; border-radius: var(--box-radius); background: #f9f9f9;">
                             <li><strong>Radial Cutoff (r<sub>max</sub>):</strong> Higher values capture longer-range physics but increase cost.</li>
                             <li><strong>Architecture:</strong> Different nodes per layer affect the model's capacity and complexity.</li>
                             <li><strong>Number of Epochs:</strong> More epochs can improve accuracy but also increase training time.</li>
@@ -285,7 +284,7 @@
 				<h2>MAE: Force vs Energy</h2>
 				<hr />
 				<p style="font-size: 30px; margin-top: 20px; text-align: center;">Baseline Model Parameters:</p>
-					<ul style="font-size: 18pt; margin-top: 20px; text-align: left; font-size: 28px; align-items: center; justify-content: center; display: flex; flex-direction: column; gap: 10px;">
+					<ul style="font-size: 18pt; margin-top: 20px; text-align: left; font-size: 28px; align-items: center; justify-content: center; display: flex; flex-direction: column; gap: 10px; box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2); padding: 15px; border-radius: var(--box-radius); background: #f9f9f9; width: fit-content; margin-left: auto; margin-right: auto;">
 						<li>Architecture: 2 layers with 32 nodes each</li>
 						<li>Radial Cutoff (r<sub>max</sub>): 5.5 Å</li>
 						<li>Number of Epochs: 5000</li>
@@ -366,7 +365,7 @@
 				<h2>Production MD Setup</h2>
                 <hr />
 				<div class="content">
-					<ul>
+					<ul style="margin-top: 20px; box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2); padding: 15px; border-radius: var(--box-radius); background: #f9f9f9;">
                         <li><strong>Relaxation:</strong> Before MD, we use <code>ASEGeoOpt</code> to minimize forces to prevent unphysical behavior.</li>
 						<li><strong>Timestep:</strong> The timestep has to resolve high-frequency O-H vibrations while maintaining stability, which is given for 0.5 femtoseconds.</li>
 						<li><strong>Scaling:</strong> Box size increased to 64 molecules for better statistics.</li>
@@ -450,7 +449,7 @@
 							<div class="concept-card">
 								<img src="./latex/images/rdf_o_h.svg" alt="RDF histogram" style="max-width: 100%; max-height: 500px; object-fit: contain; margin-top:10px;" />
 							</div>
-								<ul>
+								<ul style="margin-top: 20px; box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2); padding: 15px; border-radius: var(--box-radius); background: #f9f9f9;">
 									<li style="font-size: 18pt;"><strong>O-H hydrogen bond:</strong><br>\(r_{1} \approx 1.02 \, &Aring;\)</li>
 									<li style="font-size: 18pt;"><strong>O-H nearest neighbor:</strong><br>\(r_{2} \approx 2.12 \, &Aring;\)</li>
 									<li style="font-size: 18pt;"><strong>Experimental values:</strong><br>\(r_{1} \approx 0.96 \, &Aring;\) <br> \(r_{2} \approx 2.08 \, &Aring;\) </li>
@@ -467,7 +466,7 @@
 							<div class="concept-card">
 								<img src="./latex/images/rdf_o_o.svg" alt="RDF plot with Bayesian fit" style="max-width: 100%; max-height: 500px; object-fit: contain; margin-top:10px;" />
 							</div>
-							<ul>
+							<ul style="margin-top: 20px; box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2); padding: 15px; border-radius: var(--box-radius); background: #f9f9f9;">
 								<li style="font-size: 14pt;"><strong>O-O nearest neighbor:</strong><br>\(r_{1} \approx 2.6 \, &Aring;\)</li>
 								<li style="font-size: 14pt;"><strong>DFT:</strong><br> \(C_N \approx 2.26 \) at \(r = 3.33 \, &Aring;\)</li>
 								<li style="font-size: 14pt;"><strong>D3:</strong><br> \(C_N \approx 2.31 \) at \(r = 3.33 \, &Aring;\)</li>
@@ -537,11 +536,18 @@
 				<h2>Summary</h2>
                 <hr />
 				<div class="content">
-					<ul>
+					<ul style="margin-top: 20px; box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2); padding: 15px; border-radius: var(--box-radius); background: #f9f9f9;">
 						<li><strong>Workflow:</strong> Unified management ensures every simulation step is linked and reproducible.</li>
 						<li><strong>Labeling:</strong> MGRID convergence and GGA+D3 provide a high-quality physical baseline.</li>
 						<li><strong>Training:</strong> Hyperparameter tuning and ensembles minimize error and provide uncertainty.</li>
 						<li><strong>Production:</strong> The final MLIP successfully runs stable simulations but fails to reproduce methanol's structural (RDF) and dynamic (Diffusion) properties at <i>ab initio</i> levels.</li>
+					</ul>
+					<h3>Improvements:</h3>
+					<ul style="margin-top: 20px; box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2); padding: 15px; border-radius: var(--box-radius); background: #f9f9f9;">
+						<li><strong>Neural Network:</strong> Improved model selection and hyperparameter optimization</li>
+						<li><strong>Dispersion Corrections:</strong> Improved parameter setting</li>
+						<li><strong>Training Dataset:</strong> Expanded with more diverse configurations</li>
+						<li><strong>Classical Force Fields:</strong> Comparison as sampling MD simulations against MACE</li>
 					</ul>
 				</div>
 			</section>
