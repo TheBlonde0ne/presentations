@@ -4,17 +4,18 @@
     <meta charset="utf-8">
     <style>
         :root {
-            color-scheme: dark;
+            color-scheme: bright;
         }
 
         body {
             margin: 0;
-            background: white;
+            background: #cab17e00;
         }
 
         .mo-container {
             display: flex;
-            background:white;
+            flex-direction: column;
+            background: #cab17e00;
             color: #7fffe8;
             font-family: Arial, sans-serif;
             padding: 20px;
@@ -22,7 +23,16 @@
             gap: 20px;
             justify-content: center;
             align-items: center;
-            flex-wrap: nowrap;
+            transform: scale(0.9);
+            transform-origin: top center;
+        }
+
+        .plots-row {
+            display: flex;
+            gap: 40px;
+            justify-content: center;
+            align-items: flex-start;
+            flex-wrap: wrap;
         }
 
         canvas {
@@ -50,20 +60,25 @@
 
 <div class="mo-container">
     <div class="canvas-wrapper">
-        <span style="color: black; font-size: 20px;">2D: Polarization Ellipse</span>
-        <canvas id="canvas2d" width="300" height="300"></canvas>
+        <canvas id="canvas3d" width="640" height="230"></canvas>
     </div>
-    <div class="canvas-wrapper">
-        <span style="color: black; font-size: 20px;">3D: Wave Propagation</span>
-        <canvas id="canvas3d" width="500" height="300"></canvas>
+    <div class="plots-row">
+        <div class="canvas-wrapper">
+            <canvas id="canvas2dIncident" width="300" height="280"></canvas>
+        </div>
+        <div class="canvas-wrapper">
+            <canvas id="canvas2dReflected" width="300" height="280"></canvas>
+        </div>
     </div>
 </div>
 
 <script>
-const c2d = document.getElementById('canvas2d');
-const ctx2d = c2d.getContext('2d');
 const c3d = document.getElementById('canvas3d');
 const ctx3d = c3d.getContext('2d');
+const c2dIncident = document.getElementById('canvas2dIncident');
+const ctx2dIncident = c2dIncident.getContext('2d');
+const c2dReflected = document.getElementById('canvas2dReflected');
+const ctx2dReflected = c2dReflected.getContext('2d');
 
 let time = 0;
 
@@ -166,122 +181,368 @@ function drawInfoPanel(ctx, x, y, lines) {
     ctx.restore();
 }
 
+function normalize3d(vector) {
+    const length = Math.hypot(vector.x, vector.y, vector.z) || 1;
+    return {
+        x: vector.x / length,
+        y: vector.y / length,
+        z: vector.z / length,
+    };
+}
+
+function add3d(a, b) {
+    return { x: a.x + b.x, y: a.y + b.y, z: a.z + b.z };
+}
+
+function scale3d(vector, scalar) {
+    return { x: vector.x * scalar, y: vector.y * scalar, z: vector.z * scalar };
+}
+
+function dot3d(a, b) {
+    return a.x * b.x + a.y * b.y + a.z * b.z;
+}
+
+function cross3d(a, b) {
+    return {
+        x: a.y * b.z - a.z * b.y,
+        y: a.z * b.x - a.x * b.z,
+        z: a.x * b.y - a.y * b.x,
+    };
+}
+
+function makePolarizationBasis(direction) {
+    const normal = normalize3d(direction);
+    const reference = Math.abs(normal.z) < 0.85 ? { x: 0, y: 0, z: 1 } : { x: 0, y: 1, z: 0 };
+    const first = normalize3d(cross3d(reference, normal));
+    const second = normalize3d(cross3d(normal, first));
+    return { first, second };
+}
+
+function rotateBasis(first, second, angle) {
+    const cosAngle = Math.cos(angle);
+    const sinAngle = Math.sin(angle);
+    return {
+        first: add3d(scale3d(first, cosAngle), scale3d(second, sinAngle)),
+        second: add3d(scale3d(second, cosAngle), scale3d(first, -sinAngle)),
+    };
+}
+
+function drawPlane3d(ctx, originX, originY) {
+    const planeCorners = [
+        project3d(-120, -90, 0, originX, originY),
+        project3d(120, -90, 0, originX, originY),
+        project3d(150, 90, 0, originX, originY),
+        project3d(-90, 90, 0, originX, originY),
+    ];
+
+    ctx.save();
+    ctx.beginPath();
+    ctx.moveTo(planeCorners[0].x, planeCorners[0].y);
+    for (let i = 1; i < planeCorners.length; i += 1) {
+        ctx.lineTo(planeCorners[i].x, planeCorners[i].y);
+    }
+    ctx.closePath();
+    ctx.fillStyle = 'rgba(127, 255, 232, 0.06)';
+    ctx.strokeStyle = 'rgba(127, 255, 232, 0.22)';
+    ctx.lineWidth = 1.25;
+    ctx.fill();
+    ctx.stroke();
+
+    const gridRows = [-60, -20, 20, 60];
+    const gridColumns = [-80, -40, 0, 40, 80];
+    ctx.strokeStyle = 'rgba(127, 255, 232, 0.08)';
+    ctx.lineWidth = 1;
+
+    gridRows.forEach((yValue) => {
+        const start = project3d(-120, yValue, 0, originX, originY);
+        const end = project3d(150, yValue, 0, originX, originY);
+        ctx.beginPath();
+        ctx.moveTo(start.x, start.y);
+        ctx.lineTo(end.x, end.y);
+        ctx.stroke();
+    });
+
+    gridColumns.forEach((xValue) => {
+        const start = project3d(xValue, -90, 0, originX, originY);
+        const end = project3d(xValue, 90, 0, originX, originY);
+        ctx.beginPath();
+        ctx.moveTo(start.x, start.y);
+        ctx.lineTo(end.x, end.y);
+        ctx.stroke();
+    });
+
+    ctx.restore();
+}
+
+function drawWaveRibbon3d(ctx, originX, originY, startPoint, direction, amplitude, ellipticity, rotationAngle, phaseOffset, length, color, lineWidth) {
+    const unitDirection = normalize3d(direction);
+    const basis = makePolarizationBasis(unitDirection);
+    const rotatedBasis = rotateBasis(basis.first, basis.second, rotationAngle);
+    const waveNumber = 0.22;
+    const stepCount = 140;
+
+    ctx.save();
+    ctx.beginPath();
+    ctx.lineWidth = lineWidth;
+    ctx.strokeStyle = color;
+
+    for (let i = 0; i <= stepCount; i += 1) {
+        const progress = i / stepCount;
+        const distance = length * progress;
+        const wavePhase = distance * waveNumber - phaseOffset;
+        const offset = add3d(
+            scale3d(rotatedBasis.first, amplitude * Math.cos(wavePhase)),
+            scale3d(rotatedBasis.second, amplitude * ellipticity * Math.sin(wavePhase))
+        );
+        const point = add3d(startPoint, add3d(scale3d(unitDirection, distance), offset));
+        const projected = project3d(point.x, point.y, point.z, originX, originY);
+
+        if (i === 0) {
+            ctx.moveTo(projected.x, projected.y);
+        } else {
+            ctx.lineTo(projected.x, projected.y);
+        }
+    }
+
+    ctx.stroke();
+    ctx.restore();
+}
+
+function drawCenterLine3d(ctx, originX, originY, startPoint, direction, length, color, dashPattern = []) {
+    const unitDirection = normalize3d(direction);
+    const endPoint = add3d(startPoint, scale3d(unitDirection, length));
+    const projectedStart = project3d(startPoint.x, startPoint.y, startPoint.z, originX, originY);
+    const projectedEnd = project3d(endPoint.x, endPoint.y, endPoint.z, originX, originY);
+
+    ctx.save();
+    ctx.strokeStyle = color;
+    ctx.lineWidth = 1.6;
+    ctx.setLineDash(dashPattern);
+    ctx.beginPath();
+    ctx.moveTo(projectedStart.x, projectedStart.y);
+    ctx.lineTo(projectedEnd.x, projectedEnd.y);
+    ctx.stroke();
+    ctx.restore();
+}
+
+function drawLine3d(ctx, originX, originY, startPoint, endPoint, color, width = 1.6, dashPattern = []) {
+    const projectedStart = project3d(startPoint.x, startPoint.y, startPoint.z, originX, originY);
+    const projectedEnd = project3d(endPoint.x, endPoint.y, endPoint.z, originX, originY);
+
+    ctx.save();
+    ctx.strokeStyle = color;
+    ctx.lineWidth = width;
+    ctx.setLineDash(dashPattern);
+    ctx.beginPath();
+    ctx.moveTo(projectedStart.x, projectedStart.y);
+    ctx.lineTo(projectedEnd.x, projectedEnd.y);
+    ctx.stroke();
+    ctx.restore();
+}
+
+function drawPolarizationPanel(ctx, centerX, centerY, phase, config) {
+    const {
+        radius,
+        major,
+        minor,
+        rotation,
+        title,
+        titleColor,
+        outerColor,
+        fieldColor,
+        axisColor,
+        subtitle,
+        showAxes,
+    } = config;
+
+    ctx.save();
+    ctx.translate(centerX, centerY);
+
+    ctx.fillStyle = 'rgba(4, 10, 12, 0.74)';
+    ctx.strokeStyle = 'rgba(127, 255, 232, 0.18)';
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    ctx.roundRect(-105, -105, 210, 210, 14);
+    ctx.fill();
+    ctx.stroke();
+
+    ctx.strokeStyle = 'rgba(94, 106, 115, 0.55)';
+    ctx.lineWidth = 1;
+    ctx.setLineDash([5, 6]);
+    ctx.beginPath();
+    ctx.moveTo(-82, 0);
+    ctx.lineTo(82, 0);
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.moveTo(0, 82);
+    ctx.lineTo(0, -82);
+    ctx.stroke();
+    ctx.setLineDash([]);
+
+    ctx.strokeStyle = outerColor;
+    ctx.lineWidth = 2.4;
+    ctx.beginPath();
+    if (major === minor) {
+        ctx.arc(0, 0, radius, 0, Math.PI * 2);
+    } else {
+        ctx.ellipse(0, 0, major, minor, rotation, 0, Math.PI * 2);
+    }
+    ctx.stroke();
+
+    const fieldX = Math.cos(phase) * radius;
+    const fieldY = Math.sin(phase) * radius;
+    const fieldXRot = fieldX * Math.cos(rotation) - fieldY * Math.sin(rotation);
+    const fieldYRot = fieldX * Math.sin(rotation) + fieldY * Math.cos(rotation);
+    drawArrow(ctx, 0, 0, fieldXRot, fieldYRot, fieldColor, '', 0, 0);
+
+    if (showAxes) {
+        const majorEndX = Math.cos(rotation) * major;
+        const majorEndY = Math.sin(rotation) * major;
+        const minorEndX = -Math.sin(rotation) * minor;
+        const minorEndY = Math.cos(rotation) * minor;
+
+        ctx.setLineDash([4, 4]);
+        ctx.strokeStyle = axisColor;
+        ctx.lineWidth = 1.6;
+        ctx.beginPath();
+        ctx.moveTo(-majorEndX, -majorEndY);
+        ctx.lineTo(majorEndX, majorEndY);
+        ctx.stroke();
+        ctx.beginPath();
+        ctx.moveTo(-minorEndX, -minorEndY);
+        ctx.lineTo(minorEndX, minorEndY);
+        ctx.stroke();
+        ctx.setLineDash([]);
+
+        drawArrow(ctx, 0, 0, majorEndX, majorEndY, axisColor, 'major', 6, -8);
+        drawArrow(ctx, 0, 0, minorEndX, minorEndY, '#ff8fab', 'minor', 6, -8);
+
+        ctx.beginPath();
+        ctx.strokeStyle = '#ffd166';
+        ctx.lineWidth = 1.4;
+        ctx.arc(0, 0, 28, 0, rotation, false);
+        ctx.stroke();
+        ctx.fillStyle = '#ffd166';
+        ctx.font = '11px Arial, sans-serif';
+        ctx.fillText('Kerr rotation', 12, -34);
+    }
+
+    ctx.fillStyle = '#d8fff7';
+    ctx.font = '13px Arial, sans-serif';
+    ctx.textAlign = 'center';
+    ctx.fillStyle = titleColor || '#d8fff7';
+    ctx.fillText(title, 0, -120);
+    ctx.font = '12px Arial, sans-serif';
+    ctx.fillStyle = '#d8fff7';
+    ctx.fillText(subtitle, 0, 123);
+
+    ctx.restore();
+}
+
 function draw() {
     time += 0.05;
 
-    const theta = 0.8 * Math.sin(time * 0.1);
-    const ellipticity = 0.7 + 0.25 * Math.sin(time * 0.3 + 1.1);
-    const amplitude = 82;
+    const phase = time * 0.95;
+    const kerrAngle = 0.32 + 0.08 * Math.sin(time * 0.12);
+    const reflectedEllipticity = 1.45 + 0.1 * Math.sin(time * 0.18 + 0.8);
+    const incidentAmplitude = 70;
+    const reflectedAmplitude = 70;
 
-    ctx2d.clearRect(0, 0, 300, 300);
-    ctx3d.clearRect(0, 0, 500, 300);
+    ctx2dIncident.clearRect(0, 0, 300, 300);
+    ctx2dReflected.clearRect(0, 0, 300, 300);
+    ctx3d.clearRect(0, 0, 720, 320);
 
-    const leftOriginX = 150;
-    const leftOriginY = 150;
+    drawPolarizationPanel(ctx2dIncident, 150, 150, phase, {
+        radius: incidentAmplitude,
+        major: incidentAmplitude,
+        minor: incidentAmplitude,
+        rotation: 0,
+        title: 'Incident wave',
+        titleColor: '#7fffe8',
+        outerColor: '#7fffe8',
+        fieldColor: '#ffd166',
+        axisColor: '#9fd0ff',
+        subtitle: 'circular polarization',
+        showAxes: false,
+    });
 
-    ctx2d.save();
-    ctx2d.translate(leftOriginX, leftOriginY);
-    ctx2d.setLineDash([6, 6]);
-    ctx2d.lineWidth = 1.5;
-    drawArrow(ctx2d, -120, 0, 122, 0, '#5e6a73', 'x', 6, -8);
-    drawArrow(ctx2d, 0, 120, 0, -122, '#5e6a73', 'z', 8, -4);
+    drawPolarizationPanel(ctx2dReflected, 150, 150, phase + 0.45, {
+        radius: reflectedAmplitude,
+        major: 75,
+        minor: 75 / reflectedEllipticity,
+        rotation: kerrAngle,
+        title: 'Reflected wave',
+        titleColor: '#ff8fab',
+        outerColor: '#ff8fab',
+        fieldColor: '#ffd166',
+        axisColor: '#7fffe8',
+        subtitle: `ellipticity = ${reflectedEllipticity.toFixed(2)}`,
+        showAxes: true,
+    });
 
-    ctx2d.beginPath();
-    ctx2d.strokeStyle = '#7fffe8';
-    ctx2d.lineWidth = 2.5;
-    const minorToMajor = 0.7 + 0.25 * Math.sin(time * 0.3 + 1.1);
-    const epsilon = 1 / minorToMajor;
-    const psi = 0.8 * Math.sin(time * 0.1);
-    for (let i = 0; i <= Math.PI * 2 + 0.08; i += 0.08) {
-        const baseX = amplitude * Math.cos(i);
-        const baseZ = amplitude * minorToMajor * Math.sin(i);
-        const x = baseX * Math.cos(psi) - baseZ * Math.sin(psi);
-        const z = baseX * Math.sin(psi) + baseZ * Math.cos(psi);
-        i === 0 ? ctx2d.moveTo(x, z) : ctx2d.lineTo(x, z);
-    }
-    ctx2d.stroke();
+    const originX = 345;
+    const originY = 144;
 
-    const phase = time * 1.15;
-    const baseX = amplitude * Math.cos(phase);
-    const baseZ = amplitude * minorToMajor * Math.sin(phase);
-    const fieldX = baseX * Math.cos(psi) - baseZ * Math.sin(psi);
-    const fieldZ = baseX * Math.sin(psi) + baseZ * Math.cos(psi);
-    drawArrow(ctx2d, 0, 0, fieldX, fieldZ, '#ffd166', 'E', 8, -6);
-
-    const axisAngleLength = 72;
-    drawArrow(
-        ctx2d,
-        0,
-        0,
-        axisAngleLength * Math.cos(psi),
-        axisAngleLength * Math.sin(psi),
-        '#ff8fab',
-        'major axis',
-        8,
-        -8
-    );
-    ctx2d.setLineDash([]);
-
-    drawInfoPanel(ctx2d, -136, -132, [
-        `θ = ${(psi * 180 / Math.PI).toFixed(1)}°`,
-        `η = ${epsilon.toFixed(2)}`,
-    ]);
-
-    ctx2d.setLineDash([]);
-    ctx2d.restore();
-
-    const originX = 170;
-    const originY = 185;
-    const steps = 100;
-    const length = 260;
-    const guideLength = length + 160;
+    drawPlane3d(ctx3d, originX, originY);
 
     const axisXEnd = project3d(120, 0, 0, originX, originY);
-    const axisYEnd = project3d(0, -120, 0, originX, originY);
+    const axisYEnd = project3d(0, 120, 0, originX, originY);
     const axisZEnd = project3d(0, 0, 120, originX, originY);
 
-    drawDepthGuides(ctx3d, originX, originY, guideLength);
+    drawLine3d(ctx3d, originX, originY, { x: 0, y: 0, z: 0 }, { x: 120, y: 0, z: 0 }, '#64727c', 1.8);
+    drawLine3d(ctx3d, originX, originY, { x: 0, y: 0, z: 0 }, { x: 0, y: 120, z: 0 }, '#64727c', 1.8);
+    drawLine3d(ctx3d, originX, originY, { x: 0, y: 0, z: 0 }, { x: 0, y: 0, z: 120 }, '#64727c', 1.8);
 
-    drawArrow(ctx3d, originX, originY, axisXEnd.x, axisXEnd.y, '#64727c', '', 6, 4);
-    // Add red long line along y-axis for clarity
-    drawArrow(ctx3d, originX, originY, axisYEnd.x, axisYEnd.y, '#64727c', '', 6, 4);
-    drawArrow(ctx3d, originX, originY, axisZEnd.x, axisZEnd.y, '#64727c', '', 6, -4);
+    const incidentStart = { x: -68, y: -42, z: 134 };
+    const incidentDirection = normalize3d({ x: 0.42, y: 0.14, z: -1 });
+    const incidentTravel = incidentStart.z / Math.abs(incidentDirection.z);
+    const impactPoint = add3d(incidentStart, scale3d(incidentDirection, incidentTravel));
+    const reflectedStart = { x: impactPoint.x, y: impactPoint.y, z: 0 };
+    const reflectedDirection = normalize3d({ x: incidentDirection.x, y: incidentDirection.y, z: -incidentDirection.z });
 
-    ctx3d.lineWidth = 1.5;
+    drawCenterLine3d(ctx3d, originX, originY, incidentStart, incidentDirection, incidentTravel, '#ffd166', [7, 6]);
+    drawCenterLine3d(ctx3d, originX, originY, reflectedStart, reflectedDirection, 155, '#ffd166', [7, 6]);
+
+    const impactProjected = project3d(impactPoint.x, impactPoint.y, impactPoint.z, originX, originY);
+    ctx3d.save();
+    ctx3d.fillStyle = '#ffd166';
     ctx3d.beginPath();
-    ctx3d.strokeStyle = '#7fffe8';
-
-    for (let i = 0; i < steps; i++) {
-        // map i -> y so larger i is closer to viewer
-        const y = (i / steps) * length;
-        // phase = k*y - omega*t so peaks move to larger y as time increases
-        const phase3d = (i * 0.22) - time * 1.15;
-        const ex0 = amplitude * Math.cos(phase3d);
-        const ez0 = amplitude * ellipticity * Math.sin(phase3d);
-        const ex = ex0 * Math.cos(theta) - ez0 * Math.sin(theta);
-        const ez = ex0 * Math.sin(theta) + ez0 * Math.cos(theta);
-        const point = project3d(ex * 0.95, y, ez, originX, originY);
-
-        i === 0 ? ctx3d.moveTo(point.x, point.y) : ctx3d.lineTo(point.x, point.y);
-    }
+    ctx3d.arc(impactProjected.x, impactProjected.y, 4.2, 0, Math.PI * 2);
+    ctx3d.fill();
+    ctx3d.strokeStyle = 'rgba(255, 209, 102, 0.6)';
+    ctx3d.lineWidth = 1;
+    ctx3d.setLineDash([3, 4]);
+    ctx3d.beginPath();
+    ctx3d.moveTo(impactProjected.x - 16, impactProjected.y);
+    ctx3d.lineTo(impactProjected.x + 16, impactProjected.y);
     ctx3d.stroke();
+    ctx3d.setLineDash([]);
+    ctx3d.fillStyle = '#ffd166';
+    ctx3d.font = '11px Arial, sans-serif';
+    ctx3d.restore();
 
-    // Align the center arrow phase with the wave at y=0.
-    // In the drawing loop phase3d = time*1.15 + (i*0.22) where i maps to y position.
-    // For y=0, i == steps, so add steps*0.22 to match the slice at the origin.
-    // center at y=0 corresponds to i==0, so phase there is -omega*t
-    const centerPhase = -time * 1.15;
-    const centerBaseX = amplitude * Math.cos(centerPhase);
-    const centerBaseZ = amplitude * ellipticity * Math.sin(centerPhase);
-    const centerX = centerBaseX * Math.cos(theta) - centerBaseZ * Math.sin(theta);
-    const centerZ = centerBaseX * Math.sin(theta) + centerBaseZ * Math.cos(theta);
-    const centerTip = project3d(centerX * 0.95, 0, centerZ, originX, originY);
+    drawWaveRibbon3d(ctx3d, originX, originY, incidentStart, incidentDirection, 14, 1, 0, phase, incidentTravel, '#7fffe8', 2.0);
+    drawWaveRibbon3d(ctx3d, originX, originY, reflectedStart, reflectedDirection, 14, reflectedEllipticity, kerrAngle, phase + 0.8, 155, '#ff8fab', 2.3);
 
-    drawArrow(ctx3d, originX, originY, centerTip.x, centerTip.y, '#ffd166', 'E', 8, -6);
+    drawLine3d(ctx3d, originX, originY, { x: 0, y: 0, z: 0 }, { x: 0, y: 0, z: 128 }, 'rgba(255, 209, 102, 0.55)', 1.4, [6, 6]);
+    const normalEnd = project3d(0, 0, 128, originX, originY);
+    ctx3d.save();
+    ctx3d.fillStyle = '#ffd166';
+    ctx3d.font = '12px Arial, sans-serif';
+    ctx3d.fillText('surface normal', normalEnd.x + 8, normalEnd.y - 4);
+    ctx3d.restore();
 
     drawAxisLabel(ctx3d, axisXEnd.x + 10, axisXEnd.y + 4, 'x', 'left');
     drawAxisLabel(ctx3d, axisYEnd.x + 10, axisYEnd.y + 4, 'y', 'left');
     drawAxisLabel(ctx3d, axisZEnd.x + 10, axisZEnd.y - 2, 'z', 'left');
+
+    ctx3d.fillStyle = '#d8fff7';
+    ctx3d.font = '13px Arial, sans-serif';
+    ctx3d.textAlign = 'left';
+    ctx3d.fillStyle = '#7fffe8';
+    ctx3d.fillText('incident circular polarization', 16, 24);
+    ctx3d.fillStyle = '#ff8fab';
+    ctx3d.fillText('reflected Kerr-rotated elliptic wave', 16, 42);
 
     requestAnimationFrame(draw);
 }

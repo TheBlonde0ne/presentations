@@ -20,8 +20,8 @@
         <section id="Titlepage" style="position: relative;">
             <h1 style="border-bottom: 5px solid var(--primary-color); margin-top: 80px;">Probing the Hidden Spin-Splitting</h1>
             <h3 style="margin-top: 20px;">Optical & Magneto-Optical Signatures of Altermagnetism</h3>
-            <img id="u-logo" src="unistuttgart_logo_englisch_cmyk-01.png" alt="University of Stuttgart logo, featuring a white dot pattern forming a circle" style="width: 200px; height: auto; position: absolute; right: 40px; top: 500px;">
-            <p style="margin-top: 170px;">
+            <img id="u-logo" src="unistuttgart_logo_englisch_cmyk-01.png" alt="University of Stuttgart logo, featuring a white dot pattern forming a circle" style="width: 200px; height: auto; position: absolute; right: 40px; top: 540px;">
+            <p style="margin-top: 220px;">
               <strong>Jakob Wallner</strong><br>
               <em>University of Stuttgart</em>
             </p>
@@ -35,26 +35,28 @@
 
         <section>
           <section data-auto-animate>
-            <h2 style="margin-top: 250px; text-align: center; font-size: 54px;">How do we identify Altermagnets?</h2>
+            <h2 style="margin-top: 250px; text-align: center; font-size: 54px;" data-id="header-motivation">How do we identify Altermagnets?</h2>
           </section>
-          <section data-auto-animate><h2>How do we identify Altermagnets?</h2>
-            <div style="display:grid; grid-template-columns: 1fr 1fr; gap:20px; margin-top:10px;">
+          <section data-auto-animate><h2 data-id="header-motivation">How do we identify Altermagnets?</h2>
+            <div style="display:grid; grid-template-columns: 2fr 1fr 2fr; gap:20px; margin-top:10px;">
                 <div class="padded" style="background-color: white;">
                     <img src="RuO2pro2.png" alt="RuO2 crystal structure projection showing atomic arrangement" style="width:100%; height:auto;">
                     <img src="RuO2pro3.png" alt="RuO2 crystal structure projection from alternative viewpoint" style="width:100%; height:auto; margin-top: 30px;">
                 </div>
-              <div class="fragment">
+              <div class="fragment" data-fragment-index="2">
+              <img src="argue2.jpg" alt="Complementary argument supporting altermagnetic identification methods" style="margin-top: 20px; width:90%; height:auto; margin-left: auto; margin-right: auto;">
+              <p style="text-align: center; color: #cbad00; font-size: 64px;">&#128498;</p>
+              </div>
+              <div class="fragment" data-fragment-index="1">
                 <div class="padded" style="background-color: white;">
                     <img src="RuO2pro.png" alt="RuO2 crystal structure showing disputed altermagnetic properties" style="width:100%; height:auto;">
                     <img src="RuO2against.png" alt="Counter-evidence against RuO2 being classified as an altermagnet" style="width:100%; height:auto;">
                 </div>
               </div>
             </div>
-            <div class="fragment">
-            <div style="display:grid; grid-template-columns: 1fr 1.2fr 1fr; gap:20px; margin-top:10px;">
-            <img src="argue1.jpg" alt="Supporting argument for identifying altermagnetic fingerprints" style="width:90%; height:auto;">
+            <div class="fragment" data-fragment-index="3">
+            <div class="padded" style="margin-top: 20px;">
             <p style="font-size: 40px; text-align: center;">We need a <br> <highlight>clear fingerprint</highlight> <br> for altermagnets</p>
-            <img src="argue2.jpg" alt="Complementary argument supporting altermagnetic identification methods" style="width:90%; height:auto;">
             </div>
             </div>
             </section>
@@ -81,7 +83,7 @@
           </div>
           </div>
         
-        <div class="fragment" data-fragment-index="1" style="margin-top: 10px;">
+        <div style="margin-top: 10px;">
         <div style="display:grid; grid-template-columns: 1.8fr 1fr; gap:15px;">
           <div class="padded" style="background: #cccccc39;">
           <ul>
@@ -106,9 +108,8 @@
         <section class="section-divider" data-state="is-section-divider">
           <h2>Overview</h2>
             <div style="display:grid; grid-template-columns: 1fr 1fr 1fr; gap:18px;">
-                <div class="padded" style="background: rgb(240, 229, 196)">
-                    <h3>Part 1</h3>
-                    <p style="color: var(--text-color);">From band structure to optical response</p>
+                <div class="padded" style="background: #fff5e2">
+                    <h3 style="color: var(--primary-color); border-bottom: 2px solid var(--line-color);">Theory</h3>
                     <ul>
                         <li>Optical Conductivity Tensor</li>
                         <li>Magneto-Optical Kerr Effect</li>
@@ -116,11 +117,10 @@
                     </ul>
 
                 </div>
-                <div class="padded" style="background: #c1e6d228;">
-                    <h3>Part 2</h3>
+                <div class="padded" style="background: #fff5e2;">
+                    <h3 style="color: var(--primary-color); border-bottom: 2px solid var(--line-color);">Cobalt doped FeSb\(_2\)</h3>
                     <ul>
-                      <li>Cobalt-doped FeSb<sub>2</sub></li>
-                      <li>Diagonal Elements \(\sigma_{ij}\)</li>
+                      <li>Diagonal Elements \(\sigma_{ii}\)</li>
                     </ul>
                     <model-viewer 
                     src="FeSb2.glb" 
@@ -129,49 +129,49 @@
                     style="width: 100%; height: 200px">
                 </model-viewer>
                 </div>
-                <div class="padded" style="background: #c1e6d228;">
-                    <h3>Part 3</h3>
+                <div class="padded" style="background: #fff5e2;">
+                    <h3 style="color: var(--primary-color); border-bottom: 2px solid var(--line-color);">Other Candidates</h3>
                     <ul>
-                      <li>Other Altermagnet Candidates</li>
+                      <li>Off-Diagonal Elements \(\sigma_{ij}\)</li>
                       <li>Debunked cases</li>
-                      <li>Offdiagonal Elements \(\sigma_{ij}\)</li>
                     </ul>
                 </div>
             </div>
         </section>
 
         <section>
-        <p style="position: absolute; top: -10px; left: -150px; font-size: 20px; font-family: 'Times New Roman', Times, serif; opacity: 0.5;">Part 1</p>
             <h2>Breaking the Symmetry</h2>
-            <div style="display:grid; grid-template-columns: 1fr 1fr 1fr; gap:18px;">
-                <div class="concept-card" style="margin-top: 10px;">
+            <h3>Transformation Symmetry in Different Magnetic Orders</h3>
+            <div style="display:grid; grid-template-columns: 1fr 1fr 1fr; gap:10px;">
+                <div class="padded fragment" style="margin-top: 10px; background: white;">
                     <h3>a: Ferro</h3>
                     <ul>
                         <li style="font-size: 15px;">\(\mathbf{M} \neq 0\)</li>
                         <li style="font-size: 15px;"><highlight>Breaks</highlight> time-reversal symmetry \(\mathcal{T}\)</li>
                         <li style="font-size: 15px;">No spin degeneracy</li>
                     </ul>
-                    <img src="ferro.png" alt="Ferromagnetic spin structure with all spins aligned in the same direction" style="width:85%; height:auto; margin-top: 20px;">
+                    <img src="ferro.png" alt="Ferromagnetic spin structure with all spins aligned in the same direction" style="width:auto; height:300px; margin-top: 20px; margin-left: 35px;">
                 </div>
-                <div class="concept-card" style="margin-top: 10px;">
+                <div class="padded fragment" style="margin-top: 10px; background: white;">
                     <h3>b: Anti-Ferro</h3>
                     <ul>
                         <li style="font-size: 15px;">\(\mathbf{M} = 0\)</li>
                         <li style="font-size: 15px;"><highlight>Preserves</highlight> symmetry \(\mathcal{T}\)</li>
                         <li style="font-size: 15px;">Spin-degenerate electronic bands</li>
                     </ul>
-                    <img src="antiferro.png" alt="Antiferromagnetic spin structure with alternating up and down spins" style="width:85%; height:auto; margin-top: 20px;">
+                    <img src="antiferro.png" alt="Antiferromagnetic spin structure with alternating up and down spins" style="width:auto; height:300px; margin-top: 20px; margin-left: 20px;">
                 </div>
-                <div class="concept-card" style="margin-top: 10px;">
+                <div class="padded fragment" style="margin-top: 10px; background: white;">
                     <h3>c: Altermagnet</h3>
                     <ul>
                         <li style="font-size: 15px;">\(\mathbf{M} \neq 0\)</li>
                         <li style="font-size: 15px;"><highlight>Breaks</highlight> \(\mathcal{T}\) but <highlight>preserves</highlight> \(\mathcal{T}\mathcal{D}\)</li>
+                        <li style="font-size: 15px;">No spin degeneracy</li>
                     </ul>
-                    <img src="altermagnet.png" alt="Altermagnetic spin structure combining magnetization with alternating spin-space structure" style="width:85%; height:auto; margin-top: 20px;">
+                    <img src="altermagnet.png" alt="Altermagnetic spin structure combining magnetization with alternating spin-space structure" style="width:auto; height:300px; margin-top: 20px; margin-left: 15px;">
                 </div>
             </div>
-            <div class="footnote"><a href="https://www.nature.com/articles/s41578-025-00779-1" style="color: #000000;">https://www.nature.com/articles/s41578-025-00779-1</a></div>
+            <div class="footnote"><a href="https://www.nature.com/articles/s41578-025-00779-1" style="color: #636363;">https://www.nature.com/articles/s41578-025-00779-1</a></div>
 
         </section>
 
@@ -179,125 +179,50 @@
             <h2>Optical Behavior</h2>
             <h3>Linear Response Theorem and the Optical Conductivity Tensor</h3>
             
-            <p style="margin-top: 30px; margin-bottom: 20px; text-align: center">Normal materials follow <highlight>Linear Response Theorem:</highlight> $D = \varepsilon_0 \tilde{\varepsilon}_{ij} E$ </p>
-            <div style="display:grid; grid-template-columns: 1.5fr 1fr; gap:18px;">
-            <div>
-            <ul>
-                <li>$\tilde{\varepsilon}_{ij}(\omega)$: dielectric tensor</li>
-                <li>$\tilde{\sigma}_{ij}(\omega)$: complex optical conductivity tensor (equivalent)</li>
-            </ul>
-            <p style="text-align: center; font-size: 30px; margin-top: 30px;">Spontaneous off-diagonal elements without net magnetization are a macroscopic hallmark of altermagnetism.</p>
-            </div>
+            <div style="display:grid; grid-template-columns: 1.5fr 1fr; gap:18px; margin-top: 30px;">
             <div class="padded">
+            <p style="margin-bottom: 20px; text-align: center">Normal materials follow <highlight>Linear Response Theorem:</highlight> $$J = \sigma  E$$ </p>
+            <ul>
+              <li>$\tilde{\sigma}_{ij}(\omega)$: complex optical conductivity tensor</li>
+              <li><strong>AFMe:</strong> Off-diagonal elements cancel out</li>
+              <li><strong>Altermagnet:</strong> Spontaneous off-diagonal elements without net magnetization</li>
+              <li class="fragment" data-fragment-index="1"><strong>Adding B-Field:</strong> Breaks the simple symmetry leading to offdiagonal elements</li>
+            </ul>
+          </div>
+          <div class="padded">
             <div class="concept-card">
               <h3 style="font-size: 22px;">Without Magnetization</h3>
-              <p>$$\tilde{\varepsilon} = \begin{pmatrix} {\varepsilon}_{xx} & 0 & 0 \\ 0 & {\varepsilon}_{xx} & 0 \\ 0 & 0 & {\varepsilon}_{xx} \end{pmatrix}$$</p>
+              <p>$$\tilde{\sigma} = \begin{pmatrix} {\sigma}_{xx} & 0 & 0 \\ 0 & {\sigma}_{xx} & 0 \\ 0 & 0 & {\sigma}_{xx} \end{pmatrix}$$</p>
             </div>
-            <div class="concept-card" style="margin-top: 20px;">
+            <div class="concept-card fragment" style="margin-top: 20px;" data-fragment-index="1">
               <h3 style="font-size: 22px;">With Magnetization</h3>
-              <p>$$\tilde{\varepsilon} = \begin{pmatrix} \tilde{\varepsilon}_{xx} & \tilde{\varepsilon}_{xy} & 0 \\ -\tilde{\varepsilon}_{xy} & \tilde{\varepsilon}_{xx} & 0 \\ 0 & 0 & \tilde{\varepsilon}_{zz} \end{pmatrix}$$</p>
+              <p>$$\tilde{\sigma} = \begin{pmatrix} \tilde{\sigma}_{xx} & \tilde{\sigma}_{xy} & 0 \\ -\tilde{\sigma}_{xy} & \tilde{\sigma}_{xx} & 0 \\ 0 & 0 & \tilde{\sigma}_{zz} \end{pmatrix}$$</p>
             </div>
             </div>
           </div>
+          <div class="footnote">https://doi.org/10.3389/fphy.2022.946515</div>
         </section>
 
         <section>
-        <!-- SLIDE 1: The Mathematical Breakdown -->
-        <section data-auto-animate>
-          <h2 data-id="title">The Kubo Formula</h2>
-          <h3 data-id="subtitle">Linking Band Structure to Optical Response</h3>
-        
-          <!-- data-id ensures this card glides to the new position in the next slide -->
-          <div class="concept-card" data-id="kubo-math" style="margin-top: 30px; padding: 20px;">
-            <p style="font-size: 20px; text-align: center;">
-              \[\tilde{\sigma}_{xy}(\omega) \propto \frac{1}{\omega} \sum_{n, m} \int_{\text{BZ}} d\text{{k}} \frac{f(E_{n, \text{{k}}}) - f(E_{m, \text{{k}}})}{E_{m, \text{{k}}} - E_{n, \text{{k}}} - \hbar \omega - i\Gamma} \times \langle \psi_{n, \text{{k}}} | \hat{v}_{x} | \psi_{m, \text{{k}}}\rangle \langle{ \psi_{m, \text{{k}}} | \hat{v}_{y} | \psi_{n, \text{{k}}} }\rangle \]
-            </p>
+          <h2>Optical Behavior</h2>
+          <h3>Microscopic Origin of Magneto-Optical Effect</h3>
+          <div class="concept-card" style="margin-top: 20px; font-size: 20px">
+            $$ {m \frac{\partial^2 \textbf{u}}{\partial t^2}} + \color{#428377}{m \gamma \frac{\partial \textbf{u}}{\partial t}} + \color{#8f5060}{m \omega^2_0 \textbf{u}} = q \left( \textbf{E} + \frac{\partial \textbf{u}}{\partial t} \times \textbf{B} \right)$$
           </div>
-        
-          <!-- fragments allow you to reveal these points as you speak -->
-          <div style="display: flex; gap: 20px; margin-top: 20px;">
-            <div class="fragment" style="flex: 1;">
-            <div class="padded" style="padding: 10px">
-              <h4 style="color: #428377; font-size: 24px;">1. The Resonance (Denominator)</h4>
-              <ul>
-                <li style="font-size: 20px;">\((E_m - E_n - \hbar\omega)\) dictates <b>when</b> a peak occurs</li>
-                <li style="font-size: 20px;">Vertical interband transitions at specific \(\text{k}\)-points</li>
-              </ul>
-            </div>
-            </div>
-            <div class="fragment" style="flex: 1;">
-            <div class="padded" style="padding: 10px">
-              <h4 style="color: #8f5060; font-size: 24px;">2. The Topology (Matrix Elements)</h4>
-              <ul>
-                <li style="font-size: 20px;">\(\langle \hat{v}_x \rangle \langle \hat{v}_y \rangle\) relates to <b>Berry Curvature</b></li>
-                <li style="font-size: 20px;">In altermagnets, this product survives the BZ sum</li>
-              </ul>
-            </div>
-            </div>
+          <div>
+            <ul>
+              <li style="color: #8f5060">Friction with probability of scattering as defined by \(\gamma = 1 / \tau\), where \(\tau\) is a scattering lifetime</li>
+              <li style="color: #428377">Restoring force with resonance frequency \(\omega_0\)</li>
+            </ul>
           </div>
-          <div class="fragment">
-          <div style="display: flex; gap: 20px; margin-top: 20px;">
-          <div class="flow-node secondary">
-            <p><span style="color: #428377; font-weight: bold; margin-right: 8px;">◆</span><strong>Symmetry Note:</strong><br>In standard AFMs, \(\sigma_{xy}(\text{k}) + \sigma_{xy}(\mathcal{PT}\text{k}) = 0\).</p>
+          <div class="padded">
+            <ul>
+              <li>In the Magnetic Drude Model (\(\mathbf{B} \neq 0, \omega_0 = 0\)) we describe a metal with an effective magnetic field or altermagnetic exchange splitting</li>
+              <li>The Lorentz force term couples the motion in the \(x\) and \(y\) directions, leading to a non-zero \(\tilde{\sigma}_{xy}\) and thus a magneto-optical response.</li>
+              <li>The off diagonal elements are responsible for the rotation in the MOKE or Faraday experiment</li>
+            </ul>
           </div>
-          <div class="flow-node secondary">
-            <p><span style="color: #8f5060; font-weight: bold; margin-right: 8px;">◆</span><strong>Altermagnetism:</strong><br> Alternating spin-polarization in \(\text{k}\)-space  \(\rightarrow\) net non-zero sum for the off-diagonal elements.</p>
-          </div>
-          </div>
-          </div>
-        </section>
-      
-        <!-- SLIDE 2: The Visual Result -->
-        <section data-auto-animate>
-          <h2 data-id="kubo">The Kubo Formula</h2>
-          
-          <!-- The math glides up and shrinks smoothly -->
-          <div class="concept-card" data-id="kubo-math" style="margin-top: 0; padding: 3px; opacity: 0.6;">
-            <p style="font-size: 12px; text-align: center;">
-              \[\tilde{\sigma}_{xy}(\omega) \propto \dots \sum \int \frac{\Delta f}{\Delta E - \hbar\omega} \times \langle \hat{v}_x \rangle \langle \hat{v}_y \rangle \]
-            </p>
-          </div>
-        
-          <div style="margin-top: 10px;">
-            <img src="bands.svg" alt="Band structure comparison showing energy bands versus crystal momentum for different magnetic configurations" style="width: 70%; height: auto; border: 1px solid #25313a; border-radius: 8px; margin-left: 140px;">
-            <img src="kubo.svg" alt="Visualization of Kubo formula showing optical conductivity contribution from band transitions" style="width: 40%; height: auto; border: 1px solid #25313a; border-radius: 8px; margin-left: 260px;">
-            <div style="display: flex; justify-content: space-around; margin-top: 10px; font-size: 18px;">
-              <div class="flow-node secondary" data-id="kuboflow1"><strong>Standard AFM:</strong> \(\sigma_{xy} = 0\)</div>
-              <div class="flow-node secondary" data-id="kuboflow2"><strong>Altermagnet:</strong> \(\sigma_{xy} \neq 0\)</div>
-            </div>
-          </div>
-        </section>
-        <!-- SLIDE 3: The Visual Result -->
-        <section data-auto-animate>
-          <h2 data-id="kubo">The Kubo Formula</h2>
-          
-          <!-- The math glides up and shrinks smoothly -->
-          <div class="concept-card" data-id="kubo-math" style="margin-top: 0; padding: 3px; opacity: 0.6;">
-            <p style="font-size: 12px; text-align: center;">
-              \[\tilde{\sigma}_{xy}(\omega) \propto \dots \sum \int \frac{\Delta f}{\Delta E - \hbar\omega} \times \langle \hat{v}_x \rangle \langle \hat{v}_y \rangle \]
-            </p>
-          </div>
-        
-          <div style="margin-top: 10px;">
-            <img src="bands.svg" alt="Band structure diagram showing energy dispersion relations" style="width: 30%; height: auto; border: 1px solid #25313a; border-radius: 8px; margin-left: 290px;">
-            <img src="kubo.svg" alt="Detailed Kubo formula visualization with energy and momentum contributions" style="width: 70%; height: auto; border: 1px solid #25313a; border-radius: 8px; margin-left: 140px;">
-            <div style="display: flex; justify-content: space-around; margin-top: 10px; font-size: 18px;">
-              <div class="flow-node secondary" data-id="kuboflow1"><strong>Standard AFM:</strong> \(\sigma_{xy} = 0\)</div>
-              <div class="flow-node secondary"><strong>Altermagnet:</strong> \(\sigma_{xy} \neq 0\)</div>
-            </div>
-          </div>
-        </section>
-      
-        <aside class="notes">
-          Essentially, the optical conductivity is a sum of all possible electronic transitions from an occupied band ($n$) to an unoccupied band ($m$).
-          First, the denominator: when the photon energy $\hbar\omega$ matches the band energy difference, we see a resonance peak. 
-          In $FeSb_2$, this identified the $0.1 \text{ eV}$ transition.
-          Second, the velocity matrix elements serve as selection rules. 
-          In standard AFMs with $\mathcal{PT}$ symmetry, contributions at $k$ and $\mathcal{PT}k$ cancel out.
-          However, altermagnetic spin-polarization allows for a net non-zero sum, creating a finite $\sigma_{xy}$ without net magnetization.
-        </aside>
-      </section>
-        
+          <div class="footnote">https://doi.org/10.3389/fphy.2022.946515</div>
         </section>
 
         <section>
@@ -349,11 +274,107 @@
       <section>
         <h2>The Magneto-Optical Kerr Effect (MOKE)</h2>
         <h3>Measuring the Kerr Rotation and Ellipticity</h3>
-        <br>
-        <div class="concept-card" style="max-width: 980px; margin: 0 auto; padding: 3px;">
-        <iframe src="kerr.html" width="900" height="380" style="border:none;" title="Kerr animation"></iframe>
-        </div>
-        <p style="text-align: center; margin: auto;">Extract the <highlight>Kerr Rotation</highlight> and <highlight>Kerr Ellipticity</highlight></p>
+        <iframe src="kerr.html" width=100% height=100% title="Kerr animation"></iframe>
+      </section>
+
+      <section>
+        <!-- SLIDE 1: The Mathematical Breakdown -->
+        <section>
+          <h2 data-id="title">The Kubo Formula</h2>
+          <h3 data-id="subtitle">Linking Band Structure to Optical Response</h3>
+        
+          <!-- data-id ensures this card glides to the new position in the next slide -->
+          <div class="concept-card" style="margin-top: 30px; padding: 20px;">
+            <div style="font-size: 20px; text-align: center;">
+              \[\tilde{\sigma}_{xy}(\omega) \propto \frac{1}{\omega} \sum_{n, m} \int_{\text{BZ}} d\text{k} \frac{f(E_{n, \text{{k}}}) - f(E_{m, \text{k}})}{{\color{#428377}{E_{m, \text{k}} - E_{n, \text{k}} - \hbar \omega}} - i\Gamma} \times \color{#8f5060}{\langle \psi_{n, \text{k}} | \hat{v}_{x} | \psi_{m, \text{k}}\rangle \langle{ \psi_{m, \text{k}} | \hat{v}_{y} | \psi_{n, \text{k}} }\rangle} \]
+          </div>
+          </div>
+        
+          <!-- fragments allow you to reveal these points as you speak -->
+          <div style="display: flex; gap: 20px; margin-top: 20px;">
+            <div class="fragment" style="flex:1;" data-fragment-index="1">
+            <div class="padded" style="padding: 10px">
+              <h4 style="color: #428377; font-size: 24px;">1. The Resonance (Denominator)</h4>
+              <ul>
+                <li style="font-size: 20px;">\((E_m - E_n - \hbar\omega)\) dictates <b>when</b> a peak occurs</li>
+                <li style="font-size: 20px;">Vertical interband transitions at specific \(\text{k}\)-points</li>
+              </ul>
+            </div>
+            </div>
+            <div class="fragment" style="flex: 1;" data-fragment-index="2">
+            <div class="padded" style="padding: 10px">
+              <h4 style="color: #8f5060; font-size: 24px;">2. The Topology (Matrix Elements)</h4>
+              <ul>
+                <li style="font-size: 20px;">\(\langle \hat{v}_x \rangle \langle \hat{v}_y \rangle\) relates to <b>Berry Curvature</b> sth sth imaginary???</li>
+                <li style="font-size: 20px;">In altermagnets, this product survives the BZ sum</li>
+              </ul>
+            </div>
+            </div>
+          </div>
+          <div class="fragment" data-fragment-index="4">
+          <div style="display: flex; gap: 20px; margin-top: 20px;">
+          <div class="flow-node secondary">
+            <p><span style="color: #428377; font-weight: bold; margin-right: 8px;">◆</span><strong>Symmetry Note:</strong><br>In standard AFMs, \(\sigma_{xy}(\text{k}) + \sigma_{xy}(\mathcal{PT}\text{k}) = 0\).</p>
+          </div>
+          <div class="flow-node secondary">
+            <p><span style="color: #8f5060; font-weight: bold; margin-right: 8px;">◆</span><strong>Altermagnetism:</strong><br> Alternating spin-polarization in \(\text{k}\)-space  \(\rightarrow\) net non-zero sum for the off-diagonal elements.</p>
+          </div>
+          </div>
+          </div>
+        </section>
+
+        </section>
+      
+        <!-- SLIDE 2: The Visual Result -->
+        <section>
+        <section data-auto-animate>
+          <h2>The Kubo Formula</h2>
+          
+          <!-- The math glides up and shrinks smoothly -->
+          <div class="concept-card" style="margin-top: 0; padding: 3px; opacity: 0.6;">
+            <p style="font-size: 12px; text-align: center;">
+              \[\tilde{\sigma}_{xy}(\omega) \propto \dots \sum \int \frac{\Delta f}{\Delta E - \hbar\omega} \times \langle \hat{v}_x \rangle \langle \hat{v}_y \rangle \]
+            </p>
+          </div>
+        
+          <div style="margin-top: 10px;">
+            <img src="altermagnet_animation.gif" alt="Visualization of Kubo formula showing optical conductivity contribution from band transitions" style="width: 80%; height: auto; border: 1px solid #25313a; border-radius: 8px; margin-left: 110px;">
+            <div style="display: flex; justify-content: space-around; margin-top: 10px; font-size: 18px;">
+              <div class="flow-node secondary" data-id="kuboflow1"><strong>Standard AFM:</strong> \(\sigma_{xy} = 0\)</div>
+              <div class="flow-node secondary" data-id="kuboflow2"><strong>Altermagnet:</strong> \(\sigma_{xy} \neq 0\)</div>
+            </div>
+          </div>
+        </section>
+        <!-- SLIDE 3: The Visual Result -->
+        <section data-auto-animate>
+          <h2 data-id="kubo">The Kubo Formula</h2>
+          
+          <!-- The math glides up and shrinks smoothly -->
+          <div class="concept-card" style="margin-top: 0; padding: 3px; opacity: 0.6;">
+            <p style="font-size: 12px; text-align: center;">
+              \[\tilde{\sigma}_{xy}(\omega) \propto \dots \sum \int \frac{\Delta f}{\Delta E - \hbar\omega} \times \langle \hat{v}_x \rangle \langle \hat{v}_y \rangle \]
+            </p>
+          </div>
+        
+          <div style="margin-top: 10px;">
+            <img src="bands.svg" alt="Band structure diagram showing energy dispersion relations" style="width: 30%; height: auto; border: 1px solid #25313a; border-radius: 8px; margin-left: 300px;">
+            <img src="kubo.svg" alt="Detailed Kubo formula visualization with energy and momentum contributions" style="width: 75%; height: auto; border: 1px solid #25313a; border-radius: 8px; margin-left: 110px;">
+            <div style="display: flex; justify-content: space-around; margin-top: 10px; font-size: 18px;">
+              <div class="flow-node secondary" data-id="kuboflow1"><strong>Standard AFM:</strong> \(\sigma_{xy} = 0\)</div>
+              <div class="flow-node secondary" data-id="kuboflow2"><strong>Altermagnet:</strong> \(\sigma_{xy} \neq 0\)</div>
+            </div>
+          </div>
+        </section>
+      
+        <aside class="notes">
+          Essentially, the optical conductivity is a sum of all possible electronic transitions from an occupied band ($n$) to an unoccupied band ($m$).
+          First, the denominator: when the photon energy $\hbar\omega$ matches the band energy difference, we see a resonance peak. 
+          In $FeSb_2$, this identified the $0.1 \text{ eV}$ transition.
+          Second, the velocity matrix elements serve as selection rules. 
+          In standard AFMs with $\mathcal{PT}$ symmetry, contributions at $k$ and $\mathcal{PT}k$ cancel out.
+          However, altermagnetic spin-polarization allows for a net non-zero sum, creating a finite $\sigma_{xy}$ without net magnetization.
+        </aside>
+      </section>
       </section>
 
 
@@ -422,15 +443,16 @@
                 I_{\pm45^\circ} \approx C \cdot R(\omega) \frac{1 \pm 2\theta_K(\omega)}{2}
                 $$
                 </li>
-                <li><strong>Extraction:</strong> Measure intensity ratio at positive and negative magnetic fields and isolate $\theta_K$:
+                
+            </ul>
+            <ul><li><strong>Extraction:</strong> Measure intensity ratio at positive and negative magnetic fields and isolate $\theta_K$:
                 $$
                 \rho_{\pm45^\circ}(B) = \frac{I_{\pm45^\circ}(+B)}{I_{\pm45^\circ}(-B)} \approx 1 \pm 4\theta_K(B)
                 $$
-                </li>
-            </ul>
-            <div class="concept-card">
-              <p>Placeholder for image or diagram</p>
+                </li></ul>
             </div>
+            <div class="concept-card">
+              <img src="mokka45.png" alt="Diagram of MOKKA fast protocol setup with fixed polarizer and analyzer at 45 degrees" style="max-width: auto; height: 170px;">
             </div>
         </div>
         <div class="footnote">
@@ -445,7 +467,7 @@
         <div class="content">
           <p>This allows for reference-free, in-situ measurement of the Kerr rotation, a critical capability for studying field-induced phenomena in altermagnets.</p>
           <div class="concept-card">
-            <img src="45_deg.svg" alt="Placeholder diagram of 45-degree MOKKA setup" style="max-width: 550px; height: auto; margin-top: 20px;">
+            <img src="mokka45.png" alt="Placeholder diagram of 45-degree MOKKA setup" style="max-width: 550px; height: auto; margin-top: 20px;">
           </div>
         </div>
       </section>
@@ -473,7 +495,7 @@
         
         <h2>Cobalt-doped FeSb<sub>2</sub></h2>
         <h3>A Case Study in Altermagnetism</h3>
-        <div class="concept-card">
+        <div class="padded" style="background: white; padding: 5px">
             <img src="fesb2paper.png" alt="Research paper title page on cobalt-doped FeSb2 altermagnetism" style="width: 100%; height: auto; margin-top: 0px;">
         </div>
         <div class="footnote">https://arxiv.org/abs/2604.28105</div>
@@ -484,7 +506,26 @@
        The Hook: Explain that while $\sigma_{xy}$ is the "classic" probe, it is plagued by macroscopic domain cancellation and surface sensitivity.
        
        Talking Point: Introduce the "Diagonal Advantage": $\sigma_1(\omega)$ (real part of diagonal conductivity) as a bulk-sensitive, symmetry-robust alternative. -->
-      <section>
+
+<section>
+
+<section>
+  <h2>The Parent Compound (FeSb<sub>2</sub>)</h2>
+  <h3>The structure as indicator for altermagnetism</h3>
+  <div class="padded" style="opacity: 1;">
+    <p>Orthorhombic Pnnm structure</p>
+    <ul>
+      <li style="font-size: 14px;">P: Primitive, no additional lattice points except at corners</li>
+      <li style="font-size: 14px;">$n$ (1st position): An n-glide plane perpendicular to the $a$-axis. A glide plane is a combined symmetry operation: a reflection across a plane followed by a translation. An "$n$" (diagonal) glide means the translation is half a unit cell along both remaining axes—in this case, $(b+c)/2$.</li>
+      <li style="font-size: 14px;">$n$ (2nd position): An n-glide plane perpendicular to the $b$-axis. This involves a reflection and a translation of $(a+c)/2$.</li>
+      <li style="font-size: 14px;">$m$ (3rd position): A standard Mirror plane perpendicular to the $c$-axis. This is a simple reflection without any translation.</li>
+    </ul>
+    <img src="Orthorhombic.svg" alt="orthorhombic crystal structure" width="200px" height="auto">
+    <p>Generally: The Fe Sublattice is invariant under two-fold rotation + translation <br> Makes a natural altermagnet candidate</p>
+  </div>
+</section>
+
+
       <section>
         <h2>The Parent Compound (FeSb<sub>2</sub>)</h2>
         <h3>Correlated narrow-gap semiconductor</h3>
@@ -663,34 +704,34 @@
 
 
 
-      <section>
+      <section class="section-divider" data-state="is-section-divider">
         <h2>Other materials and off diagonal conductivity
         </h2>
         <div style="display:grid; grid-template-columns: 1fr 1fr 1fr; gap:18px; margin-top: 20px;">
-        <div class="concept-card" style="padding: 5px;">
-          <h4>MnTe</h4>
+        <div class="padded" style="padding: 5px; background: #fff5e2">
+          <h3 style="color: var(--primary-color); border-bottom: 2px solid var(--line-color);">MnTe</h3>
         <model-viewer 
          src="MnTe.glb" 
          alt="3D Crystal Structure" 
          auto-rotate 
-         style="width: auto; height: 300px;">
+         style="width: 300px; height: 400px;">
         </model-viewer></div>
-        <div class="concept-card" style="padding: 5px;">
-          <h4>CrSb</h4> 
+        <div class="padded" style="padding: 5px; background: #fff5e2">
+          <h3 style="color: var(--primary-color); border-bottom: 2px solid var(--line-color);">CrSb</h3> 
           <model-viewer 
          src="CrSb.glb" 
          alt="3D Crystal Structure" 
          auto-rotate 
-         style="width: auto; height: 300px;">
+         style="width: 300px; height: 400px;">
         </model-viewer>
         </div>
-        <div class="concept-card" style="padding: 5px;">
-          <h4>RuO2</h4>
+        <div class="padded" style="padding: 5px; background: #fff5e2">
+          <h3 style="color: var(--primary-color); border-bottom: 2px solid var(--line-color);">RuO2</h3>
           <model-viewer 
          src="RuO2.glb" 
          alt="3D Crystal Structure" 
          auto-rotate 
-         style="width: auto; height: 300px;">
+         style="width: 300px; height: 400px;">
         </model-viewer>
         </div>
         </div>
@@ -710,7 +751,7 @@
       hash: true,
       controls: true,
       progress: true,
-      transition: 'slide',
+      transition: 'fade',
       backgroundTransition: 'fade',
       plugins: [RevealMath.MathJax2, RevealNotes],
       mathjax2: {

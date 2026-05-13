@@ -336,6 +336,16 @@
   margin-right: auto;
 }
 
+.padded-high {
+  background: #00000000;
+  border-radius: var(--box-radius);
+  padding: 15px;
+  box-shadow: 0 2px 6px rgba(255, 255, 255, 0.6);
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .concept-card {
   background: #ffffffff;
   border: 1px solid #e5e2dc;
