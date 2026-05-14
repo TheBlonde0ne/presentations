@@ -17,132 +17,176 @@
     <div class="reveal">
       <div class="slides">
 
-        <section id="Titlepage" style="position: relative;">
-            <h1 style="border-bottom: 5px solid var(--primary-color); margin-top: 80px;">Probing the Hidden Spin-Splitting</h1>
-            <h3 style="margin-top: 20px;">Optical & Magneto-Optical Signatures of Altermagnetism</h3>
-            <img id="u-logo" src="unistuttgart_logo_englisch_cmyk-01.png" alt="University of Stuttgart logo, featuring a white dot pattern forming a circle" style="width: 200px; height: auto; position: absolute; right: 40px; top: 540px;">
-            <p style="margin-top: 220px;">
-              <strong>Jakob Wallner</strong><br>
-              <em>University of Stuttgart</em>
-            </p>
-            <p style="margin-top: 30px;">Hauptseminar: Talk 8 of 12
-              <br>27.05.2026
-            </p>
-            <aside class="notes">
-              Welcome everyone. For our eighth seminar, we're shifting our focus from the surface-sensitive techniques like ARPES, which have beautifully mapped out the altermagnetic band structures, to the bulk. Today, we will explore how we use light—photons—as a clean, powerful probe of the unique electronic properties deep inside these fascinating materials. We will cover the fundamental theory of how altermagnetism manifests in the optical response, discuss the state-of-the-art experimental techniques required to measure it, and then dive into a critical comparison of recent results on key material candidates.
-            </aside>
-        </section>
 
-        <section>
-          <section data-auto-animate>
-            <h2 style="margin-top: 250px; text-align: center; font-size: 54px;" data-id="header-motivation">How do we identify Altermagnets?</h2>
-          </section>
-          <section data-auto-animate><h2 data-id="header-motivation">How do we identify Altermagnets?</h2>
-            <div style="display:grid; grid-template-columns: 2fr 1fr 2fr; gap:20px; margin-top:10px;">
-                <div class="padded" style="background-color: white;">
-                    <img src="RuO2pro2.png" alt="RuO2 crystal structure projection showing atomic arrangement" style="width:100%; height:auto;">
-                    <img src="RuO2pro3.png" alt="RuO2 crystal structure projection from alternative viewpoint" style="width:100%; height:auto; margin-top: 30px;">
-                </div>
-              <div class="fragment" data-fragment-index="2">
-              <img src="argue2.jpg" alt="Complementary argument supporting altermagnetic identification methods" style="margin-top: 20px; width:90%; height:auto; margin-left: auto; margin-right: auto;">
-              <p style="text-align: center; color: #cbad00; font-size: 64px;">&#128498;</p>
-              </div>
-              <div class="fragment" data-fragment-index="1">
-                <div class="padded" style="background-color: white;">
-                    <img src="RuO2pro.png" alt="RuO2 crystal structure showing disputed altermagnetic properties" style="width:100%; height:auto;">
-                    <img src="RuO2against.png" alt="Counter-evidence against RuO2 being classified as an altermagnet" style="width:100%; height:auto;">
-                </div>
-              </div>
-            </div>
-            <div class="fragment" data-fragment-index="3">
-            <div class="padded" style="margin-top: 20px;">
-            <p style="font-size: 40px; text-align: center;">We need a <br> <highlight>clear fingerprint</highlight> <br> for altermagnets</p>
-            </div>
-            </div>
-            </section>
-            <aside class="notes">
+
+<!-- SLIDE 1: Title Page -->
+<section id="Titlepage" style="position: relative;">
+    <h1 style="border-bottom: 5px solid var(--primary-color); margin-top: 80px;">Probing the Hidden Spin-Splitting</h1>
+    <h3 style="margin-top: 20px;">Optical & Magneto-Optical Signatures of Altermagnetism</h3>
+    <img id="u-logo" src="unistuttgart_logo_englisch_cmyk-01.png" alt="University of Stuttgart logo, featuring a white dot pattern forming a circle" style="width: 200px; height: auto; position: absolute; right: 40px; top: 540px;">
+    <p style="margin-top: 220px;">
+      <strong>Jakob Wallner</strong><br>
+      <em>University of Stuttgart</em>
+    </p>
+    <p style="margin-top: 30px;">Hauptseminar: Talk 8 of 12
+      <br>27.05.2026
+    </p>
+    <aside class="notes">
+      Welcome everyone. For our eighth seminar, we're shifting our focus from the surface-sensitive techniques like ARPES, which have beautifully mapped out the altermagnetic band structures, to the bulk. Today, we will explore how we use light—photons—as a clean, powerful probe of the unique electronic properties deep inside these fascinating materials. We will cover the fundamental theory of how altermagnetism manifests in the optical response, discuss the state-of-the-art experimental techniques required to measure it, and then dive into a critical comparison of recent results on key material candidates.
+    </aside>
+</section>
+
+
+
+
+
+<!-- SLIDE 2: Motivation -->
+<section>
+  <aside class="notes">
                 Altermagnetism is a new and exciting frontier but we still face a challenge: how do we unambiguously identify altermagnetism in materials? Among the many predictions, many have been later contested. For example, the early ARPES studies on RuO2 claimed to see the characteristic spin-splitting, but later work showed that the observed features could be explained by surface effects or other non-altermagnetic mechanisms.
                 Today i will talk about how we can use optical and magneto-optical techniques to probe the bulk properties of altermagnets, providing a more definitive fingerprint.
-            </aside>
-        </section>
+  </aside>
 
+  <section data-auto-animate>
+    <h2 style="margin-top: 250px; text-align: center; font-size: 54px;" data-id="header-motivation">How do we identify Altermagnets?</h2>
+  </section>
+  
+  <section data-auto-animate>
+    <h2 data-id="header-motivation">The Identification Challenge</h2>
+    
+    <!-- Top Row: The Controversy -->
+    <div style="display:grid; grid-template-columns: 1fr 1fr; gap:30px; margin-top: 10px;">
+      <div class="padded" style="background-color: rgba(255, 255, 255, 0.05); border-left: 5px solid #387066;">
+        <h4 style="color: #387066;">Initial Claims (Surface)</h4>
+        <ul style="font-size: 18px;">
+          <li>ARPES observed apparent spin-splitting in $RuO_2$.</li>
+          <li>Led to widespread classification as a model altermagnet.</li>
+        </ul>
+      </div>
+      <div class="padded" style="background-color: rgba(255, 255, 255, 0.05); border-left: 5px solid #8b4e5d;">
+        <h4 style="color: #8b4e5d;">The Debunking (Bulk)</h4>
+        <ul style="font-size: 18px;">
+          <li>Optical spectroscopy revealed <b>Fermi-liquid behavior</b>.</li>
+          <li>Matches a non-magnetic model better than an altermagnetic one.</li>
+        </ul>
+      </div>
+    </div>
 
-      <section>
-        <h2>Context: From Surface to Bulk Probe</h2>
-        <div class="content">
-          <div class="fragment" data-fragment-index="2">
-          <div class="padded";  style="background: #c1e6d228; margin-top: 10px;">
-          <ul>
-            <li>
-              <strong>My Focus:</strong> <highlight>Bulk Probing</highlight> Optical spectroscopy measurements. Entire electronic band structure is probed, making it a complementary and essential probe.
-            </li>
-            <li>
-              <strong>\(\rightarrow\)Detect spin-splitting via Optical Probing</strong>
-            </li>
-          </ul>
-          </div>
-          </div>
-        
-        <div style="margin-top: 10px;">
-        <div style="display:grid; grid-template-columns: 1.8fr 1fr; gap:15px;">
-          <div class="padded" style="background: #cccccc39;">
-          <ul>
-            <li>
-              <strong>Previous Talks:</strong> Landau theory, spin-space groups, non-symmorphic symmetries.
-            </li>
-            <li>
-              <strong>ARPES (Topic 4):</strong> Momentum-dependent spin-splitting ($E(\mathbf{k},\uparrow) \neq E(\mathbf{k},\downarrow)$) at the material's <highlight>surface</highlight>.
-            </li>
-          </ul>
-          </div>
-          <div class="padded" style="background: #ffffff;">
-          <iframe src="arpes.html" width="400" height="250" style="border:none; margin-top: 0px;" title="ARPES"></iframe>
-          </div>
+    <!-- Middle Row: The Visual Hook -->
+    <div style="display:grid; grid-template-columns: 2fr 1fr 2fr; gap:20px; margin-top:10px;">
+      <div class="padded" style="background-color: white;">
+        <img src="RuO2pro2.png" alt="RuO2 ARPES data" style="width:100%; height:auto;">
+        <img src="RuO2pro3.png" alt="RuO2 ARPES data" style="width:100%; height:auto;">
+      </div>
+      <div class="fragment" data-fragment-index="2" style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
+        <p style="font-size: 50px;">VS</p>
+        <p style="text-align: center; color: #cbad00; font-size: 64px;">&#128498;</p>
+      </div>
+      <div class="fragment" data-fragment-index="1">
+        <div class="padded" style="background-color: white;">
+          <img src="RuO2against.png" alt="RuO2 Optical Conductivity" style="width:100%; height:auto;">
+          <img src="RuO2pro.png" alt="RuO2 Optical Conductivity" style="width:100%; height:auto;">
         </div>
+      </div>
+    </div>
+
+    <!-- Bottom Row: The Resolution -->
+    <div class="fragment" data-fragment-index="3">
+      <div class="padded" style="margin-top: 10px; border: 1px dashed #b83333;">
+        <p style="font-size: 32px; text-align: center;">
+          Ambiguity remains: Surface effect or Bulk property? <br>
+          We need a <highlight>definitive Bulk Fingerprint</highlight>.
+        </p>
+      </div>
+    </div>
+  </section>
+</section>
+
+
+
+
+<!--  SLIDE 3: Context -->
+<section>
+  <h2>Context: From Surface to Bulk Probe</h2>
+  <div class="content">
+    <div class="fragment" data-fragment-index="2">
+    <div class="padded";  style="background: #c1e6d228; margin-top: 10px;">
+    <ul>
+      <li>
+        <strong>My Focus:</strong> <highlight>Bulk Probing</highlight> Optical spectroscopy measurements. Entire electronic band structure is probed, making it a complementary and essential probe.
+      </li>
+      <li>
+        <strong>\(\rightarrow\)Detect spin-splitting via Optical Probing</strong>
+      </li>
+    </ul>
+    </div>
+    </div>
+  
+  <div style="margin-top: 10px;">
+  <div style="display:grid; grid-template-columns: 1.8fr 1fr; gap:15px;">
+    <div class="padded" style="background: #cccccc39;">
+    <ul>
+      <li>
+        <strong>Previous Talks:</strong> Landau theory, spin-space groups, non-symmorphic symmetries.
+      </li>
+      <li>
+        <strong>ARPES (Topic 4):</strong> Momentum-dependent spin-splitting ($E(\mathbf{k},\uparrow) \neq E(\mathbf{k},\downarrow)$) at the material's <highlight>surface</highlight>.
+      </li>
+    </ul>
+    </div>
+    <div class="padded" style="background: #ffffff;">
+    <iframe src="arpes.html" width="400" height="250" style="border:none; margin-top: 0px;" title="ARPES"></iframe>
+    </div>
+  </div>
+  </div>
+  <aside class="notes">
+    The previous talks have done a fantastic job setting the stage. We understand the theory, and we've seen ARPES applications that directly visualizes the k-dependent spin-splitting at the surface. But a crucial question remains: is this phenomenon robust in the bulk of the material? Optical and magneto-optical spectroscopy are our primary tools to answer this. Unlike ARPES, which is inherently surface-sensitive, optics probes the collective electronic excitations deep within the crystal. Our goal today is to understand the specific optical fingerprints that altermagnetism should produce and how to measure them.
+  </aside>
+</section>
+
+
+
+
+<section class="section-divider" data-state="is-section-divider">
+  <aside class="notes">
+    Lets get a quick overview of what we will learn today. In the beginning i will derive the connection between the optical conductivity tensor and the band splitting of altermagnets. Then we will discuss the magneto-optical Kerr effect, which is the main experimental technique used to measure the off-diagonal elements of the conductivity tensor. Important is how we can connect quantummechanical terms with the optical conductivity, leading to DFT simulations as a comparison tool.
+    The second part is all about Iron Antimon and its diagonal elements of the conductivity tensor. This is a brand new paper showcasing a strong argument that this material is under specific conditions an altermagnet.
+    At last i will show you results of other materials and how off diagonal elements can be used to confirm or debunk altermagnetism in a material.
+  </aside>
+  <h2>Overview</h2>
+    <div style="display:grid; grid-template-columns: 1fr 1fr 1fr; gap:18px;">
+        <div class="padded" style="background: #fff5e2">
+            <h3 style="color: var(--primary-color); border-bottom: 2px solid var(--line-color);">Theory</h3>
+            <ul>
+                <li>Optical Conductivity Tensor</li>
+                <li>Magneto-Optical Kerr Effect</li>
+                <li>Measurements</li>
+            </ul>
         </div>
-        <aside class="notes">
-          The previous talks have done a fantastic job setting the stage. We understand the theory, and we've seen ARPES applications that directly visualizes the k-dependent spin-splitting at the surface. But a crucial question remains: is this phenomenon robust in the bulk of the material? Optical and magneto-optical spectroscopy are our primary tools to answer this. Unlike ARPES, which is inherently surface-sensitive, optics probes the collective electronic excitations deep within the crystal. Our goal today is to understand the specific optical fingerprints that altermagnetism should produce and how to measure them.
-        </aside>
-      </section>
+        <div class="padded" style="background: #fff5e2;">
+            <h3 style="color: var(--primary-color); border-bottom: 2px solid var(--line-color);">Cobalt doped FeSb\(_2\)</h3>
+            <ul>
+              <li>Diagonal Elements \(\sigma_{ii}\)</li>
+            </ul>
+            <model-viewer 
+            src="FeSb2.glb" 
+            alt="3D Crystal Structure from Materials Project" 
+            auto-rotate 
+            style="width: 100%; height: 200px">
+        </model-viewer>
+        </div>
+        <div class="padded" style="background: #fff5e2;">
+            <h3 style="color: var(--primary-color); border-bottom: 2px solid var(--line-color);">Other Candidates</h3>
+            <ul>
+              <li>Off-Diagonal Elements \(\sigma_{ij}\)</li>
+              <li>Debunked cases</li>
+            </ul>
+        </div>
+    </div>
+</section>
 
-        <section class="section-divider" data-state="is-section-divider">
-          <aside class="notes">
-            Lets get a quick overview of what we will learn today. In the beginning i will derive the connection between the optical conductivity tensor and the band splitting of altermagnets. Then we will discuss the magneto-optical Kerr effect, which is the main experimental technique used to measure the off-diagonal elements of the conductivity tensor. Important is how we can connect quantummechanical terms with the optical conductivity, leading to DFT simulations as a comparison tool.
-            The second part is all about Iron Antimon and its diagonal elements of the conductivity tensor. This is a brand new paper showcasing a strong argument that this material is under specific conditions an altermagnet.
-            At last i will show you results of other materials and how off diagonal elements can be used to confirm or debunk altermagnetism in a material.
-          </aside>
-          <h2>Overview</h2>
-            <div style="display:grid; grid-template-columns: 1fr 1fr 1fr; gap:18px;">
-                <div class="padded" style="background: #fff5e2">
-                    <h3 style="color: var(--primary-color); border-bottom: 2px solid var(--line-color);">Theory</h3>
-                    <ul>
-                        <li>Optical Conductivity Tensor</li>
-                        <li>Magneto-Optical Kerr Effect</li>
-                        <li>Measurements</li>
-                    </ul>
 
-                </div>
-                <div class="padded" style="background: #fff5e2;">
-                    <h3 style="color: var(--primary-color); border-bottom: 2px solid var(--line-color);">Cobalt doped FeSb\(_2\)</h3>
-                    <ul>
-                      <li>Diagonal Elements \(\sigma_{ii}\)</li>
-                    </ul>
-                    <model-viewer 
-                    src="FeSb2.glb" 
-                    alt="3D Crystal Structure from Materials Project" 
-                    auto-rotate 
-                    style="width: 100%; height: 200px">
-                </model-viewer>
-                </div>
-                <div class="padded" style="background: #fff5e2;">
-                    <h3 style="color: var(--primary-color); border-bottom: 2px solid var(--line-color);">Other Candidates</h3>
-                    <ul>
-                      <li>Off-Diagonal Elements \(\sigma_{ij}\)</li>
-                      <li>Debunked cases</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
+
 
         <section>
           <aside class="notes">
@@ -196,11 +240,11 @@
             
             <div style="display:grid; grid-template-columns: 1.5fr 1fr; gap:18px; margin-top: 30px;">
             <div class="padded">
-            <p style="margin-bottom: 20px; text-align: center">Normal materials follow <highlight>Linear Response Theorem:</highlight> $$J = \sigma  E$$ </p>
+            <p style="margin-bottom: 20px; text-align: center">Normal materials follow <highlight>Linear Response Theorem:</highlight> $$J = \sigma  E \hspace{40px}  \tilde{\varepsilon} \leftrightarrow \tilde{\sigma}  \begin{cases} \tilde{\varepsilon}_{xx} = 1 + \frac{4\pi i}{\omega} \tilde{\sigma}_{xx} \\ \tilde{\varepsilon}_{xy} = \frac{4\pi i}{\omega} \tilde{\sigma}_{xy} \end{cases}$$ </p>
             <ul>
               <li>$\tilde{\sigma}_{ij}(\omega)$: complex optical conductivity tensor</li>
               <li><strong>AFMe:</strong> Off-diagonal elements cancel out</li>
-              <li><strong>Altermagnet:</strong> Spontaneous off-diagonal elements without net magnetization</li>
+              <li class="fragment" data-fragment-index="1"><strong>Altermagnet:</strong> Spontaneous off-diagonal elements without net magnetization</li>
               <li class="fragment" data-fragment-index="1"><strong>Adding B-Field:</strong> Breaks the simple symmetry leading to offdiagonal elements</li>
             </ul>
           </div>
@@ -215,10 +259,201 @@
             </div>
             </div>
           </div>
-          <div class="footnote">https://doi.org/10.3389/fphy.2022.946515</div>
+          <div class="footnote">Sato K and Ishibashi T (2022), doi: 10.3389/fphy.2022.946515</div>
         </section>
 
+
+
+
+
         <section>
+          <aside class="notes">
+            Now that we understand the theoretical basis for the magneto-optical response in altermagnets, we can discuss how to experimentally measure this response. The primary technique used to probe the off-diagonal elements of the optical conductivity tensor is the Magneto-Optical Kerr Effect, or MOKE. In a MOKE experiment, we shine polarized light onto the surface of a magnetized material and measure how the polarization state of the reflected light changes. The Kerr rotation angle \(\theta_K\) and ellipticity \(\eta_K\) are directly related to the real and imaginary parts of the off-diagonal conductivity \(\tilde{\sigma}_{xy}\). By carefully analyzing these changes in polarization, we can extract information about the optical conductivity tensor and thus gain insights into the underlying electronic structure of the altermagnet. This technique is particularly powerful because it allows us to probe the bulk properties of the material, providing a complementary perspective to surface-sensitive techniques like ARPES.
+          </aside>
+        <h2>The Magneto-Optical Kerr Effect (MOKE)</h2>
+        <h3>Measuring the Optical Conductivity Tensor</h3>
+        <div style="display:grid; grid-template-columns: 1.5fr 1fr; gap:18px; margin-top: 20px;">
+          <div>
+            <p>We measure how polarization state changes upon reflection.</p>
+           <div class="padded" style="margin-top: 20px;">
+             <p>$$\tilde{\sigma}_{xy}(\omega) \propto \theta_K + i\eta_K $$</p>
+            <ul>
+              <li>$\theta_K / \Psi$ (Rotation) $\leftrightarrow$ Dispersive part, Im($\tilde{\sigma}_{xy}$)</li>
+              <li>$\eta_K$ (Ellipticity) $\leftrightarrow$ Dissipative part, Re($\tilde{\sigma}_{xy}$)</li>
+            </ul>
+           </div>
+           <div style="display:grid; grid-template-columns: 1fr 1fr; gap:10px; margin-top: 20px;">
+            <div class="concept-card" style="">
+              <h3>Polarization Conventions:</h3>
+              <ul>
+                <li><strong>a:</strong> polar</li>
+                <li><strong>b:</strong> longitudinal</li>
+                <li><strong>c:</strong> transversal</li>
+              </ul>
+            </div>
+            <div class="concept-card">
+            <img src="Polarisation_ellipse2.svg" alt="Polarization ellipse diagram showing orientation angle and ellipticity parameters" style="max-width: auto; height: 200px; margin-left: 0px;">
+            </div>
+          </div>
+          </div>
+          <div class="concept-card">
+            <img src="kerr.svg" alt="Magneto-optical Kerr effect showing light polarization change upon reflection from magnetized surface" style="max-width: auto; height: 500px; margin-left: 0px;">
+          </div>
+        </div>
+      </section>
+
+
+
+<section>
+<h2>Optical Behavior</h2>
+<h3>Linear Response Theorem and the Optical Conductivity Tensor</h3>
+
+<p style="margin-top: 10px;">We apply the light in \(z\) direction, which reduces the matrix to:
+</p>
+<div class="concept-card">$$\tilde{\varepsilon} = \begin{pmatrix} \color{#8b4e5d}{\tilde{\varepsilon}_{xx}} & \color{#387066}{\tilde{\varepsilon}_{xy}} \\ -\color{#387066}{\tilde{\varepsilon}_{xy}} & \color{#8b4e5d}{\tilde{\varepsilon}_{xx}} \end{pmatrix} \rightarrow \tilde{\varepsilon}_{\pm} = \color{#8b4e5d}{\tilde{\varepsilon}_{xx}} \pm i\color{#387066}{\tilde{\varepsilon}_{xy}}$$</div>
+<div class="padded" style="margin-top: 10px;">
+<div style="display:grid; grid-template-columns: 1fr 1fr; gap:18px;">
+<ul>
+  <li>Absolute Reflectivity \(R(\omega)\)</li>
+  <li>Phase \(\theta(\omega)\)</li>
+</ul>
+<p>Complex reflectivity: $$r(\omega) = \sqrt{R(\omega)} e^{i\theta(\omega)} = \frac{1- \sqrt{\tilde{\varepsilon}_{\pm}(\omega)}}{1+\sqrt{\tilde{\varepsilon}_{\pm}(\omega)}}$$</p>
+</div>
+<p style="text-align: center;">The function \(f(\omega) = \ln r(\omega)\) is a response function: <br> analytic in the upper half-plane.</p>
+</div>
+</section>
+
+
+
+
+<section>
+        <aside class="notes">
+          What i havent mentioned yet is that the measurement of MOKE only results in information about the imaginary/real part of the off diagonal elements. Fortunately, the optical response of a material follows a response function, which is analytic in the upper half-plane.
+          A handy tool we all heard of in exphys 6 is the kramers-kronig relation.
+          This means that one part of the complex tensor element is enough to calculate the remaining part by integrating in fourier space.
+          This is a common relation between the imaginary and real part of the refractive index and is transferable to the optical conductivity tensor.
+        </aside>
+        <h2>Kramers-Kronig Relations</h2>
+        <h3>Connecting Real and Imaginary Parts</h3>
+        <div style="display:grid; grid-template-columns: 1.2fr 1fr; gap:18px; margin-top: 60px;">
+          <div class="padded"><p data-id="formulas"><strong>Condition:</strong> <highlight>Response function</highlight> (analytic in the upper half-plane). <br>
+          $$ \color{#8f5060}{\text{Re}[f(\omega)]} = \frac{1}{\pi} \mathcal{P} \int_{-\infty}^{\infty} \frac{\color{#428377}{\text{Im}[f(x)]}}{x - \omega} dx$$ <br> $$ \color{#428377}{\text{Im}[f(\omega)]} = -\frac{1}{\pi} \mathcal{P} \int_{-\infty}^{\infty} \frac{\color{#8f5060}{\text{Re}[f(x)]}}{x - \omega} dx $$
+          </p></div>
+          <div class="concept-card" data-id="kramersgif">
+            <img src="Kramersgifwiki.gif" alt="Animated visualization of Kramers-Kronig relations showing relationship between real and imaginary parts of optical response" style="max-width: 400px; height: auto; margin-top: 20px;">
+          </div>
+        </div>
+        <div class="footnote">https://upload.wikimedia.org/wikipedia/commons/4/45/Kramersgifwiki.gif: 03.05.2026</div>
+</section>
+
+
+
+
+      
+      
+
+
+<section>
+        <aside class="notes">
+          This is a small animation showing that we send a circular polarized wave onto a surface and analyze the reflected wave. We simple deconstruct the reflected wave into linear polarized components and we can calculate via phase difference and amplitude difference the rotation angle and ellipticity.
+        </aside>
+        <h2>The Magneto-Optical Kerr Effect (MOKE)</h2>
+        <h3>Measuring the Kerr Rotation and Ellipticity</h3>
+        <iframe src="kerr.html" width=100% height=100% title="Kerr animation"></iframe>
+</section>
+
+
+
+
+
+
+
+
+
+      <section>
+        <h2><strong style="color:#000000">M</strong>agneto-<strong style="color:#000000">O</strong>ptical <strong style="color:#000000">K</strong>ramers-<strong style="color:#000000">K</strong>ronig <strong style="color:#000000">A</strong>nalysis</h2>
+        <div class="content">
+          <ol>
+            <li><strong>Measurement:</strong> Use linear polarizers to get total reflectivity $R(\omega)$ and Kerr rotation $\theta_K(\omega)$.</li>
+            <li><strong>Define Auxiliary Function:</strong> $$f(\omega) = \ln\left(\frac{\tilde{r}_-}{\tilde{r}_+}\right) = \color{#8f5060}{\ln c(\omega)} + i \cdot \color{#428377}{2\theta_K(\omega)}$$</li>
+            <li><strong>Apply Kramers-Kronig:</strong>
+              $$
+              \color{#8f5060}{\ln c(\omega)} = \frac{2\omega}{\pi} \mathcal{P} \int_0^\infty \frac{\color{#428377}{2\theta_K(x)}}{x^2 - \omega^2} dx
+              $$
+            </li>
+            <li><strong>Reconstruct & Solve:</strong> With $\left[R = (R_+ + R_-)/2\right]$ and $\left[c = R_-/R_+\right]$, we solve for $R_+$ and $R_-$ individually. A final KK transform on these yields the full complex $\tilde{r}_\pm(\omega)$.</li>
+          </ol>
+          <div class="concept-card" style="margin-top: 20px;"><p>This method avoids the spectral limitations of wave plates and is highly sensitive to small signals, making it ideal for altermagnets.</p></div>
+        </div>
+        <div class="footnote">
+          Levallois et al., Rev. Sci. Instrum. 86, 033906 (2015)
+        </div>
+        <aside class="notes">
+          Measuring the tiny MO signals in altermagnets requires extreme precision. Standard techniques like ellipsometry, which use quarter-wave plates, are often plagued by chromatic aberrations and are difficult to implement over a broad energy range. MOKKA is the superior solution. It's a brilliant experimental and analytical protocol. The core idea is to leverage the fundamental principle of causality, embodied by the Kramers-Kronig relations. We start by measuring two simple quantities with linear polarizers: the total reflectivity and the Kerr rotation angle. The mathematical trick is to recognize that the logarithm of the ratio of the left- and right-handed complex reflectivities is itself a causal response function. We have measured its imaginary part—the Kerr angle. Therefore, we can use the Kramers-Kronig integral to calculate its real part, which is the logarithm of the circular dichroism ratio. Once we have both the sum and the ratio of the reflectivities, we can algebraically separate them. A final KK transform gives us the phases, and we have the complete optical response without ever touching a wave plate.
+        </aside>
+      </section>
+
+
+      <section>
+        <h2>The Magneto-Optical Kerr Effect (MOKE)</h2>
+        <h3>Calculating the Optical Conductivity Tensor</h3>
+        <br>
+        <div class="concept-card" style="max-width: 980px; margin: 0 auto; padding: 3px;">
+        <iframe src="calc.html" width="900" height="480" style="border:none;" title="Kerr animation"></iframe>
+        </div>
+        <aside class="notes">
+          On the left, you see a simulated spectrum of the off-diagonal conductivity, $\sigma_{xy}$. The cyan curve represents the real, dispersive part, and the magenta curve is the imaginary, absorptive part. Notice the classic behavior here: the imaginary part peaks at the resonance frequency—in this case, centered around $0.12 \text{ eV}$ for our doped $FeSb_2$—while the real part crosses zero at that exact same point.
+          As I start the spectral sweep, watch the panel on the right. This represents the state of polarization of the reflected light.When we are far from the resonance, the light remains largely linearly polarized. But as we approach the altermagnetic transition energy, the off-diagonal components of the tensor become non-zero. Physically, this manifests as the Kerr Effect: the polarization axis rotates by an angle $\theta_K$, and the light becomes elliptical, described by $\eta_K$.
+        </aside>
+      </section>
+
+
+
+      
+      <!-- SLIDE 5: MOKKA Fast Protocol -->
+      <section>
+        <h2>MOKKA: The 45-Degree Fast Protocol</h2>
+        <div class="content">
+            <p>Extreme conditions (high B-field, low T): rotating optics is not possible</p>
+            <div style="display:grid; grid-template-columns: 1.4fr 1fr; gap:18px;">
+            <ul>
+                <li><strong>Setup:</strong> Polarizer and analyzer are fixed at 45° to each other. This geometry maximizes sensitivity to rotation.</li>
+                <li><strong>Intensity Signal:</strong> The detector intensity becomes directly proportional to the Kerr angle. For small angles:
+                $$
+                I_{\pm45^\circ} \approx C \cdot R(\omega) \frac{1 \pm 2\theta_K(\omega)}{2}
+                $$
+                </li>
+                
+            </ul>
+            <ul><li><strong>Extraction:</strong> Measure intensity ratio at positive and negative magnetic fields and isolate $\theta_K$:
+                $$
+                \rho_{\pm45^\circ}(B) = \frac{I_{\pm45^\circ}(+B)}{I_{\pm45^\circ}(-B)} \approx 1 \pm 4\theta_K(B)
+                $$
+                </li></ul>
+            </div>
+            <div class="concept-card" style="display: flex; justify-content: center; align-items: center;">
+              <img src="mokka45.png" alt="Diagram of MOKKA fast protocol setup with fixed polarizer and analyzer at 45 degrees" style="height: 170px; display: block;">
+            </div>
+        </div>
+        <div class="footnote">
+          Levallois et al., Rev. Sci. Instrum. 86, 033906 (2015)
+        </div>
+        <aside class="notes">
+          One of the most powerful applications of the MOKKA framework is the fast measurement protocol. In many experiments, especially those at cryogenic temperatures and inside high-field magnets, we simply cannot have moving parts. Rotating a polarizer is not an option. The fast protocol solves this. By fixing the polarizer and analyzer at 45 degrees to each other, we place the system at the point of maximum sensitivity to any small rotation of the polarization plane. The intensity measured by the detector becomes a simple linear function of the Kerr angle. By flipping the magnetic field and taking a ratio of the intensities, all common mode factors like the sample reflectivity and instrument throughput cancel out, leaving us with a signal directly proportional to the Kerr rotation. This is a game-changer, allowing us to perform these sensitive measurements in the most challenging experimental environments.
+        </aside>
+      </section>
+      <section>
+        <h2>MOKKA: The 45-Degree Fast Protocol</h2>
+        <div class="content">
+          <p>This allows for reference-free, in-situ measurement of the Kerr rotation, a critical capability for studying field-induced phenomena in altermagnets.</p>
+          <div class="concept-card">
+            <img src="mokka45.png" alt="Placeholder diagram of 45-degree MOKKA setup" style="max-width: 550px; height: auto; display: block; margin: 0 auto;">
+          </div>
+        </div>
+      </section>
+
+
+<section>
           <aside class="notes">
             To understand why altermagnets have a unique optical response, we need to look at the microscopic origin of the magneto-optical effect. The key equation that describes the motion of electrons in a material under the influence of an electric field and a magnetic field is given by the equation of motion for the electron displacement \(\mathbf{u}\). This equation includes terms for the mass of the electron, a damping term that accounts for scattering, a restoring force that can lead to resonances, and the Lorentz force due to the magnetic field. In altermagnets, even though there is no net magnetization, the unique symmetry of the spin-splitting leads to a non-zero off-diagonal conductivity \(\tilde{\sigma}_{xy}\), which is responsible for the magneto-optical response observed in experiments like MOKE. The Lorentz force term couples the motion in the \(x\) and \(y\) directions, leading to a non-zero \(\tilde{\sigma}_{xy}\) and thus a magneto-optical response. This is a key signature of altermagnetism that distinguishes it from both ferromagnets and antiferromagnets.
           </aside>
@@ -240,66 +475,10 @@
               <li>The off diagonal elements are responsible for the rotation in the MOKE or Faraday experiment</li>
             </ul>
           </div>
-          <div class="footnote">https://doi.org/10.3389/fphy.2022.946515</div>
+          <div class="footnote">Sato K and Ishibashi T (2022), doi: 10.3389/fphy.2022.946515</div>
         </section>
 
-        <section>
-          <aside class="notes">
-            Now that we understand the theoretical basis for the magneto-optical response in altermagnets, we can discuss how to experimentally measure this response. The primary technique used to probe the off-diagonal elements of the optical conductivity tensor is the Magneto-Optical Kerr Effect, or MOKE. In a MOKE experiment, we shine polarized light onto the surface of a magnetized material and measure how the polarization state of the reflected light changes. The Kerr rotation angle \(\theta_K\) and ellipticity \(\eta_K\) are directly related to the real and imaginary parts of the off-diagonal conductivity \(\tilde{\sigma}_{xy}\). By carefully analyzing these changes in polarization, we can extract information about the optical conductivity tensor and thus gain insights into the underlying electronic structure of the altermagnet. This technique is particularly powerful because it allows us to probe the bulk properties of the material, providing a complementary perspective to surface-sensitive techniques like ARPES.
-          </aside>
-        <h2>The Magneto-Optical Kerr Effect (MOKE)</h2>
-        <h3>Measuring the Optical Conductivity Tensor</h3>
-        <div style="display:grid; grid-template-columns: 1.5fr 1fr; gap:18px; margin-top: 20px;">
-          <div>
-            <p>We measure how polarization state changes upon reflection.</p>
-           <div class="padded" style="margin-top: 20px;">
-             <p>$$\tilde{\sigma}_{xy}(\omega) \propto \theta_K + i\eta_K $$</p>
-            <ul>
-              <li>$\theta_K$ (Rotation) $\leftrightarrow$ Dispersive part, Im($\tilde{\sigma}_{xy}$)</li>
-              <li>$\eta_K$ (Ellipticity) $\leftrightarrow$ Dissipative part, Re($\tilde{\sigma}_{xy}$)</li>
-            </ul>
-           </div>
-            <div class="concept-card" style="margin-top: 50px;">
-              <h3>Polarization Conventions:</h3>
-              <ul>
-                <li><strong>a:</strong> polar</li>
-                <li><strong>b:</strong> longitudinal</li>
-                <li><strong>c:</strong> transversal</li>
-              </ul>
-            </div>
-          </div>
-          <div class="concept-card">
-            <img src="kerr.svg" alt="Magneto-optical Kerr effect showing light polarization change upon reflection from magnetized surface" style="max-width: auto; height: 500px; margin-left: 0px;">
-          </div>
-        </div>
-      </section>
 
-      <section>
-        <h2>The Magneto-Optical Kerr Effect (MOKE)</h2>
-        <h3>Rotation angle and Ellipticity, Decomposition of CPL</h3>
-        <br>
-        <div style="display:grid; grid-template-columns: 1fr 1fr; gap:18px; margin-top: 20px;">
-        <div class="concept-card">
-            <img src="Polarisation_ellipse2.svg" alt="Polarization ellipse diagram showing orientation angle and ellipticity parameters" style="max-width: auto; height: 400px; margin-left: 0px;">
-        </div>
-        <div class="concept-card">
-            <img src="Rising_circular.gif" alt="Decomposition of circularly polarized light into two orthogonal linearly polarized components rotating in opposite directions" style="max-width: auto; height: 400px; margin-left: 0px;">
-        </div>
-        </div>
-
-        <div class="footnote">
-            https://en.wikipedia.org/wiki/Polarization_(waves)
-        </div>
-      </section>
-
-      <section>
-        <aside class="notes">
-          This is a small animation showing that we send a circular polarized wave onto a surface and analyze the reflected wave. We simple deconstruct the reflected wave into linear polarized components and we can calculate via phase difference and amplitude difference the rotation angle and ellipticity.
-        </aside>
-        <h2>The Magneto-Optical Kerr Effect (MOKE)</h2>
-        <h3>Measuring the Kerr Rotation and Ellipticity</h3>
-        <iframe src="kerr.html" width=100% height=100% title="Kerr animation"></iframe>
-      </section>
 
       <section>
         <aside class="notes">
@@ -354,7 +533,10 @@
         </section>
 
         </section>
-      
+
+
+
+
         <!-- SLIDE 2: The Visual Result -->
         <section>
           <aside class="notes">
@@ -362,9 +544,10 @@
           </aside>
         <section data-auto-animate>
           <h2>The Kubo Formula</h2>
+          <h3>Band split Fermi Surface and resulting Kubo Integral</h3>
           
           <!-- The math glides up and shrinks smoothly -->
-          <div class="concept-card" style="margin-top: 0; padding: 3px; opacity: 0.6;">
+          <div class="concept-card" style="margin-top: 10px; padding: 3px; opacity: 0.6;">
             <p style="font-size: 12px; text-align: center;">
               \[\tilde{\sigma}_{xy}(\omega) \propto \dots \sum \int \frac{\Delta f}{\Delta E - \hbar\omega} \times \langle \hat{v}_x \rangle \langle \hat{v}_y \rangle \]
             </p>
@@ -408,108 +591,9 @@
           However, altermagnetic spin-polarization allows for a net non-zero sum, creating a finite $\sigma_{xy}$ without net magnetization.
         </aside>
       </section>
-      </section>
 
 
-      <section>
-        <aside class="notes">
-          What i havent mentioned yet is that the measurement of MOKE only results in information about the imaginary/real part of the off diagonal elements. Fortunately, the optical response of a material follows a response function, which is analytic in the upper half-plane.
-          A handy tool we all heard of in exphys 6 is the kramers-kronig relation.
-          This means that one part of the complex tensor element is enough to calculate the remaining part by integrating in fourier space.
-          This is a common relation between the imaginary and real part of the refractive index and is transferable to the optical conductivity tensor.
-        </aside>
-        <h2>Kramers-Kronig Relations</h2>
-        <h3>Connecting Real and Imaginary Parts</h3>
-        <div style="display:grid; grid-template-columns: 1.2fr 1fr; gap:18px; margin-top: 60px;">
-          <p data-id="formulas"><strong>Condition:</strong> <highlight>Response function</highlight> (analytic in the upper half-plane). <br>
-          $$ \text{Re}[f(\omega)] = \frac{1}{\pi} \mathcal{P} \int_{-\infty}^{\infty} \frac{\text{Im}[f(x)]}{x - \omega} dx$$ <br> $$ \text{Im}[f(\omega)] = -\frac{1}{\pi} \mathcal{P} \int_{-\infty}^{\infty} \frac{\text{Re}[f(x)]}{x - \omega} dx $$
-          </p>
-          <div class="concept-card" data-id="kramersgif">
-            <img src="Kramersgifwiki.gif" alt="Animated visualization of Kramers-Kronig relations showing relationship between real and imaginary parts of optical response" style="max-width: 400px; height: auto; margin-top: 20px;">
-          </div>
-        </div>
-        <div class="footnote">https://upload.wikimedia.org/wikipedia/commons/4/45/Kramersgifwiki.gif: 03.05.2026</div>
-      </section>
 
-
-      <section>
-        <h2>The Magneto-Optical Kerr Effect (MOKE)</h2>
-        <h3>Calculating the Optical Conductivity Tensor</h3>
-        <br>
-        <div class="concept-card" style="max-width: 980px; margin: 0 auto; padding: 3px;">
-        <iframe src="calc.html" width="900" height="480" style="border:none;" title="Kerr animation"></iframe>
-        </div>
-        <aside class="notes">
-          On the left, you see a simulated spectrum of the off-diagonal conductivity, $\sigma_{xy}$. The cyan curve represents the real, dispersive part, and the magenta curve is the imaginary, absorptive part. Notice the classic behavior here: the imaginary part peaks at the resonance frequency—in this case, centered around $0.12 \text{ eV}$ for our doped $FeSb_2$—while the real part crosses zero at that exact same point.
-          As I start the spectral sweep, watch the panel on the right. This represents the state of polarization of the reflected light.When we are far from the resonance, the light remains largely linearly polarized. But as we approach the altermagnetic transition energy, the off-diagonal components of the tensor become non-zero. Physically, this manifests as the Kerr Effect: the polarization axis rotates by an angle $\theta_K$, and the light becomes elliptical, described by $\eta_K$.
-        </aside>
-      </section>
-
-      <section>
-        <h2><strong style="color:#000000">M</strong>agneto-<strong style="color:#000000">O</strong>ptical <strong style="color:#000000">K</strong>ramers-<strong style="color:#000000">K</strong>ronig <strong style="color:#000000">A</strong>nalysis</h2>
-        <div class="content">
-          <ol>
-            <li><strong>Measurement:</strong> Use linear polarizers to get total reflectivity $R(\omega)$ and Kerr rotation $\theta_K(\omega)$.</li>
-            <li><strong>Define Auxiliary Function:</strong> $f(\omega) = \ln\left(\frac{\tilde{r}_-}{\tilde{r}_+}\right) = \ln c(\omega) + 2i\theta_K(\omega)$</li>
-            <li><strong>Apply Kramers-Kronig:</strong>
-              $$
-              \ln c(\omega) = \frac{2\omega}{\pi} \mathcal{P} \int_0^\infty \frac{2\theta_K(x)}{x^2 - \omega^2} dx
-              $$
-            </li>
-            <li><strong>Reconstruct & Solve:</strong> With $\left[R = (R_+ + R_-)/2\right]$ and $\left[c = R_-/R_+\right]$, we solve for $R_+$ and $R_-$ individually. A final KK transform on these yields the full complex $\tilde{r}_\pm(\omega)$.</li>
-          </ol>
-          <div class="concept-card" style="margin-top: 20px;"><p>This method avoids the spectral limitations of wave plates and is highly sensitive to small signals, making it ideal for altermagnets.</p></div>
-        </div>
-        <div class="footnote">
-          Levallois et al., Rev. Sci. Instrum. 86, 033906 (2015)
-        </div>
-        <aside class="notes">
-          Measuring the tiny MO signals in altermagnets requires extreme precision. Standard techniques like ellipsometry, which use quarter-wave plates, are often plagued by chromatic aberrations and are difficult to implement over a broad energy range. MOKKA is the superior solution. It's a brilliant experimental and analytical protocol. The core idea is to leverage the fundamental principle of causality, embodied by the Kramers-Kronig relations. We start by measuring two simple quantities with linear polarizers: the total reflectivity and the Kerr rotation angle. The mathematical trick is to recognize that the logarithm of the ratio of the left- and right-handed complex reflectivities is itself a causal response function. We have measured its imaginary part—the Kerr angle. Therefore, we can use the Kramers-Kronig integral to calculate its real part, which is the logarithm of the circular dichroism ratio. Once we have both the sum and the ratio of the reflectivities, we can algebraically separate them. A final KK transform gives us the phases, and we have the complete optical response without ever touching a wave plate.
-        </aside>
-      </section>
-
-      
-      <!-- SLIDE 5: MOKKA Fast Protocol -->
-      <section>
-        <h2>MOKKA: The 45-Degree Fast Protocol</h2>
-        <div class="content">
-            <p>Extreme conditions (high B-field, low T): rotating optics is not possible</p>
-            <div style="display:grid; grid-template-columns: 1.4fr 1fr; gap:18px;">
-            <ul>
-                <li><strong>Setup:</strong> Polarizer and analyzer are fixed at 45° to each other. This geometry maximizes sensitivity to rotation.</li>
-                <li><strong>Intensity Signal:</strong> The detector intensity becomes directly proportional to the Kerr angle. For small angles:
-                $$
-                I_{\pm45^\circ} \approx C \cdot R(\omega) \frac{1 \pm 2\theta_K(\omega)}{2}
-                $$
-                </li>
-                
-            </ul>
-            <ul><li><strong>Extraction:</strong> Measure intensity ratio at positive and negative magnetic fields and isolate $\theta_K$:
-                $$
-                \rho_{\pm45^\circ}(B) = \frac{I_{\pm45^\circ}(+B)}{I_{\pm45^\circ}(-B)} \approx 1 \pm 4\theta_K(B)
-                $$
-                </li></ul>
-            </div>
-            <div class="concept-card">
-              <img src="mokka45.png" alt="Diagram of MOKKA fast protocol setup with fixed polarizer and analyzer at 45 degrees" style="max-width: auto; height: 170px;">
-            </div>
-        </div>
-        <div class="footnote">
-          Levallois et al., Rev. Sci. Instrum. 86, 033906 (2015)
-        </div>
-        <aside class="notes">
-          One of the most powerful applications of the MOKKA framework is the fast measurement protocol. In many experiments, especially those at cryogenic temperatures and inside high-field magnets, we simply cannot have moving parts. Rotating a polarizer is not an option. The fast protocol solves this. By fixing the polarizer and analyzer at 45 degrees to each other, we place the system at the point of maximum sensitivity to any small rotation of the polarization plane. The intensity measured by the detector becomes a simple linear function of the Kerr angle. By flipping the magnetic field and taking a ratio of the intensities, all common mode factors like the sample reflectivity and instrument throughput cancel out, leaving us with a signal directly proportional to the Kerr rotation. This is a game-changer, allowing us to perform these sensitive measurements in the most challenging experimental environments.
-        </aside>
-      </section>
-      <section>
-        <h2>MOKKA: The 45-Degree Fast Protocol</h2>
-        <div class="content">
-          <p>This allows for reference-free, in-situ measurement of the Kerr rotation, a critical capability for studying field-induced phenomena in altermagnets.</p>
-          <div class="concept-card">
-            <img src="mokka45.png" alt="Placeholder diagram of 45-degree MOKKA setup" style="max-width: 550px; height: auto; margin-top: 20px;">
-          </div>
-        </div>
-      </section>
 
 
 
@@ -706,7 +790,7 @@
           <div>
             <p>Only for Co-doped FeSb2:</p>
           <ul>
-            <li>Drude response (at around 0.1 eV)</li>
+            <li>Drude response (at around 0.1 eV) proves metallic behavior</li>
             <li>Low energy transition (at around 0.1 eV)</li>
           </ul>
           <p>Adding a Cobalt doping results in less scattering therefore quenching the spin fluctuations <br> the system settles into the AFMo ground state</p>
@@ -775,6 +859,8 @@
         </div>
         </div>
       </section>
+
+
 
 
 
