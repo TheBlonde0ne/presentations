@@ -101,11 +101,16 @@
         </div>
         </div>
         <aside class="notes">
-          The previous talks have done a fantastic job setting the stage. We understand the theory, and we've seen the compelling ARPES data that directly visualizes the k-dependent spin-splitting at the surface. But a crucial question remains: is this phenomenon robust in the bulk of the material? Optical and magneto-optical spectroscopy are our primary tools to answer this. Unlike ARPES, which is inherently surface-sensitive, optics probes the collective electronic excitations deep within the crystal. Our goal today is to understand the specific optical fingerprints that altermagnetism should produce and how to measure them.
+          The previous talks have done a fantastic job setting the stage. We understand the theory, and we've seen ARPES applications that directly visualizes the k-dependent spin-splitting at the surface. But a crucial question remains: is this phenomenon robust in the bulk of the material? Optical and magneto-optical spectroscopy are our primary tools to answer this. Unlike ARPES, which is inherently surface-sensitive, optics probes the collective electronic excitations deep within the crystal. Our goal today is to understand the specific optical fingerprints that altermagnetism should produce and how to measure them.
         </aside>
       </section>
 
         <section class="section-divider" data-state="is-section-divider">
+          <aside class="notes">
+            Lets get a quick overview of what we will learn today. In the beginning i will derive the connection between the optical conductivity tensor and the band splitting of altermagnets. Then we will discuss the magneto-optical Kerr effect, which is the main experimental technique used to measure the off-diagonal elements of the conductivity tensor. Important is how we can connect quantummechanical terms with the optical conductivity, leading to DFT simulations as a comparison tool.
+            The second part is all about Iron Antimon and its diagonal elements of the conductivity tensor. This is a brand new paper showcasing a strong argument that this material is under specific conditions an altermagnet.
+            At last i will show you results of other materials and how off diagonal elements can be used to confirm or debunk altermagnetism in a material.
+          </aside>
           <h2>Overview</h2>
             <div style="display:grid; grid-template-columns: 1fr 1fr 1fr; gap:18px;">
                 <div class="padded" style="background: #fff5e2">
@@ -140,10 +145,16 @@
         </section>
 
         <section>
+          <aside class="notes">
+            Before we dive into the experimental techniques, let's first understand the theoretical framework that connects the unique band structure of altermagnets to their optical properties. The condition for altermagnetism is a net magnetization of zero, but a special symmetry which leads to the breaking of time reversal symmetry and preservation of time reversal symmetry in combination with a spatial transformation. This leads to a unique spin-splitting in the band structure, which should manifest in the optical response of the material.
+            P is inversion
+            T is timereversal
+            t is translation
+          </aside>
             <h2>Breaking the Symmetry</h2>
             <h3>Transformation Symmetry in Different Magnetic Orders</h3>
             <div style="display:grid; grid-template-columns: 1fr 1fr 1fr; gap:10px;">
-                <div class="padded fragment" style="margin-top: 10px; background: white;">
+                <div class="padded" style="margin-top: 10px; background: white;">
                     <h3>a: Ferro</h3>
                     <ul>
                         <li style="font-size: 15px;">\(\mathbf{M} \neq 0\)</li>
@@ -156,7 +167,7 @@
                     <h3>b: Anti-Ferro</h3>
                     <ul>
                         <li style="font-size: 15px;">\(\mathbf{M} = 0\)</li>
-                        <li style="font-size: 15px;"><highlight>Preserves</highlight> symmetry \(\mathcal{T}\)</li>
+                        <li style="font-size: 15px;"><highlight>Preserves</highlight> symmetry \(\mathcal{P}\mathcal{T}\)</li>
                         <li style="font-size: 15px;">Spin-degenerate electronic bands</li>
                     </ul>
                     <img src="antiferro.png" alt="Antiferromagnetic spin structure with alternating up and down spins" style="width:auto; height:300px; margin-top: 20px; margin-left: 20px;">
@@ -164,7 +175,7 @@
                 <div class="padded fragment" style="margin-top: 10px; background: white;">
                     <h3>c: Altermagnet</h3>
                     <ul>
-                        <li style="font-size: 15px;">\(\mathbf{M} \neq 0\)</li>
+                        <li style="font-size: 15px;">\(\mathbf{M} = 0\)</li>
                         <li style="font-size: 15px;"><highlight>Breaks</highlight> \(\mathcal{T}\) but <highlight>preserves</highlight> \(\mathcal{T}\mathcal{D}\)</li>
                         <li style="font-size: 15px;">No spin degeneracy</li>
                     </ul>
@@ -176,6 +187,10 @@
         </section>
 
         <section>
+          <aside class="notes">
+            Now that we understand the symmetry conditions that define altermagnetism, we can explore how this unique band structure leads to distinctive optical properties. The key quantity we will focus on is the optical conductivity tensor, which describes how the material responds to an applied electric field at different frequencies. In particular, we will see how the off-diagonal elements of this tensor can serve as a fingerprint for altermagnetism, distinguishing it from both ferromagnetic and antiferromagnetic materials.
+            If no magnetization is present, the conductivity tensor is diagonal. In a ferromagnet, the magnetization leads to off-diagonal elements due to the breaking of time-reversal symmetry. In an altermagnet, we also get off-diagonal elements, but they arise from the unique symmetry of the spin-splitting in k-space, even though the net magnetization is zero. This is a key point that we will explore in detail.
+          </aside>
             <h2>Optical Behavior</h2>
             <h3>Linear Response Theorem and the Optical Conductivity Tensor</h3>
             
@@ -204,6 +219,9 @@
         </section>
 
         <section>
+          <aside class="notes">
+            To understand why altermagnets have a unique optical response, we need to look at the microscopic origin of the magneto-optical effect. The key equation that describes the motion of electrons in a material under the influence of an electric field and a magnetic field is given by the equation of motion for the electron displacement \(\mathbf{u}\). This equation includes terms for the mass of the electron, a damping term that accounts for scattering, a restoring force that can lead to resonances, and the Lorentz force due to the magnetic field. In altermagnets, even though there is no net magnetization, the unique symmetry of the spin-splitting leads to a non-zero off-diagonal conductivity \(\tilde{\sigma}_{xy}\), which is responsible for the magneto-optical response observed in experiments like MOKE. The Lorentz force term couples the motion in the \(x\) and \(y\) directions, leading to a non-zero \(\tilde{\sigma}_{xy}\) and thus a magneto-optical response. This is a key signature of altermagnetism that distinguishes it from both ferromagnets and antiferromagnets.
+          </aside>
           <h2>Optical Behavior</h2>
           <h3>Microscopic Origin of Magneto-Optical Effect</h3>
           <div class="concept-card" style="margin-top: 20px; font-size: 20px">
@@ -226,6 +244,9 @@
         </section>
 
         <section>
+          <aside class="notes">
+            Now that we understand the theoretical basis for the magneto-optical response in altermagnets, we can discuss how to experimentally measure this response. The primary technique used to probe the off-diagonal elements of the optical conductivity tensor is the Magneto-Optical Kerr Effect, or MOKE. In a MOKE experiment, we shine polarized light onto the surface of a magnetized material and measure how the polarization state of the reflected light changes. The Kerr rotation angle \(\theta_K\) and ellipticity \(\eta_K\) are directly related to the real and imaginary parts of the off-diagonal conductivity \(\tilde{\sigma}_{xy}\). By carefully analyzing these changes in polarization, we can extract information about the optical conductivity tensor and thus gain insights into the underlying electronic structure of the altermagnet. This technique is particularly powerful because it allows us to probe the bulk properties of the material, providing a complementary perspective to surface-sensitive techniques like ARPES.
+          </aside>
         <h2>The Magneto-Optical Kerr Effect (MOKE)</h2>
         <h3>Measuring the Optical Conductivity Tensor</h3>
         <div style="display:grid; grid-template-columns: 1.5fr 1fr; gap:18px; margin-top: 20px;">
@@ -272,12 +293,21 @@
       </section>
 
       <section>
+        <aside class="notes">
+          This is a small animation showing that we send a circular polarized wave onto a surface and analyze the reflected wave. We simple deconstruct the reflected wave into linear polarized components and we can calculate via phase difference and amplitude difference the rotation angle and ellipticity.
+        </aside>
         <h2>The Magneto-Optical Kerr Effect (MOKE)</h2>
         <h3>Measuring the Kerr Rotation and Ellipticity</h3>
         <iframe src="kerr.html" width=100% height=100% title="Kerr animation"></iframe>
       </section>
 
       <section>
+        <aside class="notes">
+          Now that we have a solid understanding of the theoretical framework and the experimental techniques, we can dive into the mathematical details of how the optical conductivity tensor is calculated from the electronic band structure. The key equation that describes this relationship is the Kubo formula, which expresses the optical conductivity as a sum over all possible electronic transitions between occupied and unoccupied states in the Brillouin zone. The Kubo formula includes a resonance condition in the denominator, which dictates when a peak in the optical response occurs, and matrix elements that relate to the Berry curvature of the bands. In altermagnets, due to their unique symmetry properties, these matrix elements do not cancel out when summed over the Brillouin zone, leading to a net non-zero off-diagonal conductivity \(\tilde{\sigma}_{xy}\). This is a crucial point that allows us to connect the theoretical predictions with experimental observations and provides a powerful tool for identifying altermagnetism in materials.
+          Another reason we need a quantum mechanical description is that we can simulate the optical conductivity using DFT calculations. By calculating the band structure and the relevant matrix elements, we can predict the optical response of a material and compare it directly with experimental measurements, providing a stringent test for the presence of altermagnetism.
+          But DFT simulations still need an order to be initialized. So for comparison we run simulations for every magnetic order type and compare the resulting optical response with the measurements to determine the correct order.
+          In a $\mathcal{PT}$-symmetric system, the Berry curvature at $\mathbf{k}$ is exactly cancelled by the Berry curvature at $-\mathbf{k}$, leading to $\sigma_{xy} = 0$. Altermagnets break $\mathcal{PT}$, allowing this 'topological' property to survive the integration over the Brillouin zone.
+        </aside>
         <!-- SLIDE 1: The Mathematical Breakdown -->
         <section>
           <h2 data-id="title">The Kubo Formula</h2>
@@ -305,7 +335,7 @@
             <div class="padded" style="padding: 10px">
               <h4 style="color: #8f5060; font-size: 24px;">2. The Topology (Matrix Elements)</h4>
               <ul>
-                <li style="font-size: 20px;">\(\langle \hat{v}_x \rangle \langle \hat{v}_y \rangle\) relates to <b>Berry Curvature</b> sth sth imaginary???</li>
+                <li style="font-size: 20px;">\(\langle \hat{v}_x \rangle \langle \hat{v}_y \rangle\) relates to orbital angular momentum of the transition</li>
                 <li style="font-size: 20px;">In altermagnets, this product survives the BZ sum</li>
               </ul>
             </div>
@@ -327,6 +357,9 @@
       
         <!-- SLIDE 2: The Visual Result -->
         <section>
+          <aside class="notes">
+            This is a quick visualization of the band splitting. In real materials this Fermi surface does not change over time, but i wanted to show that the Kubo integral vanishes when the bands overlap. This is because we simply integrate over the same values only with different sign.
+          </aside>
         <section data-auto-animate>
           <h2>The Kubo Formula</h2>
           
@@ -379,6 +412,12 @@
 
 
       <section>
+        <aside class="notes">
+          What i havent mentioned yet is that the measurement of MOKE only results in information about the imaginary/real part of the off diagonal elements. Fortunately, the optical response of a material follows a response function, which is analytic in the upper half-plane.
+          A handy tool we all heard of in exphys 6 is the kramers-kronig relation.
+          This means that one part of the complex tensor element is enough to calculate the remaining part by integrating in fourier space.
+          This is a common relation between the imaginary and real part of the refractive index and is transferable to the optical conductivity tensor.
+        </aside>
         <h2>Kramers-Kronig Relations</h2>
         <h3>Connecting Real and Imaginary Parts</h3>
         <div style="display:grid; grid-template-columns: 1.2fr 1fr; gap:18px; margin-top: 60px;">
