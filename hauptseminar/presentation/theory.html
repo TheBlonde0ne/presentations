@@ -111,46 +111,6 @@
 
 
 
-<!--  SLIDE 3: Context -->
-<section>
-  <h2>Context: From Surface to Bulk Probe</h2>
-  <div class="content">
-    <div class="fragment" data-fragment-index="2">
-    <div class="padded";  style="background: #c1e6d228; margin-top: 10px;">
-    <ul>
-      <li>
-        <strong>My Focus:</strong> <highlight>Bulk Probing</highlight> Optical spectroscopy measurements. Entire electronic band structure is probed, making it a complementary and essential probe.
-      </li>
-      <li>
-        <strong>\(\rightarrow\)Detect spin-splitting via Optical Probing</strong>
-      </li>
-    </ul>
-    </div>
-    </div>
-  
-  <div style="margin-top: 10px;">
-  <div style="display:grid; grid-template-columns: 1.8fr 1fr; gap:15px;">
-    <div class="padded" style="background: #cccccc39;">
-    <ul>
-      <li>
-        <strong>Previous Talks:</strong> Landau theory, spin-space groups, non-symmorphic symmetries.
-      </li>
-      <li>
-        <strong>ARPES (Topic 4):</strong> Momentum-dependent spin-splitting ($E(\mathbf{k},\uparrow) \neq E(\mathbf{k},\downarrow)$) at the material's <highlight>surface</highlight>.
-      </li>
-    </ul>
-    </div>
-    <div class="padded" style="background: #ffffff;">
-    <iframe src="arpes.html" width="400" height="250" style="border:none; margin-top: 0px;" title="ARPES"></iframe>
-    </div>
-  </div>
-  </div>
-  <aside class="notes">
-    As i said:
-    Unfortunately ARPES only works on surface effects and cant predict the bulk properties of the material.
-    This is why we will investigate the magneto-optical response of the material, which is a bulk probe and can give us insights into the entire electronic band structure, including the spin-splitting that is characteristic of altermagnetism.
-  </aside>
-</section>
 
 
 
@@ -293,7 +253,7 @@
               <h3 style="font-size: 22px;">Ordinary Case:</h3>
               <p>$$\tilde{\sigma} = \begin{pmatrix} {\sigma}_{xx} & 0 & 0 \\ 0 & {\sigma}_{xx} & 0 \\ 0 & 0 & {\sigma}_{xx} \end{pmatrix}$$</p>
             </div>
-            <div class="concept-card fragment" style="margin-top: 20px;" data-fragment-index="1">
+            <div class="concept-card" style="margin-top: 20px;">
               <h3 style="font-size: 22px;">Extraordinary Case:</h3>
               <p>$$\tilde{\sigma} = \begin{pmatrix} \tilde{\sigma}_{xx} & \tilde{\sigma}_{xy} & 0 \\ \pm\tilde{\sigma}_{xy} & \tilde{\sigma}_{xx} & 0 \\ 0 & 0 & \tilde{\sigma}_{zz} \end{pmatrix}$$</p>
             </div>
@@ -337,6 +297,7 @@
 
 
 
+<section>
         <section>
           <aside class="notes">
             Now that we understand the theoretical basis for the magneto-optical response in altermagnets, we can discuss how to experimentally measure this response. The primary technique used to probe the off-diagonal elements of the optical conductivity tensor is the Magneto-Optical Kerr Effect, or MOKE. In a MOKE experiment, we shine polarized light onto the surface of a magnetized material and measure how the polarization state of the reflected light changes. The Kerr rotation angle \(\theta_K\) and ellipticity \(\eta_K\) are directly related to the real and imaginary parts of the off-diagonal conductivity \(\tilde{\sigma}_{xy}\). By carefully analyzing these changes in polarization, we can extract information about the optical conductivity tensor and thus gain insights into the underlying electronic structure of the altermagnet. This technique is particularly powerful because it allows us to probe the bulk properties of the material, providing a complementary perspective to surface-sensitive techniques like ARPES.
@@ -372,6 +333,15 @@
           </div>
         </div>
       </section>
+      <section>
+        <aside class="notes">
+          This is a small animation showing that we send a circular polarized wave onto a surface and analyze the reflected wave. We simple deconstruct the reflected wave into linear polarized components and we can calculate via phase difference and amplitude difference the rotation angle and ellipticity.
+        </aside>
+        <h2>The Magneto-Optical Kerr Effect (MOKE)</h2>
+        <h3>Measuring the Kerr Rotation and Ellipticity</h3>
+        <iframe src="kerr.html" width=100% height=100% title="Kerr animation"></iframe>
+</section>
+</section>
 
 
 
@@ -407,14 +377,7 @@
 
 
 
-<section>
-        <aside class="notes">
-          This is a small animation showing that we send a circular polarized wave onto a surface and analyze the reflected wave. We simple deconstruct the reflected wave into linear polarized components and we can calculate via phase difference and amplitude difference the rotation angle and ellipticity.
-        </aside>
-        <h2>The Magneto-Optical Kerr Effect (MOKE)</h2>
-        <h3>Measuring the Kerr Rotation and Ellipticity</h3>
-        <iframe src="kerr.html" width=100% height=100% title="Kerr animation"></iframe>
-</section>
+
 
 
 
@@ -560,7 +523,27 @@
   <h2> Müller Matrix Analysis</h2>
   <h3>Decomposing the Optical Response</h3>
   <div class="footnote">Hilfiker et al., Adv. Opt. Techn. 2022</div>
-  
+  <div style="display:flex; align-items:center; justify-content:space-between; gap:18px; flex-wrap:wrap; margin-top:10px;margin-bottom: 10px;">
+						<div class="flow-node primary" data-step="1" id="flow-1">Measure<br>\(M_{exp}(\omega, \phi)\)</div>
+					<div class="flow-arrow">→</div>
+
+
+						<div class="flow-node secondary" data-step="2" id="flow-2">Build Layered<br>Optical Model</div>
+					<div class="flow-arrow">→</div>
+
+
+						<div class="flow-node primary" data-step="3" id="flow-3">Parameterize Tensor<br>via Oscillators</div>
+					<div class="flow-arrow">→</div>
+
+
+						<div class="flow-node secondary" data-step="4" id="flow-4">Compute M_calc<br>via Berreman 4x4</div>
+					<div class="flow-arrow">→</div>
+
+						<div class="flow-node primary" data-step="5" id="flow-5">Minimize MSE<br>(Regression)</div>
+          <div class="flow-arrow">⇄</div>
+
+						<div class="flow-node secondary" data-step="6" id="flow-6">Final Tensor<br>\(\sigma(\omega)\)</div>
+
 </section>
 
 
@@ -590,30 +573,6 @@
 </section>
 
 
-<section>
-          <aside class="notes">
-            To understand why altermagnets have a unique optical response, we need to look at the microscopic origin of the magneto-optical effect. The key equation that describes the motion of electrons in a material under the influence of an electric field and a magnetic field is given by the equation of motion for the electron displacement \(\mathbf{u}\). This equation includes terms for the mass of the electron, a damping term that accounts for scattering, a restoring force that can lead to resonances, and the Lorentz force due to the magnetic field. In altermagnets, even though there is no net magnetization, the unique symmetry of the spin-splitting leads to a non-zero off-diagonal conductivity \(\tilde{\sigma}_{xy}\), which is responsible for the magneto-optical response observed in experiments like MOKE. The Lorentz force term couples the motion in the \(x\) and \(y\) directions, leading to a non-zero \(\tilde{\sigma}_{xy}\) and thus a magneto-optical response. This is a key signature of altermagnetism that distinguishes it from both ferromagnets and antiferromagnets.
-          </aside>
-          <h2>Optical Behavior</h2>
-          <h3>Microscopic Origin of Magneto-Optical Effect</h3>
-          <div class="concept-card" style="margin-top: 20px; font-size: 20px">
-            $$ {m \frac{\partial^2 \textbf{u}}{\partial t^2}} + \color{#428377}{m \gamma \frac{\partial \textbf{u}}{\partial t}} + \color{#8f5060}{m \omega^2_0 \textbf{u}} = q \left( \textbf{E} + \frac{\partial \textbf{u}}{\partial t} \times \textbf{B} \right)$$
-          </div>
-          <div>
-            <ul>
-              <li style="color: #8f5060">Friction with probability of scattering as defined by \(\gamma = 1 / \tau\), where \(\tau\) is a scattering lifetime</li>
-              <li style="color: #428377">Restoring force with resonance frequency \(\omega_0\)</li>
-            </ul>
-          </div>
-          <div class="padded">
-            <ul>
-              <li>In the Magnetic Drude Model (\(\mathbf{B} \neq 0, \omega_0 = 0\)) we describe a metal with an effective magnetic field or altermagnetic exchange splitting</li>
-              <li>The Lorentz force term couples the motion in the \(x\) and \(y\) directions, leading to a non-zero \(\tilde{\sigma}_{xy}\) and thus a magneto-optical response.</li>
-              <li>The off diagonal elements are responsible for the rotation in the MOKE or Faraday experiment</li>
-            </ul>
-          </div>
-          <div class="footnote">Sato K and Ishibashi T (2022), doi: 10.3389/fphy.2022.946515</div>
-        </section>
 
 
 
@@ -734,6 +693,26 @@
 
 
 
+<section>
+  <h2>Examples of Optical Conductivity Measurements</h2>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+         <!-- BEGINNING OF PART 2: FeSb2 and RuO2 AS EXAMPLES FOR DIAGONAL ELEMENT MEASUREMENTS -->
+
+
       <section class="section-divider" data-state="is-section-divider">
     
          <!-- 1. The Model (Background Layer) -->
@@ -745,8 +724,8 @@
         </model-viewer>
         
         <!-- 2. The Content (Foreground Layer) -->
-          <h2 style="font-size: 50px; margin: 0;">Part 2: Cobalt-doped FeSb<sub>2</sub></h2>
-          <p style="margin-top: 18px; font-size: 30px; opacity: 0.92;">A Case Study in Altermagnetism</p>
+          <h2 style="font-size: 50px; margin: 0; z-index: 1">Diagonal Tensor Elements</h2>
+          <p style="margin-top: 18px; font-size: 30px; z-index: 1">With the Examples of \(\text{FeSb}_2\) and \(\text{RuO}_2\)</p>
       </section>
 
 
@@ -965,37 +944,53 @@
 
 
       <section class="section-divider" data-state="is-section-divider">
-        <h2>Other materials and off diagonal conductivity
-        </h2>
-        <div style="display:grid; grid-template-columns: 1fr 1fr 1fr; gap:18px; margin-top: 20px;">
-        <div class="padded" style="padding: 5px; background: #fff5e2">
-          <h3 style="color: var(--primary-color); border-bottom: 2px solid var(--line-color);">MnTe</h3>
-        <model-viewer 
+    
+         <!-- 1. The Model (Background Layer) -->
+         <model-viewer 
          src="MnTe.glb" 
          alt="3D Crystal Structure" 
          auto-rotate 
-         style="width: 300px; height: 400px;">
-        </model-viewer></div>
-        <div class="padded" style="padding: 5px; background: #fff5e2">
-          <h3 style="color: var(--primary-color); border-bottom: 2px solid var(--line-color);">CrSb</h3> 
-          <model-viewer 
-         src="CrSb.glb" 
-         alt="3D Crystal Structure" 
-         auto-rotate 
-         style="width: 300px; height: 400px;">
+         style="width: 100%; height: 100%; opacity: 0.3; position: absolute; top: 0; left: 0; z-index: 1; pointer-events: none;">
         </model-viewer>
-        </div>
-        <div class="padded" style="padding: 5px; background: #fff5e2">
-          <h3 style="color: var(--primary-color); border-bottom: 2px solid var(--line-color);">RuO2</h3>
-          <model-viewer 
-         src="RuO2.glb" 
-         alt="3D Crystal Structure" 
-         auto-rotate 
-         style="width: 300px; height: 400px;">
-        </model-viewer>
-        </div>
-        </div>
+        
+        <!-- 2. The Content (Foreground Layer) -->
+          <h2 style="font-size: 50px; margin: 0; z-index: 1">Off-Diagonal Tensor Elements</h2>
+          <p style="margin-top: 18px; font-size: 30px; z-index: 1">With the Examples of \(\text{MnTe}\) and \(\text{CrSb}\)</p>
       </section>
+
+
+
+
+
+
+
+<section>
+  <h2>MnTe</h2>
+  <h3>Optical Hall Conductivity as Direct Probe of Altermagnetism</h3>
+  <div style="display:grid; grid-template-columns: 1fr 1fr; gap:18px; margin-top: 20px;">
+    <div class="concept-card" style="padding: 5px;">
+      <img src="mnteband.png" alt="DFT calculated band structure for MnTe showing spin-split bands indicative of altermagnetic order" style="width: 100%; height: auto; margin-top: 0px;">
+    </div>
+    <div class="concept-card" style="padding: 5px;">
+      <img src="mnteoptical.png" alt="Optical conductivity spectra for MnTe showing non-zero off-diagonal elements consistent with altermagnetic predictions" style="width: 100%; height: auto; margin-top: 0px;">
+    </div>
+  </div>
+</section>
+
+
+
+<section>
+  <h2>CrSb</h2>
+  <h3>Optical Hall Conductivity as Direct Probe of Altermagnetism</h3>
+  <div style="display:grid; grid-template-columns: 1fr 1fr; gap:18px; margin-top: 20px;">
+    <div class="concept-card" style="padding: 5px;">
+      <img src="crsbband.png" alt="DFT calculated band structure for CrSb showing spin-split bands indicative of altermagnetic order" style="width: 100%; height: auto; margin-top: 0px;">
+    </div>
+    <div class="concept-card" style="padding: 5px;">
+      <img src="crsboptical.png" alt="Optical conductivity spectra for CrSb showing non-zero off-diagonal elements consistent with altermagnetic predictions" style="width: 100%; height: auto; margin-top: 0px;">
+    </div>
+  </div>
+</section>
 
 
 
