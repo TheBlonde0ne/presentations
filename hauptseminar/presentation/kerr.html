@@ -393,7 +393,7 @@ function drawPolarizationPanel(ctx, centerX, centerY, phase, config) {
     const fieldY = Math.sin(phase) * radius;
     const fieldXRot = fieldX * Math.cos(rotation) - fieldY * Math.sin(rotation);
     const fieldYRot = fieldX * Math.sin(rotation) + fieldY * Math.cos(rotation);
-    drawArrow(ctx, 0, 0, fieldXRot, fieldYRot, fieldColor, '', 0, 0);
+    //drawArrow(ctx, 0, 0, fieldXRot, fieldYRot, fieldColor, '', 0, 0);
 
     if (showAxes) {
         const majorEndX = Math.cos(rotation) * major;
@@ -455,15 +455,15 @@ function draw() {
     drawPolarizationPanel(ctx2dIncident, 150, 150, phase, {
         radius: incidentAmplitude,
         major: incidentAmplitude,
-        minor: incidentAmplitude,
+        minor: 2, // near-zero minor axis => nearly linear
         rotation: 0,
         title: 'Incident wave',
         titleColor: '#7fffe8',
         outerColor: '#7fffe8',
         fieldColor: '#ffd166',
         axisColor: '#9fd0ff',
-        subtitle: 'circular polarization',
-        showAxes: false,
+        subtitle: 'linear polarization',
+        showAxes: true,
     });
 
     drawPolarizationPanel(ctx2dReflected, 150, 150, phase + 0.45, {
@@ -521,7 +521,8 @@ function draw() {
     ctx3d.font = '11px Arial, sans-serif';
     ctx3d.restore();
 
-    drawWaveRibbon3d(ctx3d, originX, originY, incidentStart, incidentDirection, 14, 1, 0, phase, incidentTravel, '#7fffe8', 2.0);
+    // incident wave: set ellipticity to 0 for linear polarization
+    drawWaveRibbon3d(ctx3d, originX, originY, incidentStart, incidentDirection, 14, 0, 0, phase, incidentTravel, '#7fffe8', 2.0);
     drawWaveRibbon3d(ctx3d, originX, originY, reflectedStart, reflectedDirection, 14, reflectedEllipticity, kerrAngle, phase + 0.8, 155, '#ff8fab', 2.3);
 
     drawLine3d(ctx3d, originX, originY, { x: 0, y: 0, z: 0 }, { x: 0, y: 0, z: 128 }, 'rgba(255, 209, 102, 0.55)', 1.4, [6, 6]);
@@ -540,7 +541,7 @@ function draw() {
     ctx3d.font = '13px Arial, sans-serif';
     ctx3d.textAlign = 'left';
     ctx3d.fillStyle = '#7fffe8';
-    ctx3d.fillText('incident circular polarization', 16, 24);
+    ctx3d.fillText('incident linear polarization', 16, 24);
     ctx3d.fillStyle = '#ff8fab';
     ctx3d.fillText('reflected Kerr-rotated elliptic wave', 16, 42);
 

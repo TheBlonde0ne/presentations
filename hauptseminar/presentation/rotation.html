@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Altermagnetism Symmetry Visualization - FeSb2</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #05080b;
+            color: #b6fff0;
+            padding: 40px;
+        }
+
+        h2 {
+            margin-bottom: 10px;
+            color: #ffffff;
+        }
+
+        p.description {
+            max-width: 600px;
+            text-align: center;
+            color: #5e6a73;
+            margin-bottom: 30px;
+        }
+
+        p.condition {
+            max-width: 760px;
+            text-align: center;
+            color: #7fffe8;
+            margin: 0 0 18px;
+            font-size: 15px;
+            letter-spacing: 0.02em;
+        }
+
+        svg {
+            background-color: #000000;
+            border: 1px solid #25313a;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .cell {
+            transition: all 1.2s ease-in-out;
+            transform-box: fill-box;
+            transform-origin: center;
+        }
+
+        .label {
+            font-size: 14px;
+            font-weight: 600;
+            fill: #64727c;
+            opacity: 0;
+            transition: opacity 0.5s ease-in;
+            text-anchor: middle;
+            letter-spacing: 0.05em;
+        }
+
+        .label.active {
+            fill: #7fffe8;
+        }
+
+        button {
+            padding: 12px 24px;
+            font-size: 16px;
+            font-weight: bold;
+            color: #000000;
+            background-color: #7fffe8;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            margin-bottom: 25px;
+            box-shadow: 0 0 10px rgba(127, 255, 232, 0.2);
+        }
+
+        button:hover {
+            background-color: #b6fff0;
+            transform: translateY(-1px);
+            box-shadow: 0 0 15px rgba(127, 255, 232, 0.4);
+        }
+
+        button:disabled {
+            background-color: #25313a;
+            color: #5e6a73;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+        
+        .grid-line {
+            stroke: #1a2329;
+            stroke-width: 1;
+            stroke-dasharray: 4;
+        }
+
+        .unit-cell {
+            fill-opacity: 0.06;
+            stroke-width: 2;
+        }
+
+        .symmetry-axis {
+            stroke-width: 2;
+            stroke-dasharray: 5 5;
+        }
+
+        .glide-arrow {
+            stroke-dasharray: 3 4;
+        }
+
+        .cell-tag {
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+        }
+    </style>
+</head>
+<body>
+    <p class="condition">Necessary symmetry condition: [C₂ ∥ C₂x t]. The pure twofold rotation and the translated twofold operation must stay parallel in the unit-cell picture.</p>
+    
+    <button id="actionBtn">Start Animation</button>
+
+    <svg width="650" height="300" id="visualization">
+        <defs>
+            <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="strokeWidth">
+                <path d="M 0 0 L 10 5 L 0 10 z" fill="#ffd166"></path>
+            </marker>
+        </defs>
+
+        <!-- Structural reference grids -->
+        <line x1="150" y1="50" x2="150" y2="300" class="grid-line" />
+        <line x1="500" y1="50" x2="500" y2="300" class="grid-line" />
+
+        <!-- Sequence Labels -->
+        <text x="150" y="45" class="label" id="label1">Step 1: Pure C₂ rotation</text>
+        <text x="325" y="45" class="label" id="label2">Step 2: Translation t ∥ C₂x</text>
+        <text x="500" y="45" class="label" id="label3">Step 3: Combined C₂x t operation</text>
+
+        <!-- Cell 1: Original Unit Cell -->
+        <g id="cell1" class="cell" style="transform: translate(85px, 100px) rotate(0deg);">
+            <polygon class="unit-cell" points="18,0 148,0 130,150 0,150" fill="#7fffe8" stroke="#25313a" stroke-linejoin="round"></polygon>
+            
+            <!-- Coordination bonds visualization -->
+            <line x1="20" y1="20" x2="65" y2="75" stroke="#428377" stroke-width="1.5" />
+            <line x1="110" y1="20" x2="65" y2="75" stroke="#428377" stroke-width="1.5" />
+            <line x1="20" y1="130" x2="65" y2="75" stroke="#428377" stroke-width="1.5" />
+            <line x1="110" y1="130" x2="65" y2="75" stroke="#428377" stroke-width="1.5" />
+
+            <!-- Atoms (Fe at center, Sb at coordinates) -->
+            <circle cx="20" cy="20" r="10" fill="#ff8fab" /> <!-- Sb -->
+            <circle cx="110" cy="20" r="10" fill="#ff8fab" /> <!-- Sb -->
+            <circle cx="20" cy="130" r="10" fill="#ff8fab" /> <!-- Sb -->
+            <circle cx="110" cy="130" r="10" fill="#ff8fab" /> <!-- Sb -->
+            <circle cx="65" cy="75" r="16" fill="#7fffe8" />  <!-- Fe Center -->
+
+            <line x1="65" y1="18" x2="65" y2="142" class="symmetry-axis" stroke="#7fffe8" marker-end="url(#arrow)" />
+            <text x="75" y="32" fill="#7fffe8" class="cell-tag">C₂</text>
+            <line x1="20" y1="16" x2="112" y2="16" class="symmetry-axis glide-arrow" stroke="#ffd166" marker-end="url(#arrow)" />
+            <text x="62" y="12" fill="#ffd166" class="cell-tag">t</text>
+            
+            <!-- Distinctive Spin / Orientation Marker arrow to clearly view rotations -->
+            <g transform="translate(65, 75)">
+                <path d="M 0 0 L 0 -45" stroke="#ffd166" stroke-width="3" marker-end="url(#arrow)" />
+                <polygon points="0,-45 6,-35 -6,-35" fill="#ffd166" />
+                <text x="12" y="-30" fill="#ffd166" font-size="12" font-family="monospace" font-weight="bold">S</text>
+            </g>
+        </g>
+
+        <!-- Cell 2: Duplicated Unit Cell -->
+        <g id="cell2" class="cell" style="transform: translate(85px, 100px) rotate(0deg); opacity: 0; pointer-events: none;">
+            <polygon class="unit-cell" points="18,0 148,0 130,150 0,150" fill="#7fffe8" stroke="#25313a" stroke-linejoin="round"></polygon>
+            <line x1="20" y1="20" x2="65" y2="75" stroke="#428377" stroke-width="1.5" />
+            <line x1="110" y1="20" x2="65" y2="75" stroke="#428377" stroke-width="1.5" />
+            <line x1="20" y1="130" x2="65" y2="75" stroke="#428377" stroke-width="1.5" />
+            <line x1="110" y1="130" x2="65" y2="75" stroke="#428377" stroke-width="1.5" />
+            <circle cx="20" cy="20" r="10" fill="#ff8fab" />
+            <circle cx="110" cy="20" r="10" fill="#ff8fab" />
+            <circle cx="20" cy="130" r="10" fill="#ff8fab" />
+            <circle cx="110" cy="130" r="10" fill="#ff8fab" />
+            <circle cx="65" cy="75" r="16" fill="#7fffe8" /> 
+            <line x1="65" y1="18" x2="65" y2="142" class="symmetry-axis" stroke="#ff8fab" marker-end="url(#arrow)" />
+            <text x="75" y="32" fill="#ff8fab" class="cell-tag">C₂x t</text>
+            <line x1="20" y1="16" x2="112" y2="16" class="symmetry-axis glide-arrow" stroke="#ffd166" marker-end="url(#arrow)" />
+            <text x="62" y="12" fill="#ffd166" class="cell-tag">t</text>
+            <g transform="translate(65, 75)">
+                <path d="M 0 0 L 0 -45" stroke="#ffd166" stroke-width="3" />
+                <polygon points="0,-45 6,-35 -6,-35" fill="#ffd166" />
+                <text x="12" y="-30" fill="#ffd166" font-size="12" font-family="monospace" font-weight="bold">S</text>
+            </g>
+        </g>
+    </svg>
+
+    <script>
+        const btn = document.getElementById('actionBtn');
+        const cell1 = document.getElementById('cell1');
+        const cell2 = document.getElementById('cell2');
+        const label1 = document.getElementById('label1');
+        const label2 = document.getElementById('label2');
+        const label3 = document.getElementById('label3');
+
+        // Fine-tune the FeSb2 parallelogram here.
+        // topShift changes the slant, width/height control the overall footprint.
+        const cellGeometry = {
+            width: 140,
+            height: 150,
+            topShift: 5,
+            bottomShift: -10,
+        };
+
+        function getParallelogramPoints({ width, height, topShift, bottomShift }) {
+            return `${topShift},0 ${width + topShift},0 ${width + bottomShift},${height} ${bottomShift},${height}`;
+        }
+
+        const unitCellPoints = getParallelogramPoints(cellGeometry);
+        document.querySelectorAll('.unit-cell').forEach(cell => {
+            cell.setAttribute('points', unitCellPoints);
+        });
+
+        // State tracker: 'ready-to-start' or 'ready-to-reset'
+        let appState = 'ready-to-start';
+
+        const delay = ms => new Promise(res => setTimeout(res, ms));
+
+        function setLabelsOpacity(op, activeIndex = 0) {
+            const labels = [label1, label2, label3];
+            labels.forEach((lbl, idx) => {
+                lbl.style.opacity = op;
+                if (idx === activeIndex && op === 1) {
+                    lbl.classList.add('active');
+                } else {
+                    lbl.classList.remove('active');
+                }
+            });
+        }
+
+        async function runAnimationSequence() {
+            btn.disabled = true;
+
+            // --- STEP 1: C2 Rotation ---
+            setLabelsOpacity(0);
+            label1.style.opacity = 1;
+            label1.classList.add('active');
+            cell1.style.transform = 'translate(85px, 100px) rotate(180deg)';
+            await delay(1400);
+
+            // --- STEP 2: Duplicate and Translate ---
+            label1.classList.remove('active');
+            label2.style.opacity = 1;
+            label2.classList.add('active');
+            
+            // Match baseline position of Cell 1 instantly without moving transitions
+            cell2.style.transition = 'none';
+            cell2.style.transform = 'translate(85px, 100px) rotate(180deg)';
+            void cell2.offsetWidth; // browser flush execution
+            
+            cell2.style.transition = 'all 1.2s ease-in-out';
+            cell2.style.opacity = 1;
+            
+            // Slide cell to the right position
+            cell2.style.transform = 'translate(435px, 100px) rotate(180deg)';
+            await delay(1400);
+
+            // --- STEP 3: Combined C2x t operation ---
+            label2.classList.remove('active');
+            label3.style.opacity = 1;
+            label3.classList.add('active');
+            cell2.style.transform = 'translate(435px, 100px) rotate(0deg)';
+            await delay(1400);
+
+            // Transition to Reset Phase state
+            btn.textContent = "Reset Animation";
+            btn.disabled = false;
+            appState = 'ready-to-reset';
+        }
+
+        function resetAnimationInstantly() {
+            // Cut off CSS transitions to clear properties immediately
+            cell1.style.transition = 'none';
+            cell2.style.transition = 'none';
+            
+            // Baseline structural layout reset
+            cell1.style.transform = 'translate(85px, 100px) rotate(0deg)';
+            cell2.style.transform = 'translate(85px, 100px) rotate(0deg)';
+            cell2.style.opacity = 0;
+            
+            setLabelsOpacity(0);
+            
+            // Force browser layout flush execution before restoration of transitions
+            void cell1.offsetWidth;
+            
+            // Reinitialize transitions cleanly for the next run
+            cell1.style.transition = 'all 1.2s ease-in-out';
+            cell2.style.transition = 'all 1.2s ease-in-out';
+
+            btn.textContent = "Start Animation";
+            appState = 'ready-to-start';
+        }
+
+        btn.addEventListener('click', () => {
+            if (appState === 'ready-to-start') {
+                runAnimationSequence();
+            } else if (appState === 'ready-to-reset') {
+                resetAnimationInstantly();
+            }
+        });
+    </script>
+</body>

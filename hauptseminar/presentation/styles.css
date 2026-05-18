@@ -22,6 +22,9 @@
   --muted-color: #6b7280;
   --line-color: #005531;
   --highlight-color: #6d0909;
+  --list-one: #387066;
+  --list-two: #8b4e5d;
+  --list-three: #443f85;
 
   --slide-padding: 30px;
   --slide-padding-top: 20px;
@@ -317,14 +320,31 @@
 .reveal .slides section.section-divider h1 {
   color: #ffffff;
 }
+.reveal .slides section.section-divider h2 {
+  color: #7f4b2b;
+}
 
 .reveal .slides section.section-divider p {
-  color: rgba(255, 255, 255, 0.7);
+  color: rgba(0, 0, 0, 0.7);
 }
 
 /* ===========================================
    CONCEPT CARDS
    =========================================== */
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-top: 20px;
+}
 
 .padded {
   background: #00000000;
@@ -366,6 +386,14 @@
   font-size: 14pt;
   color: var(--text-color);
   line-height: 1.4;
+}
+
+.concept-card ul li {
+  text-align: left;
+}
+
+.padded ul li {
+  text-align: left;
 }
 
 /* ===========================================
