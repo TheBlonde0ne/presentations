@@ -98,7 +98,7 @@
 
     <!-- Bottom Row: The Resolution -->
     <div class="fragment" data-fragment-index="3">
-      <div class="padded" style="margin-top: 10px; border: 1px dashed #b83333;">
+      <div class="padded" style="margin-top: 10px; border: 1px dashed #b83333; background: #0055324b;">
         <p style="font-size: 32px; text-align: center;">
           Ambiguity remains: Surface effect or Bulk property? <br>
           We need a <highlight>definitive Bulk Fingerprint</highlight>.
@@ -307,7 +307,7 @@
         <div style="display:grid; grid-template-columns: 1.5fr 1fr; gap:18px; margin-top: 20px;">
           <div>
             <p>We measure how polarization state changes upon reflection.</p>
-           <div class="padded" style="margin-top: 20px;">
+           <div class="padded" style="margin-top: 20px; background: #0055324b;">
              <p>$$\tilde{\sigma}_{xy}(\omega) \propto \theta_K + i\eta_K $$</p>
             <ul>
               <li>$\theta_K (\Psi)$ (Rotation) $\leftrightarrow$ Dispersive part, Im($\tilde{\sigma}_{xy}$)</li>
@@ -520,30 +520,255 @@
 
 
 <section>
+<section data-auto-animate>
   <h2> Müller Matrix Analysis</h2>
   <h3>Decomposing the Optical Response</h3>
   <div class="footnote">Hilfiker et al., Adv. Opt. Techn. 2022</div>
-  <div style="display:flex; align-items:center; justify-content:space-between; gap:18px; flex-wrap:wrap; margin-top:10px;margin-bottom: 10px;">
-						<div class="flow-node primary" data-step="1" id="flow-1">Measure<br>\(M_{exp}(\omega, \phi)\)</div>
+  <div style="display:flex; align-items:center; justify-content:space-between; gap:18px; flex-wrap:wrap; margin-top:120px;margin-bottom: 10px;" data-id="workflow">
+						<div class="flow-node primary" data-step="1" id="flow-1"><p style="color: white">Measure<br>$M_{exp}(\omega, \phi)$</P></div>
+					<div class="flow-arrow">→</p></div>
+
+
+          <div class="flow-node secondary" data-step="2" id="flow-2"><p style="color: var(--list-one)">Build Layered Optical Model</p></div>
 					<div class="flow-arrow">→</div>
 
 
-						<div class="flow-node secondary" data-step="2" id="flow-2">Build Layered<br>Optical Model</div>
+						<div class="flow-node primary" data-step="3" id="flow-3"><p style="color: white">Parameterize Tensor<br>via Oscillators</p></div>
 					<div class="flow-arrow">→</div>
 
 
-						<div class="flow-node primary" data-step="3" id="flow-3">Parameterize Tensor<br>via Oscillators</div>
-					<div class="flow-arrow">→</div>
+						<div class="flow-node secondary" data-step="4" id="flow-4"><p style="color: var(--list-one)">Compute $\text{M}_{calc}$<br>via Berreman 4x4</p></div>
+					<div class="flow-arrow">⇄</div>
 
-
-						<div class="flow-node secondary" data-step="4" id="flow-4">Compute M_calc<br>via Berreman 4x4</div>
-					<div class="flow-arrow">→</div>
-
-						<div class="flow-node primary" data-step="5" id="flow-5">Minimize MSE<br>(Regression)</div>
+						<div class="flow-node primary" data-step="5" id="flow-5"><p style="color: white">Minimize MSE<br>(Regression)</p></div>
           <div class="flow-arrow">⇄</div>
 
-						<div class="flow-node secondary" data-step="6" id="flow-6">Final Tensor<br>\(\sigma(\omega)\)</div>
+						<div class="flow-node secondary" data-step="6" id="flow-6"><p style="color: var(--list-one)">Final Tensor $\sigma(\omega)$</p></div>
+</section>
+<section data-auto-animate>
+  <h2> Müller Matrix Analysis</h2>
+  <div class="footnote">Hilfiker et al., Adv. Opt. Techn. 2022</div>
+  <div style="display:flex; align-items:center; justify-content:space-between; gap:0px; flex-wrap:wrap; margin-top:20px;margin-bottom: 10px;" data-id="workflow">
+						<div class="flow-node primary" data-step="1" id="flow-1" style="font-size: 14px; padding: 7px;">Measure<br>$M_{exp}(\omega, \phi)$</div>
+					<div class="flow-arrow" style="font-size: 14px;">→</div>
 
+
+          <div class="flow-node secondary" data-step="2" id="flow-2" style="font-size: 14px; padding: 7px;">Build Layered<br>Optical Model</div>
+					<div class="flow-arrow" style="font-size: 14px;">→</div>
+
+
+						<div class="flow-node primary" data-step="3" id="flow-3" style="font-size: 14px; padding: 7px;">Parameterize Tensor<br>via Oscillators</div>
+					<div class="flow-arrow" style="font-size: 14px;">→</div>
+
+
+						<div class="flow-node secondary" data-step="4" id="flow-4" style="font-size: 14px; padding: 7px;">Compute $\text{M}_{calc}$<br>via Berreman 4x4</div>
+					<div class="flow-arrow" style="font-size: 14px;">⇄</div>
+
+						<div class="flow-node primary" data-step="5" id="flow-5" style="font-size: 14px; padding: 7px;">Minimize MSE<br>(Regression)</div>
+          <div class="flow-arrow" style="font-size: 14px;">⇄</div>
+
+						<div class="flow-node secondary" data-step="6" id="flow-6" style="font-size: 14px; padding: 7px;">Final Tensor<br>$\sigma(\omega)$</div>
+          <div class="padded fragment fade-up" data-id="mueller-matrix-formula" style="margin-top: 20px;"><p>Measure the Mueller Matrix by varying the angle of incidence ($\Phi$) and scanning the photon energy ($\hbar\omega$):
+            $${S_{\text{out}}(\omega)} = {M(\omega)} \cdot \color{#8b4e5d}{S_{\text{in}}(\omega)} = {\begin{pmatrix} \color{#443f85}{ M_{11}} & \color{#443f85}{M_{12}} & \color{#387066}{M_{13}} & \color{#387066}{M_{14}} \\ \color{#443f85}{ M_{21}} & \color{#443f85}{M_{22}} & \color{#387066}{M_{23}} & \color{#387066}{M_{24}} \\ \color{#387066}{M_{31}} & \color{#387066}{M_{32}} & \color{#443f85}{M_{33}} & M_{34} \\ \color{#387066}{M_{41}} & \color{#387066}{M_{42}} & M_{43} & \color{#443f85}{M_{44}} \end{pmatrix}} \color{#8b4e5d}{\begin{pmatrix} I \\ Q \\ U \\ V \end{pmatrix}}$$</p>
+            <ul>
+              <li class="fragment fade-up" style="color: var(--list-three)">ordinary refractive index and thickness data.</li>
+              <li class="fragment fade-up" style="color: var(--list-one)">cross-polarization induced by the off-diagonal elements of your optical conductivity tensor</li>
+            </ul>
+          </div>
+</section>
+<section data-auto-animate>
+  <h2> Müller Matrix Analysis</h2>
+  <div class="footnote">Hilfiker et al., Adv. Opt. Techn. 2022</div>
+  <div style="display:flex; align-items:center; justify-content:space-between; gap:0px; flex-wrap:wrap; margin-top:20px;margin-bottom: 10px;" data-id="workflow">
+						<div class="flow-node primary" data-step="1" id="flow-1" style="font-size: 14px; padding: 7px;">Measure<br>$M_{exp}(\omega, \phi)$</div>
+					<div class="flow-arrow" style="font-size: 14px;">→</div>
+
+
+          <div class="flow-node secondary" data-step="2" id="flow-2" style="font-size: 14px; padding: 7px;">Build Layered<br>Optical Model</div>
+					<div class="flow-arrow" style="font-size: 14px;">→</div>
+
+
+						<div class="flow-node primary" data-step="3" id="flow-3" style="font-size: 14px; padding: 7px;">Parameterize Tensor<br>via Oscillators</div>
+					<div class="flow-arrow" style="font-size: 14px;">→</div>
+
+
+						<div class="flow-node secondary" data-step="4" id="flow-4" style="font-size: 14px; padding: 7px;">Compute $\text{M}_{calc}$<br>via Berreman 4x4</div>
+					<div class="flow-arrow" style="font-size: 14px;">⇄</div>
+
+						<div class="flow-node primary" data-step="5" id="flow-5" style="font-size: 14px; padding: 7px;">Minimize MSE<br>(Regression)</div>
+          <div class="flow-arrow" style="font-size: 14px;">⇄</div>
+
+						<div class="flow-node secondary" data-step="6" id="flow-6" style="font-size: 14px; padding: 7px;">Final Tensor<br>$\sigma(\omega)$</div>
+          <div class="padded" data-id="mueller-matrix-formula" style="margin-top: 20px; display:grid; grid-template-columns: 1fr 1fr; gap:18px;"><p style="font-size: 14px;">
+            $${S_{\text{out}}(\omega)}= {\begin{pmatrix} \color{#443f85}{ M_{11}} & \color{#443f85}{M_{12}} & \color{#387066}{M_{13}} & \color{#387066}{M_{14}} \\ \color{#443f85}{ M_{21}} & \color{#443f85}{M_{22}} & \color{#387066}{M_{23}} & \color{#387066}{M_{24}} \\ \color{#387066}{M_{31}} & \color{#387066}{M_{32}} & \color{#443f85}{M_{33}} & M_{34} \\ \color{#387066}{M_{41}} & \color{#387066}{M_{42}} & M_{43} & \color{#443f85}{M_{44}} \end{pmatrix}} \color{#8b4e5d}{\begin{pmatrix} I \\ Q \\ U \\ V \end{pmatrix}}$$</p>
+            <ul>
+              <li style="color: var(--list-three); font-size: 14px;">ordinary refractive index and thickness data.</li>
+              <li style="color: var(--list-one); font-size: 14px;">cross-polarization induced by the off-diagonal elements of your optical conductivity tensor</li>
+            </ul>
+          </div>
+          <div class="padded fragment fade-up" data-id="model-construct" style="margin-top: 20px;">
+            <p>
+              Constructing a geometric model of the sample stack:
+              $$\text{[Ambient (Air)]} \rightarrow \text{[Surface Roughness]} \rightarrow \text{[Anisotropic/MO Thin Film]} \rightarrow \text{[Substrate]}$$ Typical dielectric tensors for the material layers:
+              $$\tilde{\epsilon}(\omega) = \begin{pmatrix} \color{#443f85}{\epsilon_{xx}(\omega)} & \color{#387066}{\epsilon_{xy}(\omega)} & 0 \\ \color{#387066}{-\epsilon_{xy}(\omega)} & \color{#443f85}{\epsilon_{yy}(\omega)} & 0 \\ 0 & 0 & \color{#443f85}{\epsilon_{zz}(\omega)} \end{pmatrix}$$
+            </p>
+          </div>
+</section>
+<section data-auto-animate>
+  <h2> Müller Matrix Analysis</h2>
+  <div class="footnote">Hilfiker et al., Adv. Opt. Techn. 2022</div>
+  <div style="display:flex; align-items:center; justify-content:space-between; gap:0px; flex-wrap:wrap; margin-top:20px;margin-bottom: 10px;" data-id="workflow">
+						<div class="flow-node primary" data-step="1" id="flow-1" style="font-size: 14px; padding: 7px;">Measure<br>$M_{exp}(\omega, \phi)$</div>
+					<div class="flow-arrow" style="font-size: 14px;">→</div>
+
+
+          <div class="flow-node secondary" data-step="2" id="flow-2" style="font-size: 14px; padding: 7px;">Build Layered<br>Optical Model</div>
+					<div class="flow-arrow" style="font-size: 14px;">→</div>
+
+
+						<div class="flow-node primary" data-step="3" id="flow-3" style="font-size: 14px; padding: 7px;">Parameterize Tensor<br>via Oscillators</div>
+					<div class="flow-arrow" style="font-size: 14px;">→</div>
+
+
+						<div class="flow-node secondary" data-step="4" id="flow-4" style="font-size: 14px; padding: 7px;">Compute $\text{M}_{calc}$<br>via Berreman 4x4</div>
+					<div class="flow-arrow" style="font-size: 14px;">⇄</div>
+
+						<div class="flow-node primary" data-step="5" id="flow-5" style="font-size: 14px; padding: 7px;">Minimize MSE<br>(Regression)</div>
+          <div class="flow-arrow" style="font-size: 14px;">⇄</div>
+
+						<div class="flow-node secondary" data-step="6" id="flow-6" style="font-size: 14px; padding: 7px;">Final Tensor<br>$\sigma(\omega)$</div>
+          <div class="padded" data-id="mueller-matrix-formula" style="margin-top: 20px; display:grid; grid-template-columns: 1fr 1fr; gap:18px;"><p style="font-size: 14px;">
+            $${S_{\text{out}}(\omega)}= {\begin{pmatrix} \color{#443f85}{ M_{11}} & \color{#443f85}{M_{12}} & \color{#387066}{M_{13}} & \color{#387066}{M_{14}} \\ \color{#443f85}{ M_{21}} & \color{#443f85}{M_{22}} & \color{#387066}{M_{23}} & \color{#387066}{M_{24}} \\ \color{#387066}{M_{31}} & \color{#387066}{M_{32}} & \color{#443f85}{M_{33}} & M_{34} \\ \color{#387066}{M_{41}} & \color{#387066}{M_{42}} & M_{43} & \color{#443f85}{M_{44}} \end{pmatrix}} \color{#8b4e5d}{\begin{pmatrix} I \\ Q \\ U \\ V \end{pmatrix}}$$</p>
+            <p style="font-size: 14px;">$$\tilde{\epsilon}(\omega) = \begin{pmatrix} \color{#443f85}{\epsilon_{xx}(\omega)} & \color{#387066}{\epsilon_{xy}(\omega)} & 0 \\ \color{#387066}{-\epsilon_{xy}(\omega)} & \color{#443f85}{\epsilon_{yy}(\omega)} & 0 \\ 0 & 0 & \color{#443f85}{\epsilon_{zz}(\omega)} \end{pmatrix}$$</p>
+          </div>
+          </div>
+          <div class="padded" data-id="model-construct" style="margin-top: 20px;">
+            <div style="display:grid; grid-template-columns: 1fr 1fr; gap:18px;">
+            <p>
+              <strong>Diagonal Elements ($\epsilon_{xx}, \epsilon_{yy}, \epsilon_{zz}$):</strong><br> Model via Lorentz oscillators, Tauc-Lorentz models (semiconductors/insulators), or Drude terms (metals):<span style="font-size: 14px;">$$\epsilon_{xx}(\omega) = \epsilon_\infty + \sum_k \frac{A_k}{\omega_{0,k}^2 - \omega^2 - i\Gamma_k \omega}$$</span>
+            </p>
+            <p><strong>Off-Diagonal Elements ($\epsilon_{xy}$):</strong><br> Model via specialized line-shapes derived from QM for magneto-optical or spin-orbit coupling transitions (Pano-type or split-Lorentz profiles):<span style="font-size: 14px;">$$\epsilon_{xy}(\omega) = \sum_j \left[ \frac{A_{j}^+}{\omega_{0,j}^+ - \omega - i\Gamma_j^+} - \frac{A_{j}^-}{\omega_{0,j}^- - \omega - i\Gamma_j^-} \right]$$</span></p>
+            </div>
+            <p>System is reduced to a finite set of global fit parameters: amplitudes ($A$), resonance energies ($\omega_0$), and broadenings ($\Gamma$)</p>
+          </div>
+</section>
+<section data-auto-animate>
+  <h2> Müller Matrix Analysis</h2>
+  <div class="footnote">Hilfiker et al., Adv. Opt. Techn. 2022</div>
+  
+          <div class="padded" data-id="mueller-matrix-formula" style="margin-top: 20px; display:grid; grid-template-columns: 1fr 1fr; gap:18px;"><p style="font-size: 14px;">
+            $${S_{\text{out}}(\omega)}= {\begin{pmatrix} \color{#443f85}{ M_{11}} & \color{#443f85}{M_{12}} & \color{#387066}{M_{13}} & \color{#387066}{M_{14}} \\ \color{#443f85}{ M_{21}} & \color{#443f85}{M_{22}} & \color{#387066}{M_{23}} & \color{#387066}{M_{24}} \\ \color{#387066}{M_{31}} & \color{#387066}{M_{32}} & \color{#443f85}{M_{33}} & M_{34} \\ \color{#387066}{M_{41}} & \color{#387066}{M_{42}} & M_{43} & \color{#443f85}{M_{44}} \end{pmatrix}} \color{#8b4e5d}{\begin{pmatrix} I \\ Q \\ U \\ V \end{pmatrix}}$$</p>
+            <p style="font-size: 14px;">$$\tilde{\epsilon}(\omega) = \begin{pmatrix} \color{#443f85}{\epsilon_{xx}(\omega)} & \color{#387066}{\epsilon_{xy}(\omega)} & 0 \\ \color{#387066}{-\epsilon_{xy}(\omega)} & \color{#443f85}{\epsilon_{yy}(\omega)} & 0 \\ 0 & 0 & \color{#443f85}{\epsilon_{zz}(\omega)} \end{pmatrix}$$</p>
+            <p style="font-size: 14px;">$$\epsilon_{xx}(\omega) = \epsilon_\infty + \sum_k \frac{A_k}{\omega_{0,k}^2 - \omega^2 - i\Gamma_k \omega}$$</p>
+            <p style="font-size: 14px;">$$\epsilon_{xy}(\omega) = \sum_j \left[ \frac{A_{j}^+}{\omega_{0,j}^+ - \omega - i\Gamma_j^+} - \frac{A_{j}^-}{\omega_{0,j}^- - \omega - i\Gamma_j^-} \right]$$</p>
+          </div>
+          <div class="padded" data-id="model-construct" style="margin-top: 20px;">
+            <p style="text-align: center; font-weight: 600;">Compare parametric model to your real data via Berreman $4 \times 4$ matrix formalism:</p>
+            <div style="display:grid; grid-template-columns: 1fr 1fr; gap:18px;">
+              <div>
+            <p>
+              Maxwell's equations inside the anisotropic medium are rewritten as a set of four coupled first-order differential equations, packed into a differential propagation matrix $\Delta$</p></div>
+              <p style="font-size: 14px;">$$\frac{\partial}{\partial z} \begin{pmatrix} E_x \\ E_y \\ H_x \\ H_y \end{pmatrix} = i \frac{\omega}{c} \mathbf{\Delta}(\tilde{\epsilon}, \Phi) \begin{pmatrix} E_x \\ E_y \\ H_x \\ H_y \end{pmatrix}$$</p>
+            </div>
+          </div>
+</section>
+<section data-auto-animate>
+  <h2> Müller Matrix Analysis</h2>
+  <div class="footnote">Hilfiker et al., Adv. Opt. Techn. 2022</div>
+  
+          <div class="padded" data-id="mueller-matrix-formula" style="margin-top: 20px; display:grid; grid-template-columns: 1fr 1fr; gap:18px;"><p style="font-size: 14px;">
+            $${S_{\text{out}}(\omega)}= {\begin{pmatrix} \color{#443f85}{ M_{11}} & \color{#443f85}{M_{12}} & \color{#387066}{M_{13}} & \color{#387066}{M_{14}} \\ \color{#443f85}{ M_{21}} & \color{#443f85}{M_{22}} & \color{#387066}{M_{23}} & \color{#387066}{M_{24}} \\ \color{#387066}{M_{31}} & \color{#387066}{M_{32}} & \color{#443f85}{M_{33}} & M_{34} \\ \color{#387066}{M_{41}} & \color{#387066}{M_{42}} & M_{43} & \color{#443f85}{M_{44}} \end{pmatrix}} \color{#8b4e5d}{\begin{pmatrix} I \\ Q \\ U \\ V \end{pmatrix}}$$</p>
+            <p style="font-size: 14px;">$$\tilde{\epsilon}(\omega) = \begin{pmatrix} \color{#443f85}{\epsilon_{xx}(\omega)} & \color{#387066}{\epsilon_{xy}(\omega)} & 0 \\ \color{#387066}{-\epsilon_{xy}(\omega)} & \color{#443f85}{\epsilon_{yy}(\omega)} & 0 \\ 0 & 0 & \color{#443f85}{\epsilon_{zz}(\omega)} \end{pmatrix}$$</p>
+            <p style="font-size: 14px;">$$\epsilon_{xx}(\omega) = \epsilon_\infty + \sum_k \frac{A_k}{\omega_{0,k}^2 - \omega^2 - i\Gamma_k \omega}$$</p>
+            <p style="font-size: 14px;">$$\epsilon_{xy}(\omega) = \sum_j \left[ \frac{A_{j}^+}{\omega_{0,j}^+ - \omega - i\Gamma_j^+} - \frac{A_{j}^-}{\omega_{0,j}^- - \omega - i\Gamma_j^-} \right]$$</p>
+          </div>
+          <div class="padded" data-id="model-construct" style="margin-top: 20px;">
+            <div style="display:grid; grid-template-columns: 1fr 1fr; gap:18px;">
+              <div>
+            <p style="font-size: 14px;">$$\frac{\partial}{\partial z} \begin{pmatrix} E_x \\ E_y \\ H_x \\ H_y \end{pmatrix} = i \frac{\omega}{c} \mathbf{\Delta}(\tilde{\epsilon}, \Phi) \begin{pmatrix} E_x \\ E_y \\ H_x \\ H_y \end{pmatrix}$$</p></div>
+            
+            <p>Compute the partial transfer matrix: $\mathbf{L} = \exp(i \frac{\omega}{c} \mathbf{\Delta} d)$.Multiplying the matrices of all layers together:$$J = \begin{pmatrix} r_{pp} & r_{ps} \\ r_{sp} & r_{ss} \end{pmatrix}$$
+            </p>
+            </div>
+            <p style="text-align: center;">Convert Jones matrix to a calculated Mueller Matrix ($M_{\text{calc}}$) via Kronecker tensor products.</p>
+          </div>
+</section>
+<section data-auto-animate>
+  <h2> Müller Matrix Analysis</h2>
+  <div class="footnote">Hilfiker et al., Adv. Opt. Techn. 2022</div>
+  
+          <div class="padded" data-id="mueller-matrix-formula" style="margin-top: 20px; display:grid; grid-template-columns: 1fr 1fr 1fr; gap:18px;"><p style="font-size: 10px;">
+            $${S_{\text{out}}(\omega)}= {\begin{pmatrix} \color{#443f85}{ M_{11}} & \color{#443f85}{M_{12}} & \color{#387066}{M_{13}} & \color{#387066}{M_{14}} \\ \color{#443f85}{ M_{21}} & \color{#443f85}{M_{22}} & \color{#387066}{M_{23}} & \color{#387066}{M_{24}} \\ \color{#387066}{M_{31}} & \color{#387066}{M_{32}} & \color{#443f85}{M_{33}} & M_{34} \\ \color{#387066}{M_{41}} & \color{#387066}{M_{42}} & M_{43} & \color{#443f85}{M_{44}} \end{pmatrix}} \color{#8b4e5d}{\begin{pmatrix} I \\ Q \\ U \\ V \end{pmatrix}}$$</p>
+            <p style="font-size: 10px;">$$\tilde{\epsilon}(\omega) = \begin{pmatrix} \color{#443f85}{\epsilon_{xx}(\omega)} & \color{#387066}{\epsilon_{xy}(\omega)} & 0 \\ \color{#387066}{-\epsilon_{xy}(\omega)} & \color{#443f85}{\epsilon_{yy}(\omega)} & 0 \\ 0 & 0 & \color{#443f85}{\epsilon_{zz}(\omega)} \end{pmatrix}$$</p>
+            <p style="font-size: 10px;">$$\epsilon_{xx}(\omega) = \epsilon_\infty + \sum_k \frac{A_k}{\omega_{0,k}^2 - \omega^2 - i\Gamma_k \omega}$$</p>
+            <p style="font-size: 10px;">$$\epsilon_{xy}(\omega) = \sum_j \left[ \frac{A_{j}^+}{\omega_{0,j}^+ - \omega - i\Gamma_j^+} - \frac{A_{j}^-}{\omega_{0,j}^- - \omega - i\Gamma_j^-} \right]$$</p>
+            <p style="font-size: 10px;">$$\frac{\partial}{\partial z} \begin{pmatrix} E_x \\ E_y \\ H_x \\ H_y \end{pmatrix} = i \frac{\omega}{c} \mathbf{\Delta}(\tilde{\epsilon}, \Phi) \begin{pmatrix} E_x \\ E_y \\ H_x \\ H_y \end{pmatrix}$$</p>
+            <p style="font-size: 10px;">$$\mathbf{L} = \exp(i \frac{\omega}{c} \mathbf{\Delta} d) \quad J = \begin{pmatrix} r_{pp} & r_{ps} \\ r_{sp} & r_{ss} \end{pmatrix}$$</p>
+          </div>
+          <div class="padded" data-id="model-construct" style="margin-top: 20px;">
+            <p style="font-weight: 600; text-align: center;">Regression Analysis and Extracting the Conductivity Tensor</p>
+            <div style="display:grid; grid-template-columns: 1fr 1fr; gap:18px;">
+              <div>
+                <p>Vary oscillator parameters and layer thicknesses to minimize a global Mean Squared Error (MSE):</p>
+            <p style="font-size: 14px;">
+            $$\text{MSE} = \frac{1}{16N - P} \sum_{\omega, \Phi} \sum_{i,j=1}^4 \left( M_{ij}^{\text{exp}}(\omega, \Phi) - M_{ij}^{\text{calc}}(\omega, \Phi, P) \right)^2$$
+            </p>
+            </div>
+            <p style="text-align: center;">Convert dielectric tensor to the complex optical conductivity tensor $\tilde{\sigma}(\omega)$:$$\tilde{\sigma}(\omega) = -i\epsilon_0\omega \left[ \tilde{\epsilon}(\omega) - \mathbf{I} \right]$$</p>
+          </div>
+          </div>
+</section>
+<section data-auto-animate>
+  <h2> Müller Matrix Analysis</h2>
+  <div class="footnote">Hilfiker et al., Adv. Opt. Techn. 2022</div>
+  
+          <div class="padded" data-id="mueller-matrix-formula" style="margin-top: 20px; display:grid; grid-template-columns: 1fr 1fr 1fr; gap:18px;"><p style="font-size: 10px;">
+            $${S_{\text{out}}(\omega)}= {\begin{pmatrix} \color{#443f85}{ M_{11}} & \color{#443f85}{M_{12}} & \color{#387066}{M_{13}} & \color{#387066}{M_{14}} \\ \color{#443f85}{ M_{21}} & \color{#443f85}{M_{22}} & \color{#387066}{M_{23}} & \color{#387066}{M_{24}} \\ \color{#387066}{M_{31}} & \color{#387066}{M_{32}} & \color{#443f85}{M_{33}} & M_{34} \\ \color{#387066}{M_{41}} & \color{#387066}{M_{42}} & M_{43} & \color{#443f85}{M_{44}} \end{pmatrix}} \color{#8b4e5d}{\begin{pmatrix} I \\ Q \\ U \\ V \end{pmatrix}}$$</p>
+            <p style="font-size: 10px;">$$\tilde{\epsilon}(\omega) = \begin{pmatrix} \color{#443f85}{\epsilon_{xx}(\omega)} & \color{#387066}{\epsilon_{xy}(\omega)} & 0 \\ \color{#387066}{-\epsilon_{xy}(\omega)} & \color{#443f85}{\epsilon_{yy}(\omega)} & 0 \\ 0 & 0 & \color{#443f85}{\epsilon_{zz}(\omega)} \end{pmatrix}$$</p>
+            <p style="font-size: 10px;">$$\epsilon_{xx}(\omega) = \epsilon_\infty + \sum_k \frac{A_k}{\omega_{0,k}^2 - \omega^2 - i\Gamma_k \omega}$$</p>
+            <p style="font-size: 10px;">$$\epsilon_{xy}(\omega) = \sum_j \left[ \frac{A_{j}^+}{\omega_{0,j}^+ - \omega - i\Gamma_j^+} - \frac{A_{j}^-}{\omega_{0,j}^- - \omega - i\Gamma_j^-} \right]$$</p>
+            <p style="font-size: 10px;">$$\frac{\partial}{\partial z} \begin{pmatrix} E_x \\ E_y \\ H_x \\ H_y \end{pmatrix} = i \frac{\omega}{c} \mathbf{\Delta}(\tilde{\epsilon}, \Phi) \begin{pmatrix} E_x \\ E_y \\ H_x \\ H_y \end{pmatrix}$$</p>
+            <p style="font-size: 10px;">$$\mathbf{L} = \exp(i \frac{\omega}{c} \mathbf{\Delta} d) \quad J = \begin{pmatrix} r_{pp} & r_{ps} \\ r_{sp} & r_{ss} \end{pmatrix}$$</p>
+          </div>
+          <div class="padded" data-id="model-construct" style="margin-top: 20px;">
+            <p style="font-weight: 600; text-align: center;">Regression Analysis and Extracting the Conductivity Tensor</p>
+            <div style="display:grid; grid-template-columns: 1fr 1fr; gap:18px;">
+              <div>
+                <p>Optimize parameters:</p>
+            <p style="font-size: 14px;">
+            $$\text{MSE} = \frac{1}{16N - P} \sum_{\omega, \Phi} \sum_{i,j=1}^4 \left( M_{ij}^{\text{exp}}(\omega, \Phi) - M_{ij}^{\text{calc}}(\omega, \Phi, P) \right)^2$$
+            </p>
+            </div>
+            <p style="text-align: center;">Convert $\tilde{\epsilon}(\omega)$ to $\tilde{\sigma}(\omega)$:$$\tilde{\sigma}(\omega) = -i\epsilon_0\omega \left[ \tilde{\epsilon}(\omega) - \mathbf{I} \right]$$</p>
+          </div>
+          <p style="text-align: center;">Splitting this into the isolated elements gives you the final result:$$\sigma_{xx}(\omega) = -i\epsilon_0\omega(\epsilon_{xx}(\omega) - 1)$$$$\sigma_{xy}(\omega) = -i\epsilon_0\omega \epsilon_{xy}(\omega)$$</p>
+          </div>
+</section>
+<section data-auto-animate>
+  <h2> Müller Matrix Analysis</h2>
+  <h3>Decomposing the Optical Response</h3>
+  <div class="footnote">Hilfiker et al., Adv. Opt. Techn. 2022</div>
+  <div style="display:flex; align-items:center; justify-content:space-between; gap:18px; flex-wrap:wrap; margin-top:120px;margin-bottom: 10px;" data-id="workflow">
+						<div class="flow-node primary" data-step="1" id="flow-1"><p style="color: white">Measure<br>$M_{exp}(\omega, \phi)$</P></div>
+					<div class="flow-arrow">→</p></div>
+
+
+          <div class="flow-node secondary" data-step="2" id="flow-2"><p style="color: var(--list-one)">Build Layered Optical Model</p></div>
+					<div class="flow-arrow">→</div>
+
+
+						<div class="flow-node primary" data-step="3" id="flow-3"><p style="color: white">Parameterize Tensor<br>via Oscillators</p></div>
+					<div class="flow-arrow">→</div>
+
+
+						<div class="flow-node secondary" data-step="4" id="flow-4"><p style="color: var(--list-one)">Compute $\text{M}_{calc}$<br>via Berreman 4x4</p></div>
+					<div class="flow-arrow">⇄</div>
+
+						<div class="flow-node primary" data-step="5" id="flow-5"><p style="color: white">Minimize MSE<br>(Regression)</p></div>
+          <div class="flow-arrow">⇄</div>
+
+						<div class="flow-node secondary" data-step="6" id="flow-6"><p style="color: var(--list-one)">Final Tensor $\sigma(\omega)$</p></div>
+</section>
 </section>
 
 
@@ -737,7 +962,7 @@
         <div class="padded" style="background: white; padding: 5px">
             <img src="fesb2paper.png" alt="Research paper title page on cobalt-doped FeSb2 altermagnetism" style="width: 100%; height: auto; margin-top: 0px;">
         </div>
-        <div class="footnote">https://arxiv.org/abs/2604.28105</div>
+        <div class="footnote">Mathew Roy et al.,	arXiv:2604.28105 </div>
       </section>
       
       <!-- Concept: Introduce the material $Fe_{0.85}Co_{0.15}Sb_2$ and immediately pivot to why we aren't using the MOKE protocol you just explained.
@@ -749,19 +974,26 @@
 <section>
 
 <section>
-  <h2>The Parent Compound (FeSb<sub>2</sub>)</h2>
-  <h3>The structure as indicator for altermagnetism</h3>
+  <h2>The Parent Compound</h2>
+  <h3>FeSb<sub>2</sub> as a natural altermagnet candidate</h3>
+  <div style="display: grid; grid-template-columns: 1.4fr 1fr; gap: 20px; margin-top: 10px;">
   <div class="padded" style="opacity: 1;">
-    <p>Orthorhombic Pnnm structure</p>
+    <p>Orthorhombic \(\text{Pnnm}\) structure</p>
     <ul>
-      <li style="font-size: 14px;">P: Primitive, no additional lattice points except at corners</li>
-      <li style="font-size: 14px;">$n$ (1st position): An n-glide plane perpendicular to the $a$-axis. A glide plane is a combined symmetry operation: a reflection across a plane followed by a translation. An "$n$" (diagonal) glide means the translation is half a unit cell along both remaining axes—in this case, $(b+c)/2$.</li>
-      <li style="font-size: 14px;">$n$ (2nd position): An n-glide plane perpendicular to the $b$-axis. This involves a reflection and a translation of $(a+c)/2$.</li>
-      <li style="font-size: 14px;">$m$ (3rd position): A standard Mirror plane perpendicular to the $c$-axis. This is a simple reflection without any translation.</li>
+      <li style="font-size: 18px;"><highlight>$\text{P}$ (Primitive):</highlight> Primitive, no additional lattice points except at corners</li>
+      <li style="font-size: 18px;"><highlight>$\text{n}$ (1st axis):</highlight> n-glide plane perpendicular to the a-axis. Reflection followed by translation: $t= \frac{b+c}{2}$.</li>
+      <li style="font-size: 18px;"><highlight>$\text{n}$ (2nd axis):</highlight> n-glide plane perpendicular to the b-axis. Reflection followed by translation: $t = \frac{a+c}{2}$.</li>
+      <li style="font-size: 18px;"><highlight>$\text{m}$(3rd axis):</highlight> A standard Mirror plane perpendicular to the $c$-axis. This is a simple reflection without any translation.</li>
     </ul>
-    <img src="Orthorhombic.svg" alt="orthorhombic crystal structure" width="200px" height="auto">
-    <p>Generally: The Fe Sublattice is invariant under two-fold rotation + translation <br> Makes a natural altermagnet candidate</p>
   </div>
+  <div class="concept-card"> <model-viewer 
+         src="FeSb2.glb" 
+         alt="3D Crystal Structure" 
+         auto-rotate 
+         style="width: 100%; height: 100%;">
+        </model-viewer></div>
+</div>
+  <div class="padded" style="margin-top: 20px; background: #0055324b;"><p style="text-align: center;">\(Fe\) Sublattice is invariant under two-fold rotation + translation $[ C_2 \parallel C_{2x} t]$ <br> Makes a <highlight>natural altermagnet candidate</highlight></p></div>
 </section>
 
 
@@ -785,7 +1017,7 @@
           </ul>
         <ul>
           <li>No long range magnetic order</li>
-          <li>strong itinerant spin fluctuations</li>
+          <li>Rising resistivity at low temperatures</li>
         </ul>
         </div>
         <div class="footnote">https://materialsproject-build.s3.amazonaws.com/images/electronic_structures/setyawan_curtarolo/mp-20714.png <br> https://arxiv.org/pdf/2604.28105</div>
@@ -801,7 +1033,7 @@
           </ul>
           <ul>
             <li style="font-size: 18px;">No long range magnetic order</li>
-            <li style="font-size: 18px;">strong itinerant spin fluctuations</li>
+            <li style="font-size: 18px;">Rising resistivity at low temperatures</li>
           </ul>
           <div class="concept-card" style="padding: 5px;"><img src="latticelegend.png" alt="Legend showing crystal lattice site positions and labeling conventions" style="width: 100%;"></div>
         </div>
@@ -814,10 +1046,12 @@
           </div>
         </div>
         <div style="display:grid; grid-template-columns: 1fr 1fr; gap:18px; margin-top: 20px;">
-          <div class="concept-card" style="padding: 3px;">
+          <div class="concept-card" style="padding: 7px;">
+            <h3>Antiferromagnetic (AFMe) order</h3>
             <img src="afme.png" alt="DFT calculated band structure for antiferromagnetic even (AFMe) configuration of FeSb2" style="width: 95%; height: auto; margin-top: 0px;">
           </div>
-          <div class="concept-card" style="padding: 3px;">
+          <div class="concept-card" style="padding: 7px;">
+            <h3>Altermagnetic (AFMo) order</h3>
             <img src="afmo.png" alt="DFT calculated band structure for altermagnetic odd (AFMo) configuration of FeSb2" style="width: 95%; height: auto; margin-top: 0px;">
           </div>
         </div>
@@ -1004,6 +1238,8 @@
   <script>
     Reveal.initialize({
       preloadIframes: true,
+      autoAnimateDuration: 0.7,
+      autoAnimateEasing: 'ease-out',
       slideNumber: 'c/t',
       hash: true,
       overview: true,

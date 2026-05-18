@@ -375,10 +375,10 @@
 }
 
 .concept-card h3 {
-  margin: 0 0 8px 0;
+  margin: 0 15px 8px 15px;
   font-size: 18pt;
   color: var(--secondary-color);
-  border-bottom: var(--text-color) 2px solid;
+  border-bottom: 2px solid var(--primary-color)
 }
 
 .concept-card p {
@@ -425,7 +425,6 @@
    =========================================== */
 
 .flow-node {
-  display: inline-flex;
   align-items: center;
   justify-content: center;
   padding: 12px 24px;
@@ -436,14 +435,14 @@
 }
 
 .flow-node.primary {
-  background: var(--primary-color);
+  background: var(--list-one);
   color: white;
 }
 
 .flow-node.secondary {
   background: white;
-  border: 2px solid var(--primary-color);
-  color: var(--primary-color);
+  border: 2px solid var(--list-one);
+  color: var(--list-one);
 }
 
 .flow-arrow {
