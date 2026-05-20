@@ -21,8 +21,8 @@
 
 <!-- SLIDE 1: Title Page -->
 <section id="Titlepage" style="position: relative;">
-    <h1 style="border-bottom: 5px solid var(--primary-color); margin-top: 80px; font-size: 52.3px;">Probing the Effect of Spin-Splitting</h1>
-    <h3 style="margin-top: 20px;">Optical & Magneto-Optical Signatures of Altermagnetism</h3>
+    <h1 style="border-bottom: 5px solid var(--primary-color); margin-top: 80px; font-size: 45px;">Optical & Magneto-Optical Signatures of Altermagnetism</h1>
+    <h3 style="margin-top: 20px;">Probing the Effect of Spin-Splitting</h3>
     <img id="u-logo" src="unistuttgart_logo_englisch_cmyk-01.png" alt="University of Stuttgart logo, featuring a white dot pattern forming a circle" style="width: 200px; height: auto; position: absolute; right: 40px; top: 540px;">
     <p style="margin-top: 220px;">
       <strong>Jakob Wallner</strong><br>
@@ -32,11 +32,20 @@
       <br>27.05.2026
     </p>
     <aside class="notes">
-      Welcome everyone. For our eighth seminar, we're shifting our focus from the surface-sensitive techniques like ARPES, which have mapped out the altermagnetic band structures, to the bulk.
+      Welcome everyone.
+
+      For our eighth seminar, we're shifting our focus from the surface-sensitive techniques like ARPES, which have mapped out the altermagnetic band structures, to the bulk.
       We will explore how we use light or photons as a clean and powerful probe of the unique electronic properties inside altermagnetic materials.
       We will cover the fundamental theory of how altermagnetism manifests in the optical response, discuss the state-of-the-art experimental techniques required to measure it, and then dive into a critical comparison of recent results on key material candidates.
     </aside>
 </section>
+
+
+
+
+
+
+
 
 
 
@@ -80,11 +89,11 @@
 
     <!-- Middle Row: The Visual Hook -->
     <div style="display:grid; grid-template-columns: 2fr 1fr 2fr; gap:20px; margin-top:10px;">
-      <div class="padded" style="background-color: white;">
+      <div class="padded fragment" data-fragment-index="1" style="background-color: white;">
         <img src="RuO2pro2.png" alt="RuO2 ARPES data" style="width:100%; height:auto;">
         <img src="RuO2pro3.png" alt="RuO2 ARPES data" style="width:100%; height:auto;">
       </div>
-      <div class="fragment" data-fragment-index="2" style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
+      <div class="fragment" data-fragment-index="1" style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
         <p style="font-size: 50px;">VS</p>
         <p style="text-align: center; color: #cbad00; font-size: 64px;">&#128498;</p>
       </div>
@@ -97,8 +106,8 @@
     </div>
 
     <!-- Bottom Row: The Resolution -->
-    <div class="fragment" data-fragment-index="3">
-      <div class="padded" style="margin-top: 10px; border: 1px dashed #b83333; background: #0055324b;">
+    <div class="fragment" data-fragment-index="2">
+      <div class="padded" style="margin-top: 10px; border: 2px dashed #6b1818; background: #0055324b;">
         <p style="font-size: 32px; text-align: center;">
           Ambiguity remains: Surface effect or Bulk property? <br>
           We need a <highlight>definitive Bulk Fingerprint</highlight>.
@@ -112,6 +121,48 @@
 
 
 
+
+
+
+
+
+<section class="section-divider" data-state="is-section-divider">
+<h2 style="font-size: 40px;">Magneto Optical Kerr Effect & Müller Matrix</h2>
+<div class="grid-2" style="margin-top: 30px">
+  <div class="padded" style="background: white"><p style="font-size: 19px;"> $${S_{\text{out}}(\omega)} = {\begin{pmatrix} \color{#443f85}{ M_{11}} & \color{#443f85}{M_{12}} & \color{#387066}{M_{13}} & \color{#387066}{M_{14}} \\ \color{#443f85}{ M_{21}} & \color{#443f85}{M_{22}} & \color{#387066}{M_{23}} & \color{#387066}{M_{24}} \\ \color{#387066}{M_{31}} & \color{#387066}{M_{32}} & \color{#443f85}{M_{33}} & M_{34} \\ \color{#387066}{M_{41}} & \color{#387066}{M_{42}} & M_{43} & \color{#443f85}{M_{44}} \end{pmatrix}} \color{#8b4e5d}{\begin{pmatrix} I \\ Q \\ U \\ V \end{pmatrix}}$$</p></div>
+  <div class="padded" style="background: white"><img src="moke_Mn3Sn.png" alt="representation of a moke setup" style="width: 55%; height: auto"></div>
+  <div class="padded" style="background: white"><img src="opt_kerr_mess.png" alt="conductivity tensor measurement" style="width: 55%; height: auto"></div>
+  <div class="padded" style="background: white"><img src="band_sim.png" alt="fesb2 simulations with different functionals" style="width: 60%; height: auto"></div>
+</div>
+<div class="footnote">D. Gao et al., APL Mater. <span style="font-weight: 600">12</span>, 091114 (2024) <br> R. Mathew Roy et al., arXiv:2604.28105 [cond-mat.mtr-sci] (2026) <br> K. Panda et al., arXiv:2507.17238 [cond-mat.str-el] (2025)</div>
+</section>
+
+
+
+<section class="section-divider" data-state="is-section-divider">
+<h2 style="font-size: 40px;">Off-Diagonal Elements of $\tilde{\sigma}_{ij}$</h2>
+<div class="grid-2" style="margin-top: 30px">
+  <div class="padded" style="background: white; width: min-content"><p style="font-size: 19px;">$$\tilde{\sigma} = \begin{pmatrix} {\sigma}_{xx} & \color{#8F1B06}{\sigma_{xy}} & 0 \\ -\color{#8F1B06}{\sigma_{xy}} & {\sigma}_{xx} & 0 \\ 0 & 0 & {\sigma}_{zz} \end{pmatrix}$$</p></div>
+  <div class="padded" style="background: white"><img src="1.png" alt="" style="width: 55%; height: auto"></div>
+  <div class="padded" style="background: white"><img src="2.png" alt="conductivity tensor measurement" style="width: 55%; height: auto"></div>
+  <div class="padded" style="background: white"><img src="3.png" alt="fesb2 simulations with different functionals" style="width: 60%; height: auto"></div>
+</div>
+<div class="footnote">D. Gao et al., APL Mater. <span style="font-weight: 600">12</span>, 091114 (2024) <br> R. Mathew Roy et al., arXiv:2604.28105 [cond-mat.mtr-sci] (2026) <br> K. Panda et al., arXiv:2507.17238 [cond-mat.str-el] (2025)</div>
+</section>
+
+
+
+
+<section class="section-divider" data-state="is-section-divider">
+<h2 style="font-size: 40px;">Diagonal Elements of $\tilde{\sigma}_{ij}$</h2>
+<div class="grid-2" style="margin-top: 30px">
+  <div class="padded" style="background: white; width: min-content"><p style="font-size: 19px;">$$\tilde{\sigma} = \begin{pmatrix} \color{#8F1B06}{\sigma_{xx}} & {\sigma_{xy}} & 0 \\ -{\sigma_{xy}} &\color{#8F1B06}{\sigma_{xx}} & 0 \\ 0 & 0 & \color{#8F1B06}{\sigma_{zz}} \end{pmatrix}$$</p></div>
+  <div class="padded" style="background: white"><img src="1.png" alt="" style="width: 55%; height: auto"></div>
+  <div class="padded" style="background: white"><img src="2.png" alt="conductivity tensor measurement" style="width: 55%; height: auto"></div>
+  <div class="padded" style="background: white"><img src="3.png" alt="fesb2 simulations with different functionals" style="width: 60%; height: auto"></div>
+</div>
+<div class="footnote">D. Gao et al., APL Mater. <span style="font-weight: 600">12</span>, 091114 (2024) <br> R. Mathew Roy et al., arXiv:2604.28105 [cond-mat.mtr-sci] (2026) <br> K. Panda et al., arXiv:2507.17238 [cond-mat.str-el] (2025)</div>
+</section>
 
 
 
@@ -136,20 +187,6 @@
             </div>
         </div>
         <div class="padded" style="background: #fff5e2;">
-            <h3 style="color: var(--primary-color); border-bottom: 2px solid var(--line-color); font-size: 28px;">Diagonal Elements \(\sigma_{ii}\)</h3>
-            <ul>
-              <li>Cobalt doped \(\text{FeSb}_2\)</li>
-              <li>Surface of \(\text{RuO}_2\)</li>
-            </ul>
-            <div class="padded" style="background: #ffffff; margin-top: 10px; width: 200px; height: 200px;">
-            <model-viewer 
-            src="FeSb2.glb" 
-            alt="3D Crystal Structure from Materials Project" 
-            auto-rotate 
-            style="width: 200px; height: 200px;">
-        </model-viewer></div>
-        </div>
-        <div class="padded" style="background: #fff5e2;">
             <h3 style="color: var(--primary-color); border-bottom: 2px solid var(--line-color); font-size: 28px;">Off-Diagonal Elements \(\sigma_{ij}\)</h3>
             <ul>
               <li>\(\text{CrSb}\)</li>
@@ -164,8 +201,23 @@
         </model-viewer>
             </div>
         </div>
+        <div class="padded" style="background: #fff5e2;">
+            <h3 style="color: var(--primary-color); border-bottom: 2px solid var(--line-color); font-size: 28px;">Diagonal Elements \(\sigma_{ii}\)</h3>
+            <ul>
+              <li>Cobalt doped \(\text{FeSb}_2\)</li>
+              <li>Surface of \(\text{RuO}_2\)</li>
+            </ul>
+            <div class="padded" style="background: #ffffff; margin-top: 10px; width: 200px; height: 200px;">
+            <model-viewer 
+            src="FeSb2.glb" 
+            alt="3D Crystal Structure from Materials Project" 
+            auto-rotate 
+            style="width: 200px; height: 200px;">
+        </model-viewer></div>
+        </div>
     </div>
 </section>
+
 
 
 
@@ -181,7 +233,7 @@
             <h3>Transformation Symmetry in Different Magnetic Orders</h3>
             <div style="display:grid; grid-template-columns: 1fr 1fr 1fr; gap:10px;">
                 <div class="padded" style="margin-top: 10px; background: white;">
-                    <h3>a: Ferro</h3>
+                    <h3 style="color: var(--primary-color);">a: Ferro</h3>
                     <ul>
                         <li style="font-size: 15px;">\(\mathbf{M} \neq 0\)</li>
                         <li style="font-size: 15px;"><highlight>Breaks</highlight> time-reversal symmetry \(\mathcal{T}\)</li>
@@ -190,7 +242,7 @@
                     <img src="ferro.png" alt="Ferromagnetic spin structure with all spins aligned in the same direction" style="width:auto; height:300px; margin-top: 20px; margin-left: 35px;">
                 </div>
                 <div class="padded fragment" style="margin-top: 10px; background: white;">
-                    <h3>b: Anti-Ferro</h3>
+                    <h3 style="color: var(--primary-color);">b: Anti-Ferro</h3>
                     <ul>
                         <li style="font-size: 15px;">\(\mathbf{M} = 0\)</li>
                         <li style="font-size: 15px;"><highlight>Preserves</highlight> symmetry \(\mathcal{P}\mathcal{T}\)</li>
@@ -199,7 +251,7 @@
                     <img src="antiferro.png" alt="Antiferromagnetic spin structure with alternating up and down spins" style="width:auto; height:300px; margin-top: 20px; margin-left: 20px;">
                 </div>
                 <div class="padded fragment" style="margin-top: 10px; background: white;">
-                    <h3>c: Altermagnet</h3>
+                    <h3 style="color: var(--primary-color);">c: Altermagnet</h3>
                     <ul>
                         <li style="font-size: 15px;">\(\mathbf{M} = 0\)</li>
                         <li style="font-size: 15px;"><highlight>Breaks</highlight> \(\mathcal{T}\) but <highlight>preserves</highlight> \(\mathcal{P}\mathcal{T}\)</li>
@@ -214,11 +266,7 @@
 
 
 
-<section>
-  <h2>The necessary Symmetry Condition</h2>
-  <h3>For the example of the \(\text{FeSb}_2\) crystal unit cell</h3>
-  <iframe src="rotation.html" width="100%" height="100%" style="border:none; margin-top: 20px; border-radius: 10px" title="Symmetry animation"></iframe>
-</section>
+
 
 
 
@@ -242,10 +290,10 @@
             </p>
             <p style="margin-top: 20px; margin-bottom: 20px; text-align: center;">When shining light on the material, we expect</p>
             <ul>
-            <li><strong>Absolute Reflectivity:</strong> \(R(\omega)\)</li>
-            <li><strong>Rotation:</strong> \(\Delta\Psi(\omega)\)</li>
+            <li><strong>&#8600;&#8599; Absolute Reflectivity:</strong> \(R(\omega)\)</li>
+            <li><strong>&#8634; Rotation:</strong> \(\Delta\Psi(\omega)\)</li>
           </ul>
-           <p style="margin-top: 20px; margin-bottom: 20px; text-align: center;"><highlight>Caveat:</highlight> Different origins of Off-Diagonal Elements</p>
+           <p style="margin-top: 20px; margin-bottom: 20px; text-align: center;"><highlight>&#9888Problem:</highlight> Isolate Altermagnetism as source of off-diagonal elements</p>
           </div>
           
           <div class="padded">
@@ -275,18 +323,18 @@
     <div class="padded" style="background: rgba(255, 255, 255, 0.03); border-top: 4px solid var(--list-one);">
         <h4 style="color: var(--list-one); margin-top: 0; font-size: 30px;">Antisymmetric (\(\sigma_{xy} = -\sigma_{yx}\)) <br><small style="color: #64727c;">Requires Time-Reversal Breaking</small></h4>
         <ul style="font-size: 18px;">
-            <li><strong>External Magnetic Field (\(\mathbf{B} \neq 0\)):</strong> Explicitly breaks \(\mathcal{T}\) via the Lorentz force, cyclotron motion / Ordinary Hall effect.</li>
-            <li><strong>Ferromagnetism (\(\mathbf{M} \neq 0\)):</strong> Spontaneous global \(\mathcal{T}\)-breaking coupled with Spin-Orbit Interaction</li> <!--  (Anomalous Hall effect / Standard MOKE).-->
+            <li class="fragment semi-fade-out" data-fragment-index="2"><strong>External Magnetic Field (\(\mathbf{B} \neq 0\)):</strong> Explicitly breaks \(\mathcal{T}\) via the Lorentz force, cyclotron motion / Ordinary Hall effect.</li>
+            <li class="fragment semi-fade-out" data-fragment-index="2"><strong>Ferromagnetism (\(\mathbf{M} \neq 0\)):</strong> Spontaneous global \(\mathcal{T}\)-breaking coupled with Spin-Orbit Interaction</li> <!--  (Anomalous Hall effect / Standard MOKE).-->
             <li><strong>Altermagnetism (\(\mathbf{M} = 0\)):</strong> Spontaneous \(\mathcal{T}\)-breaking through alternating crystal symmetries.</li>
         </ul>
     </div>
 
     <!-- Column 2: Symmetric (Structural / Anisotropic) -->
-    <div class="padded fragment fade-out" style="background: rgba(255, 255, 255, 0.03); border-top: 4px solid var(--list-two);">
+    <div class="padded fragment semi-fade-out"  data-fragment-index="1" style="background: rgba(255, 255, 255, 0.03); border-top: 4px solid var(--list-two);">
         <h4 style="color: var(--list-two); margin-top: 0; font-size: 30px;">Symmetric (\(\sigma_{xy} = \sigma_{yx}\)) <br><small style="color: #64727c;">Structural & Reciprocal Origins</small></h4>
         <ul style="font-size: 18px;">
             <li><strong>Crystal Misalignment:</strong> Choosing a laboratory coordinate framework that is rotated relative to the principal crystallographic axes.</li>
-            <li><strong>Linear Birefringence / Dichroism:</strong> Intrinsic optical anisotropy in lower-symmetry crystal systems (like the orthorhombic structure of \(FeSb_2\).</li>
+            <li><strong>Linear Birefringence / Dichroism:</strong> Intrinsic optical anisotropy in lower-symmetry crystal systems (like the orthorhombic structure of \(FeSb_2\)).</li>
             <li><strong>Piezomagnetic / Magnetoelectric Effects:</strong> Strain-induced or voltage-induced modifications to the tensor framework</li>
         </ul>
     </div>
@@ -974,6 +1022,7 @@
 <section>
 
 <section>
+<section>
   <h2>The Parent Compound</h2>
   <h3>FeSb<sub>2</sub> as a natural altermagnet candidate</h3>
   <div style="display: grid; grid-template-columns: 1.4fr 1fr; gap: 20px; margin-top: 10px;">
@@ -995,6 +1044,12 @@
 </div>
   <div class="padded" style="margin-top: 20px; background: #0055324b;"><p style="text-align: center;">\(Fe\) Sublattice is invariant under two-fold rotation + translation $[ C_2 \parallel C_{2x} t]$ <br> Makes a <highlight>natural altermagnet candidate</highlight></p></div>
   <div class="footnote">materialsproject.org: mp-20714</div>
+</section>
+<section>
+  <h2>The necessary Symmetry Condition</h2>
+  <h3>For the example of the \(\text{FeSb}_2\) crystal unit cell</h3>
+  <iframe src="rotation.html" width="100%" height="100%" style="border:none; margin-top: 20px; border-radius: 10px" title="Symmetry animation"></iframe>
+</section>
 </section>
 
 
@@ -1202,7 +1257,7 @@
     <p style="text-align: center; margin-top: 30px;"><highlight>Conclusion:</highlight> <br> The AFM state is not the ground state of $\text{FeSb}_2$</p>
   </div>
   <div class="concept-card" style="padding: 5px;">
-    <img srcresfesb2_result.png" alt="Simulated Band structure and optical conductivity of FeSb2" style="width: 100%;"></div>
+    <img src="fesb2_sim.png" alt="Simulated Band structure and optical conductivity of FeSb2" style="width: 100%;"></div>
   </div>
   <div class="padded" style="margin-top: 20px;">
     <p style="text-align: center;"><highlight>PBE simulates non-magnetic $\text{FeSb}_2$ best</highlight>.<br>The underestimation of band gaps aligns with itinerant spin fluctuations.</p>
