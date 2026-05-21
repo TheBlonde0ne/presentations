@@ -129,8 +129,8 @@
 <section class="section-divider" data-state="is-section-divider">
 <h2 style="font-size: 40px;">Magneto Optical Kerr Effect & Müller Matrix</h2>
 <div class="grid-2" style="margin-top: 20px">
-  <div class="padded" style="background: white"><p style="font-size: 19px;"> $${S_{\text{out}}(\omega)} = {\begin{pmatrix} \color{#443f85}{ M_{11}} & \color{#443f85}{M_{12}} & \color{#387066}{M_{13}} & \color{#387066}{M_{14}} \\ \color{#443f85}{ M_{21}} & \color{#443f85}{M_{22}} & \color{#387066}{M_{23}} & \color{#387066}{M_{24}} \\ \color{#387066}{M_{31}} & \color{#387066}{M_{32}} & \color{#443f85}{M_{33}} & M_{34} \\ \color{#387066}{M_{41}} & \color{#387066}{M_{42}} & M_{43} & \color{#443f85}{M_{44}} \end{pmatrix}} \color{#8b4e5d}{\begin{pmatrix} I \\ Q \\ U \\ V \end{pmatrix}}$$</p></div>
   <div class="padded" style="background: white"><img src="moke_Mn3Sn.png" alt="representation of a moke setup" style="width: 55%; height: auto"></div>
+  <div class="padded" style="background: white"><p style="font-size: 19px;"> $${S_{\text{out}}(\omega)} = {\begin{pmatrix} \color{#443f85}{ M_{11}} & \color{#443f85}{M_{12}} & \color{#387066}{M_{13}} & \color{#387066}{M_{14}} \\ \color{#443f85}{ M_{21}} & \color{#443f85}{M_{22}} & \color{#387066}{M_{23}} & \color{#387066}{M_{24}} \\ \color{#387066}{M_{31}} & \color{#387066}{M_{32}} & \color{#443f85}{M_{33}} & M_{34} \\ \color{#387066}{M_{41}} & \color{#387066}{M_{42}} & M_{43} & \color{#443f85}{M_{44}} \end{pmatrix}} \color{#8b4e5d}{\begin{pmatrix} I \\ Q \\ U \\ V \end{pmatrix}}$$</p></div>
   <div class="padded" style="background: white"><img src="opt_kerr_mess.png" alt="conductivity tensor measurement" style="width: 50%; height: auto"></div>
   <div class="padded" style="background: white"><img src="band_sim.png" alt="fesb2 simulations with different functionals" style="width: 60%; height: auto"></div>
 </div>
@@ -164,9 +164,14 @@
 <h2 style="font-size: 40px;">Diagonal Elements of $\tilde{\sigma}_{ij}$</h2>
 <div class="grid-2" style="margin-top: 30px">
   <div class="padded" style="background: white; width: min-content"><p style="font-size: 19px;">$$\tilde{\sigma} = \begin{pmatrix} \color{#8F1B06}{\sigma_{xx}} & {\sigma_{xy}} & 0 \\ -{\sigma_{xy}} &\color{#8F1B06}{\sigma_{xx}} & 0 \\ 0 & 0 & \color{#8F1B06}{\sigma_{zz}} \end{pmatrix}$$</p></div>
-  <div class="padded" style="background: white"><img src="1.png" alt="" style="width: 55%; height: auto"></div>
-  <div class="padded" style="background: white"><img src="2.png" alt="conductivity tensor measurement" style="width: 55%; height: auto"></div>
-  <div class="padded" style="background: white"><img src="3.png" alt="fesb2 simulations with different functionals" style="width: 60%; height: auto"></div>
+  <div class="padded" style="background: white"><model-viewer 
+            src="FeSb2.glb" 
+            alt="3D Crystal Structure from Materials Project" 
+            auto-rotate 
+            style="width: 200px; height: 200px;">
+        </model-viewer></div>
+  <div class="padded" style="background: white"><img src="fesb2_result.png" alt="conductivity tensor measurement" style="width: 55%; height: auto"></div>
+  <div class="padded" style="background: white"><img src="ru.png" alt="fesb2 simulations with different functionals" style="width: 60%; height: auto"></div>
 </div>
 <div class="footnote">D. Gao et al., APL Mater. <span style="font-weight: 600">12</span>, 091114 (2024) <br> R. Mathew Roy et al., arXiv:2604.28105 [cond-mat.mtr-sci] (2026) <br> K. Panda et al., arXiv:2507.17238 [cond-mat.str-el] (2025)</div>
 </section>
@@ -256,7 +261,7 @@
               <h3 style="font-size: 22px;">Ordinary Case:</h3>
               <p>$$\tilde{\sigma} = \begin{pmatrix} {\sigma}_{xx} & 0 & 0 \\ 0 & {\sigma}_{xx} & 0 \\ 0 & 0 & {\sigma}_{xx} \end{pmatrix}$$</p>
             </div>
-            <div class="concept-card" style="margin-top: 20px;">
+            <div class="concept-card" style="margin-top: 50px;">
               <h3 style="font-size: 22px;">Extraordinary Case:</h3>
               <p>$$\tilde{\sigma} = \begin{pmatrix} \tilde{\sigma}_{xx} & \tilde{\sigma}_{xy} & 0 \\ \pm\tilde{\sigma}_{xy} & \tilde{\sigma}_{xx} & 0 \\ 0 & 0 & \tilde{\sigma}_{zz} \end{pmatrix}$$</p>
             </div>
@@ -348,7 +353,7 @@
 
 
 
-<section>
+<section class="cont">
   <h2>Measuring the MOKE Response</h2>
   <h3>Experimental Setup and Data Analysis</h3>
   <div class="concept-card" style="display: flex; justify-content: center; align-items: center;"><img src="mokka45.png" alt="Diagram of MOKKA fast protocol setup with fixed polarizer and analyzer at 45 degrees" style="height: 170px; display: block;"></div>
@@ -409,7 +414,7 @@
 
 
 
-<section>
+<section class="cont">
         <aside class="notes">
           What i havent mentioned yet is that the measurement of MOKE only results in information about the imaginary/real part of the off diagonal elements. Fortunately, the optical response of a material follows a response function, which is analytic in the upper half-plane.
           A handy tool we all heard of in exphys 6 is the kramers-kronig relation.
@@ -447,7 +452,7 @@
 
 
 
-      <section>
+      <section class="cont">
         <h2><strong style="color:#000000">M</strong>agneto-<strong style="color:#000000">O</strong>ptical <strong style="color:#000000">K</strong>ramers-<strong style="color:#000000">K</strong>ronig <strong style="color:#000000">A</strong>nalysis</h2>
         <div class="content">
           <ol>
@@ -475,9 +480,7 @@
         <h2>The Magneto-Optical Kerr Effect (MOKE)</h2>
         <h3>Calculating the Optical Conductivity Tensor</h3>
         <br>
-        <div class="concept-card" style="max-width: 980px; margin: 0 auto; padding: 3px;">
-        <iframe src="calc.html" width="900" height="480" style="border:none;" title="Kerr animation"></iframe>
-        </div>
+        <iframe src="calc.html" width="950" height="540" style="border:none; margin-left: -30px" title="Kerr animation"></iframe>
         <aside class="notes">
           On the left, you see a simulated spectrum of the off-diagonal conductivity, $\sigma_{xy}$. The cyan curve represents the real, dispersive part, and the magenta curve is the imaginary, absorptive part. Notice the classic behavior here: the imaginary part peaks at the resonance frequency—in this case, centered around $0.12 \text{ eV}$ for our doped $FeSb_2$—while the real part crosses zero at that exact same point.
           As I start the spectral sweep, watch the panel on the right. This represents the state of polarization of the reflected light.When we are far from the resonance, the light remains largely linearly polarized. But as we approach the altermagnetic transition energy, the off-diagonal components of the tensor become non-zero. Physically, this manifests as the Kerr Effect: the polarization axis rotates by an angle $\theta_K$, and the light becomes elliptical, described by $\eta_K$.
@@ -490,8 +493,7 @@
       <!-- SLIDE 5: MOKKA Fast Protocol -->
       <section>
         <h2>MOKKA: The 45-Degree Fast Protocol</h2>
-        <div class="content">
-            <p>Extreme conditions (high B-field, low T): rotating optics is not possible</p>
+        <h3>Broand band measuring</h3>
             <div style="display:grid; grid-template-columns: 1.4fr 1fr; gap:18px;">
             <ul>
                 <li><strong>Setup:</strong> Polarizer and analyzer are fixed at 45° to each other. This geometry maximizes sensitivity to rotation.</li>
@@ -506,12 +508,13 @@
                 $$
                 \rho_{\pm45^\circ}(B) = \frac{I_{\pm45^\circ}(+B)}{I_{\pm45^\circ}(-B)} \approx 1 \pm 4\theta_K(B)
                 $$
-                </li></ul>
+                </li>
+                <li><strong>Downside:</strong> Limited spectral resolution and sensitivity compared to other techniques.</li>
+              </ul>
             </div>
             <div class="concept-card" style="display: flex; justify-content: center; align-items: center;">
               <img src="mokka45.png" alt="Diagram of MOKKA fast protocol setup with fixed polarizer and analyzer at 45 degrees" style="height: 170px; display: block;">
             </div>
-        </div>
         <div class="footnote">
           Levallois et al., Rev. Sci. Instrum. 86, 033906 (2015)
         </div>
@@ -935,29 +938,28 @@
 
 
 <!-- SLIDE 2: THE EXPERIMENT & CONSEQUENCES -->
-<section style="background: #0d1117; color: #e6edf3; padding: 40px; font-family: 'Segoe UI', system-ui, sans-serif; height: 100vh; box-sizing: border-box; display: flex; flex-direction: column; justify-content: space-between;">
+<section class="cont">
   
   <!-- Header Zone -->
-  <div>
-    <h2 style="color: #58a6ff; font-size: 32px; margin: 0 0 5px 0; font-weight: 600; letter-spacing: -0.5px;">Coherent N&eacute;el Vector Steering</h2>
-    <h3 style="color: #8b949e; font-size: 20px; margin: 0; font-weight: 400;">Probing Off-Diagonal Elements via In-Situ Strain</h3>
-    <hr style="border: 0; border-top: 1px solid #30363d; margin: 15px 0 25px 0;">
+  <div style="margin-bottom: 10px;">
+    <h2>Coherent N&eacute;el Vector Steering</h2>
+    <h3>Probing Off-Diagonal Elements via In-Situ Strain</h3>
   </div>
 
   <!-- Main Content Grid -->
   <div style="display: flex; gap: 30px; flex: 1; align-items: stretch;">
     
     <!-- Column 1: Optical Mapping -->
-    <div style="flex: 1; background: #161b22; border: 1px solid #30363d; border-radius: 8px; padding: 20px; display: flex; flex-direction: column; justify-content: space-between;">
+    <div class="padded" style="flex: 1; display: flex; flex-direction: column; justify-content: space-between;">
       <div>
-        <h4 style="color: #d2a8ff; margin: 0 0 15px 0; font-size: 16px; text-transform: uppercase; letter-spacing: 1px;">Magneto-Optical Trackers</h4>
-        <p style="font-size: 14px; line-height: 1.5; margin: 0 0 15px 0; color: #c9d1d9;">
+        <h4 style="color: var(--list-three); margin: 0 0 15px 0;">Magneto-Optical Trackers</h4>
+        <p style="font-size: 14px; line-height: 1.5; margin: 0 0 15px 0;">
           By mapping the complex reflection coefficients, the authors isolate elements linked directly to the off-diagonal dielectric tensor $\epsilon_{xy}(\omega)$:
         </p>
         <ul style="margin: 0; padding-left: 20px; font-size: 14px; line-height: 1.6; color: #8b949e;">
-          <li><strong style="color: #c9d1d9;">MCD:</strong> $\text{Im}[(r_{xy} - r_{yx})/2r_0] \propto L^3 \sin(3\theta_L)$</li>
-          <li><strong style="color: #c9d1d9;">&phi;<sub>0</sub>:</strong> Birefringence angle (w.r.t [100] axis)</li>
-          <li><strong style="color: #c9d1d9;">&Delta;:</strong> Birefringence amplitude $\propto L^2$</li>
+          <li><strong>MCD:</strong> $\text{Im}[(r_{xy} - r_{yx})/2r_0] \propto L^3 \sin(3\theta_L)$</li>
+          <li><strong>$\phi_0$:</strong> Birefringence angle (w.r.t [100] axis)</li>
+          <li><strong>$\Delta$:</strong> Birefringence amplitude $\propto L^2$</li>
         </ul>
       </div>
       <div style="background: #0d1117; padding: 12px; border-radius: 6px; border: 1px solid #21262d; font-size: 13px; color: #8b949e; font-family: monospace;">
@@ -967,17 +969,17 @@
     </div>
 
     <!-- Column 2: Experimental Verdict -->
-    <div style="flex: 1; background: #161b22; border: 1px solid #30363d; border-radius: 8px; padding: 20px; display: flex; flex-direction: column; justify-content: space-between;">
+    <div class="padded" style="flex: 1; display: flex; flex-direction: column; justify-content: space-between;">
       <div>
-        <h4 style="color: #7ee787; margin: 0 0 15px 0; font-size: 16px; text-transform: uppercase; letter-spacing: 1px;">The Discovery</h4>
-        <p style="font-size: 15px; line-height: 1.5; margin: 0 0 12px 0; color: #c9d1d9;">
-          Under applied stress, <strong>MCD and &phi;<sub>0</sub> evolve continuously, while &Delta; remains perfectly constant.</strong>
+        <h4 style="color: var(--list-two); margin: 0 0 15px 0;">The Discovery</h4>
+        <p style="font-size: 15px; line-height: 1.5; margin: 0 0 12px 0;">
+          Under applied stress, <strong>MCD and $\phi_0$ evolve continuously, while $\Delta$ remains perfectly constant.</strong>
         </p>
-        <div style="background: rgba(46, 160, 67, 0.15); border: 1px solid #2ea043; border-radius: 6px; padding: 12px; font-size: 14px; color: #56d364; font-weight: 500; margin-bottom: 15px;">
+        <div style="background: rgba(46, 160, 67, 0.1); border: 1px solid var(--primary-color); border-radius: 6px; padding: 12px; font-size: 14px; color: var(--primary-color); font-weight: 500; margin-bottom: 15px;">
           &gamma; Conclusion: The stress is not changing the size of the altermagnetic order parameter ($L$). It is continuously rotating its direction ($\theta_L$).
         </div>
       </div>
-      <p style="font-size: 13px; color: #8b949e; margin: 0; line-height: 1.4;">
+      <p style="font-size: 13px; color: #8b949e; margin: 0; line-height: 1.4; background: black">
         This behavior matches a perfect energetic competition model between the native crystal <span style="color: #c9d1d9;">6-fold Magnetocrystalline Anisotropy</span> and the applied <span style="color: #c9d1d9;">2-fold strain anisotropy</span>.
       </p>
     </div>
