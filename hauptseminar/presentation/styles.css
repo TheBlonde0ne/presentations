@@ -162,6 +162,8 @@
   height: 6px;
 }
 
+
+
 /* Prevent double-sizing for nested elements */
 .reveal blockquote p {
   font-size: inherit;
@@ -398,13 +400,19 @@
   background: white;
 }
 
+.padded.pro {
+  background: var(--background-color-pro);
+}
+
+.padded.contra {
+  background: var(--background-color-contra);
+}
+
 .padded-unfit {
   background: #ffffffaa;
   border-radius: var(--box-radius);
   padding: 15px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-  margin-left: auto;
-  margin-right: auto;
 }
 
 .padded-high {
