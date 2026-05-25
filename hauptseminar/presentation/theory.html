@@ -1452,35 +1452,31 @@ $$I_{2\omega}(\phi) \propto \Delta \cdot \cos2(\phi+\phi_0)$$
 
       <section>
         <h2>Cobalt-doped $\text{FeSb}_2$</h2>
-        <h3>Carrier doping with electrons or holes</h3>
-          <p style="font-size: 30px; text-align: center; margin-top: 20px;"><highlight>How to stabilize the altermagnetic state:</highlight></p>
-        <div class="grid-2" style="margin-top: 20px;">
+        <h3>Stabilation via Carrier doping with electrons</h3>
+        <div class="grid-2" style="margin-top: 10px;">
         <div class="padded">
+          <h4>Adding electrons/holes</h4>
           <ul>
-            <li>Adding electrons adds impurities, but also quenches the spin fluctuations that destabilize the AFMo order in the parent compound.</li>
-            <li>Adding holes reduces the electron density, which also suppresses the spin fluctuations</li>
+            <li>Adds impurities</li>
+            <li>Quenches the spin fluctuations</li>
+            <li>Stabilize the AFMo order</li>
+            <li>Adding holes has similar effect ($\text{Cr}$ doping)</li>
+          </ul>
+           <h4>Result</h4>
+          <ul>
+          <li>Crystal structure is preserved</li>
+          <li>Semiconducting gap is closed</li>
+          <li>Persisting up to room temperature</li>
           </ul>
         </div>
         <div class="concept-card">
           <img src="doping.png" alt="Schematic showing the effect of electron doping" style="width: 100%; height: auto; margin-top: 0px;">
           <img src="doping.png" alt="Schematic showing the effect of hole doping" style="width: 100%; height: auto; margin-top: 0px;">
-        </div>
-        </div>
-        <p style="font-size: 30px; text-align: center;"><highlight>Results:</highlight></p>
-        <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 20px;">
-          <div class="padded">
-          <ul>
-          <li>Crystal structure is preserved</li>
-          <li>Semiconducting gap is closed</li>
-          <li>Spin fluctuations reduced</li>
-          <li>Persisting up to room temperature</li>
-          <li>AFMo configuration is stabilized</li>
-          </ul>
-          </div>
-        <div class="concept-card">
           <img src="dopedstructure.png" alt="Crystal structure of cobalt-doped FeSb2 showing cobalt substitution on iron sites" style="width: 60%; height: auto; margin-top: 0px;">
+
         </div>
         </div>
+          
         <div class="footnote">Mathew Roy et al., arXiv:2604.28105</div>
         <aside class="notes">
       evidenced by a sharp drop in electrical resistivity below 100 K and the emergence of a coherent Drude response in the optical conductivity.
@@ -1500,7 +1496,8 @@ $$I_{2\omega}(\phi) \propto \Delta \cdot \cos2(\phi+\phi_0)$$
           </div>
           <div class="concept-card" style="padding: 5px;">
             <h3>Crystal structure</h3>
-            <img src="magnetization.png" alt="Temperature-dependent magnetization data for cobalt-doped FeSb2" style="width: 80%; height: auto; margin-top: 0px;">
+            <img src="fesb2_chi.png" alt="Temperature-dependent magnetization data for cobalt-doped FeSb2" style="width: 80%; height: auto; margin-top: 0px;">
+            <img src="magnetization.png" alt="Temperature-dependent magnetization data for cobalt-doped FeSb2" style="width: 40%; height: auto; margin-top: 0px;">
           </div>
         </div>
         
@@ -1705,13 +1702,13 @@ Quote the paper directly, as you did in your motivation slide: "Adding magnetism
 
 <div class="padded">
   <h4>Magnetic Susceptibility Data</h4>
-  <p>Figure (d):</p>
+  <p style="color: gray;">Figure (d):</p>
   <ul>
     <li>Excellent fit to a model combining Pauli paramagnetism (T² dependence)</li>
     <li>Small impurity tail</li>
   </ul>
   <h4>Phase Angle</h4>
-<p>Figure (c)/(e):</p>
+<p style="color: gray;">Figure (c)/(e):</p>
 <ul>
   <li>Quadratic dependence ($\omega^2$)</li>
   <li>hallmark of a Fermi liquid</li>
@@ -1738,13 +1735,13 @@ Quote the paper directly, as you did in your motivation slide: "Adding magnetism
  
 <div class="padded">
   <h4>Magnetic Susceptibility Data</h4>
-  <p>Figure (d):</p>
+  <p style="color: gray;">Figure (d):</p>
   <ul>
     <li>Excellent fit to a model combining Pauli paramagnetism (T² dependence)</li>
     <li>Small impurity tail</li>
   </ul>
   <h4>Phase Angle</h4>
-<p>Figure (c)/(e):</p>
+<p style="color: gray;">Figure (c)/(e):</p>
 <ul>
   <li>Quadratic dependence ($\omega^2$)</li>
   <li>hallmark of a Fermi liquid</li>
@@ -1761,6 +1758,83 @@ Quote the paper directly, as you did in your motivation slide: "Adding magnetism
 
 
 
+<section>
+<section class="section-divider" data-state="is-section-divider">
+<h1>Summary</h1>
+<div class="grid three">
+
+<div class="padded">
+  <h4>MOKE</h4>
+  <ul>
+    <li>Single $\omega$</li>
+    <li>High Sensitivity</li>
+  </ul>
+</div>
+<div class="padded">
+  <h4>MOKKA</h4>
+  <ul>
+    <li>Broad Band</li>
+    <li>Low Sensitivity</li>
+  </ul>
+</div>
+<div class="padded">
+  <h4>Mueller</h4>
+  <ul>
+    <li>Model dependent</li>
+    <li>Regression Task</li>
+  </ul>
+</div>
+</div>
+</section>
+
+
+<section class="section-divider" data-state="is-section-divider">
+<h1>Summary</h1>
+<div class="grid three">
+
+<div class="padded-unfit">
+  <h4>MOKE</h4>
+</div>
+<div class="padded-unfit">
+  <h4>MOKKA</h4>
+</div>
+<div class="padded-unfit">
+  <h4>Mueller</h4>
+</div>
+</div>
+
+
+<div class="grid" style="grid-template-columns: 1fr 1fr 1fr 1fr;">
+
+<div class="padded-unfit">
+  <h4>MnTe</h4>
+  <ul>
+    <li>info</li>
+  </ul>
+</div>
+<div class="padded-unfit">
+  <h4>CrSb</h4>
+    <ul>
+    <li>info</li>
+  </ul>
+</div>
+<div class="padded-unfit">
+  <h4>FeSb2</h4>
+    <ul>
+    <li>info</li>
+  </ul>
+</div>
+<div class="padded-unfit">
+  <h4>RuO2</h4>
+    <ul>
+    <li>info</li>
+  </ul>
+</div>
+</div>
+</section>
+
+
+</section>
 
 
 
