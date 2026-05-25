@@ -667,9 +667,17 @@ be reproduced by the magnetic solution."</p>
               <img src="fast_mokka.png" alt="Diagram of MOKKA fast protocol setup with fixed polarizer and analyzer at 45 degrees" style="height: 280px; display: block; margin-left: 140px">
             </div>
 
-            <div class="padded" style="margin-top: 20px; background: var(--background-color-contra)">
+
+            <div class="grid two">
+            <div class="padded" style="background: var(--background-color-contra)">
   <h4 style="color: var(--list-two); text-align: center;font-size: 34px;">Disadvantage</h4>
-              <p style="font-size: 34px; margin-top: 20px; text-align: center;">Limited spectral resolution and sensitivity compared to other techniques.</p></div>
+              <p style="font-size: 24px; margin-top: 20px; text-align: center;">Limited spectral resolution and sensitivity compared to other techniques.</p>
+            </div>
+            <div class="padded" style="background: var(--background-color-pro)">
+  <h4 style="color: var(--primary-color); text-align: center;font-size: 34px;">Advantage</h4>
+              <p style="font-size: 24px; margin-top: 20px; text-align: center;">Completely fit for comparing results with DFT calculations</p>
+            </div>
+            </div>
               <div class="footnote">
           Levallois et al., Rev. Sci. Instrum. 86, 033906 (2015)
         </div>
@@ -1116,7 +1124,7 @@ be reproduced by the magnetic solution."</p>
       <div class="padded" style="margin-top: 20px">
         <h4 style="color: #416789; margin: 0 0 10px 0; font-size: 20px; text-transform: uppercase; letter-spacing: 1px;">Symmetry & Topology</h4>
         <ul>
-          <li>Two magnetic sublattices mapped onto each other via a <highlight>six-fold screw rotation ($6_3$)</highlight>.</li>
+          <li>Two magnetic sublattices mapped onto each other via a <highlight>six-fold screw rotation</highlight>.</li>
           <li>Broken time-reversal symmetry ($\mathcal{T}$) combined with spatial translation enforces a <highlight>d-wave altermagnetic state</highlight>.</li>
           <li>The crystal hosts a native <highlight>six-fold magnetocrystalline anisotropy (MCA)</highlight> pinning landscape.</li>
         </ul>
@@ -1128,7 +1136,7 @@ be reproduced by the magnetic solution."</p>
       <div class="concept-card"><img src="MnTe_structure.png" alt="MnTe" style="width: 100%; height: auto;"></div>
       <div class="padded" style="margin-top: 20px;">
         <h4 style="margin: 0 0 10px 0; color: #3e7b32; font-size: 20px; font-weight: 600;">Challenge for Production</h4>
-        <p style="font-size: 18px; line-height: 1.5; color: #000000; font-style: italic;">
+        <p style="font-size: 18px; line-height: 1.5; color: #000000; font-style: italic; font-family: 'Times New Roman', Times, serif">
           To make altermagnets industrially viable for spintronics, we need large, macroscopically uniform domains. Knowing how external and internal stress fields alter this magnetic ordering dictates exactly how these devices must be fabricated and handled.
         </p>
       </div>
@@ -1137,11 +1145,108 @@ be reproduced by the magnetic solution."</p>
   </div>
 
   <!-- Footer Citation -->
-  <div style="font-size: 12px; color: #8b949e; text-align: right; margin-top: 20px;">
-    A. Liebman-Pel&aacute;ez et al., arXiv:2604.07653 (2026)
-  </div>
+    <div class="footnote">A. Liebman-Pel&aacute;ez et al., arXiv:2604.07653 (2026)</div>
+
 </section>
 
+<section>
+<section class="cont">
+  <div class="footnote">A. Liebman-Pel&aacute;ez et al., arXiv:2604.07653 (2026)</div>
+<div style="margin-bottom: 10px;">
+    <h2>Coherent N&eacute;el Vector Steering</h2>
+    <h3>Magneto-optical measurements of MCD, $\phi_0$ and $\Delta$</h3>
+</div>
+<div class="grid two">
+<div class="padded">
+  <h4>Measurements</h4>
+  <ul>
+    <li>$\text{MCD} = \text{Im}[(r_{xy} - r_{yx})/2r_0] \propto L^3 \sin(3 \theta_L)$ with the Neel vector orientation $\theta_L$</li>
+    <li>$\phi_0$ the birefringence angle</li>
+    <li>$\Delta = \text{Re}[(r_{xx} - r_{yy})/2r_0]$ the birefringence amplitude</li>
+    <li>Reference point: $\phi_0$ is the birefringence angle with respect to the $[100]$ direction and $r_0 = (r_{xx} + r_{yy})/2$</li>
+  </ul>
+</div>
+
+<div class="padded">
+  <h4>Connection to MOKE</h4>
+<p>
+The measurements are closely related to the optical conductivity tensor $\sigma_{ij}(\omega)$, and the dielectric tensor $\epsilon_{ij}(\omega)$.
+The measurements relate through the intensities measured by MOKE:
+$$I_{\omega} \propto MSD$$
+$$I_{2\omega}(\phi) \propto \Delta \cdot \cos2(\phi+\phi_0)$$
+</p>
+</div>
+</div>
+
+
+</section>
+
+
+<section class="cont">
+  <div class="footnote">A. Liebman-Pel&aacute;ez et al., arXiv:2604.07653 (2026)</div>
+<div style="margin-bottom: 10px;">
+    <h2>Coherent N&eacute;el Vector Steering</h2>
+    <h3>Probing Off-Diagonal Elements via In-Situ Strain</h3>
+</div>
+
+
+
+
+<div class="grid two">
+<div class="padded-unfit">
+  <h4>Strain Dependence</h4>
+  <ul>
+    <li>$\text{MCD}$ and $\phi_0$ show hysteresis like behavor</li>
+    <li>Birefringence Amplitude $\Delta$ is nearly constant over different strain</li>
+    <li>All measurements performed at $ \omega/2\pi \approx 50 \text{ kHz}$</li>
+  </ul>
+</div>
+
+<div class="padded plot">
+  <img src="mnte_strain.png" alt="strain measurements" style="height: auto; width: 500px;">
+</div>
+</div>
+
+
+</section>
+
+<!------------------------------------->
+
+
+<section class="cont">
+  <div class="footnote">A. Liebman-Pel&aacute;ez et al., arXiv:2604.07653 (2026)</div>
+<div style="margin-bottom: 10px;">
+    <h2>Coherent N&eacute;el Vector Steering</h2>
+    <h3>Probing Off-Diagonal Elements via In-Situ Strain</h3>
+</div>
+
+
+<div class="padded plot">
+  <img src="mnte_sine.png" alt="strain measurements" style="height: auto; width: 800px;">
+</div>
+
+<div class="grid two">
+<div class="padded-unfit">
+  <h4>Strain Dependence</h4>
+  <ul>
+    <li>$\text{MCD}$ and $\phi_0$ show hysteresis like behavor</li>
+    <li>Birefringence Amplitude $\Delta$ is nearly constant over different strain</li>
+  </ul>
+</div>
+
+<div class="padded-unfit">
+  <h4>N&eacute;el Vector Orientation</h4>
+  <ul>
+    <li>$\text{MCD}$ fits to $\sin(\theta_L)$</li>
+  </ul>
+  <p>$\rightarrow$ N&eacute;el Vector is the primary order parameter</p>
+</div>
+</div>
+
+</section>
+
+
+</section>
 
 
 <!-- SLIDE 2: THE EXPERIMENT & CONSEQUENCES -->
@@ -1160,18 +1265,18 @@ be reproduced by the magnetic solution."</p>
     <div class="padded" style="flex: 1; display: flex; flex-direction: column; justify-content: space-between;">
       <div>
         <h4 style="color: var(--list-three); margin: 0 0 15px 0;">Magneto-Optical Trackers</h4>
-        <p style="font-size: 14px; line-height: 1.5; margin: 0 0 15px 0;">
-          By mapping the complex reflection coefficients, the authors isolate elements linked directly to the off-diagonal dielectric tensor $\epsilon_{xy}(\omega)$:
+        <p style="font-size: 18px; line-height: 1.5; margin: 0 0 15px 0; color: gray">
+          By mapping the complex reflection coefficients, isolate elements linked directly to the off-diagonal dielectric tensor $\epsilon_{xy}(\omega)$:
         </p>
-        <ul style="margin: 0; padding-left: 20px; font-size: 14px; line-height: 1.6; color: #8b949e;">
-          <li><strong>MCD:</strong> $\text{Im}[(r_{xy} - r_{yx})/2r_0] \propto L^3 \sin(3\theta_L)$</li>
-          <li><strong>$\phi_0$:</strong> Birefringence angle (w.r.t [100] axis)</li>
-          <li><strong>$\Delta$:</strong> Birefringence amplitude $\propto L^2$</li>
+        <ul style="margin: 0; padding-left: 20px; font-size: 18px; line-height: 1.6; color: #8b949e;">
+          <li style="font-size: 18px;">$\text{MCD} \propto L^3 \sin(3\theta_L)$</li>
+          <li style="font-size: 18px;"><strong>$\phi_0$:</strong> Birefringence angle</li>
+          <li style="font-size: 18px;"><strong>$\Delta$:</strong> Birefringence amplitude $\propto L^2$</li>
         </ul>
       </div>
-      <div style="background: #0d1117; padding: 12px; border-radius: 6px; border: 1px solid #21262d; font-size: 13px; color: #8b949e; font-family: monospace;">
-        I<sub>&omega;</sub> &propto; MSD <br>
-        I<sub>2&omega;</sub>(&phi;) &propto; &Delta; &middot; cos[2(&phi; + &phi;<sub>0</sub>)]
+      <div style="background: #0d1117; padding: 12px; border-radius: 6px; border: 1px solid #21262d; font-size: 18px; color: #8b949e; font-family: monospace;line-height: 10px;">
+        $I_{\omega} \propto \text{MSD}$ <br>
+        $I_{2\omega}(\phi) \propto \Delta \cdot \cos[2(\phi + \phi_0)]$ <br>
       </div>
     </div>
 
@@ -1179,18 +1284,23 @@ be reproduced by the magnetic solution."</p>
     <div class="padded" style="flex: 1; display: flex; flex-direction: column; justify-content: space-between;">
       <div>
         <h4 style="color: var(--list-two); margin: 0 0 15px 0;">The Discovery</h4>
-        <p style="font-size: 15px; line-height: 1.5; margin: 0 0 12px 0;">
+        <p style="font-size: 18px; line-height: 1.5; margin: 0 0 25px 0; color: gray">
           Under applied stress, <strong>MCD and $\phi_0$ evolve continuously, while $\Delta$ remains perfectly constant.</strong>
         </p>
-        <div style="background: rgba(46, 160, 67, 0.1); border: 1px solid var(--primary-color); border-radius: 6px; padding: 12px; font-size: 14px; color: var(--primary-color); font-weight: 500; margin-bottom: 15px;">
-          &gamma; Conclusion: The stress is not changing the size of the altermagnetic order parameter ($L$). It is continuously rotating its direction ($\theta_L$).
+        <div style="background: rgba(46, 160, 67, 0.1); border: 1px solid var(--primary-color); border-radius: 6px; padding: 12px; font-size: 18px; color: var(--primary-color); font-weight: 500; margin-bottom: 5px;">
+          <h4 style="color: var(--primary-color);">Conclusion:</h4>
+          <p style="font-size: 24px;">
+          The stress is not changing the size of the altermagnetic order parameter ($L$). It is continuously rotating its direction ($\theta_L$).</p>
         </div>
       </div>
-      <p style="font-size: 13px; color: #8b949e; margin: 0; line-height: 1.4; background: black">
+      <p style="font-size: 16px; color: #8b949e; margin: 0; line-height: 1.4; background: black; padding: 5px; border-radius: 5px;">
         This behavior matches a perfect energetic competition model between the native crystal <span style="color: #c9d1d9;">6-fold Magnetocrystalline Anisotropy</span> and the applied <span style="color: #c9d1d9;">2-fold strain anisotropy</span>.
       </p>
     </div>
 
+  </div>
+  <div class="padded fragment" style="position: absolute; right: 10px; left: auto; top:350px; background: #c49494">
+    <h4 style="font-size: 50px">DON'T STRESS YOUR ALTERMAGNET!</h4>
   </div>
 
   <!-- Footer Citation -->
@@ -1533,7 +1643,121 @@ be reproduced by the magnetic solution."</p>
 
 
 
+<section>
+<section class="cont">
+<h2>$\text{RuO}_2$ Controversy: A Model Altermagnet?</h2>
+<h3>Early Prediction of Altermagnetism</h3>
+<div class="padded plot" style="margin-top: 20px">
+  <h4>Surface Probe (ARPES): Evidence for Spin-Splitting</h4>
+  <img src="ruo2_arpes.png" style="height: auto; width: 100%;margin-top: 20px">
+</div>
+<aside class="notes">"Following our deep dive into FeSb₂, where optics confirmed the altermagnetic ground state, we now turn to a more controversial candidate: Ruthenium Dioxide, or RuO₂."
+"Based on its non-symmorphic crystal structure (space group P4₂/mnm), RuO₂ was a prime theoretical candidate for altermagnetism."
+"This was seemingly confirmed by surface-sensitive probes like ARPES, which reported the characteristic momentum-dependent spin-splitting. However, the story for the bulk of the material remained unclear."
+"This raises a critical question: Is the altermagnetism a purely surface phenomenon, or does it represent the true bulk electronic structure? To answer this, we need a bulk-sensitive probe. We need optics."
+</aside>
+<div class="footnote">Z. Lin, arXiv: 2402.04995 [cond-mat.mtrl-sci] (2024)</div>
+</section>
+<section class="cont">
+<h2>$\text{RuO}_2$ Controversy: A Model Fermi-Liquid?</h2>
+<h3>Fermi-Liquid Behavior in Bulk $\text{RuO}_2$</h3>
+<div class="grid" style="margin-top: 20px; grid-template-columns: 1fr 1fr;">
 
+  <div class="padded">
+    <h4>Experiment matches NON-magnetic model</h4>
+    <p>test</p>
+    <ul>
+      <li>Sharp <highlight>Pauli Edge</highlight> around $0.1 \text{ eV}$</li>
+      <li>Minimum around $1.5-2.0 \text{ eV}$</li>
+      <li>Only <highlight>non-magnetic</highlight> DFT calculation matches</li>
+    </ul>
+  </div>
+
+  <div class="padded plot">
+    <img src="RuO2_proof.png" style="width: auto; height:480px">
+  </div>
+
+</div>
+  <div class="footnote">M. Wenzel et al., Phys. Rev. B <strong>111</strong>, (2025)</div>
+  <aside class="notes">
+    "Using the same broadband spectroscopy techniques we discussed for FeSb₂, Wenzel and colleagues measured the diagonal optical conductivity of high-quality single-crystal RuO₂."
+"The experimental data, shown on top, reveals several key features, most notably a sharp onset of absorption—a Pauli edge—which signals transitions across a topological Dirac nodal line."
+"Now, let's compare this to DFT simulations, just as we did for FeSb₂. The bottom panel shows two scenarios: a standard non-magnetic model and a model where altermagnetism is enforced."
+"The result is unambiguous. The non-magnetic calculation perfectly reproduces all features of the experiment, including the crucial Pauli edge. In stark contrast, the altermagnetic model (in red) fails spectacularly. It cannot reproduce the Pauli edge and predicts a much larger gap."
+Quote the paper directly, as you did in your motivation slide: "Adding magnetism clearly deteriorates the description of the experimental optical conductivity."
+  </aside>
+</section>
+
+
+
+<section class="cont">
+  <div class="footnote">M. Wenzel et al., Phys. Rev. B <strong>111</strong>, (2025)</div>
+<h2>$\text{RuO}_2$ Controversy: A Model Fermi-Liquid!</h2>
+<h3>A Paramagnetic Fermi Liquid</h3>
+<div class="padded" style="margin-top: 20px;">
+  <h4>Other characteristics match fermi liquids too!</h4>
+</div>
+
+<div class="grid two">
+<div class="padded plot">
+  <img src="ruo2_4_1.png" alt="idk" style="width: auto; height: 400px">
+</div>
+
+<div class="padded">
+  <h4>Magnetic Susceptibility Data</h4>
+  <p>Figure (d):</p>
+  <ul>
+    <li>Excellent fit to a model combining Pauli paramagnetism (T² dependence)</li>
+    <li>Small impurity tail</li>
+  </ul>
+  <h4>Phase Angle</h4>
+<p>Figure (c)/(e):</p>
+<ul>
+  <li>Quadratic dependence ($\omega^2$)</li>
+  <li>hallmark of a Fermi liquid</li>
+</ul>
+</div>
+
+  
+
+</div>
+
+</section>
+
+
+
+<section class="cont">
+  <div class="footnote">M. Wenzel et al., Phys. Rev. B <strong>111</strong>, (2025)</div>
+<h2>$\text{RuO}_2$ Controversy: A Model Fermi-Liquid!</h2>
+<h3>A Paramagnetic Fermi Liquid</h3>
+<div class="padded" style="margin-top: 20px;">
+  <h4>Other characteristics match fermi liquids too!</h4>
+</div>
+
+<div class="grid two">
+ 
+<div class="padded">
+  <h4>Magnetic Susceptibility Data</h4>
+  <p>Figure (d):</p>
+  <ul>
+    <li>Excellent fit to a model combining Pauli paramagnetism (T² dependence)</li>
+    <li>Small impurity tail</li>
+  </ul>
+  <h4>Phase Angle</h4>
+<p>Figure (c)/(e):</p>
+<ul>
+  <li>Quadratic dependence ($\omega^2$)</li>
+  <li>hallmark of a Fermi liquid</li>
+</ul>
+</div>
+
+  
+<div class="padded plot"><img src="ruo2_4_2.png" alt="idk" style="width: auto; height: 300px"></div>
+
+</div>
+
+</section>
+</section>
 
 
 
