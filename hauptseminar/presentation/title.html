@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wave Reflection Plot</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: transparent;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+        canvas {
+            display: block;
+            background-color: transparent;
+        }
+    </style>
+</head>
+<body>
+
+    <canvas id="waveCanvas" width="800" height="600"></canvas>
+
+    <script>
+        const canvas = document.getElementById('waveCanvas');
+        const ctx = canvas.getContext('2d');
+
+        const width = canvas.width;
+        const height = canvas.height;
+
+        // Geometric positions
+        const surfaceY = height * 0.75; 
+        const incidentStartX = width * 0.15;
+        const incidentStartY = height * 0.5;
+        const bounceX = width * 0.5; 
+        const bounceY = surfaceY;
+        const reflectedEndX = width * 1.5;
+        const reflectedEndY = height * 0.05;
+
+        // Wave parameters
+        const wavelength = 30; 
+        const k = (2 * Math.PI) / wavelength; 
+        const amplitude = 25; 
+
+        // Vector math for Incident path
+        const dxInc = bounceX - incidentStartX;
+        const dyInc = bounceY - incidentStartY;
+        const distInc = Math.sqrt(dxInc * dxInc + dyInc * dyInc);
+        const dirXInc = dxInc / distInc;
+        const dirYInc = dyInc / distInc;
+
+        // Normal vector to incident path for polarization offset
+        const normXInc = -dirYInc;
+        const normYInc = dirXInc;
+
+        // Vector math for Reflected path
+        const dxRef = reflectedEndX - bounceX;
+        const dyRef = reflectedEndY - bounceY;
+        const distRef = Math.sqrt(dxRef * dxRef + dyRef * dyRef);
+        const dirXRef = dxRef / distRef;
+        const dirYRef = dyRef / distRef;
+
+        // Normal vector to reflected path
+        const normXRef = -dirYRef;
+        const normYRef = dirXRef;
+
+        // Clear canvas
+        ctx.clearRect(0, 0, width, height);
+
+        // 2. Draw Incident Wave (Linear: Blue line only)
+        ctx.lineWidth = 1;
+        ctx.strokeStyle = '#5C5CFF';
+        ctx.beginPath();
+        for (let d = 0; d <= distInc; d++) {
+            const currentX = incidentStartX + dirXInc * d;
+            const currentY = incidentStartY + dirYInc * d;
+            
+            const waveOffset = amplitude * Math.sin(k * d);
+            const posX = currentX + (normXInc * 0.3 + 0.4) * waveOffset;
+            const posY = currentY + (normYInc * 0.3 - 0.4) * waveOffset;
+
+            if (d === 0) ctx.moveTo(posX, posY);
+            else ctx.lineTo(posX, posY);
+        }
+        ctx.stroke();
+
+        // 3. Draw Reflected Wave (Circular: Red corkscrew line)
+        ctx.strokeStyle = '#C49287';
+        ctx.lineWidth = 1;
+        ctx.beginPath();
+        for (let d = 0; d <= distRef; d++) {
+            const currentX = bounceX + dirXRef * d;
+            const currentY = bounceY + dirYRef * d;
+            
+            const commonPhase = k * (distInc + d);
+
+            const xOffset = amplitude * Math.sin(commonPhase);
+            const yOffsetPhaseShifted = amplitude * Math.sin(commonPhase + Math.PI / 2);
+
+            const corkscrewFactor = 0.6; 
+
+            const helixXOffset = xOffset * normXRef + yOffsetPhaseShifted * (normXRef * 0.3 + 0.4) * corkscrewFactor;
+            const helixYOffset = xOffset * normYRef + yOffsetPhaseShifted * (normYRef * 0.3 - 0.4) * corkscrewFactor;
+
+            const posX = currentX + helixXOffset;
+            const posY = currentY + helixYOffset;
+
+            if (d === 0) ctx.moveTo(posX, posY);
+            else ctx.lineTo(posX, posY);
+        }
+        ctx.stroke();
+
+    </script>
+</body>
+</html>
