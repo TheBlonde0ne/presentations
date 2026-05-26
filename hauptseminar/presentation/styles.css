@@ -9,7 +9,7 @@
   --background-color-3: #ca7e7e3d;
   --background-color-pro: #63916e3d;
   --background-color-contra: #ca7e7e3d;
-  --background-color: #cac3b4a6;
+  --background-color: #cac3b46a;
   --section-divider-bg: #0055324b;
 
   --heading-font: "Source Serif 4", Georgia, serif;
@@ -502,6 +502,13 @@
   background: white;
   border: 2px solid var(--list-one);
   color: var(--list-one);
+}
+
+.flow-node.black {
+  background: white;
+  border: 2px solid var(--list-three);
+  color: black;
+  text-align: left;
 }
 
 .flow-arrow {
