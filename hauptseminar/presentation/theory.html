@@ -390,25 +390,24 @@
       </ul>
     </div>
 
-    <div class="padded" style="background: rgba(0,0,0,0.03); display: flex; flex-direction: column; justify-content: center; align-items: center; border-radius: 8px;">
-      <h5 style="margin: 0 0 10px 0; font-size: 18px; font-weight: 600; color: #555;">Laboratory vs. Crystal Coordinates</h5>
+    <div class="padded">
+      <h4>Zirconium Dioxide $\text{ZrO}_2$</h4>
       
-      <!-- Quick ASCII or Text Visualizer for the Slide -->
-      <div style="font-family: monospace; font-size: 14px; background: white; padding: 15px; border-radius: 6px; border: 1px solid #ccc; line-height: 1.3;">
-        y (Lab Axis)<br>
-        ▲   &nbsp; / b (Crystal Axis)<br>
-        │ &nbsp;/ <br>
-        │ /  &beta; &ne; 90&deg;<br>
-        │/__________► x (Lab Axis)<br>
-        └──► a (Crystal Axis)<br>
-      </div>
+      <model-viewer 
+         src="ZrO2.glb" 
+         alt="3D Crystal Structure" 
+         auto-rotate 
+         style="width: auto; height: 60%;">
+        </model-viewer>
       
       <p style="font-size: 14px; color: #666; text-align: center; margin-top: 15px; font-style: italic;">
-        Applying $E_x$ yields a projection along both $a$ and $b$, mechanically generating an $J_y$ response.
+        Applying $E_x$ yields a projection along both $a$ and $b$, mechanically generating an $J_y$ response.<br>
+        Lattice parameters:<br> [$\alpha = 90.00^\circ, \beta = 99.44^\circ, \gamma = 90.00^\circ$]
       </p>
     </div>
 
   </div>
+  <div class="footnote">materialsproject.org: mp-2858</div>
 </section>
 </section>
 
@@ -682,6 +681,31 @@
 </section>
 
 
+<section class="cont">
+        <h2><strong style="color:#6d0909">M</strong>agneto-<strong style="color:#6d0909">O</strong>ptical <strong style="color:#6d0909">K</strong>ramers-<strong style="color:#6d0909">K</strong>ronig <strong style="color:#6d0909">A</strong>nalysis</h2>
+        <h3>Experimental Setup and Data Analysis: Broad Band</h3>
+    
+        <div class="grid two" style="grid-template-columns: 1fr 2fr;margin-top: 20px;">
+          <div class="padded">
+            <h4>Measurement</h4>
+            <p>Far-infrared optical and magneto-optical spectra of bismuth at 10K.
+            </p>
+            <ul>
+              <li>(a) and (b): Zero field reflectivity and optical conductivity.</li>
+              <li>(c): Magneto-reflectivity (blue)and Kerr rotation (red) at 7T.</li>
+              <li>(d): Real part of optical conductivity for the two circular polarizations obtained using MOKKA</li>
+            </ul>
+          </div>
+
+          <div class="concept-card"><img src="mokka_bismuth.png" alt="" style="height: auto; width: 100%;"></div>
+          
+        </div>
+        <div class="footnote">
+          Levallois et al., Rev. Sci. Instrum. 86, 033906 (2015)
+        </div>
+      </section>
+
+
 
 
       <section class="cont">
@@ -723,29 +747,7 @@
         </aside>
       </section>
 
-<section class="cont">
-        <h2><strong style="color:#6d0909">M</strong>agneto-<strong style="color:#6d0909">O</strong>ptical <strong style="color:#6d0909">K</strong>ramers-<strong style="color:#6d0909">K</strong>ronig <strong style="color:#6d0909">A</strong>nalysis</h2>
-        <h3>Experimental Setup and Data Analysis: Broad Band</h3>
-    
-        <div class="grid two" style="grid-template-columns: 1fr 2fr;margin-top: 20px;">
-          <div class="padded">
-            <h4>Measurement</h4>
-            <p>Far-infrared optical and magneto-optical spectra of bismuth at 10K.
-            </p>
-            <ul>
-              <li>(a) and (b): Zero field reflectivity and optical conductivity.</li>
-              <li>(c): Magneto-reflectivity (blue)and Kerr rotation (red) at 7T.</li>
-              <li>(d): Real part of optical conductivity for the two circular polarizations obtained using MOKKA</li>
-            </ul>
-          </div>
 
-          <div class="concept-card"><img src="mokka_bismuth.png" alt="" style="height: auto; width: 100%;"></div>
-          
-        </div>
-        <div class="footnote">
-          Levallois et al., Rev. Sci. Instrum. 86, 033906 (2015)
-        </div>
-      </section>
       </section>
 
 
@@ -835,7 +837,7 @@
 
 <!-- MUELLER MATRIX -->
 <section>
-<section data-auto-animate class="cont">
+<section class="cont">
   <h2> Mueller Matrix Analysis</h2>
   <h3>alternative optical response decomposition</h3>
   <div class="footnote">Hilfiker et al., Adv. Opt. Techn. 2022</div>
@@ -860,7 +862,7 @@
 
 						<div class="flow-node secondary" data-step="6" id="flow-6">Final Tensor $\sigma(\omega)$</div>
 </section>
-<section data-auto-animate class="cont">
+<section class="cont">
   <h2> Mueller Matrix Analysis</h2>
   <h3>alternative optical response decomposition</h3>
   <div class="footnote">Hilfiker et al., Adv. Opt. Techn. 2022</div>
@@ -894,7 +896,7 @@
             </ul>
           </div>
 </section>
-<section data-auto-animate class="cont">
+<section class="cont">
   <h2> Mueller Matrix Analysis</h2>
   <h3>alternative optical response decomposition</h3>
   <div class="footnote">Hilfiker et al., Adv. Opt. Techn. 2022</div>
@@ -933,7 +935,7 @@
             </p>
           </div>
 </section>
-<section data-auto-animate class="cont">
+<section class="cont">
   <h2> Mueller Matrix Analysis</h2>
   <div class="footnote">Hilfiker et al., Adv. Opt. Techn. 2022</div>
   <div style="display:flex; align-items:center; justify-content:space-between; gap:0px; flex-wrap:wrap; margin-top:20px;margin-bottom: 10px;" data-id="workflow">
@@ -979,7 +981,7 @@
             <p style="text-align: center;">System is reduced to a finite set of global fit parameters: <br> <highlight>amplitudes ($A$)</highlight>, <highlight>resonance energies ($\omega_0$)</highlight>, and <highlight>broadenings ($\Gamma$)</highlight></p>
           </div>
 </section>
-<section data-auto-animate class="cont">
+<section class="cont">
   <h2> Mueller Matrix Analysis</h2>
   <div class="footnote">Hilfiker et al., Adv. Opt. Techn. 2022</div>
       <div style="display:flex; align-items:center; justify-content:space-between; gap:0px; flex-wrap:wrap; margin-top:20px;margin-bottom: 10px;" data-id="workflow">
@@ -1489,41 +1491,46 @@ $$I_{2\omega}(\phi) \propto \Delta \cdot \cos2(\phi+\phi_0)$$
   <div style="display: flex; gap: 30px; flex: 1; align-items: stretch;">
     
     <!-- Column 1: Optical Mapping -->
-    <div class="padded" style="flex: 1; display: flex; flex-direction: column; justify-content: space-between;">
+     <div style="flex: 1; display: flex; flex-direction: column; justify-content: space-between;">
+    <div class="padded">
       <div>
         <h4 style="color: var(--list-three); margin: 0 0 15px 0;">Magneto-Optical Trackers</h4>
         <p style="font-size: 18px; line-height: 1.5; margin: 0 0 15px 0; color: gray">
           By mapping the complex reflection coefficients, isolate elements linked directly to the off-diagonal dielectric tensor $\epsilon_{xy}(\omega)$:
         </p>
         <ul style="margin: 0; padding-left: 20px; font-size: 18px; line-height: 1.6; color: #8b949e;">
-          <li style="font-size: 20px;"><strong>$I_{\omega} \propto \text{MCD} \propto L^3 \sin(3\theta_L)$</strong></li>
-          <li style="font-size: 20px;"><strong>$I_{2\omega}(\phi) \propto \Delta \cdot \cos[2(\phi + \phi_0)]$</strong></li>
-          <li style="font-size: 20px;"><strong>$\Delta\propto L^2$</strong></li>
+          <li style="font-size: 20px; color:"><strong>$I_{\omega} \propto \text{MCD} \propto L^3 \sin(3\theta_L)$</strong></li>
+          <li style="font-size: 20px; color:"><strong>$I_{2\omega}(\phi) \propto \Delta \cdot \cos[2(\phi + \phi_0)]$</strong></li>
+          <li style="font-size: 20px; color:"><strong>$\Delta\propto L^2$</strong></li>
         </ul>
       </div>
-      <div style="background: rgba(46, 160, 67, 0.1); border: 1px solid var(--primary-color); border-radius: 6px; padding: 12px; font-size: 18px; color: var(--primary-color); font-weight: 500; margin-bottom: 5px;">
+      
+    </div>
+    <div style="background: rgba(46, 160, 67, 0.1); border: 1px solid var(--primary-color); border-radius: 6px; padding: 12px; font-size: 18px; color: var(--primary-color); font-weight: 500; margin-bottom: 5px;">
           <h4>Conclusion</h4>
-          <p style="font-size: 20px;">
+          <p style="font-size: 24px;">
           The stress is not changing the size of the altermagnetic order parameter ($L$). It is continuously rotating its direction ($\theta_L$).</p>
         </div>
-    </div>
+        </div>
 
     <!-- Column 2: Experimental Verdict -->
-    <div class="padded" style="flex: 1; display: flex; flex-direction: column; justify-content: space-between;">
+    <div style="flex: 1; display: flex; flex-direction: column; justify-content: space-between;">
+    <div class="padded">
       <div>
         <h4 style="color: var(--list-two); margin: 0 0 15px 0;">The Discovery</h4>
-        <p style="font-size: 20px; line-height: 1.5; margin: 0 0 25px 0; color: black">
+        <p style="font-size: 20px; line-height: 1.5; margin: 0 0 25px 0; color: grey">
           Under applied stress, <strong>MCD and $\phi_0$ evolve continuously</strong>, while <strong>$\Delta$ remains constant.</strong><br>
           The <strong>$1/q^2$ Fano parameter scaling</strong> supports spin-splitting.
         </p>
         
       </div>
-      <div style="background: rgba(74, 111, 180, 0.225); border: 1px solid var(--primary-color); border-radius: 6px; padding: 12px; font-size: 18px; color: var(--primary-color); font-weight: 500; margin-bottom: 5px;">
-          <h4 style="color: #003f25;">Application Rule</h4>
-          <p style="font-size: 20px;">
-          For applied altermagnetic material like in spin-tronics, keeping temperature and strain constant might be essential.</p>
-        </div>
-        </div>
+    </div>
+    <div style="background: rgba(74, 111, 180, 0.225); border: 1px solid var(--primary-color); border-radius: 6px; padding: 12px; font-size: 18px; color: var(--primary-color); font-weight: 500; margin-bottom: 5px;">
+        <h4 style="color: #003f25;">Application Rule</h4>
+        <p style="font-size: 24px;">
+        For applied altermagnetic material like in spin-tronics, keeping temperature and strain constant might be essential.</p>
+      </div>
+      </div>
     </div>
 
 
@@ -1847,9 +1854,9 @@ $$I_{2\omega}(\phi) \propto \Delta \cdot \cos2(\phi+\phi_0)$$
       <section>
         <section class="cont"><h2>Identifying the Altermagnetic State</h2><h3>The DFT Comparison (NM vs. AFMe vs. AFMo)</h3>
           <div class="footnote">Mathew Roy et al., arXiv:2604.28105</div>
-          <div class="grid two" style=" margin-top: 20px;">
+          <div class="grid-2" style=" margin-top: 20px;">
           <div class="concept-card" style=" padding: 5px;">
-          <img src="fanoline.png" alt="Comparison of DFT simulated optical conductivity spectra for different magnetic configurations against experimental measurements" style="width:100%; height: auto; margin-top: 0px;">
+          <img src="fanoline.png" alt="Comparison of DFT simulated optical conductivity spectra for different magnetic configurations against experimental measurements" style="width:100%; height: auto;">
         </div>
         <div>
 
@@ -1859,7 +1866,7 @@ $$I_{2\omega}(\phi) \propto \Delta \cdot \cos2(\phi+\phi_0)$$
               <li>Metallicity: Drude peak at $\omega = 0$</li>
               <li>New interband transition: peak in doped material at $\sim 800\text{ cm}^{-1}$</li>
             </ul>
-            <h4>Conclusion</h4>
+            <h4 style="margin-top: 40px;">Conclusion</h4>
             <p style="font-style: italic;"> The existence and position are a direct fingerprint of the new band structure. Now, we can compare this fingerprint to our theoretical models.</p>
         </div>
 
@@ -2056,6 +2063,9 @@ Quote the paper directly, as you did in your motivation slide: "Adding magnetism
 </div>
 </section>
 
+
+</section>
+
 <section class="section-divider" data-state="is-section-divider">
 <h1>Thank you!</h1>
 <div class="padded plot" style="margin-top: 40px;">
@@ -2063,11 +2073,90 @@ Quote the paper directly, as you did in your motivation slide: "Adding magnetism
 </div>
 </section>
 
+
+<section class="section-divider" data-state="is-section-divider">
 </section>
 
 
 
+<section>
+    <!-- SLIDE 1: THE SURPRISE IN A COMMON MATERIAL -->
+    <section class="cont">
+        <h2>Off-Diagonal Elements: $\alpha-\text{Fe}_2\text{O}_3$</h2>
+        <h3>A Giant MOKE in a "Simple" Antiferromagnet</h3>
+        <div class="grid two" style="margin-top: 20px;">
+            <div class="padded">
+                <h4>The Candidate: Hematite</h4>
+                <ul>
+                    <li>$\alpha-\text{Fe}_2\text{O}_3$ is a  <strong>collinear</strong> antiferromagnetic insulator.</li>
+                    <li>With zero net magnetization (M=0), it was long considered "invisible" to MOKE.</li>
+                    <li>But crystal structure allows for the breaking of $\mathcal{T}t\mathcal{S}$ symmetry.</li>
+                </ul>
+                <h4 style="margin-top: 20px;">The Experimental Surprise</h4>
+                <ul>
+                    <li>A <strong>giant spontaneous Kerr effect</strong> ($\theta_K \approx 80 \text{ mdeg}$) is observed.</li>
+                    <li>The tiny net magnetization ($\Delta M \approx 0.006 \mu_B/\text{Fe}$) is far too small to explain this signal.</li>
+                </ul>
+            </div>
+            <div class="padded plot">
+                <img src="fe2o3_moke.png" alt="Plot showing a large spontaneous Kerr rotation in Fe2O3 despite near-zero magnetization" style="width: 75%; height: auto; margin-left: 40px;">
+            </div>
+        </div>
+        <div class="footnote">H. Yoshimochi et al., arXiv:2601.13723v1 [cond-mat.str-el] (2026)</div>
+    </section>
 
+    <!-- SLIDE 2: THE SYMMETRY EXPLANATION -->
+    <section class="cont">
+        <h2>The Answer is Symmetry</h2>
+        <h3>The Morin Transition as an "On/Off" Switch</h3>
+        <div class="grid two" style="margin-top: 20px;">
+            <div class="padded plot">
+                <img src="fe2o3_symmetry.png" alt="Diagram showing the change in magnetic point group and optical conductivity tensor across the Morin transition in Fe2O3" style="width: 100%; height: auto; margin-top: 20px;">
+            </div>
+            <div class="padded">
+                <h4>Easy-Plane Phase (T > 260 K)</h4>
+                <ul>
+                    <li>Spins lie in the basal plane.</li>
+                    <li>The magnetic point group (2/m) <strong>allows</strong> for non-zero off-diagonal elements ($\sigma_{yz}$).</li>
+                    <li>This symmetry creates a "fictitious magnetic field" generating the MOKE signal.</li>
+                </ul>
+                <h4 style="margin-top: 10px;">Easy-Axis Phase (T < 260 K)</h4>
+                <ul>
+                    <li>Spins reorient along the c-axis during the "Morin transition".</li>
+                    <li>The new magnetic point group (3'm) <strong>forbids</strong> any off-diagonal elements.</li>
+                    <li>The spontaneous Kerr effect vanishes, proving it is tied to the specific AFM order.</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footnote">H. Yoshimochi et al., arXiv:2601.13723v1 [cond-mat.str-el] (2026)</div>
+    </section>
+
+    <!-- SLIDE 3: THE DFT CONFIRMATION -->
+    <section class="cont">
+        <h2>DFT Confirms the Microscopic Origin</h2>
+        <h3>Theory vs. Experiment for the Easy-Plane Phase</h3>
+        <div class="grid two" style="margin-top: 20px;">
+            <div class="padded">
+                <h4>Decisive Test</h4>
+                <ul>
+                    <li>First-principles calculations were performed for the easy-plane AFM state.</li>
+                    <li>Crucially, the simulation was run assuming <strong>zero net magnetization (M=0)</strong>.</li>
+                </ul>
+                <h4 style="margin-top: 10px;">Perfect Match</h4>
+                <ul>
+                    <li>The simulation perfectly reproduces the experimental Kerr rotation ($\theta_K$) and ellipticity ($\eta_K$).</li>
+                    <li>This includes the spectral shape, peak position (~2.5 eV), and absolute magnitude.</li>
+                    <li>This provides conclusive evidence that the giant MOKE is an intrinsic property of the TtS-broken AFM order itself.</li>
+                </ul>
+            </div>
+            <div class="padded plot">
+                <img src="fe2o3_dft_b.png" alt="Comparison of experimental MOKE spectra with DFT calculations for Fe2O3, showing excellent agreement" style="width: 80%; height: auto; margin-top: 0px;">
+                <img src="fe2o3_dft_c.png" alt="Comparison of experimental MOKE spectra with DFT calculations for Fe2O3, showing excellent agreement" style="width: 80%; height: auto; margin-top: 0px;">
+            </div>
+        </div>
+        <div class="footnote">H. Yoshimochi et al., arXiv:2601.13723v1 [cond-mat.str-el] (2026)</div>
+    </section>
+</section>
 
 
 <!-- presentation ends here -->
