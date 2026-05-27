@@ -222,7 +222,7 @@
       <li>third part is about FeSb2</li>
       <li>Now we identify a altermagnet</li>
       <li>we investigate diagonal optical conductivity tensor element</li>
-      <li>compare them to DFT again</li>
+      <li>compare them to DFT</li>
     </ul>
   </aside>
 <h2 style="font-size: 40px;">Case Studies:<br>Diagonal Elements of $\tilde{\sigma}_{ij}$</h2>
@@ -307,6 +307,17 @@
           <aside class="notes">
             The key quantity we will focus on is the optical conductivity tensor, which describes how the material responds to an applied electric field at different frequencies. In particular, we will see how the off-diagonal elements of this tensor can serve as a fingerprint for altermagnetism, distinguishing it from both ferromagnetic and antiferromagnetic materials.
             If no magnetization is present, the conductivity tensor is diagonal. In a ferromagnet, the magnetization leads to off-diagonal elements due to the breaking of time-reversal symmetry. In an altermagnet, we also get off-diagonal elements, but they arise from the unique symmetry of the spin-splitting in k-space, even though the net magnetization is zero. This is a key point that we will explore in detail.
+            <ul>
+              <li>key quantity we will focus on is $\sigma$</li>
+              <li>this describes how a material responds to an electric field with different frequencys</li>
+              <li>we can shine light on a material and measure $R$, $\eta$, $\theta$</li>
+              <li>usually we describe that via Linear Response Theorem</li>
+              <li>Note: dielectrical tensor and $\sigma$ can be "interchanged"</li>
+              <li>basic case: not a constant but a diagonal tensor</li>
+              <li>symmetry breaking leads to off diagonal elements</li>
+              <li>these offdiagonals can be a fingerprint of altermagnetism, which is time reversal symmetry broken</li>
+              <li>But there are other sources for off-diagonal elements</li>
+            </ul>
           </aside>
             <h2>Optical Behavior</h2>
             <h3>Linear Response Theorem and the Optical Conductivity Tensor</h3>
@@ -365,6 +376,13 @@
         </ul>
     </div>
 </div>
+<aside class="notes">
+  <ul>
+    <li>We can divide the off diag elements into symmetric and antisymmetric case</li>
+    <li>symmetric is related to some structural symmetry breaking</li>
+    <li>to identify an altermagnet we need to isolate the altermagnetic origin</li>
+  </ul>
+</aside>
 </section>
 
 
@@ -409,6 +427,14 @@
   </div>
   <div class="footnote">materialsproject.org: mp-2858</div>
 </section>
+<aside class="notes">
+  <ul>
+    <li>An easy example for symmetry driven offdiag:</li>
+    <li>zirconium dioxide</li>
+    <li>two of the lattice axis align with our karthetian axis, one axis is of</li>
+    <li>Applying an electric field results in an off diagonal element</li>
+  </ul>
+</aside>
 </section>
 
 
@@ -417,7 +443,20 @@
 <section>
         <section class="cont">
           <aside class="notes">
-            Now that we understand the theoretical basis for the magneto-optical response in altermagnets, we can discuss how to experimentally measure this response. The primary technique used to probe the off-diagonal elements of the optical conductivity tensor is the Magneto-Optical Kerr Effect, or MOKE. In a MOKE experiment, we shine polarized light onto the surface of a magnetized material and measure how the polarization state of the reflected light changes. The Kerr rotation angle \(\theta_K\) and ellipticity \(\eta_K\) are directly related to the real and imaginary parts of the off-diagonal conductivity \(\tilde{\sigma}_{xy}\). By carefully analyzing these changes in polarization, we can extract information about the optical conductivity tensor and thus gain insights into the underlying electronic structure of the altermagnet. This technique is particularly powerful because it allows us to probe the bulk properties of the material, providing a complementary perspective to surface-sensitive techniques like ARPES.
+            <ul><li>
+Now we want to experimentally measure this response
+            </li>
+            <li>primary technique used to probe the off-diagonal elements of the optical conductivity tensor is the Magneto-Optical Kerr Effect, or MOKE</li>
+            <li>shine polarized light onto the surface of a magnetized material</li>
+            <li>measure how the polarization state of the reflected light changes</li>
+            <li>Kerr rotation angle $\theta_K$ and ellipticity $\eta_K$ are directly related to the real and imaginary parts of the off-diagonal conductivity \(\tilde{\sigma}_{xy}\)</li>
+            <li>analyzing these changes in polarization, we can extract information about the optical conductivity tensor</li>
+            <li>gain insights into the underlying electronic structure of the altermagnet</li>
+            <li>powerful because it allows us to probe the bulk properties of the material</li>
+            <li>unlike surface-sensitive techniques like ARPES</li>
+            <li>focus on the Polar Kerr effect</li>
+            <li>lets us reduce the matrix to only xy-relevant terms</li>
+          </ul>
           </aside>
         <h2>The Magneto-Optical Kerr Effect (MOKE)</h2>
         <h3>Measuring the Optical Conductivity Tensor</h3>
@@ -458,7 +497,7 @@
       </section>
       <section>
         <aside class="notes">
-          This is a small animation showing that we send a circular polarized wave onto a surface and analyze the reflected wave. We simple deconstruct the reflected wave into linear polarized components and we can calculate via phase difference and amplitude difference the rotation angle and ellipticity.
+          This is a scetch of a measurement. We simple deconstruct the reflected wave into linear polarized components and we can calculate via phase difference and amplitude difference the rotation angle and ellipticity.
         </aside>
         <h2>The Magneto-Optical Kerr Effect (MOKE)</h2>
         <h3>Measuring the Kerr Rotation and Ellipticity</h3>
@@ -470,7 +509,17 @@
 <div class="concept-card" style="margin-top: 20px;">
   <img src="FePS3_rot.png" alt="kerr rotation measurement" style="height: auto; width: 75%; margin-left: 80px">
 </div>
-<div class="footnote">K. Panda et al., arXiv:2507.1723 [cond-mat.str-el] (2025) </div>
+<div class="footnote">K. Panda et al., arXiv:2507.17238 [cond-mat.str-el] (2025) </div>
+<aside class="notes">
+  <p>a typical measurement of rotation<br>
+  actually a small "mistake"<br>
+  FePS3
+measured at 5 K under ±7 T magnetic field for two FIR polarizer orientations: (a,c) Pol 1 and (b,d) Pol 2. Pronounced
+Faraday rotation features appear at the 122 cm-1 excitation, showing symmetric splitting with field, as well as at several
+phonon modes, highlighting strong spin-phonon coupling in the antiferromagnetic state. Transmission below 1% is masked
+(gray) to avoid unreliable Faraday angle extraction.
+  </p>
+</aside>
 </section>
 </section>
 
@@ -508,6 +557,17 @@
   </div>
   </div>
   <div class="footnote">Iguchi et al., Phys. Rev. Research 7, 033026 (2025)</div>
+  <aside class="notes">
+    <ul>
+      <li>Experimental setup</li>
+      <li>Monocromatic, linear polarized</li>
+      <li>send this onto the sample</li>
+      <li>gets back through a PEM: Photoelastic Modulator</li>
+      <li>Analyzer to check the rotation angle</li>
+      <li>Detector with lock In Amp</li>
+      <li>Measured currents at analyzer give us measurements of $\eta$ and $\theta$</li>
+    </ul>
+  </aside>
 </section>
 <section class="cont" data-auto-animate>
   <h2>Measuring the MOKE Response</h2>
@@ -534,6 +594,31 @@
     <h4>Useless or very high effort for broad band measuring!</p>
   </div>
   <div class="footnote">Iguchi et al., Phys. Rev. Research 7, 033026 (2025)</div>
+  <aside class="notes">
+    <ul>
+      <li>Measured currents at analyzer give us measurements of $\eta$ and $\theta$</li>
+      <li>very sensible experiment, up to milliradians</li>
+      <li>Lock in amp blocks out noise from laser or vibration</li>
+      <li>but we need chromatic hardware: PEM</li>
+      <li>we measure each frequency individually</li>
+    </ul>
+  </aside>
+</section>
+<section class="cont">
+  <h2>Measuring the MOKE Response</h2>
+  <h3>Experimental Setup and Data Analysis: Single Frequency</h3>
+  <div class="padded-unfit" style="display: flex; justify-content: center; align-items: center; background: white; margin-top: 10px;"><img src="mokka45.png" alt="Diagram of MOKKA fast protocol setup with fixed polarizer and analyzer at 45 degrees" style="height: 140px; display: block;"></div>
+  <div class="concept-card" style="display: flex; justify-content: center; align-items: center; margin-top: 20px"><img src="single_freq_moke.png" alt="Diagram of MOKKA fast protocol setup with fixed polarizer and analyzer at 45 degrees" style="height: 300px; display: block;"></div>
+
+  <div class="footnote">F. Genuzio et al., Journal of Syncrotron Radiation, (2021/03)</div>
+  <aside class="notes">
+    <ul>
+      <li>Single frequency measurements</li>
+      <li>varying magnetic fields</li>
+      <li>needs high sensitivity</li>
+      <li> Pt/Co/Pt test samples</li>
+    </ul>
+  </aside>
 </section>
 </section>
 
@@ -561,7 +646,15 @@
   <p style="margin-left: 25px; margin-right: 25px;">Linear polarizers can measure absolute reflectivity $R$ and Kerr rotation $\theta_K$ but without a waveplate, <highlight>we cannot measure ellipticity!</highlight></p>
 </div>
 </div>
-
+<aside class="notes">
+  <ul>
+    <li>in order to get to broad band</li>
+    <li>remove chormatic hardware: PEM</li>
+    <li>wideband linear polarizers</li>
+    <li>these cost to much to aquire for each freq</li>
+    <li>we cannot measure ellipticity now</li>
+  </ul>
+</aside>
 </section>
 
 
@@ -592,6 +685,13 @@
           </div>
         </div>
       </div>
+      <aside class="notes">
+        <ul>
+          <li>dont worry we use a handy tool</li>
+          <li>if we find a auxilary function, use KK</li>
+          <li>reference to ExPhys6</li>
+        </ul>
+      </aside>
 </section>
 </section>
 
@@ -619,7 +719,17 @@
     <div class="footnote">
           Levallois et al., Rev. Sci. Instrum. 86, 033906 (2015)
         </div>
-        <aside class="notes">We measure the total intensity $R$ and the rotation $\theta_K$. Because $f(\omega)$ is causal, the first KK transform gets us the dichroism ratio $c$. Once we have the sum $R$ and the ratio $c$, it's simple algebra to separate out $R_+$ and $R_-$. From there, a second standard KK transform on the individual components recovers the phases $\phi_{\pm}$, leaving us with the absolute complex reflectivity coefficients without using a single waveplate.</aside>
+        <aside class="notes">
+          <ul>
+            <li> measure the total intensity $R$ and the rotation $\theta_K$</li>
+            <li>Because $f(\omega)$ is causal, the first KK transform gets us the dichroism ratio $c$</li>
+            <li>we have the sum $R$ and the ratio $c$, it's simple algebra to separate out $R_+$ and $R_-$</li>
+            <li>a second standard KK transform on the individual components recovers the phases $\phi_{\pm}$</li>
+            <li>leaving us with the absolute complex reflectivity coefficients without using a single waveplate $\epsilon_{xx} = \frac{(1+r)^2}{(1-r)^2}</li>
+            <li>from here we use fresnel equations to calculate dielectric tensor</li>
+            <li>then we have the optical conductivity</li>
+          </ul>
+          We. . Once . From there, , .</aside>
   <h2><strong style="color:#6d0909">M</strong>agneto-<strong style="color:#6d0909">O</strong>ptical <strong style="color:#6d0909">K</strong>ramers-<strong style="color:#6d0909">K</strong>ronig <strong style="color:#6d0909">A</strong>nalysis</h2>
   <h3>Experimental Setup and Data Analysis: Broad Band</h3>
 
@@ -703,6 +813,13 @@
         <div class="footnote">
           Levallois et al., Rev. Sci. Instrum. 86, 033906 (2015)
         </div>
+        <aside class="notes">
+          <ul>
+            <li>this is an example of this measurement technique</li>
+            <li>measurements on the left</li>
+            <li>resulting tensor elements on the right</li>
+          </ul>
+        </aside>
       </section>
 
 
@@ -743,7 +860,12 @@
           Levallois et al., Rev. Sci. Instrum. 86, 033906 (2015)
         </div>
         <aside class="notes">
-          Measuring the tiny MO signals in altermagnets requires extreme precision. Standard techniques like ellipsometry, which use quarter-wave plates, are often plagued by chromatic aberrations and are difficult to implement over a broad energy range. MOKKA is the superior solution. It's a brilliant experimental and analytical protocol. The core idea is to leverage the fundamental principle of causality, embodied by the Kramers-Kronig relations. We start by measuring two simple quantities with linear polarizers: the total reflectivity and the Kerr rotation angle. The mathematical trick is to recognize that the logarithm of the ratio of the left- and right-handed complex reflectivities is itself a causal response function. We have measured its imaginary part—the Kerr angle. Therefore, we can use the Kramers-Kronig integral to calculate its real part, which is the logarithm of the circular dichroism ratio. Once we have both the sum and the ratio of the reflectivities, we can algebraically separate them. A final KK transform gives us the phases, and we have the complete optical response without ever touching a wave plate.
+          <ul>
+            <li>we still need rotating parts in the setup</li>
+            <li>there are cases in which you cant access the polarizers</li>
+            <li>good examples are very low temperatures or high magnetic fields</li>
+            <li>we need yet another, simpler approach</li>
+          </ul>
         </aside>
       </section>
 
@@ -796,7 +918,12 @@
           Levallois et al., Rev. Sci. Instrum. 86, 033906 (2015)
         </div>
         <aside class="notes">
-          One of the most powerful applications of the MOKKA framework is the fast measurement protocol. In many experiments, especially those at cryogenic temperatures and inside high-field magnets, we simply cannot have moving parts. Rotating a polarizer is not an option. The fast protocol solves this. By fixing the polarizer and analyzer at 45 degrees to each other, we place the system at the point of maximum sensitivity to any small rotation of the polarization plane. The intensity measured by the detector becomes a simple linear function of the Kerr angle. By flipping the magnetic field and taking a ratio of the intensities, all common mode factors like the sample reflectivity and instrument throughput cancel out, leaving us with a signal directly proportional to the Kerr rotation. This is a game-changer, allowing us to perform these sensitive measurements in the most challenging experimental environments.
+          <ul>
+            <li>This leads to the 'Fast Protocol'. By fixing the polarizer and analyzer at 45 degrees, we eliminate all moving parts. The system is now at its most sensitive point to any small rotation.</li>
+            <li>the intensity becomes linear to kerr rotation</li>
+            <li>By flipping the magnetic field and taking an intensity ratio, all common factors cancel out, leaving a signal directly proportional to the Kerr angle.</li>
+            <li>common measurement technique, for example used in iron antimonide paper</li>
+          </ul>
         </aside>
       </section>
 <section class="cont">
@@ -861,6 +988,17 @@
           <div class="flow-arrow">⇄</div>
 
 						<div class="flow-node secondary" data-step="6" id="flow-6">Final Tensor $\sigma(\omega)$</div>
+
+<aside class="notes">
+  <ul>
+    <li>There is another measurement technique</li>
+    <li>the "ultimate weapon" if you want to be sure</li>
+    <li>Important: its complete (linear birefringence, dichroism, depolarization, and magneto-optic cross-coupling)</li>
+    <li>take much more time, not real time tracking</li>
+    <li>might lack sensitivity</li>
+  </ul>
+</aside>
+
 </section>
 <section class="cont">
   <h2> Mueller Matrix Analysis</h2>
@@ -1068,7 +1206,12 @@
 </section>
 
 
-
+<section>
+  <h2>Comparison between MOKKA and Mueller</h2>
+  <div class="padded" style="background: #0f172a; margin-top: 20px">
+    <img src="mokemueller.png" alt="" style="width: auto; height: 500px;">
+  </div>
+</section>
 
 
 <section class="cont">
@@ -1100,6 +1243,14 @@
       
     </div>
   </div>
+  <aside class="notes">
+    <ul>
+      <li>we need some comparison</li>
+      <li>ab-initio calculations are pretty good</li>
+      <li>reminder: DFT is not perfect, system dependent!</li>
+      <li>how do we extract optical conductivity from band structure?</li>
+    </ul>
+  </aside>
 </section>
 
 
@@ -1108,10 +1259,17 @@
 
       <section>
         <aside class="notes">
-          Now that we have a solid understanding of the theoretical framework and the experimental techniques, we can dive into the mathematical details of how the optical conductivity tensor is calculated from the electronic band structure. The key equation that describes this relationship is the Kubo formula, which expresses the optical conductivity as a sum over all possible electronic transitions between occupied and unoccupied states in the Brillouin zone. The Kubo formula includes a resonance condition in the denominator, which dictates when a peak in the optical response occurs, and matrix elements that relate to the Berry curvature of the bands. In altermagnets, due to their unique symmetry properties, these matrix elements do not cancel out when summed over the Brillouin zone, leading to a net non-zero off-diagonal conductivity \(\tilde{\sigma}_{xy}\). This is a crucial point that allows us to connect the theoretical predictions with experimental observations and provides a powerful tool for identifying altermagnetism in materials.
-          Another reason we need a quantum mechanical description is that we can simulate the optical conductivity using DFT calculations. By calculating the band structure and the relevant matrix elements, we can predict the optical response of a material and compare it directly with experimental measurements, providing a stringent test for the presence of altermagnetism.
-          But DFT simulations still need an order to be initialized. So for comparison we run simulations for every magnetic order type and compare the resulting optical response with the measurements to determine the correct order.
-          In a $\mathcal{PT}$-symmetric system, the Berry curvature at $\mathbf{k}$ is exactly cancelled by the Berry curvature at $-\mathbf{k}$, leading to $\sigma_{xy} = 0$. Altermagnets break $\mathcal{PT}$, allowing this 'topological' property to survive the integration over the Brillouin zone.
+          <ul>
+            <li>key equation that describes this relationship is the Kubo formula, which expresses the optical conductivity as a sum over all possible electronic transitions between occupied and unoccupied states in the Brillouin zone</li>
+            <li>Kubo formula includes a resonance condition in the denominator, which dictates when a peak in the optical response occurs</li>
+            <li>We get a peak in absorption when the photon energy matches the energy difference between an occupied and an unoccupied band.</li>
+            <li> Velocity Matrix Elements. </li>
+            <li>act as selection rules and are sensitive to the symmetry of the wavefunctions. In a conventional antiferromagnet, their contributions from k and -k exactly cancel out, leading to zero off-diagonal conductivity</li>
+            <li>In an altermagnet, because of the unique spin-rotation symmetry, this cancellation is broken. The integral over the Brillouin zone yields a net non-zero value, giving us the finite $\sigma_{xy}$ that we measure with MOKE.</li>
+            <li>calculating the band structure and the relevant matrix elements, we can predict the optical response of a material and compare it directly with experimental measurements</li>
+            <li>run simulations for all magnetic orders</li>
+            <li>compare to measurement</li>
+          </ul>
         </aside>
         <!-- SLIDE 1: The Mathematical Breakdown -->
         <section class="cont">
@@ -1255,7 +1413,13 @@
 
       <!-- SLIDE 1: THE ANATOMY OF ALERMAGNETIC MnTe -->
 <section class="cont" style="color: #e6edf3; padding: 40px; font-family: 'Segoe UI', system-ui, sans-serif; height: 100vh; box-sizing: border-box; display: flex; flex-direction: column; justify-content: space-between;">
-  
+  <aside class="notes">
+    <ul>
+      <li>MnTe is a prototypical d-wave altermagnet. Its magnetic order is described by the Néel vector, L, which is the primary order parameter.</li>
+      <li>The key challenge for using MnTe in spintronic devices is the need for large, uniform magnetic domains. This means we need to understand how to control the orientation of the Néel vector.</li>
+      <li>The Liebman-Peláez paper investigates a powerful tool for this: applied strain.</li>
+    </ul>
+  </aside>
   <!-- Header Zone -->
   <div>
     <h2>The Candidate: Hexagonal $\alpha-\text{MnTe}$</h2>
@@ -1303,6 +1467,14 @@
 
 <section>
 <section class="cont">
+  <aside class="notes">
+    <ul>
+      <li>The experiment uses a setup similar to the MOKE measurement we discussed</li>
+      <li>tracking two key optical signals as a function of in-situ strain:</li>
+      <li>Magnetic Circular Dichroism (MCD), which is proportional to L³sin(3θ_L), and the Birefringence Amplitude Δ, which is proportional to L².</li>
+      <li></li>
+    </ul>
+  </aside>
   <div class="footnote">A. Liebman-Pel&aacute;ez et al., arXiv:2604.07653 (2026)</div>
 <div style="margin-bottom: 10px;">
     <h2>Coherent N&eacute;el Vector Steering</h2>
@@ -1344,6 +1516,14 @@ $$I_{2\omega}(\phi) \propto \Delta \cdot \cos2(\phi+\phi_0)$$
     <h2>Coherent N&eacute;el Vector Steering</h2>
     <h3>Probing Off-Diagonal Elements via In-Situ Strain</h3>
 </div>
+<aside class="note">
+  <ul>
+    <li>central discovery: as strain is applied, the MCD and the birefringence angle φ₀ evolve continuously and show hysteresis.</li>
+    <li>However, the birefringence amplitude Δ remains almost perfectly constant</li>
+    <li>However, the birefringence amplitude Δ remains almost perfectly constant</li>
+    <li>strain acts as a continuous rotational knob for the altermagnetic order parameter, rather than simply switching between a few discrete domain states</li>
+  </ul>
+</aside>
 
 
 
@@ -1398,7 +1578,12 @@ $$I_{2\omega}(\phi) \propto \Delta \cdot \cos2(\phi+\phi_0)$$
   <p>$\rightarrow$ N&eacute;el Vector is the primary order parameter</p>
 </div>
 </div>
-
+<aside class="notes">
+  <ul>
+    <li>again some measurements at different points on the material</li>
+    <li>we also see that they align to the sine prediction from theory</li>
+  </ul>
+</aside>
 </section>
 
 
@@ -1408,6 +1593,15 @@ $$I_{2\omega}(\phi) \propto \Delta \cdot \cos2(\phi+\phi_0)$$
 
 <section>
 <section class="cont">
+  <aside class="notes">
+    <ul>
+      <li>Further evidence for altermagnetism in MnTe comes from looking at the diagonal conductivity. The Kimura paper studied its temperature dependence</li>
+      <li>First, they found that the energy gap E_g scales with the square of the magnetization, M(T)².</li>
+      <li>MnTe is not a ferro magnet</li>
+      <li>strongly hints at a ferromagnetic-like band splitting, a key feature of altermagnetism</li>
+      <li></li>
+    </ul>
+  </aside>
   <h2>Temperature and Strain dependence of $\text{MnTe}$</h2>
   <h3>optical measurements as indicator of altermagnetism</h3>
   <div class="grid two">
@@ -1431,6 +1625,14 @@ $$I_{2\omega}(\phi) \propto \Delta \cdot \cos2(\phi+\phi_0)$$
 
 
 <section class="cont">
+  <aside class="nodes">
+    <ul>
+      <li>They observed a Fano lineshape in one of the optical phonons</li>
+      <li>Fano shape is a classic signature of a discrete state (the phonon) interacting with a continuous background of electronic states</li>
+      <li>Fano effect appears only below the Néel temperature</li>
+      <li>-> phonons are coupling directly to the newly formed altermagnetic electronic bands</li>
+    </ul>
+  </aside>
   <h2>Temperature and Strain dependence of $\text{MnTe}$</h2>
   <h3>optical measurements as indicator of altermagnetism</h3>
   <div class="grid two">
@@ -1440,7 +1642,7 @@ $$I_{2\omega}(\phi) \propto \Delta \cdot \cos2(\phi+\phi_0)$$
       <ul>
         <li>Figure (a): $\sigma_1(\omega)$ spectra (circles) at $T = [10, 100, 200, 370] \text{ K}$ for $\hbar \omega < 150 \text{ meV}$.</li>
         <li>Figure (b): Fano asymmetric parameter ($1/q^2$ , red solid circles) of phonon peak and peak intensity ($N^*$ , blue open squares) of the 20-meV peak as a function of $T$.</li>
-        <li>Figure (c): Expected temperature-dependent electronic-structure change near EF and the origins of the peaks in $\sigma_1(\omega)$ spectra.</li>
+        <li>Figure (c): Expected temperature-dependent electronic-structure change near $E_F$ and the origins of the peaks in $\sigma_1(\omega)$ spectra.</li>
       </ul>
     </div>
     <div class="concept-card"><img src="mnte_fano.png" alt="temp dependence" style="height: auto; width: 400px; margin-top: 20px;">
@@ -1453,6 +1655,14 @@ $$I_{2\omega}(\phi) \propto \Delta \cdot \cos2(\phi+\phi_0)$$
 
 
 <section class="cont">
+  <aside class="nodes">
+    <ul>
+      <li>They observed a Fano lineshape in one of the optical phonons</li>
+      <li>Fano shape is a classic signature of a discrete state (the phonon) interacting with a continuous background of electronic states</li>
+      <li>Fano effect appears only below the Néel temperature</li>
+      <li>-> phonons are coupling directly to the newly formed altermagnetic electronic bands</li>
+    </ul>
+  </aside>
   <h2>Temperature and Strain dependence of $\text{MnTe}$</h2>
   <h3>optical measurements as indicator of altermagnetism</h3>
   <div class="grid two">
@@ -1483,7 +1693,7 @@ $$I_{2\omega}(\phi) \propto \Delta \cdot \cos2(\phi+\phi_0)$$
   
   <!-- Header Zone -->
   <div style="margin-bottom: 10px;">
-    <h2>Coherent N&eacute;el Vector Steering</h2>
+    <h2>Conclusion for $\text{MnTe}$</h2>
     <h3>Probing Off-Diagonal Elements via In-Situ Strain</h3>
   </div>
 
@@ -1574,6 +1784,13 @@ $$I_{2\omega}(\phi) \propto \Delta \cdot \cos2(\phi+\phi_0)$$
             <img src="fesb2paper.png" alt="Research paper title page on cobalt-doped FeSb2 altermagnetism" style="width: 100%; height: auto; margin-top: 0px;">
         </div>
         <div class="footnote">Mathew Roy et al.,	arXiv:2604.28105 </div>
+        <aside class="notes">
+          <ul>
+            <li>next topic will be about the Iron Di Antimonide</li>
+            <li>shout out to renjith</li>
+            <li>this paper isnt even a month old</li>
+          </ul>
+        </aside>
       </section>
       
       <!-- Concept: Introduce the material $Fe_{0.85}Co_{0.15}Sb_2$ and immediately pivot to why we aren't using the MOKE protocol you just explained.
@@ -1589,7 +1806,6 @@ $$I_{2\omega}(\phi) \propto \Delta \cdot \cos2(\phi+\phi_0)$$
     <ul>
       <li>The Promise: "Let's now turn to our next case study, FeSb₂. Based on its orthorhombic Pnnm crystal structure, which possesses the necessary rotational and translational symmetries, FeSb₂ is a textbook candidate for d-wave altermagnetism."</li>
       <li>The Problem: "However, when we measure its properties, the promise falls flat. Pure FeSb₂ is not a metal and shows no long-range magnetic order. It's a correlated, narrow-gap semiconductor.</li>
-      <li></li>
     </ul>
   </aside>
   <h2>The Parent Compound</h2>
@@ -1653,8 +1869,11 @@ $$I_{2\omega}(\phi) \propto \Delta \cdot \cos2(\phi+\phi_0)$$
       <section class="cont">
         <aside class="notes">
           <ul>
-            <li>The "Why": "So, what's wrong? Theory tells us FeSb₂ is on a magnetic knife's edge. It has two nearly-degenerate ground states—a conventional antiferromagnet (AFMe) and the altermagnet (AFMo)—that are fiercely competing. This competition, combined with strong electronic correlations, leads to violent spin fluctuations: the magnetic moments are present but are dynamically disordered, preventing any stable magnetic state from 'freezing in'."</li>
-            <li>Punchline: "FeSb₂ is a frustrated system. It wants to order, but it can't. How can we give it the push it needs?"</li>
+            <li>So, what's wrong?</li>
+            <li> Theory tells us FeSb₂ is on a magnetic knife's edge. It has two nearly-degenerate ground states—a conventional antiferromagnet (AFMe) and the altermagnet (AFMo)—that are fiercely competing.</li>
+            <li>This competition, combined with strong electronic correlations, leads to violent spin fluctuations</li>
+            <li>the magnetic moments are present but are dynamically disordered, preventing any stable magnetic state from forming</li>
+            <li>Punchline: "FeSb₂ is a system which wants to order, but it can't. How can we give it the push it needs?"</li>
           </ul>
         </aside>
         <h2>The Parent Compound</h2>
@@ -1717,9 +1936,15 @@ $$I_{2\omega}(\phi) \propto \Delta \cdot \cos2(\phi+\phi_0)$$
           
         <div class="footnote">Mathew Roy et al., arXiv:2604.28105</div>
         <aside class="notes">
-      evidenced by a sharp drop in electrical resistivity below 100 K and the emergence of a coherent Drude response in the optical conductivity.
-
-      The strong itinerant spin fluctuations that plague the parent compound are substantially quenched. This is quantitatively supported by a dramatic reduction in the Drude scattering rate (from \(\approx 905 \text{ cm}^{-1}\) in the parent to \(\approx 559 \text{ cm}^{-1}\) in the doped system at 300 K), despite the introduction of impurity scattering from the Co dopants. Itinerant spin fluctuations act as a massive scattering channel for electrons. When Co-doping stabilizes the altermagnetic order, it quenches these chaotic fluctuations. Therefore, the electrons scatter less, and the scattering rate drops—even though you just added chemical impurities (Cobalt) to the lattice!
+          <ul>
+            <li>The strategy to fix this is carrier doping</li>
+            <li>substituting 15% Cobalt for Iron, we inject electrons</li>
+            <li>similar result by injecting holes via Crome</li>
+            <li>we force the material to become metallic</li>
+            <li>we close the transport gap</li>
+            <li>susceptibility: we get a temperature independence.</li>
+            <li>even at low temperatures we have free moving electrons which have spin.</li>
+          </ul>
       </aside>
         
       </section>
@@ -1744,7 +1969,14 @@ $$I_{2\omega}(\phi) \propto \Delta \cdot \cos2(\phi+\phi_0)$$
           </div>
           </div>
         </div>
-        
+        <aside class="notes">
+          <ul>
+            <li>crystal structure remains the same</li>
+            <li>resistivity no longer diverges</li>
+            <li>we supressed the fluctuation</li>
+            <li>one stable magnetic order survived, which one?</li>
+          </ul>
+        </aside>
       </section>
       </section>
 
@@ -1843,6 +2075,18 @@ $$I_{2\omega}(\phi) \propto \Delta \cdot \cos2(\phi+\phi_0)$$
   <div class="concept-card" style="padding: 5px;">
     <img src="fesb2_sim.png" alt="Simulated Band structure and optical conductivity of FeSb2" style="width: 100%; margin-top: 40px"></div>
   </div>
+  <aside class="notes">
+    <ul>
+      <li>We start by investigating simulations with different functionals</li>
+      <li>only the parent compount</li>
+      <li>left sim: Non-magnetic, right is altermagnetic</li>
+      <li>they dont match for DOS, FeSb2 has no altermagnetism by itself</li>
+      <li>PBE seems to reproduce the band gap best</li>
+      <li>we talked about the Hubbard U: Coulomb repulsion yesterday</li>
+      <li>PBE should underestimate the locality of the lattice</li>
+      <li>works fine because of the itinerant spin flucutations</li>
+    </ul>
+  </aside>
 </section>
 
 
@@ -1867,18 +2111,37 @@ $$I_{2\omega}(\phi) \propto \Delta \cdot \cos2(\phi+\phi_0)$$
               <li>New interband transition: peak in doped material at $\sim 800\text{ cm}^{-1}$</li>
             </ul>
             <h4 style="margin-top: 40px;">Conclusion</h4>
-            <p style="font-style: italic;"> The existence and position are a direct fingerprint of the new band structure. Now, we can compare this fingerprint to our theoretical models.</p>
+            <p style="font-style: italic; margin-top: 20px;"> The existence and position are a direct fingerprint of the new band structure. Now, we can compare this fingerprint to our theoretical models.</p>
         </div>
 
         </div>
         </div>
+        <aside class="notes">
+          <ul>
+            <li>here is another proof of the metallicity:</li>
+            <li>new drude peak at low frequency in doped material</li>
+            <li>more important: a new transition peak arises</li>
+            <li>this means we have a new band structure</li>
+          </ul>
+        </aside>
         </section>
+
+
+
         <section class="cont"><h2>Identifying the Altermagnetic State</h2><h3>The DFT Comparison (NM vs. AFMe vs. AFMo)</h3>
           <div class="footnote">Mathew Roy et al., arXiv:2604.28105</div>
         <div class="concept-card" style="margin-top: 20px; padding: 5px;">
           <img src="dftcomp.png" alt="Comparison of DFT simulated optical conductivity spectra for different magnetic configurations against experimental measurements" style="width: 100%; height: auto; margin-top: 0px;">
         </div>
         <p style="text-align: center; margin-top: 20px;">Only the <highlight>AFMo</highlight> (red line) state shows a good agreement with the experimental data.</p>
+        <aside class="notes">
+          <ul>
+            <li>now to the strongest argument of altermagnetism</li>
+            <li>comparison of measurement vs magnetic orders (NM, AFMo, AFMe)</li>
+            <li>only fitting line is the red one</li>
+            <li>works in both measurement directions</li>
+          </ul>
+        </aside>
       </section>
       <section class="cont"><h2>Identifying the Altermagnetic State</h2><h3>Non-Relativistic Spin Splitting</h3>
         <div class="footnote">Mathew Roy et al., arXiv:2604.28105</div>
@@ -1901,11 +2164,22 @@ $$I_{2\omega}(\phi) \propto \Delta \cdot \cos2(\phi+\phi_0)$$
         </div>
         </div>
         </div>
+        <aside class="notes">
+          <ul>
+            <li>and we can look at the fermi surface and look for band splitting</li>
+            <li>in 3D you see the red and blue volumes are almost the same volume</li>
+            <li>no net magnetization</li>
+            <li>but when we make a cut we see clear spin splitting</li>
+            <li>also in the AFMo simulation we see spin splitting of the simulated band structure</li>
+          </ul>
+        </aside>
       </section>
       </section>
 
 
-
+<section class="section-divider" data-state="is-section-divider">
+  <h2>Cobalt doped $\text{FeSb}_2$ is definetily an Altermagnet</h2>
+</section>
 
 
 <section>
@@ -1916,14 +2190,26 @@ $$I_{2\omega}(\phi) \propto \Delta \cdot \cos2(\phi+\phi_0)$$
   <h4>Surface Probe (ARPES): Evidence for Spin-Splitting</h4>
   <img src="ruo2_arpes.png" style="height: auto; width: 100%;margin-top: 20px">
 </div>
-<aside class="notes">"Following our deep dive into FeSb₂, where optics confirmed the altermagnetic ground state, we now turn to a more controversial candidate: Ruthenium Dioxide, or RuO₂."
-"Based on its non-symmorphic crystal structure (space group P4₂/mnm), RuO₂ was a prime theoretical candidate for altermagnetism."
-"This was seemingly confirmed by surface-sensitive probes like ARPES, which reported the characteristic momentum-dependent spin-splitting. However, the story for the bulk of the material remained unclear."
-"This raises a critical question: Is the altermagnetism a purely surface phenomenon, or does it represent the true bulk electronic structure? To answer this, we need a bulk-sensitive probe. We need optics."
+<aside class="notes">
+  <ul>
+    <li>Finally, let's bring our story full circle and return to RuO₂."
+"We started with the controversy: ARPES suggested altermagnetism.</li>
+  </ul>
+
 </aside>
 <div class="footnote">Z. Lin, arXiv: 2402.04995 [cond-mat.mtrl-sci] (2024)</div>
 </section>
+
+
+
 <section class="cont">
+  <aside class="notes">
+    <ul>
+      <li>armed with our understanding of diagonal conductivity, we see the definitive proof</li>
+      <li>Maxim Wenzel and colleagues measured the diagonal optical conductivity of high-quality single-crystal RuO₂</li>
+      <li>Conclusion: The experimental data for bulk RuO₂ matches the non-magnetic model, not the altermagnetic one. The altermagnetic model fails to reproduce the sharp Pauli edge.</li>
+    </ul>
+  </aside>
 <h2>$\text{RuO}_2$ Controversy: A Model Fermi-Liquid?</h2>
 <h3>Fermi-Liquid Behavior in Bulk $\text{RuO}_2$</h3>
 <div class="grid" style="margin-top: 20px; grid-template-columns: 1fr 1fr;">
@@ -1944,13 +2230,7 @@ $$I_{2\omega}(\phi) \propto \Delta \cdot \cos2(\phi+\phi_0)$$
 
 </div>
   <div class="footnote">M. Wenzel et al., Phys. Rev. B <strong>111</strong>, (2025)</div>
-  <aside class="notes">
-    "Using the same broadband spectroscopy techniques we discussed for FeSb₂, Wenzel and colleagues measured the diagonal optical conductivity of high-quality single-crystal RuO₂."
-"The experimental data, shown on top, reveals several key features, most notably a sharp onset of absorption—a Pauli edge—which signals transitions across a topological Dirac nodal line."
-"Now, let's compare this to DFT simulations, just as we did for FeSb₂. The bottom panel shows two scenarios: a standard non-magnetic model and a model where altermagnetism is enforced."
-"The result is unambiguous. The non-magnetic calculation perfectly reproduces all features of the experiment, including the crucial Pauli edge. In stark contrast, the altermagnetic model (in red) fails spectacularly. It cannot reproduce the Pauli edge and predicts a much larger gap."
-Quote the paper directly, as you did in your motivation slide: "Adding magnetism clearly deteriorates the description of the experimental optical conductivity."
-  </aside>
+
 </section>
 
 
@@ -1986,7 +2266,9 @@ Quote the paper directly, as you did in your motivation slide: "Adding magnetism
   
 
 </div>
-
+<aside class="notes">
+  <p>Furthermore, other measurements confirm a standard paramagnetic Fermi-liquid picture, from the quadratic scaling of the scattering rate to the simple Pauli susceptibility.<br><br> This closes the case: while the surface of RuO₂ might have exotic properties, the bulk is a simple, non-altermagnetic metal.</p>
+</aside>
 </section>
 
 

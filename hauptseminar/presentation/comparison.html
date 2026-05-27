@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MOKKA vs Mueller Matrix Slide</title>
+    <style>
+        /* Modern, minimal layout for presentation preview/printing */
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+        @page {
+            size: A4 landscape;
+            margin: 0;
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: #0f172a; /* Sleek Dark Slate Blue */
+            color: #f8fafc;
+            width: 297mm;
+            height: 210mm;
+            display: block;
+            overflow: hidden;
+        }
+        .slide-container {
+            width: 297mm;
+            height: 210mm;
+            padding: 20mm 25mm;
+            position: relative;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+        }
+        /* Top Accent Bar */
+        .accent-bar {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, #38bdf8, #818cf8);
+        }
+        /* Slide Header */
+        header {
+            margin-bottom: 12mm;
+        }
+        h1 {
+            font-size: 26pt;
+            margin: 0 0 5px 0;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            background: linear-gradient(90deg, #f8fafc, #cbd5e1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .subtitle {
+            font-size: 13pt;
+            color: #38bdf8;
+            margin: 0;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        /* Table Layout */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 11pt;
+            line-height: 1.5;
+            margin-top: 5mm;
+        }
+        th, td {
+            padding: 14px 18px;
+            text-align: left;
+            border-bottom: 1px solid #334155;
+            vertical-align: top;
+        }
+        th {
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 10.5pt;
+            letter-spacing: 0.5px;
+            border-bottom: 2px solid #475569;
+        }
+        /* Column Widths & Background accents */
+        th:nth-child(1), td:nth-child(1) {
+            width: 22%;
+            font-weight: 600;
+            color: #94a3b8;
+        }
+        th:nth-child(2), td:nth-child(2) {
+            width: 39%;
+            background-color: rgba(56, 189, 248, 0.03);
+        }
+        th:nth-child(3), td:nth-child(3) {
+            width: 39%;
+            background-color: rgba(129, 140, 248, 0.03);
+        }
+        th:nth-child(2) {
+            color: #38bdf8;
+            border-bottom: 2px solid #38bdf8;
+        }
+        th:nth-child(3) {
+            color: #818cf8;
+            border-bottom: 2px solid #818cf8;
+        }
+        /* Green accent for explicit advantages */
+        .pro-highlight {
+            color: #34d399;
+            font-weight: 600;
+        }
+        /* Footer Layout */
+        footer {
+            position: absolute;
+            bottom: 15mm;
+            left: 25mm;
+            right: 25mm;
+            display: block;
+        }
+        .footer-line {
+            border-top: 1px solid #334155;
+            padding-top: 10px;
+        }
+        .takeaway {
+            font-size: 10.5pt;
+            color: #cbd5e1;
+            font-style: italic;
+        }
+        .takeaway strong {
+            color: #38bdf8;
+            font-style: normal;
+        }
+        .slide-number {
+            float: right;
+            font-size: 10pt;
+            color: #64748b;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<div class="slide-container">
+    <div class="accent-bar"></div>
+    
+    <header>
+        <p class="subtitle">Experimental Methodology Comparison</p>
+        <h1>MOKKA vs. Mueller Matrix Polarimetry</h1>
+    </header>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Feature</th>
+                <th>MOKKA (Dedicated MOKE)</th>
+                <th>Mueller Matrix Polarimetry</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Primary Output</td>
+                <td>Pure Kerr Rotation ($\theta_K$) &amp; Ellipticity ($\epsilon_K$)</td>
+                <td>Full 16 elements ($M_{ij}$) describing complete optical transfer function</td>
+            </tr>
+            <tr>
+                <td>Acquisition Speed</td>
+                <td><span class="pro-highlight">High Speed / Real-Time</span><br>Ideal for dynamic, rapid $M$ vs. $H$ loops via PEM/lock-in</td>
+                <td><span>Slow / Static States</span><br>Requires multiple mechanical or synchronized optical modulations</td>
+            </tr>
+            <tr>
+                <td>Data Complexity</td>
+                <td>Low post-processing; immediate physical parameter readout</td>
+                <td>High; requires algebraic matrix decomposition (e.g., Lu-Chipman)</td>
+            </tr>
+            <tr>
+                <td>Anisotropic Crystals<br><small style="color:#64748b; font-weight:normal;">(e.g., Altermagnets / RuO₂)</small></td>
+                <td>Vulnerable to artifacts; mixes crystal birefringence with magnetic signal</td>
+                <td><span class="pro-highlight">Flawless Separation</span><br>Mathematically isolates true magneto-optic cross-coupling</td>
+            </tr>
+            <tr>
+                <td>Depolarization</td>
+                <td>Cannot decouple; registers as loss of signal intensity or baseline shift</td>
+                <td><span class="pro-highlight">Explicitly Quantified</span><br>Isolates depolarization caused by surface roughness or domains</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <footer>
+        <div class="footer-line">
+            <span class="slide-number">01</span>
+            <div class="takeaway">
+                <strong>Core Trade-off:</strong> Choose <strong>MOKKA</strong> for clean, fast magnetic dynamics on isotropic substrates. Choose <strong>Mueller Matrix</strong> to decouple magnetic ordering from complex, anisotropic crystalline backgrounds.
+            </div>
+        </div>
+    </footer>
+</div>
+
+</body>
+</html>
