@@ -1,28 +1,37 @@
 \babel@toc {english}{}\relax 
-\contentsline {section}{\numberline {1}Theory}{2}{section.1}%
-\contentsline {subsection}{\numberline {1.1}Molecular Dynamics Simulation}{2}{subsection.1.1}%
-\contentsline {subsection}{\numberline {1.2}Quantum Mechanical Foundations}{2}{subsection.1.2}%
-\contentsline {subsection}{\numberline {1.3}Dispersion Correction}{3}{subsection.1.3}%
-\contentsline {subsection}{\numberline {1.4}Neural Networks}{4}{subsection.1.4}%
-\contentsline {subsection}{\numberline {1.5}Training a Neural Network}{5}{subsection.1.5}%
-\contentsline {subsection}{\numberline {1.6}Descriptors}{5}{subsection.1.6}%
-\contentsline {subsection}{\numberline {1.7}Local Atomic Energy Partitioning}{5}{subsection.1.7}%
-\contentsline {subsection}{\numberline {1.8}The \textit {apax} Model Architecture}{7}{subsection.1.8}%
-\contentsline {subsection}{\numberline {1.9}Uncertainty Quantification}{7}{subsection.1.9}%
-\contentsline {section}{\numberline {2}Measurements}{8}{section.2}%
-\contentsline {subsection}{\numberline {2.1}Diffusion Coefficient}{8}{subsection.2.1}%
-\contentsline {subsection}{\numberline {2.2}Radial Distribution Function}{8}{subsection.2.2}%
-\contentsline {section}{\numberline {3}Workflow}{9}{section.3}%
-\contentsline {subsection}{\numberline {3.1}\textit {IPSuite} and \textit {ZnTrack}}{9}{subsection.3.1}%
-\contentsline {subsection}{\numberline {3.2}From string to box}{9}{subsection.3.2}%
-\contentsline {subsection}{\numberline {3.3}Sample simulation}{9}{subsection.3.3}%
-\contentsline {subsection}{\numberline {3.4}Energy convergence via \textit {mgrid} parameter}{9}{subsection.3.4}%
-\contentsline {subsection}{\numberline {3.5}Data relabeling}{10}{subsection.3.5}%
-\contentsline {subsection}{\numberline {3.6}Hyperparameter evaluation}{10}{subsection.3.6}%
-\contentsline {subsection}{\numberline {3.7}Final model and production simulation}{10}{subsection.3.7}%
-\contentsline {subsection}{\numberline {3.8}Evaluation}{10}{subsection.3.8}%
-\contentsline {section}{\numberline {4}Results}{10}{section.4}%
-\contentsline {subsection}{\numberline {4.1}\textit {mgrid} convergence}{10}{subsection.4.1}%
-\contentsline {section}{\numberline {5}Conclusion}{10}{section.5}%
-\contentsline {section}{\numberline {6}Summary}{10}{section.6}%
-\contentsline {section}{\numberline {7}References}{10}{section.7}%
+\contentsline {section}{\numberline {1}Theory}{3}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Molecular Dynamics Simulation}{3}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}Quantum Mechanical Foundations}{3}{subsection.1.2}%
+\contentsline {subsection}{\numberline {1.3}Dispersion Correction}{4}{subsection.1.3}%
+\contentsline {subsection}{\numberline {1.4}Neural Networks}{5}{subsection.1.4}%
+\contentsline {subsection}{\numberline {1.5}Training a Neural Network}{6}{subsection.1.5}%
+\contentsline {subsection}{\numberline {1.6}Descriptors}{6}{subsection.1.6}%
+\contentsline {subsection}{\numberline {1.7}Local Atomic Energy Partitioning}{6}{subsection.1.7}%
+\contentsline {subsection}{\numberline {1.8}The \textit {apax} Model Architecture}{8}{subsection.1.8}%
+\contentsline {subsection}{\numberline {1.9}Uncertainty Quantification}{8}{subsection.1.9}%
+\contentsline {section}{\numberline {2}Measurements}{9}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Diffusion Coefficient}{9}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Radial Distribution Function}{9}{subsection.2.2}%
+\contentsline {section}{\numberline {3}Workflow}{10}{section.3}%
+\contentsline {subsection}{\numberline {3.1}\textit {IPSuite} and \textit {ZnTrack}}{10}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}From string to box}{10}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}Sample simulation}{10}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.4}Energy convergence via \textit {mgrid} parameter}{10}{subsection.3.4}%
+\contentsline {subsection}{\numberline {3.5}Data relabeling}{11}{subsection.3.5}%
+\contentsline {subsection}{\numberline {3.6}Hyperparameter evaluation}{11}{subsection.3.6}%
+\contentsline {subsection}{\numberline {3.7}Final model and production simulation}{11}{subsection.3.7}%
+\contentsline {subsection}{\numberline {3.8}Evaluation}{11}{subsection.3.8}%
+\contentsline {section}{\numberline {4}Results}{11}{section.4}%
+\contentsline {subsection}{\numberline {4.1}\textit {mgrid} convergence}{11}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Hyperparameter Exploration}{11}{subsection.4.2}%
+\contentsline {paragraph}{A: Radial Cutoff (\(r_{\text {max}}\)).}{12}{figure.caption.7}%
+\contentsline {paragraph}{B: Network Architecture.}{14}{figure.caption.9}%
+\contentsline {paragraph}{C: Number of Basis Functions.}{14}{figure.caption.11}%
+\contentsline {paragraph}{Comparison of every model}{14}{figure.caption.13}%
+\contentsline {subsection}{\numberline {4.3}Dynamical Analysis.}{14}{subsection.4.3}%
+\contentsline {subsection}{\numberline {4.4}Structual Analyis}{16}{subsection.4.4}%
+\contentsline {paragraph}{\(\text {O-H}\) Bonds}{16}{section*.15}%
+\contentsline {paragraph}{\(\text {O-O}\) Bonds}{17}{section*.17}%
+\contentsline {section}{\numberline {5}Conclusion}{18}{section.5}%
+\contentsline {section}{\numberline {6}Summary}{18}{section.6}%
+\contentsline {section}{\numberline {7}References}{18}{section.7}%
