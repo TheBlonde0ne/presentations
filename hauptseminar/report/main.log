@@ -1,0 +1,363 @@
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.5.9)  19 JUN 2026 15:26
+entering extended mode
+ restricted \write18 enabled.
+ file:line:error style messages enabled.
+ %&-line parsing enabled.
+**e:/presentations/hauptseminar/report/main.tex
+(e:/presentations/hauptseminar/report/main.tex
+LaTeX2e <2024-11-01> patch level 2
+L3 programming layer <2025-04-14>
+(C:\Users\walln\AppData\Local\Programs\MiKTeX\tex/latex/base\article.cls
+Document Class: article 2024/06/29 v1.4n Standard LaTeX document class
+(C:\Users\walln\AppData\Local\Programs\MiKTeX\tex/latex/base\size10.clo
+File: size10.clo 2024/06/29 v1.4n Standard LaTeX file (size option)
+)
+\c@part=\count272
+\c@section=\count273
+\c@subsection=\count274
+\c@subsubsection=\count275
+\c@paragraph=\count276
+\c@subparagraph=\count277
+\c@figure=\count278
+\c@table=\count279
+\abovecaptionskip=\skip49
+\belowcaptionskip=\skip50
+\bibindent=\dimen146
+) (C:\Users\walln\AppData\Local\Programs\MiKTeX\tex/latex/geometry\geometry.sty
+Package: geometry 2020/01/02 v5.9 Page Geometry
+ (C:\Users\walln\AppData\Local\Programs\MiKTeX\tex/latex/graphics\keyval.sty
+Package: keyval 2022/05/29 v1.15 key=value parser (DPC)
+\KV@toks@=\toks17
+) (C:\Users\walln\AppData\Local\Programs\MiKTeX\tex/generic/iftex\ifvtex.sty
+Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
+ (C:\Users\walln\AppData\Local\Programs\MiKTeX\tex/generic/iftex\iftex.sty
+Package: iftex 2024/12/12 v1.0g TeX engine tests
+))
+\Gm@cnth=\count280
+\Gm@cntv=\count281
+\c@Gm@tempcnt=\count282
+\Gm@bindingoffset=\dimen147
+\Gm@wd@mp=\dimen148
+\Gm@odd@mp=\dimen149
+\Gm@even@mp=\dimen150
+\Gm@layoutwidth=\dimen151
+\Gm@layoutheight=\dimen152
+\Gm@layouthoffset=\dimen153
+\Gm@layoutvoffset=\dimen154
+\Gm@dimlist=\toks18
+ (C:\Users\walln\AppData\Local\Programs\MiKTeX\tex/latex/geometry\geometry.cfg)) (C:\Users\walln\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphicx.sty
+Package: graphicx 2021/09/16 v1.2d Enhanced LaTeX Graphics (DPC,SPQR)
+ (C:\Users\walln\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphics.sty
+Package: graphics 2024/08/06 v1.4g Standard LaTeX Graphics (DPC,SPQR)
+ (C:\Users\walln\AppData\Local\Programs\MiKTeX\tex/latex/graphics\trig.sty
+Package: trig 2023/12/02 v1.11 sin cos tan (DPC)
+) (C:\Users\walln\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\graphics.cfg
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: pdftex.def on input line 106.
+ (C:\Users\walln\AppData\Local\Programs\MiKTeX\tex/latex/graphics-def\pdftex.def
+File: pdftex.def 2024/04/13 v1.2c Graphics/color driver for pdftex
+))
+\Gin@req@height=\dimen155
+\Gin@req@width=\dimen156
+) (C:\Users\walln\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\times.sty
+Package: times 2020/03/25 PSNFSS-v9.3 (SPQR) 
+) (C:\Users\walln\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsmath.sty
+Package: amsmath 2024/11/05 v2.17t AMS math features
+\@mathmargin=\skip51
+
+For additional information on amsmath, use the `?' option.
+(C:\Users\walln\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amstext.sty
+Package: amstext 2021/08/26 v2.01 AMS text
+ (C:\Users\walln\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsgen.sty
+File: amsgen.sty 1999/11/30 v2.0 generic functions
+\@emptytoks=\toks19
+\ex@=\dimen157
+)) (C:\Users\walln\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsbsy.sty
+Package: amsbsy 1999/11/29 v1.2d Bold Symbols
+\pmbraise@=\dimen158
+) (C:\Users\walln\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsopn.sty
+Package: amsopn 2022/04/08 v2.04 operator names
+)
+\inf@bad=\count283
+LaTeX Info: Redefining \frac on input line 233.
+\uproot@=\count284
+\leftroot@=\count285
+LaTeX Info: Redefining \overline on input line 398.
+LaTeX Info: Redefining \colon on input line 409.
+\classnum@=\count286
+\DOTSCASE@=\count287
+LaTeX Info: Redefining \ldots on input line 495.
+LaTeX Info: Redefining \dots on input line 498.
+LaTeX Info: Redefining \cdots on input line 619.
+\Mathstrutbox@=\box53
+\strutbox@=\box54
+LaTeX Info: Redefining \big on input line 721.
+LaTeX Info: Redefining \Big on input line 722.
+LaTeX Info: Redefining \bigg on input line 723.
+LaTeX Info: Redefining \Bigg on input line 724.
+\big@size=\dimen159
+LaTeX Font Info:    Redeclaring font encoding OML on input line 742.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 743.
+\macc@depth=\count288
+LaTeX Info: Redefining \bmod on input line 904.
+LaTeX Info: Redefining \pmod on input line 909.
+LaTeX Info: Redefining \smash on input line 939.
+LaTeX Info: Redefining \relbar on input line 969.
+LaTeX Info: Redefining \Relbar on input line 970.
+\c@MaxMatrixCols=\count289
+\dotsspace@=\muskip17
+\c@parentequation=\count290
+\dspbrk@lvl=\count291
+\tag@help=\toks20
+\row@=\count292
+\column@=\count293
+\maxfields@=\count294
+\andhelp@=\toks21
+\eqnshift@=\dimen160
+\alignsep@=\dimen161
+\tagshift@=\dimen162
+\tagwidth@=\dimen163
+\totwidth@=\dimen164
+\lineht@=\dimen165
+\@envbody=\toks22
+\multlinegap=\skip52
+\multlinetaggap=\skip53
+\mathdisplay@stack=\toks23
+LaTeX Info: Redefining \[ on input line 2953.
+LaTeX Info: Redefining \] on input line 2954.
+) (C:\Users\walln\AppData\Local\Programs\MiKTeX\tex/latex/caption\caption.sty
+Package: caption 2023/08/05 v3.6o Customizing captions (AR)
+ (C:\Users\walln\AppData\Local\Programs\MiKTeX\tex/latex/caption\caption3.sty
+Package: caption3 2023/07/31 v2.4d caption3 kernel (AR)
+\caption@tempdima=\dimen166
+\captionmargin=\dimen167
+\caption@leftmargin=\dimen168
+\caption@rightmargin=\dimen169
+\caption@width=\dimen170
+\caption@indent=\dimen171
+\caption@parindent=\dimen172
+\caption@hangindent=\dimen173
+Package caption Info: Standard document class detected.
+)
+\c@caption@flags=\count295
+\c@continuedfloat=\count296
+)
+LaTeX Font Info:    Trying to load font information for OT1+ptm on input line 8.
+ (C:\Users\walln\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ot1ptm.fd
+File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
+) (C:\Users\walln\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3backend-pdftex.def
+File: l3backend-pdftex.def 2025-04-14 L3 backend support: PDF output (pdfTeX)
+\l__color_backend_stack_int=\count297
+) (main.aux)
+\openout1 = `main.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 8.
+LaTeX Font Info:    ... okay on input line 8.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 8.
+LaTeX Font Info:    ... okay on input line 8.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 8.
+LaTeX Font Info:    ... okay on input line 8.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 8.
+LaTeX Font Info:    ... okay on input line 8.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 8.
+LaTeX Font Info:    ... okay on input line 8.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 8.
+LaTeX Font Info:    ... okay on input line 8.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 8.
+LaTeX Font Info:    ... okay on input line 8.
+
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+*geometry* verbose mode - [ preamble ] result:
+* driver: pdftex
+* paper: <default>
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* modes: 
+* h-part:(L,W,R)=(72.26999pt, 469.75502pt, 72.26999pt)
+* v-part:(T,H,B)=(72.26999pt, 650.43001pt, 72.26999pt)
+* \paperwidth=614.295pt
+* \paperheight=794.96999pt
+* \textwidth=469.75502pt
+* \textheight=650.43001pt
+* \oddsidemargin=0.0pt
+* \evensidemargin=0.0pt
+* \topmargin=-37.0pt
+* \headheight=12.0pt
+* \headsep=25.0pt
+* \topskip=10.0pt
+* \footskip=30.0pt
+* \marginparwidth=65.0pt
+* \marginparsep=11.0pt
+* \columnsep=10.0pt
+* \skip\footins=9.0pt plus 4.0pt minus 2.0pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumnfalse
+* \@twosidefalse
+* \@mparswitchfalse
+* \@reversemarginfalse
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
+
+(C:\Users\walln\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count298
+\scratchdimen=\dimen174
+\scratchbox=\box55
+\nofMPsegments=\count299
+\nofMParguments=\count300
+\everyMPshowfont=\toks24
+\MPscratchCnt=\count301
+\MPscratchDim=\dimen175
+\MPnumerator=\count302
+\makeMPintoPDFobject=\count303
+\everyMPtoPDFconversion=\toks25
+) (C:\Users\walln\AppData\Local\Programs\MiKTeX\tex/latex/epstopdf-pkg\epstopdf-base.sty
+Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
+ (C:\Users\walln\AppData\Local\Programs\MiKTeX\tex/latex/00miktex\epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
+))
+Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: End \AtBeginDocument code.
+
+
+[1
+
+{C:/Users/walln/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/Users/walln/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc}]
+<E:/presentations/hauptseminar/presentation/magnets.png, id=11, 1204.5pt x 720.6925pt>
+File: E:/presentations/hauptseminar/presentation/magnets.png Graphic file (type png)
+<use E:/presentations/hauptseminar/presentation/magnets.png>
+Package pdftex.def Info: E:/presentations/hauptseminar/presentation/magnets.png  used on input line 27.
+(pdftex.def)             Requested size: 281.85587pt x 168.63696pt.
+
+
+[2 <E:/presentations/hauptseminar/presentation/magnets.png>]
+
+[3]
+
+[4]
+Underfull \hbox (badness 10000) in paragraph at lines 83--86
+
+ []
+
+<E:/presentations/hauptseminar/presentation/kerr.png, id=31, 450.9347pt x 924.45375pt>
+File: E:/presentations/hauptseminar/presentation/kerr.png Graphic file (type png)
+<use E:/presentations/hauptseminar/presentation/kerr.png>
+Package pdftex.def Info: E:/presentations/hauptseminar/presentation/kerr.png  used on input line 91.
+(pdftex.def)             Requested size: 112.74277pt x 231.12697pt.
+
+Underfull \hbox (badness 7759) in paragraph at lines 92--92
+[]\OT1/ptm/m/n/10 Figure 2: |Schematic of dif-
+ []
+
+
+Underfull \hbox (badness 1436) in paragraph at lines 92--92
+\OT1/ptm/m/n/10 fer-ent Magneto-Optical Kerr Ef-
+ []
+
+<E:/presentations/hauptseminar/presentation/mokka45.png, id=32, 1525.49925pt x 370.38374pt>
+File: E:/presentations/hauptseminar/presentation/mokka45.png Graphic file (type png)
+<use E:/presentations/hauptseminar/presentation/mokka45.png>
+Package pdftex.def Info: E:/presentations/hauptseminar/presentation/mokka45.png  used on input line 98.
+(pdftex.def)             Requested size: 375.80544pt x 91.24496pt.
+
+
+[5 <E:/presentations/hauptseminar/presentation/kerr.png>]
+<E:/presentations/hauptseminar/presentation/fe2o3_moke.png, id=37, 338.4645pt x 543.83176pt>
+File: E:/presentations/hauptseminar/presentation/fe2o3_moke.png Graphic file (type png)
+<use E:/presentations/hauptseminar/presentation/fe2o3_moke.png>
+Package pdftex.def Info: E:/presentations/hauptseminar/presentation/fe2o3_moke.png  used on input line 110.
+(pdftex.def)             Requested size: 176.62901pt x 283.80652pt.
+<E:/presentations/hauptseminar/presentation/fe2o3_dft_b.png, id=38, 353.52075pt x 263.7855pt>
+File: E:/presentations/hauptseminar/presentation/fe2o3_dft_b.png Graphic file (type png)
+<use E:/presentations/hauptseminar/presentation/fe2o3_dft_b.png>
+Package pdftex.def Info: E:/presentations/hauptseminar/presentation/fe2o3_dft_b.png  used on input line 118.
+(pdftex.def)             Requested size: 176.62901pt x 131.79582pt.
+<E:/presentations/hauptseminar/presentation/fe2o3_dft_c.png, id=39, 350.5095pt x 263.7855pt>
+File: E:/presentations/hauptseminar/presentation/fe2o3_dft_c.png Graphic file (type png)
+<use E:/presentations/hauptseminar/presentation/fe2o3_dft_c.png>
+Package pdftex.def Info: E:/presentations/hauptseminar/presentation/fe2o3_dft_c.png  used on input line 119.
+(pdftex.def)             Requested size: 176.62901pt x 132.92685pt.
+<E:/presentations/hauptseminar/presentation/fe2o3_symmetry.png, id=40, 481.8pt x 537.207pt>
+File: E:/presentations/hauptseminar/presentation/fe2o3_symmetry.png Graphic file (type png)
+<use E:/presentations/hauptseminar/presentation/fe2o3_symmetry.png>
+Package pdftex.def Info: E:/presentations/hauptseminar/presentation/fe2o3_symmetry.png  used on input line 126.
+(pdftex.def)             Requested size: 375.80544pt x 419.03616pt.
+<E:/presentations/hauptseminar/presentation/mnte_sine.png, id=41, 1053.9375pt x 340.8735pt>
+File: E:/presentations/hauptseminar/presentation/mnte_sine.png Graphic file (type png)
+<use E:/presentations/hauptseminar/presentation/mnte_sine.png>
+Package pdftex.def Info: E:/presentations/hauptseminar/presentation/mnte_sine.png  used on input line 131.
+(pdftex.def)             Requested size: 375.80544pt x 121.54926pt.
+
+
+[6 <E:/presentations/hauptseminar/presentation/mokka45.png>]
+<E:/presentations/hauptseminar/presentation/fesb2bandstructure.png, id=47, 1003.75pt x 501.875pt>
+File: E:/presentations/hauptseminar/presentation/fesb2bandstructure.png Graphic file (type png)
+<use E:/presentations/hauptseminar/presentation/fesb2bandstructure.png>
+Package pdftex.def Info: E:/presentations/hauptseminar/presentation/fesb2bandstructure.png  used on input line 144.
+(pdftex.def)             Requested size: 169.1113pt x 84.55182pt.
+<E:/presentations/hauptseminar/presentation/resistivity.png, id=48, 822.82407pt x 560.8453pt>
+File: E:/presentations/hauptseminar/presentation/resistivity.png Graphic file (type png)
+<use E:/presentations/hauptseminar/presentation/resistivity.png>
+Package pdftex.def Info: E:/presentations/hauptseminar/presentation/resistivity.png  used on input line 152.
+(pdftex.def)             Requested size: 169.1113pt x 115.26498pt.
+
+
+[7 <E:/presentations/hauptseminar/presentation/fe2o3_moke.png> <E:/presentations/hauptseminar/presentation/fe2o3_dft_b.png> <E:/presentations/hauptseminar/presentation/fe2o3_dft_c.png>]
+
+[8 <E:/presentations/hauptseminar/presentation/fe2o3_symmetry.png>]
+<E:/presentations/hauptseminar/presentation/fesb2_result.png, id=60, 1550.04094pt x 820.56563pt>
+File: E:/presentations/hauptseminar/presentation/fesb2_result.png Graphic file (type png)
+<use E:/presentations/hauptseminar/presentation/fesb2_result.png>
+Package pdftex.def Info: E:/presentations/hauptseminar/presentation/fesb2_result.png  used on input line 162.
+(pdftex.def)             Requested size: 469.75502pt x 248.67575pt.
+
+
+[9 <E:/presentations/hauptseminar/presentation/mnte_sine.png> <E:/presentations/hauptseminar/presentation/fesb2bandstructure.png> <E:/presentations/hauptseminar/presentation/resistivity.png>]
+<E:/presentations/hauptseminar/presentation/ruo2_arpes.png, id=69, 717.882pt x 334.851pt>
+File: E:/presentations/hauptseminar/presentation/ruo2_arpes.png Graphic file (type png)
+<use E:/presentations/hauptseminar/presentation/ruo2_arpes.png>
+Package pdftex.def Info: E:/presentations/hauptseminar/presentation/ruo2_arpes.png  used on input line 174.
+(pdftex.def)             Requested size: 219.84566pt x 102.5458pt.
+<E:/presentations/hauptseminar/presentation/RuO2_proof.png, id=70, 490.83376pt x 543.83176pt>
+File: E:/presentations/hauptseminar/presentation/RuO2_proof.png Graphic file (type png)
+<use E:/presentations/hauptseminar/presentation/RuO2_proof.png>
+Package pdftex.def Info: E:/presentations/hauptseminar/presentation/RuO2_proof.png  used on input line 182.
+(pdftex.def)             Requested size: 150.31987pt x 166.54474pt.
+
+Underfull \hbox (badness 3471) in paragraph at lines 183--183
+\OT1/ptm/m/n/10 the non-magnetic cal-cu-la-tions (bold lines)
+ []
+
+
+
+[10 <E:/presentations/hauptseminar/presentation/fesb2_result.png>]
+
+[11 <E:/presentations/hauptseminar/presentation/ruo2_arpes.png> <E:/presentations/hauptseminar/presentation/RuO2_proof.png>]
+
+[12]
+
+[13] (main.aux)
+ ***********
+LaTeX2e <2024-11-01> patch level 2
+L3 programming layer <2025-04-14>
+ ***********
+ ) 
+Here is how much of TeX's memory you used:
+ 4150 strings out of 469941
+ 73557 string characters out of 5469431
+ 460859 words of memory out of 5000000
+ 30932 multiletter control sequences out of 15000+600000
+ 649631 words of font info for 85 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 57i,9n,65p,1348b,326s stack positions out of 10000i,1000n,20000p,200000b,200000s
+<C:/Users/walln/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/walln/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/walln/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/walln/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi5.pfb><C:/Users/walln/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Users/walln/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi9.pfb><C:/Users/walln/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/walln/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/walln/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr5.pfb><C:/Users/walln/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Users/walln/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/walln/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/walln/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr9.pfb><C:/Users/walln/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/walln/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy9.pfb><C:/Users/walln/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmb8a.pfb><C:/Users/walln/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmr8a.pfb>
+Output written on main.pdf (13 pages, 2868047 bytes).
+PDF statistics:
+ 158 PDF objects out of 1000 (max. 8388607)
+ 0 named destinations out of 1000 (max. 500000)
+ 66 words of extra memory for PDF output out of 10000 (max. 10000000)
+

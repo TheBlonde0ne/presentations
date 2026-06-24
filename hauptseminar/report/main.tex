@@ -1,0 +1,219 @@
+\documentclass{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{graphicx}
+\usepackage{times}
+\usepackage{amsmath}
+\usepackage{caption}
+\linespread{1.5}
+\begin{document}
+\title{Altermagnetism: Optical and Magneto-Optical Probes}
+\author{Jakob Wallner}
+\date{\today}
+\maketitle
+\begin{abstract}
+Altermagnetism has recently been established as the third fundamental class of magnetic order, showing properties that are intermediate between conventional ferromagnetism and antiferromagnetism. This new magnetic phase is characterized by a zero net magnetization and collinear spin arrangement, yet there is momentum dependent spin splitting of the electronic bands. This feature was thought to be exclusive to ferromagnets, but it arises in altermagnets due to a non-relativistic exchange interaction governed by specific crystal symmetries that connect sublattices with opposite spin polarization via rotation, rather than translation or inversion. 
+The resulting properties are a lack of magnetic stray fields and robustness typical of antiferromagnets, but with the spin-polarized currents characteristic of ferromagnets. This makes altermagnets promising materials for next-generation spintronic and memory technologies. 
+
+The following review will focus on magneto-optical spectroscopy as a powerful tool for the unambiguous identification and characterization of altermagnetic materials. We will discuss the symmetry requirements of altermagnetism and the resulting electronic structure, and then survey the critical role of experimental techniques, with a particular emphasis on bulk-sensitive optical and magneto-optical probes. Through case studies of key candidates such as \(\mathrm{MnTe}\), Co-doped \(\mathrm{FeSb}_2\), and \(\alpha\mathrm{-Fe}_2\textrm{O}_3\), we will illustrate how these methods provide definitive fingerprints of the altermagnetic state. Finally, we will discuss the implications for future applications and outline promising directions for research in this rapidly advancing field.
+\end{abstract}
+
+
+\newpage
+
+\section{Introduction}
+
+\begin{figure}
+\centering
+\includegraphics[width=0.6\linewidth]{E:/presentations/hauptseminar/presentation/magnets.png}
+\caption{Schematic illustration of the three fundamental classes of magnetic order: ferromagnetism, antiferromagnetism, and altermagnetism. Ferromagnets exhibit a net magnetization due to the parallel alignment of spins, while conventional antiferromagnets have zero net magnetization due to antiparallel alignment of spins on different sublattices. Altermagnets also have zero net magnetization but feature a unique momentum-dependent spin splitting of the electronic bands, arising from their distinct symmetry properties. \cite{Song2025}}
+\label{fig:1}
+\end{figure}
+
+Historically, magnetic materials have been categorized into ferromagnets (FMs) and antiferromagnets (AFMs). Ferromagnets, characterized by a spontaneous alignment of all magnetic moments, possess a net magnetization ($M\neq 0$) and break time-reversal symmetry ($T$), leading to spin-split electronic bands and enabling phenomena such as the anomalous Hall effect. In contrast, conventional antiferromagnets feature antiparallel alignment of magnetic moments on neighboring sublattices, resulting in zero net magnetization ($M=0$). While $T$ is broken locally, a combined symmetry operation, such as time-reversal followed by a lattice translation ($Tt$) or spatial inversion ($TP$), is typically preserved. This effective time-reversal symmetry ensures that the electronic bands remain spin-degenerate, rendering AFMs largely inert in many spintronic applications despite their advantages of robustness against external fields and intrinsic terahertz-scale dynamics.
+
+In recent years, this traditional classification has been expanded by the theoretical prediction and subsequent experimental discovery of altermagnetism (AM) \cite{smejkal2022emerging, mazin2022editorial}. Altermagnetism represents a third fundamental magnetic class that bridges the gap between FMs and AFMs. Like AFMs, altermagnets are collinear magnets with perfectly compensated sublattices, resulting in zero net magnetization \(M = 0\). However, like FMs, they exhibit a large, momentum-dependent spin splitting of their electronic bands. This combination of properties is not relativistic in origin (i.e., it does not require spin-orbit coupling) but is instead a direct consequence of the crystal lattice symmetry. The defining characteristic of altermagnets is that their opposite-spin sublattices are connected by a crystal rotation symmetry (e.g., a four-fold rotation, $C_4$) rather than by translation or inversion. This specific symmetry constraint breaks the combined $Tt$ and $TP$ symmetries, thereby lifting the Kramers spin degeneracy of the bands. The resulting spin splitting alternates in sign across the Brillouin zone in a manner dictated by the crystal symmetry (e.g., d-wave or g-wave), giving rise to the name "altermagnetism" \cite{smejkal2022beyond}.
+
+The discovery of altermagnetism has opened a new research topic in magnetism and spintronics, promising to combine the most desirable features of both FMs and AFMs: the generation of spin-polarized currents without the presence of stray magnetic fields. However, the unambiguous identification of altermagnetism in real materials presents a significant experimental challenge. The initial excitement surrounding \(\mathrm{RuO}_2\), a prime theoretical candidate, showcases this challenge. While surface-sensitive probes like angle-resolved photoemission spectroscopy (ARPES) reported evidence of the characteristic spin splitting, subsequent investigations using bulk-sensitive optical spectroscopy revealed a ground state more consistent with a non-magnetic Fermi liquid \cite{wenzel2025fermi}. This controversy shows the critical need for definitive bulk-sensitive fingerprints to distinguish true altermagnetic order from surface effects or other phenomena. This review will focus on the crucial role of optical and magneto-optical spectroscopy as such a fingerprint, providing a powerful and unambiguous probe of the bulk electronic structure that is directly shaped by the unique symmetries of the altermagnetic state.
+
+
+\section{Theoretical Framework}
+\subsection{Symmetry Principles of Altermagnetism}
+The existence of altermagnetism is fundamentally rooted in symmetry. The electronic band structure of any crystal is governed by the symmetries of its magnetic space group. In conventional collinear antiferromagnets, the two magnetic sublattices with opposite spin polarization (spin-up and spin-down) are related by a symmetry operation that is either a spatial inversion $P$ or a lattice translation $t$. Consequently, the system remains invariant under the combined operations $TP$ or $Tt$. This effective time-reversal symmetry ensures that for every state with momentum $k$ and spin $\uparrow$, there exists a degenerate state at the same momentum with spin $\downarrow$, leading to a globally spin-degenerate band structure as dictated by Kramers' theorem.
+Altermagnets defy this convention.
+
+In an altermagnetic crystal, the spin-up and spin-down sublattices are not connected by inversion or translation, but rather by a real-space rotation symmetry of the crystal lattice, such as a two-fold, four-fold, or six-fold rotation ($C_n$). The magnetic space group of an altermagnet therefore lacks both 
+$TP$ and 
+$Tt$ as symmetry operations. Instead, it possesses a composite symmetry that combines time-reversal 
+$T$ with a crystal rotation, $ T C_n $. While this operation still ensures that the net magnetization is zero, it does not enforce spin degeneracy at a general momentum point 
+$k$. The energy of a state is required to be equal to that of a state with rotated momentum and opposite spin, $E(k,\uparrow)=E(C_n k,\downarrow)$, but not necessarily to $E(k,\downarrow)$. This lifting of the local spin degeneracy, driven by the non-relativistic exchange interaction and protected by crystal symmetry, is the defining characteristic of altermagnetism.
+
+\subsection{Electronic Band Structure and Optical Response}
+The direct consequence of the altermagnetic symmetry is a profound modification of the electronic band structure. The bands split into spin-polarized sub-bands, with the magnitude and sign of the splitting, 
+$\Delta E(k)=E(k,\uparrow)-E(k,\downarrow)$, varying across the Brillouin zone. The momentum-space anisotropy of this splitting reflects the rotational symmetry that defines the altermagnetic order. For example, a system with a $C_4$ rotational symmetry, such as \(\mathrm{RuO}_2\), is predicted to host a d-wave spin splitting, where the splitting is maximal along certain directions and vanishes along nodal lines. This results in a complex Fermi surface composed of distinct, spin-polarized sheets that alternate in spin character in momentum space, yet are arranged symmetrically to ensure a total magnetization of zero.
+This unique electronic structure has direct and measurable consequences for the optical properties of the material, which are described by the complex optical conductivity tensor, 
+$\tilde{\sigma}_{ij}$. The optical conductivity and dielectric tensor are generally strongly related. Calculating one always allows the other to be obtained via the relation
+\begin{equation}
+\tilde{\varepsilon} \leftrightarrow \tilde{\sigma} \quad \begin{cases} \tilde{\varepsilon}_{xx} = 1 + \frac{i \tilde{\sigma}_{xx}}{\varepsilon_0 \omega}  \\ \tilde{\varepsilon}_{xy} = \frac{i \tilde{\sigma}_{xy}}{\varepsilon_0 \omega}
+\end{cases}
+\end{equation}
+This tensor relates the induced current density to an applied electric field via the linear response theorem. The symmetry of this tensor is dictated by the underlying crystal and magnetic symmetries. Altermagnetic symmetry allows for two primary optical fingerprints. First, it permits non-zero off-diagonal elements, 
+$\tilde{\sigma}_{xy}$, which are antisymmetric 
+($\tilde{\sigma}_{xy} = -\tilde{\sigma}_{yx}$) due to the breaking of time-reversal symmetry. These elements govern magneto-optical phenomena like the Kerr and Faraday effects. Second, the spin splitting creates new pathways for optical transitions, fundamentally altering the diagonal elements of the conductivity, 
+$\tilde{\sigma}_{xx}$.
+For a typical experimental geometry where the magnetic order lies in the xy-plane, the tensor simplifies into a block-diagonal form, isolating the magneto-optically active components:
+\begin{equation}
+    \tilde{\sigma} = \begin{pmatrix} \tilde{\sigma}_{xx} & \tilde{\sigma}_{xy} & 0 \\ -\tilde{\sigma}_{xy} & \tilde{\sigma}_{xx} & 0 \\ 0 & 0 & \tilde{\sigma}_{zz} \end{pmatrix}.
+\end{equation}
+The $z$-axis is chosen to be perpendicular to the plane of the spins resulting in a block-diagonal form.
+The connection between the band structure and the optical conductivity is formally described by the Kubo formula.
+\begin{equation}
+    \tilde{\sigma}_{xy}(\omega) \propto \frac{1}{\omega} \sum_{n, m} \int_{\text{BZ}} d\text{k} \frac{f(E_{n, \text{{k}}}) - f(E_{m, \text{k}})}{{{E_{m, \text{k}} - E_{n, \text{k}} - \hbar \omega}} - i\Gamma} \times {\langle \psi_{n, \text{k}} | \hat{v}^{x} | \psi_{m, \text{k}}\rangle \langle{ \psi_{m, \text{k}} | \hat{v}^{y} | \psi_{n, \text{k}} }\rangle}
+\end{equation}
+This formula expresses $\tilde{\sigma}_{ij}(\omega)$ as a sum over all possible electronic transitions between occupied and unoccupied bands. The off-diagonal component, $\tilde{\sigma}_{xy}$, involves a product of velocity matrix elements, $\langle\psi_n|\hat v^x|\psi_m\rangle\langle\psi_m|\hat v^y|\psi_n\rangle$, integrated over the Brillouin zone. In conventional AFMs, the contributions from momentum point $k$ and its time-reversed partner $-k$ exactly cancel, leading to a zero net $\tilde{\sigma}_{xy}$. In altermagnets, the unique spin-rotation symmetry breaks this cancellation, allowing a net non-zero off-diagonal response to emerge, even with no net magnetization ($M=0$). Similarly, the diagonal component, $\tilde{\sigma}_{xx}$, is sensitive to the joint density of states. The spin splitting in altermagnets opens new channels for interband transitions at energies corresponding to the magnitude of the splitting, creating distinct absorption features in the optical spectrum that would be absent in a non-magnetic or conventional AFM state.
+
+\section{Experimental Probes and Material Realizations}
+The theoretical framework of altermagnetism necessitates robust experimental verification. While transport measurements and surface-sensitive probes like ARPES provide valuable information, optical spectroscopy has emerged as a particularly powerful tool due to its bulk sensitivity and its ability to directly probe the electronic transitions and symmetries that define the altermagnetic state. We can categorize these optical probes into two main types: those that measure the off-diagonal elements of the conductivity tensor and those that measure the diagonal elements.
+
+\subsection{Probing Off-Diagonal Elements: Magneto-Optical Kerr Effect}
+\begin{noindent} % Optional, to prevent paragraph indentation issues
+\begin{minipage}{.65\linewidth}
+The primary technique for probing the off-diagonal conductivity $\tilde{\sigma}_{xy}$ is the Magneto-Optical Kerr Effect (MOKE) showing in figure \ref{fig:MOKE}. In a MOKE experiment, linearly polarized light reflected from a material's surface experiences a change in its polarization state, acquiring a rotation of its polarization axis (Kerr rotation, $\theta_K$) and a degree of ellipticity (Kerr ellipticity, $\eta_K$). These quantities are directly proportional to the imaginary and real parts of $\tilde{\sigma}_{xy}$, respectively, providing a direct measure of time-reversal symmetry breaking.
+\begin{equation}
+\tilde{\sigma}_{xy}(\omega) \propto \theta_K + i\eta_K
+\end{equation}
+While traditional MOKE setups are often limited to single frequencies, broadband measurements are essential for comparing experimental results with theoretical DFT calculations. The Magneto-Optical Kramers-Kronig Analysis (MOKKA) technique has become a state-of-the-art method for this purpose \cite{levallois2015magneto}. By measuring only the total reflectivity and the Kerr rotation over a wide energy range, the Kramers-Kronig relations can be leveraged to mathematically reconstruct the full complex reflectivity coefficients for left- and right-circularly polarized light, and from them, the full complex tensor 
+$\tilde{\sigma}_{ij}$. This avoids the chromatic limitations of waveplates and allows for measurements in extreme environments. A schematic setup is shown in figure \ref{fig:MOKKA}.\newline
+\end{minipage}
+\hfill % Adds a flexible space between the text and the figure
+\begin{minipage}{.3\linewidth}
+    \centering
+    % Scaled to 1.0 of the MINIPAGE width so it fills the 30% space nicely
+    \includegraphics[width=.8\linewidth]{E:/presentations/hauptseminar/presentation/kerr.png}
+    \captionof{figure}{Schematic of different Magneto-Optical Kerr Effect (MOKE) measurement setups. Only the polar convention is used.}
+    \label{fig:MOKE}
+\end{minipage}
+\end{noindent}
+\begin{figure}
+    \centering
+    \includegraphics[width=.8\linewidth]{E:/presentations/hauptseminar/presentation/mokka45.png}
+    \caption{Schematic of a MOKKA measurement setup. A monochromatic, linearly polarized light gets reflected by a sample. The resulting light passes a Photoelastic Modulater and Analyzer before reaching the detector. Measureable are the absolute reflectivity \(R(\omega)\), the Kerr ellipticity \(\theta_K\) and Kerr rotation \(\eta_K\). \cite{iguchi2025}}
+    \label{fig:MOKKA}
+\end{figure}
+
+A textbook demonstration of MOKE as a probe of altermagnetic symmetry is found in the antiferromagnetic insulator \(\alpha\mathrm{-Fe}_2\textrm{O}_3\) (hematite) \cite{yoshimochi2026large}. Despite having a minuscule net magnetization arising from spin canting, \(\alpha\mathrm{-Fe}_2\textrm{O}_3\) exhibits a giant spontaneous Kerr effect at room temperature, comparable in magnitude to typical ferromagnets, as shown in figure \ref{fig:fe2o3kerr}. The definitive proof of its altermagnetic origin comes from the Morin transition at \(T \approx 260 \mathrm{ K}\). Above this temperature, in the "easy-plane" phase, the magnetic point group (2/m) allows for a non-zero \(\sigma_{yz}\), and a large MOKE signal is observed. Below the transition, the spins reorient into an "easy-axis" configuration, changing the magnetic point group, which forbids off-diagonal conductivity. Experimentally, the MOKE signal vanishes precisely at this transition, acting as a perfect symmetry-driven "on/off" switch. Figure \ref{fig:fe2o3comp} shows, DFT calculations performed with zero net magnetization perfectly reproduce the experimental MOKE spectra of the easy-plane phase, confirming that the effect is intrinsic to the $TtS$-broken collinear AFM order.
+
+Another key material, $\mathrm{MnTe}$, serves as an example of how MOKE can be used to control the altermagnetic order parameter, the Néel vector $\mathbf{L}$ \cite{liebman-pelaez2026strain}. By measuring magneto-circular dichroism (MCD) and optical birefringence, which are quantities directly related to the orientation and magnitude of $\mathbf{L}$, under in-situ strain, it was shown that strain acts as a continuous rotational knob. While the magnitude of the order parameter remained constant, its direction was smoothly reoriented by the applied stress (figure \ref{fig:mnte}). This demonstrates a powerful pathway for manipulating the altermagnetic state, a crucial requirement for device applications.
+
+\begin{minipage}{.47\linewidth}
+        \centering
+        \vspace{5mm}
+        \includegraphics[width=.8\linewidth]{E:/presentations/hauptseminar/presentation/fe2o3_moke.png}
+        \captionof{figure}{$\alpha-\text{Fe}_2\text{O}_3$ is a  collinear antiferromagnetic insulator. A giant spontaneous Kerr effect ($\theta_K \approx 80 \text{ mdeg}$) is observed. The tiny net magnetization ($\Delta M \approx 0.006 \mu_B/\text{Fe}$) is far too small to explain this signal. \cite{yoshimochi2026large}}
+        \label{fig:fe2o3kerr}
+\end{minipage}
+\hfill
+\begin{minipage}{.47\linewidth}
+    \centering
+        \vspace{5mm}
+        \includegraphics[width=.8\linewidth]{E:/presentations/hauptseminar/presentation/fe2o3_dft_b.png}
+        \includegraphics[width=.8\linewidth]{E:/presentations/hauptseminar/presentation/fe2o3_dft_c.png}
+        \captionof{figure}{First-principles calculations were performed for the easy-plane AFM state. Crucially, the simulation was run assuming zero net magnetization (M=0). The simulation perfectly reproduces the experimental Kerr rotation ($\theta_K$) and ellipticity ($\eta_K$). This includes the spectral shape, peak position (~2.5 eV), and absolute magnitude. This provides conclusive evidence that the giant MOKE is an intrinsic property of the $TtS$-broken AFM order itself. \cite{yoshimochi2026large}}
+        \label{fig:fe2o3comp}
+\end{minipage}
+\begin{figure}
+        \centering
+        \vspace{5mm}
+        \includegraphics[width=.8\linewidth]{E:/presentations/hauptseminar/presentation/fe2o3_symmetry.png}
+        \captionof{figure}{Spins reorient along the c-axis during the "Morin transition" ($T < 260 \mathrm{ K}$). The spontaneous Kerr effect vanishes, proving it is tied to the specific AFM order.\cite{yoshimochi2026large}}
+\end{figure}
+\begin{figure}
+    \centering
+    \includegraphics[width=.8\linewidth]{E:/presentations/hauptseminar/presentation/mnte_sine.png}
+    \captionof{figure}{Magneto-circular dichroism (MCD) and birefringence angle $\phi_0$ show hysteresis like behavor. The Birefringence Amplitude $\Delta$ is nearly constant over different strain. This shows that the Néel Vector is the primary order parameter. \cite{liebman-pelaez2026strain}}
+    \label{fig:mnte}
+\end{figure}
+
+\subsection{Probing Diagonal Elements: Optical Conductivity}
+While MOKE is a powerful probe, the diagonal conductivity 
+$\sigma_1(\omega)= \mathrm{Re}[\tilde{\sigma}_{xx}(\omega)]$ provides an equally potent, and often more straightforward, fingerprint of altermagnetism. Because $\sigma_1(\omega)$ maps the landscape of all allowed interband transitions, it is exquisitely sensitive to changes in the band structure. The strategy is to measure the broadband optical conductivity and compare it directly to DFT calculations performed for different candidate magnetic ground states (e.g., non-magnetic, conventional AFM, and altermagnetic).
+The case of \(\mathrm{FeSb}_2\) provides a canonical example of this approach \cite{roy2026narrow}. The parent compound, \(\mathrm{FeSb}_2\), is a correlated narrow-gap semiconductor (shown by resistivity measurement in figure \ref{fig:resistivity} and bandstructure in figure \ref{fig:bandstructure}) that fails to order magnetically due to strong spin fluctuations arising from nearly degenerate conventional (AFMe) and altermagnetic (AFMo) ground states \cite{mazin2021prediction}.
+
+\begin{minipage}{0.45\linewidth}
+    \centering
+    \vspace{5mm}
+        \includegraphics[width=.8\linewidth]{E:/presentations/hauptseminar/presentation/fesb2bandstructure.png}
+        \captionof{figure}{Band structure of \(\mathrm{FeSb}_2\) showing a narrow gap of approximately \(30 \text{ meV}\).\cite{roy2026narrow}}
+        \label{fig:bandstructure}
+\end{minipage}
+\hfill
+\begin{minipage}{0.45\linewidth}
+    \centering
+    \vspace{5mm}
+        \includegraphics[width=.8\linewidth]{E:/presentations/hauptseminar/presentation/resistivity.png}
+        \captionof{figure}{Resistivity of \(\mathrm{FeSb}_2\) (pink) and the doped version (blue). The increasing resistivity upon cooling indicates the semi-conductor categorization.\cite{roy2026narrow}}
+        \label{fig:resistivity}
+    \vspace{5mm}
+\end{minipage}
+
+Theory predicted that carrier doping could quench these fluctuations and stabilize the true ground state. Experimentally, substituting 15\% cobalt for iron drives the system through a semiconductor-to-metal transition. The optical conductivity of this new metallic state reveals two key features: the emergence of a Drude peak at zero frequency, confirming metallicity, and a distinct new interband absorption peak near 0.1 eV. When this experimental spectrum was compared to DFT calculations, neither the non-magnetic nor the AFMe models could reproduce this new peak, ash shown in figure \ref{fig:result} subplot e and f. Only the calculation for the altermagnetic AFMo state showed a near-perfect match. This unambiguous agreement constituted the first definitive bulk evidence for a metallic d-wave altermagnet, stabilized by carrier doping. The 0.1 eV peak was identified as the direct optical signature of transitions across the newly formed altermagnetic spin-split bands.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=\linewidth]{E:/presentations/hauptseminar/presentation/fesb2_result.png}
+    \caption{Comparison of the band structure and optical conductivity of Cobalt-doped \(\mathrm{FeSb}_2\) against first-principle calculated results. Only the altermagnetic order replicates the optical conductivity correctly.\cite{roy2026narrow}}
+    \label{fig:result}
+\end{figure}
+
+\subsection{The Role of Surface vs. Bulk Probes: \(\mathrm{RuO}_2\) Revisited}
+The contrasting stories of \(\mathrm{FeSb}_2\) and \(\mathrm{RuO}_2\) highlight the critical importance of using bulk-sensitive probes. The initial excitement surrounding \(\mathrm{RuO}_2\) was driven by ARPES measurements that suggested a large spin splitting \cite{fedchenko2024observation}, as shown in figure \ref{fig:arpes}.
+However, ARPES is inherently surface-sensitive. The subsequent study by Wenzel et al. used broadband infrared spectroscopy, the same technique that confirmed altermagnetism in \(\mathrm{FeSb}_2\), to probe the bulk of high-quality \(\mathrm{RuO}_2\) single crystals \cite{wenzel2025fermi}. The measured optical conductivity showed no evidence of the transitions expected from an altermagnetic band structure. Instead, it was described by a non-magnetic Fermi-liquid model (figure \ref{fig:fermi}), confirmed by additional analysis of the material's intraband response and magnetic susceptibility. This result strongly suggests that the altermagnetism reported in \(\mathrm{RuO}_2\) may be a surface phenomenon or an effect present only in strained thin films, but is not a property of the bulk stoichiometric crystal. This case serves as a cautionary tale and reinforces the power of optical spectroscopy as a decisive arbiter in the complex task of identifying and verifying magnetic states.
+
+\begin{minipage}{0.52\linewidth}
+    \centering
+    \vspace{5mm}
+        \includegraphics[width=.9\linewidth]{E:/presentations/hauptseminar/presentation/ruo2_arpes.png}
+        \captionof{figure}{ARPES measurements showing spin splitting band structures as an possible proof of altermagnetism in \(\mathrm{RuO}_2\).\cite{fedchenko2024observation}}
+        \label{fig:arpes}
+\end{minipage}
+\hfill
+\begin{minipage}{0.4\linewidth}
+    \centering
+    \vspace{5mm}
+        \includegraphics[width=.8\linewidth]{E:/presentations/hauptseminar/presentation/RuO2_proof.png}
+        \captionof{figure}{Experimental values of optical conductivity of \(\mathrm{RuO}_2\) compared to first-principle calculations of different magnetic orders. Only the non-magnetic calculations (bold lines) replicate the measurements correctly.\cite{wenzel2025fermi}}
+        \label{fig:fermi}
+    \vspace{5mm}
+\end{minipage}
+
+\section{Applications and Future Outlook}
+The unique combination of properties inherent to altermagnets opens up exciting possibilities for technological innovation, especially in the field of spintronics. The ability to generate and manipulate highly spin-polarized currents in the absence of net magnetization and stray fields leads possibly to devices that are denser, faster, and more energy-efficient than their ferromagnetic counterparts.
+The most direct application lies in spintronic devices that utilize spin currents. This can be used to archive efficient switching in magnetic random-access memory (MRAM) cells. Furthermore, the intrinsic dynamics of antiferromagnetic systems occur on the terahertz (THz) timescale, orders of magnitude faster than in ferromagnets (MHz timescale). Harnessing this speed could lead to memory and logic devices with operational frequencies two magnitudes higher than currently available devices
+The future outlook for altermagnetism is promising but relies on addressing several key challenges. The discovery and synthesis of new altermagnetic materials, particularly those that are robust and stable at room temperature, remains a primary goal. Understanding and controlling the formation of magnetic domains, as well as the influence of defects, stoichiometry, and strain in thin-film growth, will be critical for fabricating reliable devices. 
+As experimental techniques continue to improve, the exploration of the dynamic properties of altermagnets using time-resolved optical probes will further illuminate their potential for ultrafast spintronic applications.
+
+\section{Conclusion}
+Altermagnetism has been firmly established as a third fundamental class of magnetic order, fundamentally reshaping our understanding of magnetism in solids. Defined by its unique symmetry, it allows for the coexistence of a compensated, collinear spin structure with a large, non-relativistic spin splitting of the electronic bands. This review has highlighted the central role that optical and magneto-optical spectroscopy have played in the discovery and verification of this new magnetic phase.
+By providing a direct, bulk-sensitive probing into the electronic band structure, these techniques offer unambiguous fingerprints that are essential for navigating the complex candidate materials. The measurement of off-diagonal conductivity via MOKE has proven to be a powerful tool for probing the underlying symmetries and controlling the Néel vector order parameter, as exemplified by studies on \(\alpha\mathrm{-Fe}_2\mathrm{O}_3\) and \(\mathrm{MnTe}\). Simultaneously, the analysis of diagonal conductivity has served as a decisive method for identifying the correct magnetic ground state by direct comparison with first-principles calculations, leading to the confirmation of altermagnetism in Cobalt-doped \(\mathrm{FeSb}_2\) and clarifying the non-altermagnetic nature of bulk \(\mathrm{RuO}_2\).
+
+The field of altermagnetism is still at the beginning, but the foundational properties confirmed by these optical studies already point towards a great potential for spintronics and other next-generation technologies. The ongoing search for new materials promises a future with both fundamental discoveries and technological breakthroughs driven by this new form of magnetism.
+
+\begin{thebibliography}{99}
+\bibitem{smejkal2022emerging} L. Šmejkal, J. Sinova, and T. Jungwirth, Emerging research landscape of altermagnetism, Phys. Rev. X \textbf{12}, 040501 (2022).
+\bibitem{mazin2022editorial} I. I. Mazin and The PRX Editors, Editorial: Altermagnetism—A New Punch Line of Fundamental Magnetism, Phys. Rev. X \textbf{12}, 040002 (2022).
+\bibitem{smejkal2022beyond} L. Šmejkal, J. Sinova, and T. Jungwirth, Beyond conventional ferromagnetism and antiferromagnetism: A phase with nonrelativistic spin and crystal rotation symmetry, Phys. Rev. X \textbf{12}, 031042 (2022).
+\bibitem{wenzel2025fermi} M. Wenzel, E. Uykur, S. Rößler, M. Schmidt, O. Janson, A. Tiwari, M. Dressel, and A. A. Tsirlin, Fermi-liquid behavior of nonaltermagnetic \(\mathrm{RuO}_2\), Phys. Rev. B \textbf{111}, L041115 (2025).
+\bibitem{fedchenko2024observation} O. Fedchenko, J. Minár, A. Akashdeep, S. W. D'Souza, D. Vasilyev, O. Tkach, L. Odenbreit, Q. Nguyen, D. Kutnyakhov, N. Wind, et al., Observation of time-reversal symmetry breaking in the band structure of altermagnetic \(\mathrm{RuO}_2\), Sci. Adv. \textbf{10}, eadj4883 (2024).
+\bibitem{levallois2015magneto} J. Levallois, I. O. Nedoliuk, I. Crassee, and A. B. Kuzmenko, Magneto-optical Kramers-Kronig analysis, Rev. Sci. Instrum. \textbf{86}, 033906 (2015).
+\bibitem{yoshimochi2026large} H. Yoshimochi, K. Yoshida, R. Oiwa, T. Nomoto, N. D. Khanh, A. Kitaori, R. Takagi, R. Arita, and S. Seki, Large magneto-optical Kerr effect induced by collinear antiferromagnetic order, arXiv:2601.13723v1 [cond-mat.str-el] (2026).
+\bibitem{liebman-pelaez2026strain} A. Liebman-Peláez, J. Kruppe, R. B. Regmi, N. J. Ghimire, Y. Sun, I. I. Mazin, H. M. L. Noad, J. Analytis, V. Sunko, and J. Orenstein, Strain continuously rotates the Néel vector in altermagnetic MnTe, arXiv:2604.07653 (2026).
+\bibitem{roy2026narrow} R. Mathew Roy, M. Povolotskiy, J. Kirschke, C. Prange, Y. Xia, V. Sundaramurthy, P. Puphal, M. Pinterić, M. van de Loo, A. Kreyssig, T. Zhang, A. E. Böhmer, M. Dressel, and M. Wenzel, From Narrow-gap Semiconductor to Metallic Altermagnet: Optical Fingerprints of Co-Doped \(\mathrm{FeSb}_2\), arXiv:2604.28105v1 [cond-mat.mtrl-sci] (2026).
+\bibitem{mazin2021prediction} I. I. Mazin, K. Koepernik, M. D. Johannes, R. González-Hernández, and L. Šmejkal, Prediction of unconventional magnetism in doped \(\mathrm{FeSb}_2\), PNAS \textbf{118}, e2108924118 (2021).
+\bibitem{kimura2026band} S. Kimura, H. Suwa, K. Yuan, H. Watanabe, T. Nakamura, H. K. Yun, and M.-H. Jung, Band structure control in the altermagnetic candidate MnTe by temperature and strain, arXiv:2603.21455v1 [cond-mat.str-el] (2026).
+\bibitem{sato2022fundamentals} K. Sato and T. Ishibashi, Fundamentals of Magneto-Optical Spectroscopy, Front. Phys. \textbf{10}, 946515 (2022).
+\bibitem{li2025exploration} Y.-X. Li, Y. Chen, L. Pan, S. Li, S.-B. Zhang, and H.-Z. Lu, Exploration of Altermagnetism in \(\mathrm{RuO}_2\), arXiv:2509.19932v1 [cond-mat.mes-hall] (2025).
+\bibitem{Song2025} C. Song, H. Bai, Z. Zhou, L. Han, H. Reichlova, J. H. Dil, J. Liu, X. Chen, and F. Pan, Altermagnets as a new class of functional materials, Nat. Rev. Mater. \textbf{10}, 473 (2025).
+\bibitem{iguchi2025} Iguchi, Satoshi and Kobayashi, Hiroki and Ikemoto, Yuka and Furukawa, Tetsuya and Itoh, Hirotake and Iwai, Shinichiro and Moriwaki, Taro and Sasaki, Takahiko, Magneto-optical spectra of an organic antiferromagnet as a candidate for an altermagnet, Phys. Rev. Research 7, 033026 (2025)
+
+
+\end{thebibliography}
+\end{document}

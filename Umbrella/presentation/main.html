@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+  <title>Seminar 8: Optical Probes of Altermagnetism</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/reset.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/reveal.min.css">
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://3Dmol.org/build/3Dmol-min.js"></script>
+  <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js"></script>
+</head>
+
+<body>
+    <div class="reveal">
+      <div class="slides">
+
+
+
+<!-- SLIDE 1: Title Page -->
+<section id="Titlepage" style="position: relative;">
+    <h1 style="border-bottom: 5px solid var(--primary-color); margin-top: 80px; font-size: 45px;">Potential of Mean Force Between Like-Charged Colloidal Particles</h1>
+    <h3 style="margin-top: 20px;">Investigating coarse-grained charged colloid models</h3>
+    <img id="u-logo" src="unistuttgart_logo_englisch_cmyk-01.png" alt="University of Stuttgart logo, featuring a white dot pattern forming a circle" style="width: 200px; height: auto; position: absolute; right: 40px; top: 580px;">
+    <p style="margin-top: 220px;">
+      <strong>Jakob Wallner & Stephan Haag</strong><br>
+      <em>University of Stuttgart</em><br>
+    </p>
+    <p style="margin-top: 10px;">Advanced Simulation Methods Lecture
+      <br>26.06.2026
+    </p>
+    <aside class="notes">
+    </aside>
+</section>
+
+<section>
+    <h2>Reference Plots</h2>
+    <div class="padded plot" style="margin-top: 20px;">
+        <img src="thermodynamics.png" alt="thermodynamic evaluation of the equilibrium simulations to ensure convergence and stability" style="width:98%; height:auto;">
+    </div>
+</section>
+
+
+
+
+      </div>
+    </div>
+
+<!-- presentation ends here -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/reveal.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/plugin/notes/notes.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/plugin/math/math.min.js"></script>
+  <script>
+    Reveal.initialize({
+      preloadIframes: true,
+      autoAnimateDuration: 0.7,
+      autoAnimateEasing: 'ease-out',
+      slideNumber: 'c/t',
+      hash: true,
+
+
+      overview: true,
+      controls: true,
+      progress: true,
+      transition: 'slide',
+      backgroundTransition: 'fade',
+      plugins: [RevealMath.MathJax2, RevealNotes],
+      mathjax2: {
+        mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js',
+        config: 'TeX-AMS_HTML-full',
+        // pass other options into `MathJax.Hub.Config()`
+        TeX: {
+          Macros: {
+            R: '\\mathbb{R}',
+            C: '\\mathbb{C}'
+          }
+        }
+      }
+    });
+  </script>
+</body>
+</html>
