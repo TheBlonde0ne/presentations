@@ -35,20 +35,194 @@
     </aside>
 </section>
 
+<section class="section-divider" data-state="is-section-divider">
+<h2 style="font-size: 40px;">Preparation: Investigation of the System</h2>
+<div class="padded">
+<ul>
+  <li>Dielectrical Constant</li>
+  <li>Autocorrelation</li>
+  <li>Statistical Uncertainty</li>
+  <li>Convergence and Stability of the System</li>
+</ul></div>
+</section>
+
 <section>
-    <h2>Reference Plots</h2>
+<section>
+<h2>Pure water reference: <highlight>Positive</highlight> charged colloids</h2>
+<div class="padded plot" style="margin-top: 20px;">
+        <img src="+/epsilon_convergence_combined.png" alt="thermodynamic evaluation of the equilibrium simulations to ensure convergence and stability" style="width:98%; height:auto;">
+</div>
+</section>
+<section>
+<h2>Pure water reference: <highlight>Negative</highlight> charged colloids</h2>
+<div class="padded plot" style="margin-top: 20px;">
+        <img src="-/epsilon_convergence_combined.png" alt="thermodynamic evaluation of the equilibrium simulations to ensure convergence and stability" style="width:98%; height:auto;">
+</div>
+</section>
+</section>
+
+<section>
+<section>
+<h2>Autocorrelation of $M_z$: <highlight>Positive</highlight> charged colloids</h2>
+<div class="padded plot" style="margin-top: 20px;">
+        <img src="+/tau.png" alt="thermodynamic evaluation of the equilibrium simulations to ensure convergence and stability" style="width:98%; height:auto;">
+</div>
+</section>
+<section>
+<h2>Autocorrelation of $M_z$: <highlight>Negative</highlight> charged colloids</h2>
+<div class="padded plot" style="margin-top: 20px;">
+        <img src="-/tau.png" alt="thermodynamic evaluation of the equilibrium simulations to ensure convergence and stability" style="width:98%; height:auto;">
+</div>
+</section>
+</section>
+
+<section>
+<section>
+<h2>Statistical Uncertainty: <highlight>Positive</highlight> charged colloids</h2>
+<div class="padded plot" style="margin-top: 20px;">
+        <img src="+/tau.png" alt="thermodynamic evaluation of the equilibrium simulations to ensure convergence and stability" style="width:98%; height:auto;">
+</div>
+</section>
+<section>
+<h2>Statistical Uncertainty: <highlight>Negative</highlight> charged colloids</h2>
+<div class="padded plot" style="margin-top: 20px;">
+        <img src="-/tau.png" alt="thermodynamic evaluation of the equilibrium simulations to ensure convergence and stability" style="width:98%; height:auto;">
+</div>
+</section>
+</section>
+
+<section>
+<section>
+    <h2>Convergence: <highlight>Positive</highlight> charged colloids</h2>
     <div class="padded plot" style="margin-top: 20px;">
-        <img src="thermodynamics.png" alt="thermodynamic evaluation of the equilibrium simulations to ensure convergence and stability" style="width:98%; height:auto;">
+        <img src="+/thermodynamics.png" alt="thermodynamic evaluation of the equilibrium simulations to ensure convergence and stability" style="width:98%; height:auto;">
     </div>
+</section>
+<section>
+    <h2>Convergence: <highlight>Negative</highlight> charged colloids</h2>
+    <div class="padded plot" style="margin-top: 20px;">
+        <img src="-/thermodynamics.png" alt="thermodynamic evaluation of the equilibrium simulations to ensure convergence and stability" style="width:98%; height:auto;">
+    </div>
+</section>
+</section>
+
+<section>
+<h2>Final Values</h2>
+<div>
+<div class="slide-table-container" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; margin: 20px auto; max-width: 95%;">
+  <table style="width: 100%; border-collapse: collapse; text-align: center; font-size: 0.6rem; box-shadow: 0 4px 12px rgba(0,0,0,0.1); border-radius: 8px; overflow: hidden;">
+    <thead>
+      <tr style="background-color: #2c3e504f; color: #ffffff; font-size: 0.95rem;">
+        <th style="padding: 8px 10px; border: 1px solid #34495e;">System</th>
+        <th style="padding: 8px 10px; border: 1px solid #34495e;">Ionic Strength<br><small style="">$I (M)$</small></th>
+        <th style="padding: 8px 10px; border: 1px solid #34495e;">Dielectric<br><small style="">$\epsilon_r$</small></th>
+        <th style="padding: 8px 10px; border: 1px solid #34495e;">Inv. Screening<br><small style="">$\kappa_D$ (nm$^{-1}$)</small></th>
+        <th style="padding: 8px 10px; border: 1px solid #34495e;">Screening Length<br><small style="">$\lambda_D$ (nm)</small></th>
+        <th style="padding: 8px 10px; border: 1px solid #34495e;">Relaxation Time<br><small style="">$\tau_{auto}$ (ps)</small></th>
+        <th style="padding: 8px 10px; border: 1px solid #34495e;">Statistical Error<br><small style="">Error (ps)</small></th>
+        <th style="padding: 8px 10px; border: 1px solid #34495e;">Min Run Length<br><small style="">$T_{min}$ (ns)</small></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr style="background-color: #fcfcfc; border-bottom: 1px solid #e0e0e0;">
+        <td rowspan="4" style="font-weight: bold; color: #276CF5; background-color: #f4f7fe; padding: 12px; border-right: 2px solid #276CF5; border-bottom: 2px solid #bdc3c7;">Positive (+)</td>
+        <td style="padding: 6px; border: 1px solid #e0e0e0;">0.00</td>
+        <td style="padding: 6px; border: 1px solid #e0e0e0;">107.60</td>
+        <td style="padding: 6px; border: 1px solid #e0e0e0;">0.0000</td>
+        <td style="padding: 6px; border: 1px solid #e0e0e0;">&infin;</td>
+        <td style="padding: 6px; border: 1px solid #e0e0e0;">6.296</td>
+        <td style="padding: 6px; border: 1px solid #e0e0e0;">0.052</td>
+        <td style="padding: 6px; border: 1px solid #e0e0e0; font-weight: 600; color: #2c3e50;">31.48</td>
+      </tr>
+      <tr style="background-color: #ffffff; border-bottom: 1px solid #e0e0e0;">
+        <td style="padding: 6px; border: 1px solid #e0e0e0;">0.05</td>
+        <td style="padding: 6px; border: 1px solid #e0e0e0;">101.50</td>
+        <td style="padding: 6px; border: 1px solid #e0e0e0;">0.6464</td>
+        <td style="padding: 6px; border: 1px solid #e0e0e0;">1.547</td>
+        <td style="padding: 6px; border: 1px solid #e0e0e0;">6.324</td>
+        <td style="padding: 6px; border: 1px solid #e0e0e0;">0.096</td>
+        <td style="padding: 6px; border: 1px solid #e0e0e0; font-weight: 600; color: #2c3e50;">31.62</td>
+      </tr>
+      <tr style="background-color: #fcfcfc; border-bottom: 1px solid #e0e0e0;">
+        <td style="padding: 6px; border: 1px solid #e0e0e0;">0.10</td>
+        <td style="padding: 6px; border: 1px solid #e0e0e0;">101.60</td>
+        <td style="padding: 6px; border: 1px solid #e0e0e0;">0.9137</td>
+        <td style="padding: 6px; border: 1px solid #e0e0e0;">1.094</td>
+        <td style="padding: 6px; border: 1px solid #e0e0e0;">6.425</td>
+        <td style="padding: 6px; border: 1px solid #e0e0e0;">0.021</td>
+        <td style="padding: 6px; border: 1px solid #e0e0e0; font-weight: 600; color: #2c3e50;">32.12</td>
+      </tr>
+      <tr style="background-color: #ffffff; border-bottom: 2px solid #bdc3c7;">
+        <td style="padding: 6px; border: 1px solid #e0e0e0;">0.20</td>
+        <td style="padding: 6px; border: 1px solid #e0e0e0;">97.97</td>
+        <td style="padding: 6px; border: 1px solid #e0e0e0;">1.3159</td>
+        <td style="padding: 6px; border: 1px solid #e0e0e0;">0.760</td>
+        <td style="padding: 6px; border: 1px solid #e0e0e0;">6.717</td>
+        <td style="padding: 6px; border: 1px solid #e0e0e0;">0.035</td>
+        <td style="padding: 6px; border: 1px solid #e0e0e0; font-weight: 600; color: #2c3e50;">33.59</td>
+      </tr>
+
+      <tr style="background-color: #fcfcfc; border-bottom: 1px solid #e0e0e0;">
+        <td rowspan="4" style="font-weight: bold; color: #F54927; background-color: #fdf5f4; padding: 6px; border-right: 2px solid #F54927; dashed #bdc3c7;">Negative (-)</td>
+        <td style="padding: 6px; border: 1px solid #e0e0e0;">0.00</td>
+        <td style="padding: 6px; border: 1px solid #e0e0e0;">103.40</td>
+        <td style="padding: 6px; border: 1px solid #e0e0e0;">0.0000</td>
+        <td style="padding: 6px; border: 1px solid #e0e0e0;">&infin;</td>
+        <td style="padding: 6px; border: 1px solid #e0e0e0;">6.871</td>
+        <td style="padding: 6px; border: 1px solid #e0e0e0;">0.250</td>
+        <td style="padding: 6px; border: 1px solid #e0e0e0; font-weight: 600; color: #2c3e50;">34.35</td>
+      </tr>
+      <tr style="background-color: #ffffff; border-bottom: 1px solid #e0e0e0;">
+        <td style="padding: 6px; border: 1px solid #e0e0e0;">0.05</td>
+        <td style="padding: 6px; border: 1px solid #e0e0e0;">101.40</td>
+        <td style="padding: 6px; border: 1px solid #e0e0e0;">0.6467</td>
+        <td style="padding: 6px; border: 1px solid #e0e0e0;">1.546</td>
+        <td style="padding: 6px; border: 1px solid #e0e0e0;">5.742</td>
+        <td style="padding: 6px; border: 1px solid #e0e0e0;">0.209</td>
+        <td style="padding: 6px; border: 1px solid #e0e0e0; font-weight: 600; color: #2c3e50;">28.71</td>
+      </tr>
+      <tr style="background-color: #fcfcfc; border-bottom: 1px solid #e0e0e0;">
+        <td style="padding: 6px; border: 1px solid #e0e0e0;">0.10</td>
+        <td style="padding: 6px; border: 1px solid #e0e0e0;">101.10</td>
+        <td style="padding: 6px; border: 1px solid #e0e0e0;">0.9160</td>
+        <td style="padding: 6px; border: 1px solid #e0e0e0;">1.092</td>
+        <td style="padding: 6px; border: 1px solid #e0e0e0;">8.044</td>
+        <td style="padding: 6px; border: 1px solid #e0e0e0;">0.570</td>
+        <td style="padding: 6px; border: 1px solid #e0e0e0; font-weight: 600; color: #2c3e50;">40.22</td>
+      </tr>
+      <tr style="background-color: #ffffff;">
+        <td style="padding: 6px; border: 1px solid #e0e0e0;">0.20</td>
+        <td style="padding: 6px; border: 1px solid #e0e0e0;">91.18</td>
+        <td style="padding: 6px; border: 1px solid #e0e0e0;">1.3641</td>
+        <td style="padding: 6px; border: 1px solid #e0e0e0;">0.733</td>
+        <td style="padding: 6px; border: 1px solid #e0e0e0;">6.785</td>
+        <td style="padding: 6px; border: 1px solid #e0e0e0;">0.248</td>
+        <td style="padding: 6px; border: 1px solid #e0e0e0; font-weight: 600; color: #2c3e50;">33.92</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+</section>
+
+<section class="section-divider" data-state="is-section-divider">
+<h2 style="font-size: 40px;">Umbrella Sampling</h2>
+<div class="padded">
+<ul>
+  <li>Push & Pull Simulation</li>
+  <li>Sampling relevant frames</li>
+  <li>Double check WHAM overlap</li>
+  <li>Calculate Potential of Mean Force</li>
+</ul></div>
 </section>
 
 
 
 
-      </div>
-    </div>
 
 <!-- presentation ends here -->
+</div>
+</div>
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/reveal.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/plugin/notes/notes.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/plugin/math/math.min.js"></script>
