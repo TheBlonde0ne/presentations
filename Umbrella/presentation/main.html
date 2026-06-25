@@ -294,15 +294,23 @@
 
 <section>
   <section>
-    <h2>Resulting PMF</h2>
+    <h2>Resulting PMF and Barrier Height</h2>
     <div class="grid two">
     <div class="padded plot" style="margin-top: 20px;">
       <h4>Positive Colloid</h4>
         <img src="+/wham_combined_pmf_plot.png" style="width:100%; height:auto;">
+        <p>$0.00M$: $W_{max}(2.569 nm)$ = 36.17 kJ/mol
+$0.05M$: $W_{max}(2.680 nm)$ = 18.68 kJ/mol
+$0.10M$: $W_{max}(2.749 nm)$ = 8.42 kJ/mol
+$0.20M$: $W_{max}(2.830 nm)$ = 8.43 kJ/mol</p>
     </div>
     <div class="padded plot" style="margin-top: 20px;">
       <h4>Negative Colloid</h4>
         <img src="-/wham_combined_pmf_plot.png" style="width:100%; height:auto;">
+        <p>$0.00M$: $W_{max}(3.182 nm)$ = 11.97 kJ/mol
+          $0.05M$: $W_{max}(3.115 nm)$ = 2.51 kJ/mol
+          $0.10M$: $W_{max}(5.039 nm)$ = 2.59 kJ/mol
+          $0.20M$: $W_{max}(3.361 nm)$ = 4.22 kJ/mol</p>
     </div>
     </div>
   </section>
@@ -310,6 +318,7 @@
     <h2>Resulting PMF: <highlight>Positive</highlight> charged colloids</h2>
     <div class="padded plot" style="margin-top: 20px;">
         <img src="+/wham_combined_pmf_plot.png" style="width:700px; height:auto;">
+        
     </div>
   </section>
   <section>
@@ -326,24 +335,24 @@
     <div class="grid two">
     <div class="padded plot" style="margin-top: 20px;">
       <h4>Positive Colloid</h4>
-        <img src="+/pmf_vs_DLVO.png" style="width:100%; height:auto;">
+        <img src="+/pmf_vs_dlvo_final.png" style="width:100%; height:auto;">
     </div>
     <div class="padded plot" style="margin-top: 20px;">
       <h4>Negative Colloid</h4>
-        <img src="-/pmf_vs_DLVO.png" style="width:100%; height:auto;">
+        <img src="-/pmf_vs_dlvo_final.png" style="width:100%; height:auto;">
     </div>
     </div>
   </section>
   <section>
     <h2>Resulting PMF vs DLVO: <highlight>Positive</highlight> charged colloids</h2>
     <div class="padded plot" style="margin-top: 20px;">
-        <img src="+/pmf_vs_DLVO.png" style="width:700px; height:auto;">
+        <img src="+/pmf_vs_dlvo_final.png" style="width:700px; height:auto;">
     </div>
   </section>
   <section>
     <h2>Resulting PMF vs DLVO: <highlight>Positive</highlight> charged colloids</h2>
     <div class="padded plot" style="margin-top: 20px;">
-        <img src="-/pmf_vs_DLVO.png" style="width:700px; height:auto;">
+        <img src="-/pmf_vs_dlvo_final.png" style="width:700px; height:auto;">
     </div>
   </section>
 </section>
@@ -380,13 +389,85 @@
   <section>
     <h2>Debye Hückel Scaling: $\lambda_D$ vs $\sqrt{I}$</h2>
     <div class="grid two">
-    <div class="padded plot" style="margin-top: 20px;">
-      <h4>Positive Colloid</h4>
-        <img src="+/debye_screening_scaling.png" style="width:100%; height:auto;">
+    <div class="padded plot" style="margin-top: 5px;">
+      <h4 style="color: #276CF5; margin-bottom: 6px; font-size: 0.95rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;">Positive (+) System</h4>
+        <img src="+/debye_screening_scaling.png" style="width:400px ; height:auto;">
+        <div class="table-container" style="font-family: -apple-system, sans-serif; margin: 15px auto; max-width: 100%;">
+  <table style="width: 100%; border-collapse: collapse; text-align: right; font-size: 0.65rem;">
+    <thead>
+      <tr style="border-bottom: 2px solid #276CF5; color: #555; font-weight: 600;">
+        <th style="padding: 6px 10px; text-align: left;">Molarity</th>
+        <th style="padding: 6px 10px;">&radic;I </span></th>
+        <th style="padding: 6px 10px;">Ana $\lambda_D$ </th>
+        <th style="padding: 6px 10px;">Sim  $\lambda_D$</th>
+        <th style="padding: 6px 10px;">Sim  $\kappa_D$ </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr style="border-bottom: 1px solid #eee;">
+        <td style="padding: 6px 10px; text-align: left; font-weight: 500;">0.05</td>
+        <td style="padding: 6px 10px; color: #666;">0.2236</td>
+        <td style="padding: 6px 10px; color: #666;">1.547</td>
+        <td style="padding: 6px 10px; font-weight: 600; color: #222;">3.333</td>
+        <td style="padding: 6px 10px; color: #666;">0.3000</td>
+      </tr>
+      <tr style="border-bottom: 1px solid #eee;">
+        <td style="padding: 6px 10px; text-align: left; font-weight: 500;">0.10</td>
+        <td style="padding: 6px 10px; color: #666;">0.3162</td>
+        <td style="padding: 6px 10px; color: #666;">1.094</td>
+        <td style="padding: 6px 10px; font-weight: 600; color: #222;">2.466</td>
+        <td style="padding: 6px 10px; color: #666;">0.4055</td>
+      </tr>
+      <tr style="border-bottom: 2px solid #e0e0e0;">
+        <td style="padding: 6px 10px; text-align: left; font-weight: 500;">0.20</td>
+        <td style="padding: 6px 10px; color: #666;">0.4472</td>
+        <td style="padding: 6px 10px; color: #666;">0.760</td>
+        <td style="padding: 6px 10px; font-weight: 600; color: #222;">1.068</td>
+        <td style="padding: 6px 10px; color: #666;">0.9367</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
     </div>
-    <div class="padded plot" style="margin-top: 20px;">
-      <h4>Negative Colloid</h4>
-        <img src="-/debye_screening_scaling.png" style="width:100%; height:auto;">
+    <div class="padded plot" style="margin-top: 5px;">
+      <h4 style="color: #F54927; margin-bottom: 6px; font-size: 0.95rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;">Negative (&minus;) System</h4>
+        <img src="-/debye_screening_scaling.png" style="width:400px; height:auto;">
+        <div class="table-container" style="font-family: -apple-system, sans-serif; margin: 15px auto; max-width: 100%;">
+  <table style="width: 100%; border-collapse: collapse; text-align: right; font-size: 0.85rem;">
+    <thead>
+      <tr style="border-bottom: 2px solid #276CF5; color: #555; font-weight: 600;">
+        <th style="padding: 6px 10px; text-align: left;">Molarity</th>
+        <th style="padding: 6px 10px;">&radic;I </span></th>
+        <th style="padding: 6px 10px;">Ana $\lambda_D$ </th>
+        <th style="padding: 6px 10px;">Sim  $\lambda_D$</th>
+        <th style="padding: 6px 10px;">Sim  $\kappa_D$ </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr style="border-bottom: 1px solid #eee;">
+        <td style="padding: 6px 10px; text-align: left; font-weight: 500;">0.05</td>
+        <td style="padding: 6px 10px; color: #666;">0.2236</td>
+        <td style="padding: 6px 10px; color: #666;">1.547</td>
+        <td style="padding: 6px 10px; font-weight: 600; color: #222;">0.175</td>
+        <td style="padding: 6px 10px; color: #666;">5.7220</td>
+      </tr>
+      <tr style="border-bottom: 1px solid #eee;">
+        <td style="padding: 6px 10px; text-align: left; font-weight: 500;">0.10</td>
+        <td style="padding: 6px 10px; color: #666;">0.3162</td>
+        <td style="padding: 6px 10px; color: #666;">1.094</td>
+        <td style="padding: 6px 10px; font-weight: 600; color: #222;">0.198</td>
+        <td style="padding: 6px 10px; color: #666;">5.0383</td>
+      </tr>
+      <tr style="border-bottom: 2px solid #e0e0e0;">
+        <td style="padding: 6px 10px; text-align: left; font-weight: 500;">0.20</td>
+        <td style="padding: 6px 10px; color: #666;">0.4472</td>
+        <td style="padding: 6px 10px; color: #666;">0.760</td>
+        <td style="padding: 6px 10px; font-weight: 600; color: #222;">0.197</td>
+        <td style="padding: 6px 10px; color: #666;">5.0781</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
     </div>
     </div>
   </section>
@@ -400,6 +481,34 @@
     <h2>Debye Hückel Scaling: <highlight>Positive</highlight> charged colloids</h2>
     <div class="padded plot" style="margin-top: 20px;">
         <img src="-/debye_screening_scaling.png" style="width:700px; height:auto;">
+    </div>
+  </section>
+</section>
+
+<section>
+  <section>
+    <h2>Structural Analysis: Only for $I= 0.10$M</h2>
+    <div class="grid two">
+    <div class="padded plot" style="margin-top: 20px;">
+      <h4>Positive Colloid</h4>
+        <img src="+/colloid_ion_rdf.png" style="width:100%; height:auto;">
+    </div>
+    <div class="padded plot" style="margin-top: 20px;">
+      <h4>Negative Colloid</h4>
+        <img src="-/colloid_ion_rdf.png" style="width:100%; height:auto;">
+    </div>
+    </div>
+  </section>
+  <section>
+    <h2>Structural Analysis: Radial Distribution Function (Positive)</h2>
+    <div class="padded plot" style="margin-top: 20px;">
+        <img src="+/colloid_ion_rdf.png" style="width:700px; height:auto;">
+    </div>
+  </section>
+  <section>
+    <h2>Structural Analysis: Radial Distribution Function (Negative)</h2>
+    <div class="padded plot" style="margin-top: 20px;">
+        <img src="-/colloid_ion_rdf.png" style="width:700px; height:auto;">
     </div>
   </section>
 </section>
