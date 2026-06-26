@@ -48,6 +48,18 @@
 
 <section>
 <section>
+  <h2>Pure water reference: <highlight>Positive</highlight> charged colloids</h2>
+<div class="padded" style="margin-top: 20px;">
+<p>  With the extracted dipole moment of the simulations:
+</p>
+<p>Dielectric constant:$$\epsilon_r = 1 + \frac{\langle M^2 \rangle - \langle \bf{M} \rangle^2}{3\epsilon_0 k_B T V}$$
+$$\kappa_D^2 = \frac{2e^2 N_A I}{\epsilon_0 \epsilon_r k_B T}$$
+$$\lambda_D = \kappa_D^{-1}$$
+with Bjerrum length$$l_B = \frac{e^2}{4 \pi \epsilon_0 \epsilon_r k_B T}$$
+</p>
+</div>
+</section>
+<section>
 <h2>Pure water reference: <highlight>Positive</highlight> charged colloids</h2>
 <div class="padded plot" style="margin-top: 20px;">
         <img src="+/epsilon_convergence_combined.png" alt="thermodynamic evaluation of the equilibrium simulations to ensure convergence and stability" style="width:98%; height:auto;">
@@ -231,6 +243,16 @@
 </section>
 
 <section>
+  <h2>Umbrella Sampling</h2>
+  <div class="padded" style="margin-top: 20px;">
+    <p>Apply a harmonic bias potential $$U_{bias}(\xi) = 1/2 k (\xi-\xi_0)^2$$<br>Because WHAM recovers the unbiased PMF, different $k$ should be possible
+
+    </p>
+  </div>
+
+</section>
+
+<section>
 <section>
     <h2>Sampled Windows: <highlight>Positive</highlight> charged colloids</h2>
     <h4>Concentration: $0.00$M</h4>
@@ -335,13 +357,17 @@ $0.20M$: $W_{max}(2.830 nm)$ = 8.43 kJ/mol</p>
     <div class="grid two">
     <div class="padded plot" style="margin-top: 20px;">
       <h4>Positive Colloid</h4>
-        <img src="+/pmf_vs_dlvo_final.png" style="width:100%; height:auto;">
+      <img src="+/pmf_vs_dlvo_final.png" style="width:100%; height:auto;">
     </div>
     <div class="padded plot" style="margin-top: 20px;">
       <h4>Negative Colloid</h4>
-        <img src="-/pmf_vs_dlvo_final.png" style="width:100%; height:auto;">
+      <img src="-/pmf_vs_dlvo_final.png" style="width:100%; height:auto;">
     </div>
-    </div>
+  </div>
+  <div class="padded" style="margin-top: 20px;">
+    <p>$$W(r) = z_m^2 l_B \frac{e^{-\kappa_D(r-\sigma_m)}}{r(1+\kappa_D \sigma_m /2)^2}$$DLVO predicts same PMF for positive and negative Colloid</p>
+  </div>
+
   </section>
   <section>
     <h2>Resulting PMF vs DLVO: <highlight>Positive</highlight> charged colloids</h2>
@@ -497,6 +523,15 @@ $0.20M$: $W_{max}(2.830 nm)$ = 8.43 kJ/mol</p>
       <h4>Negative Colloid</h4>
         <img src="-/colloid_ion_rdf.png" style="width:100%; height:auto;">
     </div>
+    </div>
+    <div class="padded" style="margin-top: 20px;">
+      <p>Negative Colloid:</p>
+      <ul>
+        <li>higher peaks</li>
+        <li>Hydration shells are closer</li>
+        <li>$Na^+$: $\sigma=$0.235</li>
+        <li>$Cl^-$: $\sigma=$0.440</li>
+      </ul>
     </div>
   </section>
   <section>
