@@ -1,0 +1,357 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+  <title>Electrophoresis</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/reset.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/reveal.min.css">
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://3Dmol.org/build/3Dmol-min.js"></script>
+  <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js"></script>
+</head>
+
+<body>
+    <div class="reveal">
+      <div class="slides">
+
+
+
+<!-- SLIDE 1: Title Page -->
+<section id="Titlepage" style="position: relative;">
+    <h1 style="border-bottom: 5px solid var(--primary-color); margin-top: 80px; font-size: 45px;">Electro-Osmotic flow with
+ESPResSO</h1>
+    <h3 style="margin-top: 20px;">electrophoretic mobility of DNA-like polyelectrolytes in free
+solution</h3>
+    <img id="u-logo" src="unistuttgart_logo_englisch_cmyk-01.png" alt="University of Stuttgart logo, featuring a white dot pattern forming a circle" style="width: 200px; height: auto; position: absolute; right: 40px; top: 580px;">
+    <p style="margin-top: 220px;">
+      <strong>Jakob Wallner</strong><br>
+      <em>University of Stuttgart</em><br>
+    </p>
+    <p style="margin-top: 10px;">Advanced Simulation Methods Lecture 3
+      <br>26.06.2026
+    </p>
+    <aside class="notes">
+    </aside>
+</section>
+<!-- SLIDE 1 END: Title Page -->
+
+<section class="section-divider" data-state="is-section-divider">
+<h2 style="font-size: 40px;">Primary ways to measure mobility:</h2>
+<div class="padded">
+<div class="grid two", style="margin-top: 0px;">
+    <div>
+        <h3>Zero-Field</h3>
+        <p>Green-Kubo formalism</p>
+    </div>
+    <div>
+        <h3>Explicit-Field</h3>
+        <p>applying a constant external electric field</p>
+    </div>
+</div>
+</div>
+</section>
+
+<section>
+<h2>Final Values</h2>
+<div>
+<div class="slide-table-container" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; margin: 20px auto; max-width: 95%;">
+  <table style="width: 100%; border-collapse: collapse; text-align: center; font-size: 0.6rem; box-shadow: 0 4px 12px rgba(0,0,0,0.1); border-radius: 8px; overflow: hidden;">
+    <thead>
+      <tr style="background-color: #2c3e504f; color: #ffffff; font-size: 0.95rem;">
+        <th style="padding: 8px 10px; border: 1px solid #34495e;">System</th>
+        <th style="padding: 8px 10px; border: 1px solid #34495e;">Ionic Strength<br><small style="">$I (M)$</small></th>
+        <th style="padding: 8px 10px; border: 1px solid #34495e;">Dielectric<br><small style="">$\epsilon_r$</small></th>
+        <th style="padding: 8px 10px; border: 1px solid #34495e;">Inv. Screening<br><small style="">$\kappa_D$ (nm$^{-1}$)</small></th>
+        <th style="padding: 8px 10px; border: 1px solid #34495e;">Screening Length<br><small style="">$\lambda_D$ (nm)</small></th>
+        <th style="padding: 8px 10px; border: 1px solid #34495e;">Relaxation Time<br><small style="">$\tau_{auto}$ (ps)</small></th>
+        <th style="padding: 8px 10px; border: 1px solid #34495e;">Statistical Error<br><small style="">Error (ps)</small></th>
+        <th style="padding: 8px 10px; border: 1px solid #34495e;">Min Run Length<br><small style="">$T_{min}$ (ns)</small></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr style="background-color: #fcfcfc; border-bottom: 1px solid #e0e0e0;">
+        <td rowspan="4" style="font-weight: bold; color: #276CF5; background-color: #f4f7fe; padding: 12px; border-right: 2px solid #276CF5; border-bottom: 2px solid #bdc3c7;">Positive (+)</td>
+        <td style="padding: 6px; border: 1px solid #e0e0e0;">0.00</td>
+        <td style="padding: 6px; border: 1px solid #e0e0e0;">107.60</td>
+        <td style="padding: 6px; border: 1px solid #e0e0e0;">0.0000</td>
+        <td style="padding: 6px; border: 1px solid #e0e0e0;">&infin;</td>
+        <td style="padding: 6px; border: 1px solid #e0e0e0;">6.296</td>
+        <td style="padding: 6px; border: 1px solid #e0e0e0;">0.052</td>
+        <td style="padding: 6px; border: 1px solid #e0e0e0; font-weight: 600; color: #2c3e50;">31.48</td>
+      </tr>
+      <tr style="background-color: #ffffff; border-bottom: 1px solid #e0e0e0;">
+        <td style="padding: 6px; border: 1px solid #e0e0e0;">0.05</td>
+        <td style="padding: 6px; border: 1px solid #e0e0e0;">101.50</td>
+        <td style="padding: 6px; border: 1px solid #e0e0e0;">0.6464</td>
+        <td style="padding: 6px; border: 1px solid #e0e0e0;">1.547</td>
+        <td style="padding: 6px; border: 1px solid #e0e0e0;">6.324</td>
+        <td style="padding: 6px; border: 1px solid #e0e0e0;">0.096</td>
+        <td style="padding: 6px; border: 1px solid #e0e0e0; font-weight: 600; color: #2c3e50;">31.62</td>
+      </tr>
+      <tr style="background-color: #fcfcfc; border-bottom: 1px solid #e0e0e0;">
+        <td style="padding: 6px; border: 1px solid #e0e0e0;">0.10</td>
+        <td style="padding: 6px; border: 1px solid #e0e0e0;">101.60</td>
+        <td style="padding: 6px; border: 1px solid #e0e0e0;">0.9137</td>
+        <td style="padding: 6px; border: 1px solid #e0e0e0;">1.094</td>
+        <td style="padding: 6px; border: 1px solid #e0e0e0;">6.425</td>
+        <td style="padding: 6px; border: 1px solid #e0e0e0;">0.021</td>
+        <td style="padding: 6px; border: 1px solid #e0e0e0; font-weight: 600; color: #2c3e50;">32.12</td>
+      </tr>
+      <tr style="background-color: #ffffff; border-bottom: 2px solid #bdc3c7;">
+        <td style="padding: 6px; border: 1px solid #e0e0e0;">0.20</td>
+        <td style="padding: 6px; border: 1px solid #e0e0e0;">97.97</td>
+        <td style="padding: 6px; border: 1px solid #e0e0e0;">1.3159</td>
+        <td style="padding: 6px; border: 1px solid #e0e0e0;">0.760</td>
+        <td style="padding: 6px; border: 1px solid #e0e0e0;">6.717</td>
+        <td style="padding: 6px; border: 1px solid #e0e0e0;">0.035</td>
+        <td style="padding: 6px; border: 1px solid #e0e0e0; font-weight: 600; color: #2c3e50;">33.59</td>
+      </tr>
+
+      <tr style="background-color: #fcfcfc; border-bottom: 1px solid #e0e0e0;">
+        <td rowspan="4" style="font-weight: bold; color: #F54927; background-color: #fdf5f4; padding: 6px; border-right: 2px solid #F54927; dashed #bdc3c7;">Negative (-)</td>
+        <td style="padding: 6px; border: 1px solid #e0e0e0;">0.00</td>
+        <td style="padding: 6px; border: 1px solid #e0e0e0;">103.40</td>
+        <td style="padding: 6px; border: 1px solid #e0e0e0;">0.0000</td>
+        <td style="padding: 6px; border: 1px solid #e0e0e0;">&infin;</td>
+        <td style="padding: 6px; border: 1px solid #e0e0e0;">6.871</td>
+        <td style="padding: 6px; border: 1px solid #e0e0e0;">0.250</td>
+        <td style="padding: 6px; border: 1px solid #e0e0e0; font-weight: 600; color: #2c3e50;">34.35</td>
+      </tr>
+      <tr style="background-color: #ffffff; border-bottom: 1px solid #e0e0e0;">
+        <td style="padding: 6px; border: 1px solid #e0e0e0;">0.05</td>
+        <td style="padding: 6px; border: 1px solid #e0e0e0;">101.40</td>
+        <td style="padding: 6px; border: 1px solid #e0e0e0;">0.6467</td>
+        <td style="padding: 6px; border: 1px solid #e0e0e0;">1.546</td>
+        <td style="padding: 6px; border: 1px solid #e0e0e0;">5.742</td>
+        <td style="padding: 6px; border: 1px solid #e0e0e0;">0.209</td>
+        <td style="padding: 6px; border: 1px solid #e0e0e0; font-weight: 600; color: #2c3e50;">28.71</td>
+      </tr>
+      <tr style="background-color: #fcfcfc; border-bottom: 1px solid #e0e0e0;">
+        <td style="padding: 6px; border: 1px solid #e0e0e0;">0.10</td>
+        <td style="padding: 6px; border: 1px solid #e0e0e0;">101.10</td>
+        <td style="padding: 6px; border: 1px solid #e0e0e0;">0.9160</td>
+        <td style="padding: 6px; border: 1px solid #e0e0e0;">1.092</td>
+        <td style="padding: 6px; border: 1px solid #e0e0e0;">8.044</td>
+        <td style="padding: 6px; border: 1px solid #e0e0e0;">0.570</td>
+        <td style="padding: 6px; border: 1px solid #e0e0e0; font-weight: 600; color: #2c3e50;">40.22</td>
+      </tr>
+      <tr style="background-color: #ffffff;">
+        <td style="padding: 6px; border: 1px solid #e0e0e0;">0.20</td>
+        <td style="padding: 6px; border: 1px solid #e0e0e0;">91.18</td>
+        <td style="padding: 6px; border: 1px solid #e0e0e0;">1.3641</td>
+        <td style="padding: 6px; border: 1px solid #e0e0e0;">0.733</td>
+        <td style="padding: 6px; border: 1px solid #e0e0e0;">6.785</td>
+        <td style="padding: 6px; border: 1px solid #e0e0e0;">0.248</td>
+        <td style="padding: 6px; border: 1px solid #e0e0e0; font-weight: 600; color: #2c3e50;">33.92</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+</section>
+
+
+<section>
+    <div class="content">
+    <h2>Free-Solution Electrophoresis</h2>
+        <div class="grid" style="grid-template-columns: 1.5fr 1fr">
+            <div>
+            <p>
+                Electrophoretic mobility is defined as the steady-state drift velocity per unit electric field:$$\mu = \frac{v_{\text{drift}}}{E}$$
+                We have 3 driving effects:
+                <ul>
+                    <li>Direct electrostatic driving force: $\mathbf{F}_{\text{el}} = Q_{\text{eff}}\mathbf{E}$</li>
+                    <li>Hydrodynamic drag from the solvent</li>
+                    <li>Electro-osmotic retardation: Drag from the oppositely charged counterions against solvent molecules</li>
+                </ul>
+            </p>
+            </div>
+            <div>
+                <img
+					src="images/electrophoresis.png"
+					alt=""
+					style="max-width: 100%; max-height: 100%; object-fit: contain;"
+				/>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section>
+<aside class="notes">To simulate DNA electrophoresis without tracking every solvent atom, we adopt the standard Kremer-Grest coarse-grained bead-spring model. <br> Here, a DNA segment is represented as $N$ charged spherical beads. Each bead represents approximately one to two base pairs and carries a bare charge of $-1e$. <br> Excluded volume is enforced between all beads and explicit counterions using the Weeks-Chandler-Andersen (WCA) potential. By truncating the Lennard-Jones potential at its minimum of $2^{1/6}\sigma$ and shifting it, we obtain a purely repulsive, smooth force that prevents particle overlap without adding artificial van der Waals attraction. <br> To maintain the physical connectivity of our DNA backbone, we use FENE bonds rather than standard harmonic springs. The logarithmic potential wall at $\Delta r_{\max}$ ensures that even under strong external electric driving or hydrodynamic shear, the bond cannot stretch beyond a hard limit, preventing the chain from passing through itself.  In our simulations, we vary $N$ from 2 up to 30 monomers to systematically probe how this connectivity influences both diffusion and electrophoretic mobility.</aside>
+    <h2>Bead Spring Model: DNA</h2>
+    <img
+					src="images/dna.png"
+					alt=""
+					style="max-width: 40%; max-height: auto; object-fit: contain; margin-left: auto; margin-right: auto; margin-top: 20px;"
+				/>
+    <div class="demo-command"><span class="comment"># Non-bonded interactions</span><br>
+<span class="variable">type_list</span> = <span class="bracket">[</span><span class="variable">chain_type</span>, <span class="variable">counterions_type</span>, <span class="variable">positive_salt_type</span>, <span class="variable">negative_salt_type</span><span class="bracket">]</span><br>
+<span class="condition">for</span> <span class="variable">type1</span> <span class="condition">in</span> <span class="variable">type_list</span>:<br>
+    <span class="condition">&nbsp;&nbsp;&nbsp;&nbsp;for</span> <span class="variable">type2</span> <span class="condition">in</span> <span class="variable">type_list</span>:<br>
+        <span class="variable">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;system</span>.<span class="variable">non_bonded_inter</span><span class="bracket">[</span><span class="variable">type1</span>, <span class="variable">type2</span><span class="bracket">]</span>.<span class="variable">lennard_jones</span>.<span class="function">set_params</span><span class="bracket">(</span>
+            <span class="variable">epsilon</span>=<span class="variable">lj_epsilon</span>, <span class="variable">sigma</span>=<span class="variable">lj_sigma</span>, <span class="variable">cutoff</span>=<span class="variable">lj_cutoff</span>, <span class="variable">shift</span>=<span class="string">'auto'</span><span class="bracket">)</span><br>
+
+<span class="comment"># Bonded interactions</span><br>
+<span class="variable">fene</span> = <span class="variable">espressomd</span>.<span class="variable">interactions</span>.<span class="function">FeneBond</span><span class="bracket">(</span><span class="variable">k</span>=<span class="variable">fene_k</span>, <span class="variable">r_0</span>=<span class="variable">POLYMER_PARAMS</span><span class="bracket">[</span><span class="string">'bond_length'</span><span class="bracket">]</span>, <span class="variable">d_r_max</span>=<span class="variable">fene_r_max</span><span class="bracket">)</span>
+<span class="variable">system</span>.<span class="variable">bonded_inter</span>.<span class="function">add</span><span class="bracket">(</span><span class="variable">fene</span><span class="bracket">)</span></div>
+    <div class="grid" style="grid-template-columns: 1fr 1fr">
+            <div>
+                <p>Non-Bonded Potential: Weeks-Chandler-Andersen (WCA)</p>
+            <p style="font-size: 15px;">
+                $$V_{\text{WCA}}(r) = \begin{cases} 4\epsilon \left[ \left(\dfrac{\sigma}{r}\right)^{12} - \left(\dfrac{\sigma}{r}\right)^{6} \right] + \epsilon, & r \le r_c = 2^{1/6}\sigma \\ 0, & r > r_c \end{cases}$$
+            </p>
+        </div>
+        <div>
+            <p>Bonded Potential: Finitely Extensible Nonlinear Elastic (FENE)</p>
+            <p style="font-size: 15px;">
+                $$V_{\text{FENE}}(r) = -\frac{1}{2} k \Delta r_{\max}^2 \ln \left[ 1 - \left( \frac{r - r_0}{\Delta r_{\max}} \right)^2 \right]$$
+            </p>
+        </div>
+        </div>
+</section>
+
+<section>
+    <h2>Counter Ions & Solvent Coupling</h2>
+    <div class="grid two">
+        <div>
+            <div class="padded">
+            <h3 style="color: grey">Explicit Counterions</h3>
+            <p>Explicit models resolve each counterion as an individual particle (a charged WCA sphere) that moves dynamically (Newton equation of motion).</p>
+        </div>
+        
+        <div class="padded" style="margin-top: 20px;">
+            <h3 style="color: var(--primary-color)">Solvent Coupling</h3>
+            <ul>
+                <li>We exceed the Manning threshold $\xi = \ell_B / b > 1$, with $\ell_B$ with $b$ the charge spacing</li>
+                <li>Some counterions condenses directly onto the polymer backbone.</li>
+                <li>Implicit screening would not cover this effect.</li>
+            </ul>
+            </div>
+        </div>
+        <div>
+            <div class="padded">
+            <h3 style="color: var(--primary-color)">Solvent Coupling</h3>
+            <p>
+            $$\mathbf{F}_{\text{fluid}} = -\mathbf{F}_{\text{drag}, i} = \zeta \left( \mathbf{v}_i - \mathbf{u}(\mathbf{r}_i) \right)$$
+        </p>
+        <p>Counterions generate a localized fluid counter-flow (electro-osmotic flow) that rushes past the polymer in opposite direction. This produces hydrodynamic shielding and electro-osmotic retardation, fundamental for short-chain mobility peak ($\mu(N)$ anomaly) and length-independent plateau ($\mu \sim N^0$) in long chains.</p>
+        </div>
+        <img
+					src="images/ions.png"
+					alt=""
+					style="max-width: 60%; max-height: auto; object-fit: contain; margin-left: 90px; margin-right: auto; margin-top: 20px;"
+				/>
+        </div>
+    </div>
+    <div class="content">
+        
+    
+    </div>
+</section>
+
+<section>
+    <h2>Mobility Behavior at different Chain Length</h2>
+    <div class="grid two">
+        <div class="padded">
+            <h3>Long Range</h3>
+            <p>Electrostatic driving Force:
+                $$F_{\text{el}} = N q_{\text{eff}} E$$
+                Hydrodynamic Drag:
+                $$F_{\text{drag}} = \Gamma · v_{\text{drift}} = (N · \gamma) · v_{\text{drift}}$$
+                <br>Combined:
+                $$N q_{\text{eff}} E = N \gamma v_{\text{drift}}$$$$ \implies \mu = \frac{v_{\text{drift}}}{E} = \frac{q_{\text{eff}}}{\gamma} \propto N^0$$
+                Because $\mu$ is invariant with $N$, standard free-solution electrophoresis cannot separate long DNA fragments by size.
+            </p>
+        </div>
+        <div class="padded">
+            <h3>Short Range</h3>
+            <ul>
+                <li>Very Short Chains ($N < 6$)
+                <ul>
+                    <li>Counterion cloud incomplete</li>
+                    <li>Weak internal shielding</li>
+                    <li>Drag rises faster than charge</li>
+                </ul></li>
+                <li>Peak Region ($N \approx 6-10$)
+                <ul>
+                    <li>Optimum hydrodynamic shielding</li>
+                    <li>Counterion cloud drag is fully active</li>
+                </ul></li>
+                <li>Long Chains ($N > 20$)
+                <ul>
+                    <li>Full counterion cloud</li>
+                    <li>electro-osmotic drag cancels size dependence</li>
+                </ul></li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<section>
+    <h2>Coulomb Interaction and Periodic Boundary Conditions</h2>
+    <p>$$U_{\text{Coulomb}} = \frac{1}{2} \sum_{\mathbf{n} \in \mathbb{Z}^3}{}^{'} \sum_{i=1}^{N} \sum_{j=1}^{N} \frac{q_i q_j}{4\pi\varepsilon_0 \varepsilon_r \vert{}\mathbf{r}_{ij} + \mathbf{n}L\vert{}}$$</p>
+    <div class="padded">
+        <p><strong>Conditional Convergence:</strong>  Even in a globally neutral system ($\sum q_i = 0$), the infinite sum is only conditionally convergent. The computed energy and force depend entirely on the geometric order in which the periodic shells are summed.</p>
+    </div>
+    <div class="padded plot" style="margin-top: 20px;">
+        <img src="images/ewald.png" alt="" style="max-width: 100%; max-height: 100%; object-fit: contain;">
+    </div>
+</section>
+
+<section>
+    <h2>Coulomb Interaction and Periodic Boundary Conditions</h2>
+    <div class="padded plot" style="margin-top: 20px;">
+        <img src="images/ewald.png" alt="" style="max-width: 100%; max-height: 100%; object-fit: contain;">
+    </div>
+    <div class="padded" style="margin-top: 20px;"><p style="font-size: 16px;">$$U_{\text{total}} = \underbrace{\frac{1}{2}\sum_{i \neq j}^N \frac{q_i q_j \text{erfc}(\alpha r_{ij})}{4\pi\varepsilon r_{ij}}}_{\text{Real-Space Sum (Short-range, Cutoff } r_c \text{)}} + \underbrace{\frac{1}{2V\varepsilon}\sum_{\mathbf{k} \neq \mathbf{0}} \frac{\exp(-k^2/4\alpha^2)}{k^2} \vert{}\tilde{\rho}(\mathbf{k})\vert{}^2}_{\text{Reciprocal-Space Sum (Fourier space)}} - \underbrace{\frac{\alpha}{4\pi^{3/2}\varepsilon}\sum_{i=1}^N q_i^2}_{\text{Self-Energy Correction}}$$</p></div>
+    <div class="padded" style="margin-top: 20px;">
+        <p>Now we have fast converging series and an $\mathcal{O}(N^{3/2})$ scaling</p>
+        <p>-> P3M can improve on that</p>
+    </div>
+</section>
+
+<section>
+    <h2><strong>P</strong>article-<strong>P</strong>article <strong>P</strong>article-<strong>M</strong>esh (P3M)</h2>
+    
+</section>
+
+<!-- presentation ends here -->
+</div>
+</div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/reveal.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/plugin/notes/notes.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/plugin/math/math.min.js"></script>
+  <script>
+    Reveal.initialize({
+      preloadIframes: true,
+      autoAnimateDuration: 0.7,
+      autoAnimateEasing: 'ease-out',
+      slideNumber: 'c/t',
+      hash: true,
+
+
+      overview: true,
+      controls: true,
+      progress: true,
+      transition: 'slide',
+      backgroundTransition: 'fade',
+      plugins: [RevealMath.MathJax2, RevealNotes],
+      mathjax2: {
+        mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js',
+        config: 'TeX-AMS_HTML-full',
+        // pass other options into `MathJax.Hub.Config()`
+        TeX: {
+          Macros: {
+            R: '\\mathbb{R}',
+            C: '\\mathbb{C}'
+          }
+        }
+      }
+    });
+  </script>
+</body>
+</html>
