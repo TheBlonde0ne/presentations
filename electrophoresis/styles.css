@@ -126,10 +126,6 @@
   line-height: 1.5;
 }
 
-.reveal fat {
-  font-weight: 600;
-}
-
 .reveal highlight {
   color: var(--highlight-color);
   font-weight: 600;
@@ -191,6 +187,12 @@
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
   border-radius: var(--box-radius);
   background-color: #ffffff99;
+}
+
+.reveal .slides section section {
+  box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+  box-sizing: 0;
+  background-color: rgba(255, 255, 255, 0);
 }
 
 /* Vertical stack wrapper - no padding, just pass through */
@@ -574,3 +576,130 @@
   margin-top: 0.8em;
   line-height: 1.6;
 }
+
+
+/* ===========================================
+   EXTRA
+   =========================================== */
+
+
+.results-table-container {
+    width: 100%;
+    margin: 15px 0;
+    overflow-x: auto;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  }
+
+  .results-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13pt;
+    text-align: right;
+    background-color: #e9e9e9;
+    color: #d4d4d4;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  }
+
+  .results-table th {
+    background-color: #c0b4b4;
+    color: #000000;
+    font-weight: 600;
+    padding: 12px 16px;
+    border-bottom: 2px solid #3b3b3b;
+    letter-spacing: 0.5px;
+  }
+
+  .results-table th:first-child,
+  .results-table td:first-child {
+    text-align: center;
+    font-weight: 600;
+  }
+
+  .results-table td {
+    padding: 10px 16px;
+    border-bottom: 1px solid #756767;
+    font-family: "SF Mono", "Fira Code", "Consolas", monospace;
+  }
+
+  .results-table tbody tr:last-child td {
+    border-bottom: none;
+  }
+
+  .results-table tbody tr:hover {
+    background-color: #2a2a2a;
+  }
+
+  .highlight-field {
+    color: #ff6b81;
+  }
+
+  .highlight-gk-zero {
+    color: #70a1ff;
+  }
+
+  .highlight-gk-exp {
+    color: #7bed9f;
+  }
+
+  .gk-table-container {
+    width: 100%;
+    margin: 15px 0;
+    overflow-x: auto;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  }
+
+  .gk-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 11pt;
+    text-align: right;
+    background-color: #e6e6e6;
+    color: #d4d4d4;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  }
+
+  .gk-table th {
+    background-color: #2d2d2d;
+    color: #ffffff;
+    font-weight: 600;
+    padding: 10px 12px;
+    border-bottom: 2px solid #444;
+    white-space: nowrap;
+  }
+
+  .gk-table th:first-child,
+  .gk-table td:first-child {
+    text-align: center;
+    font-weight: 600;
+  }
+
+  .gk-table td {
+    padding: 8px 12px;
+    border-bottom: 1px solid #333;
+    font-family: "SF Mono", "Fira Code", "Consolas", monospace;
+    white-space: nowrap;
+  }
+
+  .gk-table tbody tr:last-child td {
+    border-bottom: none;
+  }
+
+  .gk-table tbody tr:hover {
+    background-color: #2a2a2a;
+  }
+
+  .hl-zero {
+    color: #70a1ff;
+  }
+
+  .hl-fit {
+    color: #7bed9f;
+  }
+
+  .hl-tau {
+    color: #ffa502;
+  }
