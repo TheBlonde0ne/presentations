@@ -628,7 +628,7 @@
   }
 
   .results-table tbody tr:hover {
-    background-color: #2a2a2a;
+    background-color: #d48b8b;
   }
 
   .highlight-field {
@@ -653,7 +653,7 @@
   .gk-table {
     width: 100%;
     border-collapse: collapse;
-    font-size: 11pt;
+    font-size: 10pt;
     text-align: right;
     background-color: #e6e6e6;
     color: #d4d4d4;
@@ -663,6 +663,7 @@
   }
 
   .gk-table th {
+    font-size: 10pt;
     background-color: #2d2d2d;
     color: #ffffff;
     font-weight: 600;
@@ -678,6 +679,7 @@
   }
 
   .gk-table td {
+    font-size: 10pt;
     padding: 8px 12px;
     border-bottom: 1px solid #333;
     font-family: "SF Mono", "Fira Code", "Consolas", monospace;
@@ -689,7 +691,7 @@
   }
 
   .gk-table tbody tr:hover {
-    background-color: #2a2a2a;
+    background-color: #d48b8b;
   }
 
   .hl-zero {

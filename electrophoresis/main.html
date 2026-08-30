@@ -140,6 +140,27 @@ solution</h3>
 </section>
 
 <section>
+    <h2>Free-Draining vs. Non-Free-Draining Polymers</h2>
+    <h3>Question from the Worksheet</h3>
+    <div class="content">
+        <div class="padded">
+            <h4>Maintaining a constant monomer concentration</h4>
+            <ul>
+                <li>Lattice-Boltzmann (LB) method as hydrodynamic solver used to couple the particles to the fluid</li>
+                <li> To properly compare different chain lengths ($N = 2 \ldots 30$), the monomer concentration must be kept constant. This is done by adjusting the simulation box volume as $N$ changes, ensuring the Debye screening length and counterion density remain consistent across all simulations.</li>
+            </ul>
+            </div>
+        <div class="padded" style="margin-top: 20px;">
+            <h4>"What is the difference between a free-draining and non-free draining polymer?"</h4>
+            <ul>
+                <li>Free-Draining (Rouse Model): The polymer does not perturb the solvent. The solvent flows freely through the polymer coil. Hydrodynamic interactions are ignored. Diffusion scales as $D \propto N^{-1}$</li>
+                <li>Non-Free-Draining (Zimm Model): The polymer drags the solvent along with it. Hydrodynamic interactions (HI) between monomers are crucial. The coil acts like a solid sphere of radius, Diffusion scales as $D \propto R_{H}^{-1} \propto N^{-\nu}$</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<section>
     <h2>Mobility Behavior at different Chain Length</h2>
     <div class="grid two">
         <div class="padded">
@@ -173,6 +194,17 @@ solution</h3>
                     <li>electro-osmotic drag cancels size dependence</li>
                 </ul></li>
             </ul>
+        </div>
+    </div>
+</section>
+
+<section>
+    <h2>Mobility Behavior at different Chain Length</h2>
+    <div class="content">
+        <div class="padded" style="margin-top: 100px;">
+            <span style='font-size:100px; margin-left: 200px; margin-bottom: 100px;'>&#8595;</span>
+            <h4>Grass et al. (2008):</h4>
+            <p>We expect a non-monotonic behavior of the mobility</p>
         </div>
     </div>
 </section>
@@ -388,6 +420,57 @@ solution</h3>
 </section>
 
 <section>
+    <h1>Results</h1>
+    <div class="content">
+        <div class="padded" style="margin-top: 20px;">
+            0. Check Equilibration
+        </div>
+        <div class="padded" style="margin-top: 20px;">
+            1. Setup / Errors in Explicit Field
+        </div>
+        <div class="padded" style="margin-top: 20px;">
+            2. Setup / Errors in Green Kubo
+        </div>
+        <div class="padded" style="margin-top: 20px;">
+            3. Green Kubo: Diffusion Coefficient
+        </div>
+        <div class="padded" style="margin-top: 20px;">
+            4. Mobility Comparison
+        </div>
+         <div class="padded" style="margin-top: 20px;">
+            5. Which Method in which case?
+        </div>
+    </div>
+</section>
+
+<section>
+    <section>
+        <h2>Equilibration</h2>
+        <div class="content">
+            <div class="padded plot">
+                <img src="images/equi_N2.png" alt="" style="max-width: 90%; max-height: 100%; margin: 10px 0px 0px 30px;">
+            </div>
+        </div>
+    </section>
+    <section>
+        <h2>Equilibration</h2>
+        <div class="content">
+            <div class="padded plot">
+                <img src="images/equi_N12.png" alt="" style="max-width: 90%; max-height: 100%; margin: 10px 0px 0px 30px;">
+            </div>
+        </div>
+    </section>
+    <section>
+        <h2>Equilibration</h2>
+        <div class="content">
+            <div class="padded plot">
+                <img src="images/equi_N30.png" alt="" style="max-width: 90%; max-height: 100%; margin: 10px 0px 0px 30px;">
+            </div>
+        </div>
+    </section>
+</section>
+
+<section>
     <section>
         <h2>
             Explicit-Field pre Evaluation
@@ -450,21 +533,57 @@ solution</h3>
     <h2>
         Green-Kubo pre Evaluation
     </h2>
+    <h3>Parameter comparison</h3>
+    <div class="content">
+        <div class="padded plot">
+            <img src="images/gk_values.png" alt="" style="max-width: 90%; max-height: 100%; margin: 10px 0px 0px 30px;">
+        </div>
+    </div>
+</section>
+<section>
+    <aside class="notes">
+        <p>
+        Scaling of the Diffusion Coefficient $D(N)$
+        <ul>
+        <li>The Data: $D$ drops by nearly an order of magnitude from $N=2$ ($D \approx 0.020$) to $N=30$ ($D \approx 0.0035$).</li>
+        <li>Rouse vs. Zimm Scaling Context:
+            <li>In a free-draining Rouse polymer (no hydrodynamic interactions): $D \propto N^{-1}$.</li>
+            <li>In a non-free-draining Zimm polymer (with hydrodynamic interactions): $D \propto R_H^{-1} \propto N^{-\nu} \approx N^{-0.588}$ to $N^{-0.6}$.</li>
+        </li>
+        <li>The Ratio Check:$\frac{D(N=2)}{D(N=30)} = \frac{0.0202}{0.00354} \approx 5.71$
+            <li>Pure Rouse prediction: $30 / 2 = 15$.</li>
+            <li>Pure Zimm prediction ($N^{-0.6}$): $(30/2)^{0.6} \approx 15^{0.6} \approx 5.08$.</li></li>
+        <li>Takeaway: The scaling ratio ($\approx 5.71$) is close to the Zimm prediction ($5.08$) and far from the Rouse limit ($15$). This quantitatively proves that the Lattice-Boltzmann fluid is actively mediating hydrodynamic interactions across the chain.</li>
+        </ul>
+        
+        Systematic Offset: Zero-Crossing vs. Exponential Tail Fit
+        
+        <li>The Data: $D_{\text{Zero-Cross}}$ is systematically $8\%\text{-}40\%$ higher than $D_{\text{Exp-Fit}}$ across all lengths (e.g., $0.00354$ vs. $0.00250$ for $N=30$).</li>
+        
+        <li>The Methodological Cause:
+            <li>The Zero-Crossing method integrates all numerical data points up to where the curve first drops below zero. Any weak, positive statistical noise or long-time hydrodynamic algebraic tail ($t^{-3/2}$) before the zero point adds directly to the total integral.</li>
+            <li>The Exponential Fit method assumes a pure single-exponential decay $A e^{-t/\tau}$. While it eliminates random long-time noise, it tends to slightly underestimate the slow algebraic hydrodynamic tail of the VACF, acting as a lower-bound estimate of the true diffusion coefficient.</li>
+        </li>
+        </p>
+    </aside>
+    <h2>
+        Green-Kubo pre Evaluation
+    </h2>
     <div class="content">
         <div class="padded">
             <div class="gk-table-container">
   <table class="gk-table">
     <thead>
       <tr>
-        <th><i>N</i></th>
-        <th>VACF(0)</th>
-        <th><i>t</i><sub>zero</sub></th>
+        <th><i>$N$</i></th>
+        <th>VACF$(0)$</th>
+        <th><i>$t_{\text{zero}}$</i></th>
         <th class="hl-zero"><i>D</i> (Zero-Cross)</th>
-        <th class="hl-zero">&plusmn; &sigma;</th>
-        <th><i>A</i><sub>fit</sub> &plusmn; &sigma;</th>
-        <th class="hl-tau">&tau;<sub>fit</sub> &plusmn; &sigma;</th>
+        <th class="hl-zero">$\pm \sigma$</th>
+        <th> $A_{\text{fit}}\pm \sigma$</th>
+        <th class="hl-tau">$\tau_{\text{fit}} \pm \sigma$</th>
         <th class="hl-fit"><i>D</i> (Exp-Fit)</th>
-        <th class="hl-fit">&plusmn; &sigma;</th>
+        <th class="hl-fit">$\pm \sigma$</th>
       </tr>
     </thead>
     <tbody>
@@ -569,25 +688,10 @@ solution</h3>
 
 <section>
     <h2>Simulation Results</h2>
-    <h3>Reduced Mobility per Monomer $\mu$</h3>
+    <h3>Absolute Mobility ($\mu = (\mu/N) \times N$)</h3>
     <div class="content">
         <div class="padded plot">
             <img src="images/absolute_mobility.png" alt="" style="max-width: 90%; max-height: 100%; margin: 10px 0px 0px 30px;">
-        </div>
-    </div>
-</section>
-
-<section>
-    <h2>Simulation Results</h2>
-    <h3>Reduced Mobility per Monomer $\vert{}\mu/N\vert{}$</h3>
-    <div class="content">
-        <div class="grid two">
-        <div class="padded plot">
-            <h4>Absolute Mobility ($\mu = (\mu/N) \times N$)</h4>
-        </div>
-        <div class="padded plot">
-            <img src="images/mobility.png" alt="" style="max-width: 90%; max-height: 100%; margin: 10px 0px 0px 30px;">
-        </div>
         </div>
     </div>
 </section>
@@ -661,6 +765,19 @@ solution</h3>
 </div>
 </section>
 
+<section>
+    <h2>Final comparison</h2>
+    <div class="content">
+        <div class="padded">
+            <ul>
+                <li>Tail-fitted Green-Kubo serves as a lower bound</li>
+                <li>Zero-Crossing Green-Kubo is highly susceptible to noise integration</li>
+                <li> Explicit field is highly accurate but requires ensuring the field $E$ is strictly in the linear response regime</li>
+            </ul>
+            <br> <p>Only Explicit Field method shows clear non-monotonic behavior!</p>
+        </div>
+    </div>
+</section>
 
 <!-- presentation ends here -->
 </div>
